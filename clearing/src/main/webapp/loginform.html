@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>login-page</title>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,700;1,400&display=swap"
+            rel="stylesheet" />
+
+        <link href="css/bootstrap.min.css" rel="stylesheet" />
+
+        <link href="css/bootstrap-icons.css" rel="stylesheet" />
+
+        <link href="css/loginform.css" rel="stylesheet" />
+
+        <link href="css/tooplate-clean-work.css" rel="stylesheet" />
+
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.4/tiny-slider.css" />
+        <script
+            language="javascript"
+            src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.2/min/tiny-slider.js"></script>
+
+    </head>
+    <body>
+        <header class="site-header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 col-12 d-flex flex-wrap">
+                        <p class="d-flex me-4 mb-0">
+                            <i class="bi-house-fill me-2"></i>
+                            One-Stop Cleaning Service
+                        </p>
+
+                        <p
+                            class="d-flex d-lg-block d-md-block d-none me-4 mb-0">
+                            <i class="bi-clock-fill me-2"></i>
+                            <strong class="me-2">Mon - Fri</strong>
+                            8:00 AM - 5:30 PM
+                        </p>
+
+                        <p
+                            class="site-header-icon-wrap text-white d-flex mb-0 ms-auto">
+                            <i class="site-header-icon bi-whatsapp me-2"></i>
+
+                            <a href="tel: 110-220-9800" class="text-white">
+                                110 220 9800
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="background-slider">
+            <img
+                src="./images/slideshow/afro-woman-cleaning-window-with-rag-home.jpg"
+                alt="background" />
+            <img
+                src="./images//slideshow/afro-woman-holding-bucket-with-cleaning-items.jpg"
+                alt="background" />
+            <img
+                src="./images/slideshow/unrecognizable-cleaner-walking-into-hotel-room-with-tools-detergents.jpg"
+                alt="background" />
+        </div>
+
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">
+                    <img
+                        src="images/bubbles.png"
+                        class="logo img-fluid"
+                        alt="" />
+
+                    <span class="ms-2">Clean Work</span>
+                </a>
+
+                <button
+                    class="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarNav"
+                    aria-controls="navbarNav"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="index.html"
+                                >Home</a
+                            >
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="about.html">About Us</a>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a
+                                class="nav-link dropdown-toggle"
+                                href="#section_5"
+                                id="navbarLightDropdownMenuLink"
+                                role="button"
+                                data-bs-toggle="dropdown"
+                                aria-expanded="false"
+                                >Pages</a
+                            >
+
+                            <ul
+                                class="dropdown-menu dropdown-menu-light"
+                                aria-labelledby="navbarLightDropdownMenuLink">
+                                <li>
+                                    <a
+                                        class="dropdown-item"
+                                        href="services.html"
+                                        >Our Services</a
+                                    >
+                                </li>
+
+                                <li>
+                                    <a
+                                        class="dropdown-item"
+                                        href="coming-soon.html"
+                                        >Coming Soon</a
+                                    >
+                                </li>
+
+                                <li>
+                                    <a
+                                        class="dropdown-item"
+                                        href="page-404.html"
+                                        >Page 404</a
+                                    >
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="contact.html">Contact</a>
+                        </li>
+
+                        <li class="nav-item ms-3">
+                            <a
+                                class="nav-link custom-btn custom-border-btn custom-btn-bg-white btn"
+                                href="loginform.html"
+                                >Get started</a
+                            >
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <main class="loginform">
+            <section class="background">
+                <form action="#" method="get">
+                    <fieldset>
+                        <legend>sign-in</legend>
+
+                        <div class="input-info">
+                            <div class="form-input">
+                                <label for="userinputName">이름</label>
+                                <input
+                                    type="text"
+                                    name="inputName"
+                                    id="userinputName"
+                                    placeholder="이름을 입력하세요" />
+                            </div>
+                        </div>
+
+                        <div class="input-info">
+                            <div class="form-input">
+                                <label for="userinputId">아이디</label>
+                                <input
+                                    type="text"
+                                    name="inputId"
+                                    id="userinputId"
+                                    placeholder="아이디를 입력하세요" />
+                            </div>
+                            <button class="sign-btn id-chk" id="idCheck">
+                                중복검사
+                            </button>
+                            <div style="display: none">
+                                아이디를 입력해 주세요.
+                            </div>
+                            <div style="display: none">
+                                아이디는 영문자, 숫자를 포함한 6~20자리로만 작성
+                                가능합니다.
+                            </div>
+                        </div>
+
+                        <div class="input-info">
+                            <div class="form-input">
+                                <label for="userinputPw">비밀번호</label>
+                                <input
+                                    type="password"
+                                    name="inputPw"
+                                    id="userinputPw" />
+                            </div>
+                            <div style="display: none">
+                                비밀번호를 입력해 주세요.
+                            </div>
+                            <div style="display: none">
+                                비밀번호는 영문자, 숫자, 특수문자가 포함된
+                                6~20자리로만 작성 가능합니다.
+                            </div>
+                        </div>
+
+                        <div class="input-info">
+                            <div class="form-input">
+                                <label for="userinputPwChk"
+                                    >비밀번호 확인</label
+                                >
+                                <input
+                                    type="password"
+                                    name="inputPwChk"
+                                    id="userinputPwChk" />
+                            </div>
+                            <div style="display: none">
+                                비밀번호가 일치하지 않습니다.
+                            </div>
+                            <div style="display: none">
+                                비밀번호가 일치합니다.
+                            </div>
+                        </div>
+
+                        <div class="input-info">
+                            <input
+                                type="submit"
+                                class="sign-btn"
+                                value="sign-in"
+                                onclick="return signChk();" />
+                        </div>
+                    </fieldset>
+                </form>
+            </section>
+        </main>
+    </body>
+    <script src="./js/carousel.js"></script>
+    <script src="./js/loginform.js" async></script>
+</html>
