@@ -5,7 +5,7 @@
 <configuration>
 
 	<!-- 환경설정(계정, driver, url ...) -->
-	<properties resource="com/smhrd/database/db.properties"></properties>
+	<properties resource="com/clearing/database/db.properties"></properties>
 	<typeAliases>
 		<typeAlias type="com.clearing.model.MemberDTO"
 			alias="Member" />
@@ -25,6 +25,6 @@
 
 
 	<mappers>
-		<mapper resource="com/smhrd/database/MemberMapper.xml" />
+		<mapper resource="com/clearing/database/MemberMapper.xml" />
 	</mappers>
 </configuration>
