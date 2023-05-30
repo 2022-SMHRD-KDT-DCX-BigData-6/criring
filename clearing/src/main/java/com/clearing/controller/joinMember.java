@@ -29,10 +29,10 @@ public class joinMember extends HttpServlet {
 		String joinLaundry = request.getParameter("laundryCnt");
 		String joinDryer = request.getParameter("dryerCnt");
 		double joinLat = Double.parseDouble(request.getParameter("userLatInput"));
-		double joinLng = Double.parseDouble(request.getParameter("userLngInput"));
-
+		double joinLng = Double.parseDouble(request.getParameter("userLngInput"));	
 		int joinLaundryCnt = 0;
 		int joinDryerCnt = 0;
+		
 		if (joinLaundry != null || joinDryer != null) {
 			joinLaundryCnt = Integer.parseInt(joinLaundry);
 			joinDryerCnt = Integer.parseInt(joinDryer);
