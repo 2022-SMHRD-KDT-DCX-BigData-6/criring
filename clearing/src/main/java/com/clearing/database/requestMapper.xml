@@ -9,9 +9,13 @@
 		select * from tbl_request order by req_seq desc
 	</select>
 	
+	<!-- 
+	오라클 부적합한 열유형 null 처리 위해
+	null 들어가도 되는 컬럼에 jdbcType=VARCHAR 삽입
+	 -->
 	<insert id="insert_req" parameterType="request_Board">
 		insert into tbl_request (req_seq, req_title, req_content, req_file, req_dt, req_email, req_type) 
-		values (TBL_REQUEST_SEQ.nextval, #{req_title}, #{req_content}, #{req_file}, sysdate, #{req_email}, 'N')
+		values (TBL_REQUEST_SEQ.nextval, #{req_title}, #{req_content, jdbcType=VARCHAR}, #{req_file, jdbcType=VARCHAR}, sysdate, #{req_email}, 'N')
 	</insert>
 	
 </mapper>
