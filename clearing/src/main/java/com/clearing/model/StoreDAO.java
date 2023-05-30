@@ -24,4 +24,11 @@ public class StoreDAO {
 
 		return storeMember;
 	}
+	public StoreVO storeData(StoreVO sVo) {
+		SqlSession sqlSession = sqlSessionFactory.openSession(true);
+		
+		StoreVO storeData = sqlSession.selectOne("com.clearing.database.bookLaundryMapper.selStoreData",sVo);
+		sqlSession.close();
+		return storeData;
+	}
 }
