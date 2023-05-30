@@ -15,6 +15,9 @@
 		<typeAlias type="com.clearing.model.usingVO" alias="Using"/>
 		<!-- <typeAlias type="com.clearing.model.laundryVO" alias="Laundry"/> -->
 		<typeAlias type="com.clearing.model.StoreVO" alias="StoreUse"/>
+		<typeAlias type="com.clearing.model.admin_reviewDTO"
+			alias="admin_review" />
+			<typeAlias type="com.clearing.model.Request_BoardDTO" alias="request_Board"/>
 	</typeAliases>
 	<environments default="development">
 		<environment id="development">
@@ -35,5 +38,7 @@
 		<mapper resource="com/clearing/database/bookLaundryMapper.xml" />
 		<mapper resource="com/clearing/database/MemberMapper.xml" />
 		<mapper resource="com/clearing/database/userMapper.xml" />
+		<mapper resource="com/clearing/database/adminMapper.xml" />
+		<mapper resource="com/clearing/database/requestMapper.xml"/>
 	</mappers>
 </configuration>
