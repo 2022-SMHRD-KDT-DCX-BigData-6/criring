@@ -9,6 +9,9 @@
 	<typeAliases>
 		<typeAlias type="com.clearing.model.MemberDTO"
 			alias="Member" />
+		<typeAlias type="com.clearing.model.StoreDTO" alias="Store" />
+		<typeAlias type="com.clearing.model.LaundryDTO"
+			alias="Laundry" />
 	</typeAliases>
 	<environments default="development">
 		<environment id="development">
@@ -26,5 +29,6 @@
 
 	<mappers>
 		<mapper resource="com/clearing/database/MemberMapper.xml" />
+		<mapper resource="com/clearing/database/userMapper.xml" />
 	</mappers>
 </configuration>
