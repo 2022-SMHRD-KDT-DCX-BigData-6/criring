@@ -7,8 +7,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Insert title here</title>
-<script src="js/paging.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 <style type="text/css">
 * {
   margin: 0;
@@ -17,6 +18,10 @@
 
 div.app {
   width: 100%;
+}
+
+#writer{
+	float: right;
 }
 
 table,
@@ -68,6 +73,7 @@ span.active {
   color: orangered;
   font-weight: bold;
 }
+
 </style>
 </head>
 <body>
@@ -75,6 +81,9 @@ span.active {
 		Request_BoardDAO dao = new Request_BoardDAO();
 		List<Request_BoardDTO> sel_list = dao.selectAll_request();
 	%>
+	<div>
+	<h1>문의 게시판 <a href="requestBoardWrite.jsp"><button type="button" class="btn btn-secondary" id="writer">게시글 작성</button></a></h1>
+	</div>
     <div class="app">
       <table id="tblTodo">
         <caption></caption>
@@ -118,7 +127,8 @@ span.active {
         <i class="fa-solid fa-angle-right" id="next_page"></i>
         <i class="fa-solid fa-angles-right" id="last_page"></i>
       </div>
-      <a href="requestBoardWrite.jsp"><button id="writer">작성하러가기</button></a>
     </div>
+    <!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 </body>
 </html>
