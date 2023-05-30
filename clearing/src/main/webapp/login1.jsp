@@ -151,8 +151,8 @@ Free Bootstrap 5 HTML Template
 										<div class="form-outline mb-4">
 											<label class="form-label" for="sample5_roadAddress">Address</label>
 											<input type="text" id="sample5_address" name="joinAddr"
-												class="form-control form-control-lg" placeholder="주소"
-												 value="abc"> <input type="button"
+												class="form-control form-control-lg" placeholder="주소" readonly
+												 > <input type="button"
 												class="btn btn-primary btn-lg btn-block"
 												onclick="sample5_execDaumPostcode()" value="주소 검색"><br>
 											<!-- <input type="text" id="sample4_roadAddress"
