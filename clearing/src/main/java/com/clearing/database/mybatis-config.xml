@@ -13,7 +13,7 @@
 		<typeAlias type="com.clearing.model.LaundryDTO"
 			alias="Laundry" />
 		<typeAlias type="com.clearing.model.usingVO" alias="Using"/>
-		<typeAlias type="com.clearing.model.laundryVO" alias="Laundry"/>
+		<!-- <typeAlias type="com.clearing.model.laundryVO" alias="Laundry"/> -->
 		<typeAlias type="com.clearing.model.StoreVO" alias="StoreUse"/>
 	</typeAliases>
 	<environments default="development">

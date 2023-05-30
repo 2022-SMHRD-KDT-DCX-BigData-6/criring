@@ -29,8 +29,8 @@ public class bookLaundryController extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		request.setCharacterEncoding("UTF-8");
 		
-		double lat = 314.11111111111;
-		double lng = 414.11111111111;
+		double lat = 35.1593376161019;
+		double lng = 126.843330918969;
 		
 		List<usingVO> laundryList=null;
 		
@@ -47,9 +47,10 @@ public class bookLaundryController extends HttpServlet {
 		usingDAO uDao = new usingDAO();
 		StoreDAO sDao = new StoreDAO();
 		StoreVO sVo = new StoreVO(lat, lng);
+		
 		sVo = sDao.storeData(sVo);
-		int dcnt = sVo.getDryer_cnt();
-		int lcnt = sVo.getLaundry_cnt();
+		int dcnt = sVo.getDRYER_CNT();
+		int lcnt = sVo.getLAUNDRY_CNT();
 		laundryList = uDao.usedLaundry(timeZero);
 		int [] used = new int[laundryList.size()];
 		if(laundryList!=null){
@@ -62,8 +63,8 @@ public class bookLaundryController extends HttpServlet {
 		HttpSession session = request.getSession();
 		session.setAttribute("laundry_cnt", lcnt);
 		session.setAttribute("dryer_cnt", dcnt);
-		session.setAttribute("store_name", sVo.getStore_name());
-		session.setAttribute("store_addr", sVo.getStore_addr());
+		session.setAttribute("store_name", sVo.getSTORE_NAME());
+		session.setAttribute("store_addr", sVo.getSTORE_ADDR());
 		request.setAttribute("used",used );
 		request.setAttribute("nTimeNow", nTimeNow);
 		if(sVo!=null) {

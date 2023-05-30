@@ -27,6 +27,30 @@
 		<description></description>
 		<servlet-class>com.clearing.controller.myPageUpdate</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>TimeController</servlet-name>
+		<display-name>TimeController</display-name>
+		<description></description>
+		<servlet-class>com.clearing.controller.TimeController</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>usingController</servlet-name>
+		<display-name>usingController</display-name>
+		<description></description>
+		<servlet-class>com.clearing.controller.usingController</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>bookLaundryController</servlet-name>
+		<display-name>bookLaundryController</display-name>
+		<description></description>
+		<servlet-class>com.clearing.controller.bookLaundryController</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>DateController</servlet-name>
+		<display-name>DateController</display-name>
+		<description></description>
+		<servlet-class>com.clearing.controller.DateController</servlet-class>
+	</servlet>
 	<servlet-mapping>
 		<servlet-name>joinMember</servlet-name>
 		<url-pattern>/joinMember</url-pattern>
@@ -42,6 +66,22 @@
 	<servlet-mapping>
 		<servlet-name>myPageUpdate</servlet-name>
 		<url-pattern>/myPageUpdate</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>TimeController</servlet-name>
+		<url-pattern>/TimeController</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>usingController</servlet-name>
+		<url-pattern>/usingController</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>bookLaundryController</servlet-name>
+		<url-pattern>/bookLaundryController</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>DateController</servlet-name>
+		<url-pattern>/DateController</url-pattern>
 	</servlet-mapping>
 
 </web-app>

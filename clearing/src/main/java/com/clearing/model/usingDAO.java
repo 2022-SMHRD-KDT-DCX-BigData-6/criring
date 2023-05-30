@@ -11,7 +11,7 @@ public class usingDAO {
 	SqlSessionFactory sqlSessionFactory =SqlSessionManager.getSqlSession();
 	
 	public List<usingVO> usedLaundry(String timeZero){
-		SqlSession sqlSession = sqlSessionFactory.openSession();
+		SqlSession sqlSession = sqlSessionFactory.openSession(true);
 		List<usingVO> usedList = sqlSession.selectList("com.clearing.database.usingMapper.used",timeZero);
 		if(usedList!=null) {
 			sqlSession.commit();
@@ -23,7 +23,7 @@ public class usingDAO {
 		return usedList;
 	}
 	public List<usingVO> usedLaundry_byDate(String using_dt, String start_time){
-		SqlSession sqlSession = sqlSessionFactory.openSession();
+		SqlSession sqlSession = sqlSessionFactory.openSession(true);
 		List<usingVO> usedList  = sqlSession.selectList("com.clearing.database.usingMapper.used2",new usingVO(using_dt,start_time));
 		if(usedList!=null) {
 			sqlSession.commit();
@@ -36,7 +36,7 @@ public class usingDAO {
 	}
 	
 	public int insertUsing(usingVO uVo) {
-		SqlSession sqlSession = sqlSessionFactory.openSession();
+		SqlSession sqlSession = sqlSessionFactory.openSession(true);
 		int insert = sqlSession.insert("com.clearing.database.usingMapper.insert", uVo);
 		if(insert>0) {
 			sqlSession.commit();;
