@@ -5,10 +5,19 @@
 <configuration>
 
 	<!-- 환경설정(계정, driver, url ...) -->
-	<properties resource="com/smhrd/database/db.properties"></properties>
+	<properties resource="com/clearing/database/db.properties"></properties>
 	<typeAliases>
 		<typeAlias type="com.clearing.model.MemberDTO"
 			alias="Member" />
+		<typeAlias type="com.clearing.model.StoreDTO" alias="Store" />
+		<typeAlias type="com.clearing.model.LaundryDTO"
+			alias="Laundry" />
+		<typeAlias type="com.clearing.model.usingVO" alias="Using"/>
+		<!-- <typeAlias type="com.clearing.model.laundryVO" alias="Laundry"/> -->
+		<typeAlias type="com.clearing.model.StoreVO" alias="StoreUse"/>
+		<typeAlias type="com.clearing.model.admin_reviewDTO"
+			alias="admin_review" />
+			<typeAlias type="com.clearing.model.Request_BoardDTO" alias="request_Board"/>
 	</typeAliases>
 	<environments default="development">
 		<environment id="development">
@@ -25,6 +34,11 @@
 
 
 	<mappers>
-		<mapper resource="com/smhrd/database/MemberMapper.xml" />
+		<mapper resource="com/clearing/database/usingMapper.xml" />
+		<mapper resource="com/clearing/database/bookLaundryMapper.xml" />
+		<mapper resource="com/clearing/database/MemberMapper.xml" />
+		<mapper resource="com/clearing/database/userMapper.xml" />
+		<mapper resource="com/clearing/database/adminMapper.xml" />
+		<mapper resource="com/clearing/database/requestMapper.xml"/>
 	</mappers>
 </configuration>

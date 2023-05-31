@@ -10,14 +10,14 @@ import lombok.RequiredArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @RequiredArgsConstructor
-public class MemberDTO {
-	@NonNull private String  MB_EMAIL;
-	@NonNull private String MB_PW;
-	private String MB_NAME;
-	private String MB_ADDR;
-	private String MB_JOINDATE;
-	private String ADMIN_YN;
-	private String MB_PENALTY;
+public class StoreDTO {
+	@NonNull private String STORE_EMAIL;
+	@NonNull private String STORE_PW;
+	private String STORE_NAME;
+	private String STORE_ADDR;
+	private String STORE_TEL;
+	private int LAUNDRY_CNT;
+	private int DRYER_CNT;
 	private double LAT;
 	private double LNG;
 }

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.clearing.database.adminMapper">
+	<delete id="delete_review" parameterType="admin_review">
+		delete from tbl_review where review_seq = #{review_seq}
+	</delete>
+	
+	<select id="selectAll_review" parameterType="admin_review" resultType="admin_review">
+		select * from tbl_review
+	</select>
+	
+	<select id="select_review" parameterType="admin_review" resultType="admin_review">
+		select * from tbl_review where store_email = #{store_email} and user_email = #{user_email}
+	</select>
+	
+</mapper>

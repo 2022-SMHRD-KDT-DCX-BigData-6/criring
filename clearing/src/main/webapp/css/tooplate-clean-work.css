@@ -1339,6 +1339,7 @@ strong {
 -----------------------------------------*/
 .site-footer {
   background-color: var(--primary-color);
+  margin-top: 100px;
   padding-top: 50px;
 }
 
