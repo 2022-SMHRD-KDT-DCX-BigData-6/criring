@@ -52,14 +52,18 @@
                </tr>
                <%
                // 로그인 아이디가 작성자의 아이디와 일치할 시 수정가능
-               if(session.getAttribute("email").equals(rDto.getReqEmail())) { %>
+               if (session.getAttribute("email") == null ) {
+            	   
+               } else if(session.getAttribute("email").equals(rDto.getReqEmail())) { %>
                <tr>
                   <td colspan="2"><a href="update_request.jsp"><button>수정</button></a></td>
                </tr>
                <%} %>
                <%
                // 로그인 아이디가 관리자 또는 작성자일 시 삭제 가능
-               if(session.getAttribute("email").equals(rDto.getReqEmail()) || session.getAttribute("email").equals("kissmejr@naver.com")) { %>
+               if (session.getAttribute("email") == null) {
+            	   
+               } else if(session.getAttribute("email").equals(rDto.getReqEmail()) || session.getAttribute("email").equals("kissmejr@naver.com")) { %>
                <tr>
                   <td colspan="2"><a href="requestBoardMain.jsp"><button>삭제</button></a></td>
                </tr>
