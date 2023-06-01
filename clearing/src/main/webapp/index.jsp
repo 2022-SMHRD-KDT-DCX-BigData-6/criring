@@ -70,6 +70,11 @@ Free Bootstrap 5 HTML Template
 		lat = storeMember.getLAT();
 		lng = storeMember.getLNG();
 	}
+	session.setAttribute("email", email);
+	session.setAttribute("name", name);
+	session.setAttribute("addr", addr);
+	session.setAttribute("lat", lat);
+	session.setAttribute("lng", lng);
 	%>
 	<header class="site-header">
 		<div class="container">
@@ -141,7 +146,8 @@ Free Bootstrap 5 HTML Template
 					%>
 					<li class="nav-item ms-3"><a
 						class="nav-link custom-btn custom-border-btn custom-btn-bg-white btn"
-						href="Mypage1.jsp">My page</a></li>
+						href="selectReservationDetails">My page</a></li>
+						<%-- href="Mypage.jsp?email=<%=email%>&addr=<%=addr%>&lat=<%=lat%>&lng=<%=lng%>" --%>
 					<li class="nav-item ms-3"><a
 						class="nav-link custom-btn custom-border-btn custom-btn-bg-white btn"
 						href="logOut">Log-Out</a></li>
@@ -250,7 +256,7 @@ Free Bootstrap 5 HTML Template
 			<div id="map"
 				style="width: 500px; height: 500px; position: relative; overflow: hidden;"></div>
 		</div>
-		<form action="searchAddress" id="selectStore_form">
+		<form action="bookLaundryController" id="selectStore_form">
 
 			<div class="selectReservation">
 				<div class="reservation-info dp-none">
@@ -274,7 +280,7 @@ Free Bootstrap 5 HTML Template
 						href="#services-section"> <span style="">Detail Info</span>
 					</a>
 				</div>
-				<div class="reservation-LatLng" style="display: none;">
+				<div class="reservation-LatLng" style="display:none;">
 					<div id="reservation-Lat"></div>
 					<div id="reservation-Lng"></div>
 				</div>

@@ -38,4 +38,12 @@ public class MemberDAO {
 		sqlSession.close();
 		return result;
 	}
+	
+	public int updateMember(MemberDTO dto) {
+		SqlSession sqlSession = sqlSessionFactory.openSession(true);
+		int result = sqlSession.update("com.clearing.database.MemberMapper.updateMember", dto);
+		sqlSession.close();
+		
+		return result;
+	}
 }

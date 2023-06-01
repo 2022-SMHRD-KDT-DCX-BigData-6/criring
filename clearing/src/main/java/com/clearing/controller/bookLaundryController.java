@@ -29,8 +29,17 @@ public class bookLaundryController extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		request.setCharacterEncoding("UTF-8");
 		
-		double lat = 35.1593376161019;
-		double lng = 126.843330918969;
+		
+//		double lat = 35.1593376161019;
+//		double lng = 126.843330918969;
+//		HttpSession session = request.getSession();
+//		if(session.getAttribute("lat")!=null && session.getAttribute("lng")!=null) {
+//			lat = (Double)session.getAttribute("lat");
+//			lng = (Double)session.getAttribute("lng");
+//		}
+		HttpSession session = request.getSession();
+		double lat =Double.parseDouble(request.getParameter("selectStoreLat"));
+		double lng = Double.parseDouble(request.getParameter("selectStoreLng"));
 		
 		List<usingVO> laundryList=null;
 		
@@ -60,13 +69,18 @@ public class bookLaundryController extends HttpServlet {
 					used[i] = laundryList.get(i).getLaundry_seq();
 			}
 		}
-		HttpSession session = request.getSession();
 		session.setAttribute("laundry_cnt", lcnt);
 		session.setAttribute("dryer_cnt", dcnt);
 		session.setAttribute("store_name", sVo.getSTORE_NAME());
 		session.setAttribute("store_addr", sVo.getSTORE_ADDR());
 		request.setAttribute("used",used );
 		request.setAttribute("nTimeNow", nTimeNow);
+		System.out.println("세션런드리카운트"+session.getAttribute("laundry_cnt"));
+		System.out.println("세션드라이카운트"+session.getAttribute("dryer_cnt"));
+		System.out.println("세션 스토어네임" + session.getAttribute("store_name"));
+		System.out.println("세션 스토어주소" + session.getAttribute("store_addr"));
+		System.out.println("리퀘스트유즈드 " + request.getAttribute("used"));
+		System.out.println("리퀘스트타임나우" + request.getAttribute("nTimeNow"));
 		if(sVo!=null) {
 			RequestDispatcher requestDispatcher = request.getRequestDispatcher("using.jsp");
 			requestDispatcher.forward(request, response);
