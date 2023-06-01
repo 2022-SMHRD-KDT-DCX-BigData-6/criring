@@ -40,5 +40,6 @@
 		<mapper resource="com/clearing/database/userMapper.xml" />
 		<mapper resource="com/clearing/database/adminMapper.xml" />
 		<mapper resource="com/clearing/database/requestMapper.xml"/>
+		<mapper resource="com/clearing/database/reservationMapper.xml"/>
 	</mappers>
 </configuration>
