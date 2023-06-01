@@ -20,8 +20,18 @@ public class Request_BoardDAO {
 		return sel_list;
 	}
 	
+	public Request_BoardDTO selectDetail_request(Request_BoardDTO dto) {
+		Request_BoardDTO rDto = null;
+		
+		rDto = sqlSession.selectOne("com.clearing.database.requestMapper.select_req", dto);
+		
+		sqlSession.close();
+		
+		return rDto;
+	}
+	
+	
 	public int insert_req (Request_BoardDTO dto) {
-		System.out.println("ㅎㅇㅎㅇㅎㅇㅎㅇ"+dto.getReqEmail());
 		int insert = 0;
 		
 		insert = sqlSession.insert("com.clearing.database.requestMapper.insert_req", dto);
@@ -31,5 +41,14 @@ public class Request_BoardDAO {
 		return insert;
 	}
 	
+	public int update_req (Request_BoardDTO dto) {
+		int update = 0;
+		
+		update = sqlSession.update("com.clearing.database.requestMapper.update_req", dto);
+		
+		sqlSession.close();
+		
+		return 0;
+	}
 	
 }

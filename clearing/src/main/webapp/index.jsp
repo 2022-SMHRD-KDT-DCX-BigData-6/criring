@@ -136,6 +136,8 @@ Free Bootstrap 5 HTML Template
 
 							<li><a class="dropdown-item" href="page-404.html">Page
 									404</a></li>
+							<li><a class="dropdown-item" href="requestBoardMain.jsp">Request Page
+									</a></li>
 						</ul></li>
 
 					<li class="nav-item"><a class="nav-link" href="contact.html">Contact</a>

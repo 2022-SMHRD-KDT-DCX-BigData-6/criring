@@ -57,6 +57,26 @@
 		<description></description>
 		<servlet-class>com.clearing.controller.selectReservationDetails</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>reqBoardInsert</servlet-name>
+		<display-name>reqBoardInsert</display-name>
+		<description></description>
+		<servlet-class>com.clearing.controller.reqBoardInsert</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>reqBoardUpdate</servlet-name>
+		<display-name>reqBoardUpdate</display-name>
+		<description></description>
+		<servlet-class>com.clearing.controller.reqBoardUpdate</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>reqBoardUpdate</servlet-name>
+		<url-pattern>/reqBoardUpdate</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>reqBoardInsert</servlet-name>
+		<url-pattern>/reqBoardInsert</url-pattern>
+	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>joinMember</servlet-name>
 		<url-pattern>/joinMember</url-pattern>
