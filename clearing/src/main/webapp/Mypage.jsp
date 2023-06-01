@@ -1,3 +1,6 @@
+<%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
+<%@page import="com.clearing.model.usingVO"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -36,12 +39,15 @@ https://www.tooplate.com/view/2132-clean-work
 Free Bootstrap 5 HTML Template
 
 -->
-<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=683c7e08c86fe41ea5c21dd7148dc9f3&libraries=services,clusterer,drawing"></script>
+<script
+	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script type="text/javascript"
+	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=683c7e08c86fe41ea5c21dd7148dc9f3&libraries=services,clusterer,drawing"></script>
 </head>
 <%
-	String lat = request.getParameter("lat");
-	String lng = request.getParameter("lng");
+String lat = request.getParameter("lat");
+String lng = request.getParameter("lng");
+ArrayList<usingVO> details = (ArrayList<usingVO>) request.getAttribute("details");
 %>
 <body>
 	<header class="site-header">
@@ -128,7 +134,7 @@ Free Bootstrap 5 HTML Template
 							<div class="col-sm-10">
 								<input type="text" readonly class="form-control-plaintext"
 									id="staticEmail" name="inputEmail"
-									value="<%=request.getParameter("email")%>">
+									value="<%=session.getAttribute("email")%>">
 							</div>
 						</div>
 						<!-- 원래 비밀번호 확인 -->
@@ -162,8 +168,8 @@ Free Bootstrap 5 HTML Template
 							<label class="col-sm-2 col-form-label" for="sample5_roadAddress">Address</label>
 							<div class="col-sm-10">
 								<input type="text" id="sample5_address" name="joinAddr"
-									class="form-control"
-									value="<%=request.getParameter("addr")%>" readonly>
+									class="form-control" value="<%=session.getAttribute("addr")%>"
+									readonly>
 							</div>
 						</div>
 
@@ -175,12 +181,14 @@ Free Bootstrap 5 HTML Template
 
 						<div id="map"
 							style="width: 300px; height: 300px; margin-top: 10px; display: none"></div>
-						<div id="searchLat" style="display:none;">
-						<input type="text" name="userLatInput" id="userLat-input" value="<%=request.getParameter("lat")%>">
+						<div id="searchLat" style="display: none;">
+							<input type="text" name="userLatInput" id="userLat-input"
+								value="<%=request.getParameter("lat")%>">
 							<!-- class="dp-none;" -->
 						</div>
-						<div id="searchLng"  style="display:none;">
-						<input type="text" name="userLngInput" id="userLng-input" value="<%=request.getParameter("lng")%>">
+						<div id="searchLng" style="display: none;">
+							<input type="text" name="userLngInput" id="userLng-input"
+								value="<%=request.getParameter("lng")%>">
 							<!-- class="dp-none;" -->
 						</div>
 
@@ -304,6 +312,8 @@ Free Bootstrap 5 HTML Template
 						<button type="submit"
 							class="btn btn-primary btn-lg btn-block modal-btn">정보 수정</button>
 					</form>
+					<a href="secessionMember"><button
+							class="btn btn-primary btn-lg btn-block modal-btn">회원탈퇴</button></a>
 
 				</div>
 			</div>
@@ -315,15 +325,53 @@ Free Bootstrap 5 HTML Template
 			<div class="container">
 				<div class="row justify-content-lg-center align-items-center">
 					<div class="col-lg-6 col-12">
-						<!-- 예약정보 OR 내정보수정 -->
+						<div class="reservationList">
+							<%=session.getAttribute("name")%>
+							님의 예약 내역입니다.
+							<table class="table">
+								<thead>
+									<tr>
+										<th scope="col">사용 정보</th>
+										<th scope="col">세탁기 순번</th>
+										<th scope="col">사용 시작 시간</th>
+										<th scope="col">사용 정료 시간</th>
+										<th scope="col">사용 날짜</th>
+									</tr>
+								</thead>
+								<%
+								if (details != null) {
+									for (int i = 0; i < details.size(); i++) {
+								%>
+								<tbody class="table-group-divider">
+									<tr>
+
+										<th scope="row"><%=i%></th>
+										<td><%=details.get(i).getUsing_seq()%></td>
+										<td><%=details.get(i).getLaundry_seq()%></td>
+										<td><%=details.get(i).getStart_time()%></td>
+										<td><%=details.get(i).getEnd_time()%></td>
+										<td><%=details.get(i).getUsing_dt()%></td>
+									</tr>
+								</tbody>
+								<%
+								}
+								} else if (details == null) {
+								%>
+								<tbody class="table-group-divider">
+									<tr>
+										<th scope="row">1</th>
+										<td colspan="4">예약 정보가 없습니다.</td>
+									</tr>
+								</tbody>
+
+								<%
+								}
+								%>
+							</table>
+						</div>
 					</div>
 
-					<div class="col-lg-6 col-12 custom-block-wrap">
-						<!-- 예약정보 OR 내정보수정 -->
-						<!-- <div class="custom-block d-flex flex-column">
-                              예약정보 OR 내정보수정
-                            </div> -->
-					</div>
+					<div class="col-lg-6 col-12 custom-block-wrap"></div>
 				</div>
 			</div>
 		</section>
@@ -386,11 +434,8 @@ Free Bootstrap 5 HTML Template
 
 												<div class="marquee" aria-hidden="true">
 													<div class="marquee__inner">
-														<span>Learn
-															More</span> <span>Learn
-															More</span> <span>Learn
-															More</span> <span>Learn
-															More</span>
+														<span>Learn More</span> <span>Learn More</span> <span>Learn
+															More</span> <span>Learn More</span>
 													</div>
 												</div>
 											</a>
@@ -451,11 +496,8 @@ Free Bootstrap 5 HTML Template
 
 												<div class="marquee" aria-hidden="true">
 													<div class="marquee__inner">
-														<span>Learn
-															More</span> <span>Learn
-															More</span> <span>Learn
-															More</span> <span>Learn
-															More</span>
+														<span>Learn More</span> <span>Learn More</span> <span>Learn
+															More</span> <span>Learn More</span>
 													</div>
 												</div>
 											</a>
@@ -516,11 +558,8 @@ Free Bootstrap 5 HTML Template
 
 												<div class="marquee" aria-hidden="true">
 													<div class="marquee__inner">
-														<span>Learn
-															More</span> <span>Learn
-															More</span> <span>Learn
-															More</span> <span>Learn
-															More</span>
+														<span>Learn More</span> <span>Learn More</span> <span>Learn
+															More</span> <span>Learn More</span>
 													</div>
 												</div>
 											</a>
@@ -581,11 +620,8 @@ Free Bootstrap 5 HTML Template
 
 												<div class="marquee" aria-hidden="true">
 													<div class="marquee__inner">
-														<span>Learn
-															More</span> <span>Learn
-															More</span> <span>Learn
-															More</span> <span>Learn
-															More</span>
+														<span>Learn More</span> <span>Learn More</span> <span>Learn
+															More</span> <span>Learn More</span>
 													</div>
 												</div>
 											</a>
@@ -787,8 +823,7 @@ Free Bootstrap 5 HTML Template
 
 					<ul class="footer-menu d-flex flex-wrap ms-5">
 						<li class="footer-menu-item"><a href="#"
-							class="footer-menu-link">About
-								Us</a></li>
+							class="footer-menu-link">About Us</a></li>
 
 						<li class="footer-menu-item"><a href="#"
 							class="footer-menu-link">Blog</a></li>
@@ -878,8 +913,7 @@ Free Bootstrap 5 HTML Template
 					<div class="featured-block">
 						<h5 class="text-white mb-3">Service Hours</h5>
 
-						<strong class="d-block text-white mb-1">Mon
-							- Fri</strong>
+						<strong class="d-block text-white mb-1">Mon - Fri</strong>
 
 						<p class="text-white mb-3">8:00 AM - 5:30 PM</p>
 
@@ -902,8 +936,7 @@ Free Bootstrap 5 HTML Template
 					<div class="col-lg-6 col-12 text-end">
 						<p class="copyright-text mb-0">
 							// Designed by <a href="https://www.tooplate.com"
-								target="_parent">Tooplate</a>
-							//
+								target="_parent">Tooplate</a> //
 						</p>
 					</div>
 				</div>
