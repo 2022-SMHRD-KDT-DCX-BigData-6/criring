@@ -51,6 +51,12 @@
 		<description></description>
 		<servlet-class>com.clearing.controller.DateController</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>selectReservationDetails</servlet-name>
+		<display-name>selectReservationDetails</display-name>
+		<description></description>
+		<servlet-class>com.clearing.controller.selectReservationDetails</servlet-class>
+	</servlet>
 	<servlet-mapping>
 		<servlet-name>joinMember</servlet-name>
 		<url-pattern>/joinMember</url-pattern>
@@ -82,6 +88,10 @@
 	<servlet-mapping>
 		<servlet-name>DateController</servlet-name>
 		<url-pattern>/DateController</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>selectReservationDetails</servlet-name>
+		<url-pattern>/selectReservationDetails</url-pattern>
 	</servlet-mapping>
 
 </web-app>
