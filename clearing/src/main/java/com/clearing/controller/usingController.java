@@ -18,9 +18,9 @@ public class usingController extends HttpServlet {
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 아이디는 세션에서 받아올거임, 결제금액이랑 결제 여부는 ?? 어캄?
-		String user_email = "scott";
-		
 		HttpSession session = request.getSession();
+		String user_email = (String)session.getAttribute("email");
+		
 		String time =(String)session.getAttribute("time");
 		session.removeAttribute("time");
 		int laundry_seq = Integer.parseInt(request.getParameter("laundry"));
