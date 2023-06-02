@@ -1,3 +1,4 @@
+<%@page import="com.clearing.model.reservation_detailsDAO"%>
 <%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
 <%@page import="com.clearing.model.usingVO"%>
 <%@page import="java.util.ArrayList"%>
@@ -44,12 +45,13 @@ Free Bootstrap 5 HTML Template
 <script type="text/javascript"
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=683c7e08c86fe41ea5c21dd7148dc9f3&libraries=services,clusterer,drawing"></script>
 </head>
+<body>
 <%
 String lat = request.getParameter("lat");
 String lng = request.getParameter("lng");
-ArrayList<usingVO> details = (ArrayList<usingVO>) request.getAttribute("details");
+reservation_detailsDAO dao = new reservation_detailsDAO();
+ArrayList<usingVO> details = (ArrayList<usingVO>)request.getAttribute("details");
 %>
-<body>
 	<header class="site-header">
 		<div class="container">
 			<div class="row">
@@ -331,7 +333,8 @@ ArrayList<usingVO> details = (ArrayList<usingVO>) request.getAttribute("details"
 							<table class="table">
 								<thead>
 									<tr>
-										<th scope="col">사용 정보</th>
+										<th scope="col">순번</th>
+										<th scope="col">예약 번호</th>
 										<th scope="col">세탁기 순번</th>
 										<th scope="col">사용 시작 시간</th>
 										<th scope="col">사용 정료 시간</th>
@@ -346,11 +349,14 @@ ArrayList<usingVO> details = (ArrayList<usingVO>) request.getAttribute("details"
 									<tr>
 
 										<th scope="row"><%=i%></th>
-										<td><%=details.get(i).getUsing_seq()%></td>
+										<td><%=i+1 %></td>
+										<td><%=details.get(i).getUSING_SEQ()%></td>
 										<td><%=details.get(i).getLaundry_seq()%></td>
 										<td><%=details.get(i).getStart_time()%></td>
 										<td><%=details.get(i).getEnd_time()%></td>
 										<td><%=details.get(i).getUsing_dt()%></td>
+										<td><a href="deleteReservation?using=<%=details.get(i).getUSING_SEQ()%>">예약 취소</a></td>
+										<td><a href="Review_WriteController">리뷰 작성</a></td>
 									</tr>
 								</tbody>
 								<%

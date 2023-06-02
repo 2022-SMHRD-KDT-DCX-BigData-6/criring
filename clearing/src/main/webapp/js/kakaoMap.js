@@ -275,4 +275,3 @@ function getInfo() {
 	message += '경도 ' + center.getLng() + ' 이고 <br>';
 	console.log(message);
 }
-
