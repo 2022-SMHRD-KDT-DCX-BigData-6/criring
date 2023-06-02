@@ -55,15 +55,15 @@ Free Bootstrap 5 HTML Template
 	String addr = null;
 	Double lat = 0.0;
 	Double lng = 0.0;
-	MemberDTO member =(MemberDTO)session.getAttribute("member");		
-	StoreDTO storeMember = (StoreDTO)session.getAttribute("storeMember");
-	if(member != null) {
+	MemberDTO member = (MemberDTO) session.getAttribute("member");
+	StoreDTO storeMember = (StoreDTO) session.getAttribute("storeMember");
+	if (member != null) {
 		email = member.getMB_EMAIL();
 		name = member.getMB_NAME();
 		addr = member.getMB_ADDR();
 		lat = member.getLAT();
 		lng = member.getLNG();
-	} else if(storeMember != null) {
+	} else if (storeMember != null) {
 		email = storeMember.getSTORE_EMAIL();
 		name = storeMember.getSTORE_NAME();
 		addr = storeMember.getSTORE_ADDR();
@@ -101,9 +101,9 @@ Free Bootstrap 5 HTML Template
 	<nav class="navbar navbar-expand-lg">
 		<div class="container">
 			<a class="navbar-brand" href="index.jsp"> <img
-				src="images/bubbles.png" class="logo img-fluid" alt="" /> 
-						<span class="ms-2">C&nbsp;R&nbsp;I&nbsp;R&nbsp;I&nbsp;N&nbsp;G</span>
-				
+				src="images/bubbles.png" class="logo img-fluid" alt="" /> <span
+				class="ms-2">C&nbsp;R&nbsp;I&nbsp;R&nbsp;I&nbsp;N&nbsp;G</span>
+
 			</a>
 
 			<button class="navbar-toggler" type="button"
@@ -136,8 +136,8 @@ Free Bootstrap 5 HTML Template
 
 							<li><a class="dropdown-item" href="page-404.html">Page
 									404</a></li>
-							<li><a class="dropdown-item" href="requestBoardMain.jsp">Request Page
-									</a></li>
+							<li><a class="dropdown-item" href="requestBoardMain.jsp">Request
+									Page </a></li>
 						</ul></li>
 
 					<li class="nav-item"><a class="nav-link" href="contact.html">Contact</a>
@@ -149,7 +149,7 @@ Free Bootstrap 5 HTML Template
 					<li class="nav-item ms-3"><a
 						class="nav-link custom-btn custom-border-btn custom-btn-bg-white btn"
 						href="selectReservationDetails">My page</a></li>
-						<%-- href="Mypage.jsp?email=<%=email%>&addr=<%=addr%>&lat=<%=lat%>&lng=<%=lng%>" --%>
+					<%-- href="Mypage.jsp?email=<%=email%>&addr=<%=addr%>&lat=<%=lat%>&lng=<%=lng%>" --%>
 					<li class="nav-item ms-3"><a
 						class="nav-link custom-btn custom-border-btn custom-btn-bg-white btn"
 						href="logOut">Log-Out</a></li>
@@ -209,7 +209,7 @@ Free Bootstrap 5 HTML Template
 		</section>
 	</main>
 	<section class="search_reservation"
-		style="height: 1000px; position: relative; margin-top:5%;">
+		style="height: 1000px; position: relative; margin-top: 5%;">
 		<%-- <div class="searchAddr">
 			<div class="input-group mb-3 input-group-jin" style="margin-top:15px;">
 				<input type="text" class="form-control" name="addrSearch"
@@ -227,13 +227,12 @@ Free Bootstrap 5 HTML Template
 		</div> --%>
 		<!-- 		<div id="map" style="width: 600px; height: 400px;"></div> -->
 		<%
-		
 		/* TODO 세션에 유저주소정보를 담아서 업데이트해줘야함 */
 		String searchAddr = addr;
 		if (searchAddr == null) {
 			searchAddr = "농성동";
 		} else {
-		searchAddr = searchAddr.substring(0, 5);
+			searchAddr = searchAddr.substring(0, 5);
 		}
 		%>
 		<div class="option">
@@ -241,22 +240,25 @@ Free Bootstrap 5 HTML Template
 				<form id="searchAddrReservation"
 					onsubmit="searchPlaces(); return false;">
 					<input type="text" class="form-control" name="addrSearch"
-						value="<%=searchAddr%> 코인세탁방" id="keyword"
-						placeholder="검색할 주소를 입력하세요" aria-label="Recipient's username"
-						aria-describedby="button-addon2" size="15">
+						value="<%=searchAddr%>" id="keyword" placeholder="검색할 주소를 입력하세요"
+						aria-label="Recipient's username" aria-describedby="button-addon2"
+						size="15">
 					<button type="button" class="btn search-btn" id="button-addon2">Search
 						!</button>
 				</form>
 			</div>
 		</div>
-		<div class="map_wrap">
+		<div class="map_menu_wrap">
+			<div class="map_wrap">
+
+				<div id="map"
+					style="width: 500px; height: 500px; position: relative; overflow: hidden;"></div>
+			</div>
 			<div id="menu_wrap" class="bg_white">
 				<hr>
 				<ul id="placesList"></ul>
 				<div id="pagination"></div>
 			</div>
-			<div id="map"
-				style="width: 500px; height: 500px; position: relative; overflow: hidden;"></div>
 		</div>
 		<form action="bookLaundryController" id="selectStore_form">
 
@@ -266,7 +268,7 @@ Free Bootstrap 5 HTML Template
 					<div style="margin-left: 15px;">예약하시겠습니까?</div>
 				</div>
 				<div class="map-searchbtn-group">
-				<button type="submit"
+					<button type="submit"
 						class="custom-btn btn button button--atlas smoothscroll me-3">
 						<span>Reservation</span>
 
@@ -286,7 +288,7 @@ Free Bootstrap 5 HTML Template
 					<div id="reservation-Lat"></div>
 					<div id="reservation-Lng"></div>
 				</div>
-				
+
 			</div>
 		</form>
 
