@@ -1,3 +1,5 @@
+<%@page import="com.clearing.model.admin_replyDTO"%>
+<%@page import="com.clearing.model.admin_replyDAO"%>
 <%@page import="com.clearing.model.Request_BoardDTO"%>
 <%@page import="java.util.List"%>
 <%@page import="com.clearing.model.Request_BoardDAO"%>
@@ -199,6 +201,7 @@ h3:after {
 	<%
 		Request_BoardDAO dao = new Request_BoardDAO();
 		List<Request_BoardDTO> sel_list = dao.selectAll_request();
+		int num = 0;
 	%>
 	
 	<div class="container">
@@ -221,11 +224,19 @@ h3:after {
 	      </tr>
 	      <%for (int i = 0; i < sel_list.size(); i++) {%>
 	        	<tr>
-	        		<td><%=i+1 %></td>
+	        		<td><%=num = num+1 %></td>
 	        		<td><a href="requestBoardDetail.jsp?req_seq=<%=sel_list.get(i).getReqSeq()%>&req_title=<%=sel_list.get(i).getReqTitle()%>"><%=sel_list.get(i).getReqTitle() %></a></td>
 	        		<td><%=sel_list.get(i).getReqEmail() %></td>
 	        		<td><%=sel_list.get(i).getReqDt() %></td>
 	        	</tr>
+	        	<%if(sel_list.get(i).getReqType().equals("Y")){%>
+	        		<tr>
+	        		<td><%=num = num+1 %></td>
+	        		<td><a href="replyDetail.jsp?req_seq=<%=sel_list.get(i).getReqSeq()%>">&nbsp;&nbsp; └ RE:&nbsp;<%=sel_list.get(i).getReqTitle()%>에 관한 답글입니다.</a></td>
+	        		<td></td>
+	        		<td></td>
+	        		</tr>
+	        	<%} %>
 	        <%} %>
 	        <%} else if(session.getAttribute("email").equals("kissmejr@naver.com")) {%>
 	      <tr>
@@ -237,14 +248,47 @@ h3:after {
 	      </tr>
 	      <%for (int i = 0; i < sel_list.size(); i++) {%>
 	        	<tr>
-	        		<td><%=i+1 %></td>
+	        		<td><%=num = num+1 %></td>
 	        		<td><a href="requestBoardDetail.jsp?req_seq=<%=sel_list.get(i).getReqSeq()%>&req_title=<%=sel_list.get(i).getReqTitle()%>"><%=sel_list.get(i).getReqTitle() %></a></td>
 	        		<td><%=sel_list.get(i).getReqEmail() %></td>
 	        		<td><%=sel_list.get(i).getReqDt() %></td>
-	        		<td><%=sel_list.get(i).getReqType() %></td>
+	        		<td><a href="replyWrite.jsp?req_seq=<%=sel_list.get(i).getReqSeq()%>&req_title=<%=sel_list.get(i).getReqTitle()%>">답글달기</a></td>
 	        	</tr>
+	        	<%if(sel_list.get(i).getReqType().equals("Y")){%>
+	        		<tr>
+	        		<td><%=num = num+1 %></td>
+	        		<td><a href="replyDetail.jsp?req_seq=<%=sel_list.get(i).getReqSeq()%>">&nbsp;&nbsp; └ RE:&nbsp;<%=sel_list.get(i).getReqTitle()%>에 관한 답글입니다.</a></td>
+	        		<td></td>
+	        		<td></td>
+	        		<td></td>
+	        		</tr>
+	        	<%} %>
 	        <%} %>
+	        <%} else if(session.getAttribute("email") != null) { %>
+		    <tr>
+		        <th>번호</th>
+		        <th>제목</th>
+		        <th>작성자</th>
+		        <th>작성일</th>
+		      </tr>
+		      <%for (int i = 0; i < sel_list.size(); i++) {%>
+		        	<tr>
+		        		<td><%=num = num+1 %></td>
+		        		<td><a href="requestBoardDetail.jsp?req_seq=<%=sel_list.get(i).getReqSeq()%>&req_title=<%=sel_list.get(i).getReqTitle()%>"><%=sel_list.get(i).getReqTitle() %></a></td>
+		        		<td><%=sel_list.get(i).getReqEmail() %></td>
+		        		<td><%=sel_list.get(i).getReqDt() %></td>
+		        	</tr>
+		        	<%if(sel_list.get(i).getReqType().equals("Y")){%>
+	        		<tr>
+	        		<td><%=num = num+1 %></td>
+	        		<td><a href="replyDetail.jsp?req_seq=<%=sel_list.get(i).getReqSeq()%>">&nbsp;&nbsp; └ RE:&nbsp;<%=sel_list.get(i).getReqTitle()%>에 관한 답글입니다.</a></td>
+	        		<td></td>
+	        		<td></td>
+	        		</tr>
+	        	<%} %>
+		        <%} %>
 	        <%} %>
+	        
 	      <!-- <tr>
 	        <td data-th="Supplier Code">
 	          UPS5005

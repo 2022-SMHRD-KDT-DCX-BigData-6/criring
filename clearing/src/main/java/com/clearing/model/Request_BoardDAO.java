@@ -51,4 +51,35 @@ public class Request_BoardDAO {
 		return 0;
 	}
 	
+	public int update_reqTypeY (int req_seq) {
+		int update = 0;
+		
+		update = sqlSession.update("com.clearing.database.requestMapper.update_reqTypeY", req_seq);
+		
+		sqlSession.close();
+		
+		return update;
+	}
+	
+	public int update_reqTypeN (int req_seq) {
+		int update = 0;
+		
+		update = sqlSession.update("com.clearing.database.requestMapper.update_reqTypeN", req_seq);
+		
+		sqlSession.close();
+		
+		return update;
+	}
+	
+	public int delete_req (int req_seq) {
+		
+		int delete = 0;
+		
+		delete = sqlSession.delete("com.clearing.database.requestMapper.delete_req", req_seq);
+		
+		sqlSession.close();
+		
+		return 0;
+	}
+	
 }
