@@ -30,7 +30,7 @@
 
 <link href="css/tooplate-clean-work.css" rel="stylesheet" />
 <link href="css/login.css" rel="stylesheet">
-
+<link href="css/mypageJ.css" rel="stylesheet">
 <!--
 
 Tooplate 2132 Clean Work
@@ -40,18 +40,20 @@ https://www.tooplate.com/view/2132-clean-work
 Free Bootstrap 5 HTML Template
 
 -->
+<script src="https://kit.fontawesome.com/a32650dbb1.js"
+	crossorigin="anonymous"></script>
 <script
 	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript"
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=683c7e08c86fe41ea5c21dd7148dc9f3&libraries=services,clusterer,drawing"></script>
 </head>
 <body>
-<%
-String lat = request.getParameter("lat");
-String lng = request.getParameter("lng");
-reservation_detailsDAO dao = new reservation_detailsDAO();
-ArrayList<usingVO> details = (ArrayList<usingVO>)request.getAttribute("details");
-%>
+	<%
+	String lat = request.getParameter("lat");
+	String lng = request.getParameter("lng");
+	reservation_detailsDAO dao = new reservation_detailsDAO();
+	ArrayList<usingVO> details = (ArrayList<usingVO>) request.getAttribute("details");
+	%>
 	<header class="site-header">
 		<div class="container">
 			<div class="row">
@@ -126,6 +128,32 @@ ArrayList<usingVO> details = (ArrayList<usingVO>)request.getAttribute("details")
 	<main>
 		<section
 			class="hero-section hero-section-full-height d-flex justify-content-center align-items-center">
+			<div class="introductMypage">blahblahblahblahblahblahblahblahblahblahblahblahblah</div>
+			<div class="section-overlay"></div>
+			<ul class="menu_icon_group">
+				<li class="menu_icon">
+					<a href="" class="linkBtn">
+						<i class="fa-solid fa-user"></i>
+						<span>회원 정보 수정</span>
+					</a>
+				</li>
+				<li class="menu_icon">
+					<a href="" class="linkBtn">
+						<i class="fa-solid fa-calendar-days"></i>
+						<span>예약 내역 조회</span>
+					</a>
+				</li>
+				<li class="menu_icon">
+					<a href="" class="linkBtn">
+						<i class="fa-solid fa-camera-retro"></i>
+						<span>내가 쓴 리뷰</span>
+					</a>
+				</li>
+			</ul>
+		</section>
+
+
+		<section style="display: none;">
 			<div class="section-overlay"></div>
 
 			<div class="container" style="margin-top: 10%;">
@@ -313,17 +341,15 @@ ArrayList<usingVO> details = (ArrayList<usingVO>)request.getAttribute("details")
 
 						<button type="submit"
 							class="btn btn-primary btn-lg btn-block modal-btn">정보 수정</button>
+						<a href="secessionMember"><button
+								class="btn btn-primary btn-lg btn-block modal-btn">회원탈퇴</button></a>
 					</form>
-					<a href="secessionMember"><button
-							class="btn btn-primary btn-lg btn-block modal-btn">회원탈퇴</button></a>
 
 				</div>
 			</div>
-
-
 		</section>
-
-		<section class="intro-section" id="intro-section">
+		<section class="intro-section" id="intro-section"
+			style="display: none;">
 			<div class="container">
 				<div class="row justify-content-lg-center align-items-center">
 					<div class="col-lg-6 col-12">
@@ -349,13 +375,15 @@ ArrayList<usingVO> details = (ArrayList<usingVO>)request.getAttribute("details")
 									<tr>
 
 										<th scope="row"><%=i%></th>
-										<td><%=i+1 %></td>
+										<td><%=i + 1%></td>
 										<td><%=details.get(i).getUSING_SEQ()%></td>
 										<td><%=details.get(i).getLaundry_seq()%></td>
 										<td><%=details.get(i).getStart_time()%></td>
 										<td><%=details.get(i).getEnd_time()%></td>
 										<td><%=details.get(i).getUsing_dt()%></td>
-										<td><a href="deleteReservation?using=<%=details.get(i).getUSING_SEQ()%>">예약 취소</a></td>
+										<td><a
+											href="deleteReservation?using=<%=details.get(i).getUSING_SEQ()%>">예약
+												취소</a></td>
 										<td><a href="Review_WriteController">리뷰 작성</a></td>
 									</tr>
 								</tbody>

@@ -114,6 +114,15 @@ function displayPlaces(places) {
 				reservationLng.innerHTML = '<input type="text" name="selectStoreLng" id="selectStoreLng-dp-none">'
 				var addStoreLng = document.getElementById('selectStoreLng-dp-none');
 				addStoreLng.value = marker.getPosition().getLng();
+				
+				var reservationLat = document.getElementById('reservation-Lat1');
+				reservationLat.innerHTML = '<input type="text" name="selectStoreLat" id="selectStoreLat1-dp-none">'
+				var addStoreLat = document.getElementById('selectStoreLat1-dp-none');
+				addStoreLat.value = marker.getPosition().getLat();
+				var reservationLng = document.getElementById('reservation-Lng1');
+				reservationLng.innerHTML = '<input type="text" name="selectStoreLng" id="selectStoreLng1-dp-none">'
+				var addStoreLng = document.getElementById('selectStoreLng1-dp-none');
+				addStoreLng.value = marker.getPosition().getLng();
 			};
 		
 			kakao.maps.event.addListener(marker, 'click', function() {

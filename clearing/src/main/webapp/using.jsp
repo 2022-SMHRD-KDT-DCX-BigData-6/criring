@@ -17,6 +17,13 @@
 	crossorigin="anonymous">
 
 <style type="text/css">
+@font-face {
+    font-family: 'gmarket';
+    src: url('./fonts/GmarketSansTTFMedium.ttf') format('truetype');
+}
+body {
+	font-family: 'gmarket';
+}
 .btn {
 	color: white;
 	border-color: white;
@@ -72,7 +79,6 @@
 
 
 </style>
-<link href="css/calendar.css" type="text/css" rel="stylesheet">
 
 </head>
 <body>
@@ -95,14 +101,6 @@
 	session.setAttribute("dryer_cnt", dryer_cnt);
 	
 %>
-	<div><%=nTimeNow %></div>
-	<div><%=StoreName %></div>
-	<div><%=StoreAddr %></div>
-	<div><%=laundry_cnt %></div>
-	<div><%=dryer_cnt %></div>
-	<div><%=disableHH %></div>
-	<div><%=disableMi %></div>
-	<div><%=usedLength %></div>
 
 	<form action="usingController" method="post">
 	<div class="center-pos">
@@ -201,7 +199,7 @@
 		    
 		    const now_date = year+"-"+month+"-"+day;
 			if(now_date!==selDate){
-				 window.location.href="http://localhost:8081/clearing/DateController?date="+selDate;
+				 window.location.href="http://localhost:8091/clearing3/DateController?date="+selDate;
 				
 			};
 		});
@@ -209,7 +207,7 @@
 		$("select[name=time]").change(function(){
 		 	var selTime =$(this).val();
 		 	const selDate= document.querySelector("#Date").value;
-		 	 window.location.href="http://localhost:8081/clearing/TimeController?time="+selTime+"&date="+selDate;//value값 가져오기 
+		 	 window.location.href="http://localhost:8091/clearing3/TimeController?time="+selTime+"&date="+selDate;//value값 가져오기 
 		});
 	</script>
 	<!-- js 달력 선택 제한 스크립트 -->

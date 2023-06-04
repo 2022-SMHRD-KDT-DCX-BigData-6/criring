@@ -16,18 +16,18 @@
 	position: absolute;
 	width: 67%;
 	height: 600px;
-	left: 20%;
-	margin-left: -2%;
+	left: 22%;
+	margin-left: -2.25%;
 }
 
 #menu_wrap {
 	position: absolute;
-	top: 3%;
-	left: 50%;
+	top: 0.1%;
+	left: 49%;
 	bottom: 0;
 	width: 480px;
-	height: 50%;
-	margin: 10px 0 30px 10px;
+	height: 76.5%;
+	margin: 55px 0 30px 10px;
 	padding: 5px;
 	overflow-y: auto;
 	background: rgba(255, 255, 255, 0.7);
@@ -191,6 +191,7 @@
 
 .option {
 	margin-left: 20%;
+	margin-bottom: 1%;
 }
 
 .option button.search-btn {
@@ -209,8 +210,9 @@
 
 .map-searchbtn-group {
 	position: absolute;
-	top: 62%;
-	left: 36%;
+	top: 93%;
+	left: 38%;
+	width: 23.5%
 }
 
 .reservation-info {
@@ -229,4 +231,14 @@
 
 .dp-none {
 	display: none;
+}
+
+section.search_reservation a.smoothscroll {
+	color: #4f83d1;
+	border-color: #4f83d1;
+	width: 44%;
+}
+
+section.search_reservation a.smoothscroll:hover {
+	color: #ffffff;
 }

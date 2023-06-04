@@ -32,7 +32,7 @@
 <link href="css/login.css" rel="stylesheet">
 <link href="css/kakaoMap.css" rel="stylesheet">
 <script type="text/javascript"
-	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4fe78505e64a5ac31be2e7b890da39d4&libraries=services,clusterer,drawing"></script>
+	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=683c7e08c86fe41ea5c21dd7148dc9f3&libraries=services,clusterer,drawing"></script>
 
 
 
@@ -115,30 +115,12 @@ Free Bootstrap 5 HTML Template
 
 			<div class="collapse navbar-collapse" id="navbarNav">
 				<ul class="navbar-nav ms-auto">
-					<li class="nav-item"><a class="nav-link active"
+					<li class="nav-item"><a class="nav-link"
 						href="index.jsp">Home</a></li>
-
-					<li class="nav-item"><a class="nav-link" href="about.html">About
-							Us</a></li>
-
-					<li class="nav-item dropdown"><a
-						class="nav-link dropdown-toggle" href="#section_5"
-						id="navbarLightDropdownMenuLink" role="button"
-						data-bs-toggle="dropdown" aria-expanded="false">Pages</a>
-
-						<ul class="dropdown-menu dropdown-menu-light"
-							aria-labelledby="navbarLightDropdownMenuLink">
-							<li><a class="dropdown-item" href="services.html">Our
-									Services</a></li>
-
-							<li><a class="dropdown-item" href="coming-soon.html">Coming
-									Soon</a></li>
-
-							<li><a class="dropdown-item" href="page-404.html">Page
-									404</a></li>
-							<li><a class="dropdown-item" href="requestBoardMain.jsp">Request
-									Page </a></li>
-						</ul></li>
+					<li class="nav-item"><a class="nav-link" href="about.html">Review board
+							</a></li>
+					<li class="nav-item"><a class="nav-link" href="requestBoardMain.jsp">Inquiry board
+							</a></li>
 
 					<li class="nav-item"><a class="nav-link" href="contact.html">Contact</a>
 					</li>
@@ -174,7 +156,7 @@ Free Bootstrap 5 HTML Template
 			class="hero-section hero-section-full-height d-flex justify-content-center align-items-center">
 			<div class="section-overlay"></div>
 
-			<div class="container" style="padding-bottom: 170px;">
+			<div class="container" style="padding-bottom:20%;">
 				<div class="row mainForm">
 					<div class="col-lg-7 col-12 text-center mx-auto">
 
@@ -209,7 +191,8 @@ Free Bootstrap 5 HTML Template
 		</section>
 	</main>
 	<section class="search_reservation"
-		style="height: 1000px; position: relative; margin-top: 5%;">
+		style="height: 600px; position: relative;padding-right: 1.5%;">
+		<div class="searchsection" style="margin-top:5%;"></div>
 		<%-- <div class="searchAddr">
 			<div class="input-group mb-3 input-group-jin" style="margin-top:15px;">
 				<input type="text" class="form-control" name="addrSearch"
@@ -252,7 +235,7 @@ Free Bootstrap 5 HTML Template
 			<div class="map_wrap">
 
 				<div id="map"
-					style="width: 500px; height: 500px; position: relative; overflow: hidden;"></div>
+					style="width: 450px; height: 450px; position: relative; overflow: hidden;"></div>
 			</div>
 			<div id="menu_wrap" class="bg_white">
 				<hr>
@@ -279,17 +262,22 @@ Free Bootstrap 5 HTML Template
 							</div>
 						</div>
 					</button>
-					<a
-						class="custom-btn custom-border-btn custom-btn-bg-white btn button button--pan smoothscroll"
-						href="#services-section"> <span style="">Detail Info</span>
-					</a>
+					
 				</div>
-				<div class="reservation-LatLng" style="display:none;">
+				<div class="reservation-LatLng">
 					<div id="reservation-Lat"></div>
 					<div id="reservation-Lng"></div>
 				</div>
-
 			</div>
+		</form>
+		<form action="reviewSelect">
+			<div class="reservation-LatLng">
+				<div id="reservation-Lat1"></div>
+				<div id="reservation-Lng1"></div>
+			</div>
+			<button type="submit" class="custom-btn custom-border-btn custom-btn-bg-white btn button button--pan smoothscroll reivewbtn"
+						href="#services-section"> <span style="">Review</span>
+			</button>
 		</form>
 
 	</section>
