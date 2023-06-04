@@ -22,6 +22,7 @@
          <!-- 게시글 세부내용 조회 -->   
          <div id = "board">
             <table id="reqDetail">
+            
                <tr>
                   <td>제목</td>
                </tr>
@@ -50,28 +51,34 @@
                      <%=rDto.getReqFile() %>
                   </td>
                </tr>
-               <%
-               // 로그인 아이디가 작성자의 아이디와 일치할 시 수정가능
-               if (session.getAttribute("email") == null ) {
-            	   
-               } else if(session.getAttribute("email").equals(rDto.getReqEmail())) { %>
-               <tr>
-                  <td colspan="2"><a href="update_request.jsp"><button>수정</button></a></td>
-               </tr>
-               <%} %>
-               <%
-               // 로그인 아이디가 관리자 또는 작성자일 시 삭제 가능
-               if (session.getAttribute("email") == null) {
-            	   
-               } else if(session.getAttribute("email").equals(rDto.getReqEmail()) || session.getAttribute("email").equals("kissmejr@naver.com")) { %>
-               <tr>
-                  <td colspan="2"><a href="reqBoardDelete"><button>삭제</button></a></td>
-               </tr>
-               <%} %>
-               <tr>
-                  <td colspan="2"><a href="requestBoardMain.jsp"><button>뒤로가기</button></a></td>
-               </tr>
             </table>
          </div>
+         
+         <div id = "replyBoard">
+            <form action="replyInsert" method="post" enctype="multipart/form-data">
+            <table id="list">
+               <tr>
+                  <td>작성자</td>
+                  <td><input type="hidden" name="admin_id"><%=session.getAttribute("email") %></td>
+               </tr>
+               <tr>
+                  <td colspan="2">내용</td>
+               </tr>
+               <tr>
+                  <td colspan="2">
+                     <input  type="file" name="reply_photo" style="float: right;">
+                     <textarea  rows="10" name="reply_content" style="resize: none;"></textarea>         
+                  </td>
+               </tr>
+               <tr>
+                  <td colspan="2">
+                     <input type="reset" value="초기화">
+                     <input type="submit" value="작성하기">
+                     <a href="requestBoardMain.jsp"><input type="button" value="돌아가기"></a>
+                  </td>
+               </tr>
+            </table>
+            </form>
+         </div>      
 </body>
 </html>
