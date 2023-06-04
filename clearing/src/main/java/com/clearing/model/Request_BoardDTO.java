@@ -1,13 +1,17 @@
 package com.clearing.model;
 
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
+
 // 질의 게시판 
+@RequiredArgsConstructor
 public class Request_BoardDTO {
 
     // 질의 순번 
-    private int req_seq;
+    @NonNull private int req_seq;
 
     // 질의 제목 
-    private String req_title;
+    @NonNull private String req_title;
 
     // 질의 내용 
     private String req_content;

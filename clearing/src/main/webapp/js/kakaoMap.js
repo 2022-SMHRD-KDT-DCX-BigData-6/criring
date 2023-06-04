@@ -3,8 +3,8 @@ var markers = [];
 
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 	mapOption = {
-		center: new kakao.maps.LatLng(35.152024, 126.88864), // 지도의 중심좌표
-		level: 1 // 지도의 확대 레벨
+		center: new kakao.maps.LatLng(35.15473293749431, 126.890025911091), // 지도의 중심좌표
+		level: 4 // 지도의 확대 레벨
 	};
 
 // 지도를 생성합니다    
@@ -105,8 +105,17 @@ function displayPlaces(places) {
 
 			itemEl.onclick = function() {
 				createSelectMarker(marker, title);
+								
+				var reservationLat = document.getElementById('reservation-Lat');
+				reservationLat.innerHTML = '<input type="text" name="selectStoreLat" id="selectStoreLat-dp-none">'
+				var addStoreLat = document.getElementById('selectStoreLat-dp-none');
+				addStoreLat.value = marker.getPosition().getLat();
+				var reservationLng = document.getElementById('reservation-Lng');
+				reservationLng.innerHTML = '<input type="text" name="selectStoreLng" id="selectStoreLng-dp-none">'
+				var addStoreLng = document.getElementById('selectStoreLng-dp-none');
+				addStoreLng.value = marker.getPosition().getLng();
 			};
-
+		
 			kakao.maps.event.addListener(marker, 'click', function() {
 				// 마커 위에 인포윈도우를 표시합니다
 				/*      infowindow.open(map, marker);  */
@@ -122,9 +131,6 @@ function displayPlaces(places) {
 
 				// 마커 위치를 클릭한 위치로 옮깁니다
 				//marker.setPosition(latlng);
-
-
-
 				var reservationLat = document.getElementById('reservation-Lat');
 				reservationLat.innerHTML = '<input type="text" name="selectStoreLat" id="selectStoreLat-dp-none">'
 				var addStoreLat = document.getElementById('selectStoreLat-dp-none');
@@ -147,7 +153,7 @@ function displayPlaces(places) {
 	menuEl.scrollTop = 0;
 
 	// 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
-	map.setBounds(bounds);
+	// map.setBounds(bounds);
 }
 
 // 검색결과 항목을 Element로 반환하는 함수입니다
@@ -275,4 +281,3 @@ function getInfo() {
 	message += '경도 ' + center.getLng() + ' 이고 <br>';
 	console.log(message);
 }
-

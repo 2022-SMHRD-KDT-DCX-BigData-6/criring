@@ -19,7 +19,7 @@ public class usingVO {
 	// 세탁기 예약 정보
 
 	// 사용 정보
-	private int using_seq;
+	private int USING_SEQ;
 
 	// 세탁기 순번
 	private int laundry_seq;

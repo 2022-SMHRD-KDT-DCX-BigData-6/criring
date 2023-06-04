@@ -51,6 +51,62 @@
 		<description></description>
 		<servlet-class>com.clearing.controller.DateController</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>selectReservationDetails</servlet-name>
+		<display-name>selectReservationDetails</display-name>
+		<description></description>
+		<servlet-class>com.clearing.controller.selectReservationDetails</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>reqBoardInsert</servlet-name>
+		<display-name>reqBoardInsert</display-name>
+		<description></description>
+		<servlet-class>com.clearing.controller.reqBoardInsert</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>reqBoardUpdate</servlet-name>
+		<display-name>reqBoardUpdate</display-name>
+		<description></description>
+		<servlet-class>com.clearing.controller.reqBoardUpdate</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>reqBoardDelete</servlet-name>
+		<display-name>reqBoardDelete</display-name>
+		<description></description>
+		<servlet-class>com.clearing.controller.reqBoardDelete</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>replyInsert</servlet-name>
+		<display-name>replyInsert</display-name>
+		<description></description>
+		<servlet-class>com.clearing.controller.replyInsert</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>reqTypeUpdate</servlet-name>
+		<display-name>reqTypeUpdate</display-name>
+		<description></description>
+		<servlet-class>com.clearing.controller.reqTypeUpdate</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>replyDelete</servlet-name>
+		<display-name>replyDelete</display-name>
+		<description></description>
+		<servlet-class>com.clearing.controller.replyDelete</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>replyUpdate</servlet-name>
+		<display-name>replyUpdate</display-name>
+		<description></description>
+		<servlet-class>com.clearing.controller.replyUpdate</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>reqBoardUpdate</servlet-name>
+		<url-pattern>/reqBoardUpdate</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>reqBoardInsert</servlet-name>
+		<url-pattern>/reqBoardInsert</url-pattern>
+	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>joinMember</servlet-name>
 		<url-pattern>/joinMember</url-pattern>
@@ -82,6 +138,30 @@
 	<servlet-mapping>
 		<servlet-name>DateController</servlet-name>
 		<url-pattern>/DateController</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>selectReservationDetails</servlet-name>
+		<url-pattern>/selectReservationDetails</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>reqBoardDelete</servlet-name>
+		<url-pattern>/reqBoardDelete</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>replyInsert</servlet-name>
+		<url-pattern>/replyInsert</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>reqTypeUpdate</servlet-name>
+		<url-pattern>/reqTypeUpdate</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>replyDelete</servlet-name>
+		<url-pattern>/replyDelete</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>replyUpdate</servlet-name>
+		<url-pattern>/replyUpdate</url-pattern>
 	</servlet-mapping>
 
 </web-app>

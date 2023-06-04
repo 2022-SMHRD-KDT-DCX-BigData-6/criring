@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<div id = "board">
+		<div id = "board">
             <form action="reqBoardInsert" method="post" enctype="multipart/form-data">
             <table id="list">
                <tr>
@@ -17,7 +17,7 @@
                </tr>
                <tr>
                   <td>작성자</td>
-                  <td><input  type="text" name="req_email"> </td>
+                  <td><input type="hidden" name="req_email"><%=session.getAttribute("email") %></td>
                </tr>
                <tr>
                   <td colspan="2">내용</td>
@@ -32,6 +32,7 @@
                   <td colspan="2">
                      <input type="reset" value="초기화">
                      <input type="submit" value="작성하기">
+                     <a href="requestBoardMain.jsp"><input type="button" value="돌아가기"></a>
                   </td>
                </tr>
             </table>
