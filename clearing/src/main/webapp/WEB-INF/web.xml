@@ -57,6 +57,36 @@
 		<description></description>
 		<servlet-class>com.clearing.controller.selectReservationDetails</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>secessionMember</servlet-name>
+		<display-name>secessionMember</display-name>
+		<description></description>
+		<servlet-class>com.clearing.controller.secessionMember</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>deleteReservation</servlet-name>
+		<display-name>deleteReservation</display-name>
+		<description></description>
+		<servlet-class>com.clearing.controller.deleteReservation</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>selectReservationList</servlet-name>
+		<display-name>selectReservationList</display-name>
+		<description></description>
+		<servlet-class>com.clearing.controller.selectReservationList</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>MemberEmailCheck</servlet-name>
+		<display-name>MemberEmailCheck</display-name>
+		<description></description>
+		<servlet-class>com.clearing.controller.MemberEmailCheck</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>reqBoardInsert</servlet-name>
+		<display-name>reqBoardInsert</display-name>
+		<description></description>
+		<servlet-class>com.clearing.controller.reqBoardInsert</servlet-class>
+	</servlet>
 	<servlet-mapping>
 		<servlet-name>joinMember</servlet-name>
 		<url-pattern>/joinMember</url-pattern>
@@ -92,6 +122,26 @@
 	<servlet-mapping>
 		<servlet-name>selectReservationDetails</servlet-name>
 		<url-pattern>/selectReservationDetails</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>secessionMember</servlet-name>
+		<url-pattern>/secessionMember</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>deleteReservation</servlet-name>
+		<url-pattern>/deleteReservation</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>selectReservationList</servlet-name>
+		<url-pattern>/selectReservationList</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>MemberEmailCheck</servlet-name>
+		<url-pattern>/MemberEmailCheck</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>reqBoardInsert</servlet-name>
+		<url-pattern>/reqBoardInsert</url-pattern>
 	</servlet-mapping>
 
 </web-app>

@@ -135,6 +135,11 @@ strong {
   font-size: 10rem;
 }
 
+img {
+	background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
 
 /*---------------------------------------
   SECTION               
@@ -807,8 +812,8 @@ strong {
   background: var(--primary-color);
   position: relative;
   z-index: 22;
-  padding-top: 15px;
-  padding-bottom: 15px;
+  padding-top: 22px;
+  padding-bottom: 22px;
 }
 
 .site-header p,
@@ -1631,5 +1636,14 @@ strong {
   h5 {
     font-size: 20px;
   }
+}
+
+.reivewbtn {
+	position: absolute;
+    width: 11%;
+    top: 93%;
+    left: 51%;
+    border: 1px solid rgba(66, 135, 245);
+    color: rgba(66, 135, 245);
 }
 

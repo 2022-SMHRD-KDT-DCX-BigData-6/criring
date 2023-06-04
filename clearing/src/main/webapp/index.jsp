@@ -55,15 +55,15 @@ Free Bootstrap 5 HTML Template
 	String addr = null;
 	Double lat = 0.0;
 	Double lng = 0.0;
-	MemberDTO member =(MemberDTO)session.getAttribute("member");		
-	StoreDTO storeMember = (StoreDTO)session.getAttribute("storeMember");
-	if(member != null) {
+	MemberDTO member = (MemberDTO) session.getAttribute("member");
+	StoreDTO storeMember = (StoreDTO) session.getAttribute("storeMember");
+	if (member != null) {
 		email = member.getMB_EMAIL();
 		name = member.getMB_NAME();
 		addr = member.getMB_ADDR();
 		lat = member.getLAT();
 		lng = member.getLNG();
-	} else if(storeMember != null) {
+	} else if (storeMember != null) {
 		email = storeMember.getSTORE_EMAIL();
 		name = storeMember.getSTORE_NAME();
 		addr = storeMember.getSTORE_ADDR();
@@ -101,9 +101,9 @@ Free Bootstrap 5 HTML Template
 	<nav class="navbar navbar-expand-lg">
 		<div class="container">
 			<a class="navbar-brand" href="index.jsp"> <img
-				src="images/bubbles.png" class="logo img-fluid" alt="" /> 
-						<span class="ms-2">C&nbsp;R&nbsp;I&nbsp;R&nbsp;I&nbsp;N&nbsp;G</span>
-				
+				src="images/bubbles.png" class="logo img-fluid" alt="" /> <span
+				class="ms-2">C&nbsp;R&nbsp;I&nbsp;R&nbsp;I&nbsp;N&nbsp;G</span>
+
 			</a>
 
 			<button class="navbar-toggler" type="button"
@@ -115,28 +115,12 @@ Free Bootstrap 5 HTML Template
 
 			<div class="collapse navbar-collapse" id="navbarNav">
 				<ul class="navbar-nav ms-auto">
-					<li class="nav-item"><a class="nav-link active"
+					<li class="nav-item"><a class="nav-link"
 						href="index.jsp">Home</a></li>
-
-					<li class="nav-item"><a class="nav-link" href="about.html">About
-							Us</a></li>
-
-					<li class="nav-item dropdown"><a
-						class="nav-link dropdown-toggle" href="#section_5"
-						id="navbarLightDropdownMenuLink" role="button"
-						data-bs-toggle="dropdown" aria-expanded="false">Pages</a>
-
-						<ul class="dropdown-menu dropdown-menu-light"
-							aria-labelledby="navbarLightDropdownMenuLink">
-							<li><a class="dropdown-item" href="services.html">Our
-									Services</a></li>
-
-							<li><a class="dropdown-item" href="coming-soon.html">Coming
-									Soon</a></li>
-
-							<li><a class="dropdown-item" href="page-404.html">Page
-									404</a></li>
-						</ul></li>
+					<li class="nav-item"><a class="nav-link" href="about.html">Review board
+							</a></li>
+					<li class="nav-item"><a class="nav-link" href="requestBoardMain.jsp">Inquiry board
+							</a></li>
 
 					<li class="nav-item"><a class="nav-link" href="contact.html">Contact</a>
 					</li>
@@ -147,7 +131,7 @@ Free Bootstrap 5 HTML Template
 					<li class="nav-item ms-3"><a
 						class="nav-link custom-btn custom-border-btn custom-btn-bg-white btn"
 						href="selectReservationDetails">My page</a></li>
-						<%-- href="Mypage.jsp?email=<%=email%>&addr=<%=addr%>&lat=<%=lat%>&lng=<%=lng%>" --%>
+					<%-- href="Mypage.jsp?email=<%=email%>&addr=<%=addr%>&lat=<%=lat%>&lng=<%=lng%>" --%>
 					<li class="nav-item ms-3"><a
 						class="nav-link custom-btn custom-border-btn custom-btn-bg-white btn"
 						href="logOut">Log-Out</a></li>
@@ -172,7 +156,7 @@ Free Bootstrap 5 HTML Template
 			class="hero-section hero-section-full-height d-flex justify-content-center align-items-center">
 			<div class="section-overlay"></div>
 
-			<div class="container" style="padding-bottom: 170px;">
+			<div class="container" style="padding-bottom:20%;">
 				<div class="row mainForm">
 					<div class="col-lg-7 col-12 text-center mx-auto">
 
@@ -207,7 +191,8 @@ Free Bootstrap 5 HTML Template
 		</section>
 	</main>
 	<section class="search_reservation"
-		style="height: 1000px; position: relative; margin-top:5%;">
+		style="height: 600px; position: relative;padding-right: 1.5%;">
+		<div class="searchsection" style="margin-top:5%;"></div>
 		<%-- <div class="searchAddr">
 			<div class="input-group mb-3 input-group-jin" style="margin-top:15px;">
 				<input type="text" class="form-control" name="addrSearch"
@@ -225,13 +210,12 @@ Free Bootstrap 5 HTML Template
 		</div> --%>
 		<!-- 		<div id="map" style="width: 600px; height: 400px;"></div> -->
 		<%
-		
 		/* TODO 세션에 유저주소정보를 담아서 업데이트해줘야함 */
 		String searchAddr = addr;
 		if (searchAddr == null) {
 			searchAddr = "농성동";
 		} else {
-		searchAddr = searchAddr.substring(0, 5);
+			searchAddr = searchAddr.substring(0, 5);
 		}
 		%>
 		<div class="option">
@@ -239,22 +223,25 @@ Free Bootstrap 5 HTML Template
 				<form id="searchAddrReservation"
 					onsubmit="searchPlaces(); return false;">
 					<input type="text" class="form-control" name="addrSearch"
-						value="<%=searchAddr%> 코인세탁방" id="keyword"
-						placeholder="검색할 주소를 입력하세요" aria-label="Recipient's username"
-						aria-describedby="button-addon2" size="15">
+						value="<%=searchAddr%>" id="keyword" placeholder="검색할 주소를 입력하세요"
+						aria-label="Recipient's username" aria-describedby="button-addon2"
+						size="15">
 					<button type="button" class="btn search-btn" id="button-addon2">Search
 						!</button>
 				</form>
 			</div>
 		</div>
-		<div class="map_wrap">
+		<div class="map_menu_wrap">
+			<div class="map_wrap">
+
+				<div id="map"
+					style="width: 450px; height: 450px; position: relative; overflow: hidden;"></div>
+			</div>
 			<div id="menu_wrap" class="bg_white">
 				<hr>
 				<ul id="placesList"></ul>
 				<div id="pagination"></div>
 			</div>
-			<div id="map"
-				style="width: 500px; height: 500px; position: relative; overflow: hidden;"></div>
 		</div>
 		<form action="bookLaundryController" id="selectStore_form">
 
@@ -264,7 +251,7 @@ Free Bootstrap 5 HTML Template
 					<div style="margin-left: 15px;">예약하시겠습니까?</div>
 				</div>
 				<div class="map-searchbtn-group">
-				<button type="submit"
+					<button type="submit"
 						class="custom-btn btn button button--atlas smoothscroll me-3">
 						<span>Reservation</span>
 
@@ -275,17 +262,22 @@ Free Bootstrap 5 HTML Template
 							</div>
 						</div>
 					</button>
-					<a
-						class="custom-btn custom-border-btn custom-btn-bg-white btn button button--pan smoothscroll"
-						href="#services-section"> <span style="">Detail Info</span>
-					</a>
+					
 				</div>
-				<div class="reservation-LatLng" style="display:none;">
+				<div class="reservation-LatLng">
 					<div id="reservation-Lat"></div>
 					<div id="reservation-Lng"></div>
 				</div>
-				
 			</div>
+		</form>
+		<form action="reviewSelect">
+			<div class="reservation-LatLng">
+				<div id="reservation-Lat1"></div>
+				<div id="reservation-Lng1"></div>
+			</div>
+			<button type="submit" class="custom-btn custom-border-btn custom-btn-bg-white btn button button--pan smoothscroll reivewbtn"
+						href="#services-section"> <span style="">Review</span>
+			</button>
 		</form>
 
 	</section>

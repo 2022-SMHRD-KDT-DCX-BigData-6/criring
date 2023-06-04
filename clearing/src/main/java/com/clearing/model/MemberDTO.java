@@ -11,7 +11,7 @@ import lombok.RequiredArgsConstructor;
 @AllArgsConstructor
 @RequiredArgsConstructor
 public class MemberDTO {
-	@NonNull private String  MB_EMAIL;
+	@NonNull private String MB_EMAIL;
 	@NonNull private String MB_PW;
 	private String MB_NAME;
 	private String MB_ADDR;
