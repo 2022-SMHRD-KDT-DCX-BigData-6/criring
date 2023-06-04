@@ -201,7 +201,7 @@
 		    
 		    const now_date = year+"-"+month+"-"+day;
 			if(now_date!==selDate){
-				 window.location.href="http://localhost:8091/clearing/DateController?date="+selDate;
+				 window.location.href="http://localhost:8081/clearing/DateController?date="+selDate;
 				
 			};
 		});
@@ -209,7 +209,7 @@
 		$("select[name=time]").change(function(){
 		 	var selTime =$(this).val();
 		 	const selDate= document.querySelector("#Date").value;
-		 	 window.location.href="http://localhost:8091/clearing/TimeController?time="+selTime+"&date="+selDate;//value값 가져오기 
+		 	 window.location.href="http://localhost:8081/clearing/TimeController?time="+selTime+"&date="+selDate;//value값 가져오기 
 		});
 	</script>
 	<!-- js 달력 선택 제한 스크립트 -->
