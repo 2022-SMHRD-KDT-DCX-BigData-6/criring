@@ -46,6 +46,15 @@ Free Bootstrap 5 HTML Template
 	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript"
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=683c7e08c86fe41ea5c21dd7148dc9f3&libraries=services,clusterer,drawing"></script>
+	<style type="text/css">
+	@font-face {
+    font-family: 'gmarket';
+    src: url('./fonts/GmarketSansTTFMedium.ttf') format('truetype');
+}
+body {
+	font-family: 'gmarket';
+}
+</style>
 </head>
 <body>
 	<%
@@ -128,39 +137,44 @@ Free Bootstrap 5 HTML Template
 	<main>
 		<section
 			class="hero-section hero-section-full-height d-flex justify-content-center align-items-center">
-			<div class="introductMypage">blahblahblahblahblahblahblahblahblahblahblahblahblah</div>
 			<div class="section-overlay"></div>
 			<ul class="menu_icon_group">
 				<li class="menu_icon">
-					<a href="" class="linkBtn">
+					<button class="linkBtn" id="linkBtn1">
 						<i class="fa-solid fa-user"></i>
 						<span>회원 정보 수정</span>
-					</a>
+					</button>
+					
 				</li>
 				<li class="menu_icon">
-					<a href="" class="linkBtn">
+					<button class="linkBtn" id="linkBtn2">
 						<i class="fa-solid fa-calendar-days"></i>
 						<span>예약 내역 조회</span>
-					</a>
+					</button>
+					
 				</li>
 				<li class="menu_icon">
-					<a href="" class="linkBtn">
+					<button class="linkBtn" id="linkBtn3">
 						<i class="fa-solid fa-camera-retro"></i>
 						<span>내가 쓴 리뷰</span>
-					</a>
+					</button>
 				</li>
 			</ul>
 		</section>
 
 
-		<section style="display: none;">
+		
+
+		<section class="services-section section-padding section-bg"
+			id="services-section">
+		<section id="services-section1" style="display: none;">
 			<div class="section-overlay"></div>
 
-			<div class="container" style="margin-top: 10%;">
+			<div class="container" style="margin-top: -2%;">
 				<div class="row">
 					<form action="myPageUpdate" method="post" class="myPageUpdateForm">
 						<div class="mb-3 row">
-							<label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
+							<label for="staticEmail" class="col-sm-2 col-form-label" style="color: #77B2E8">Email</label>
 							<div class="col-sm-10">
 								<input type="text" readonly class="form-control-plaintext"
 									id="staticEmail" name="inputEmail"
@@ -169,7 +183,7 @@ Free Bootstrap 5 HTML Template
 						</div>
 						<!-- 원래 비밀번호 확인 -->
 						<div class="mb-3 row">
-							<label for="inputPassword" class="col-sm-2 col-form-label">기존
+							<label for="inputPassword" class="col-sm-2 col-form-label" style="color: #77B2E8">기존
 								비밀번호</label>
 							<div class="col-sm-10">
 								<input type="password" class="form-control" id="inputPassword"
@@ -178,7 +192,7 @@ Free Bootstrap 5 HTML Template
 						</div>
 						<!-- 수정할 비밀번호 -->
 						<div class="mb-3 row">
-							<label for="inputUpdatePassword" class="col-sm-2 col-form-label">변경
+							<label for="inputUpdatePassword" class="col-sm-2 col-form-label" style="color: #77B2E8">변경
 								할 비밀번호</label>
 							<div class="col-sm-10">
 								<input type="password" class="form-control"
@@ -188,26 +202,27 @@ Free Bootstrap 5 HTML Template
 						<!-- 수정한 비밀번호 확인 -->
 						<div class="mb-3 row">
 							<label for="inputUpdatePasswordChk"
-								class="col-sm-2 col-form-label">변경 할 비밀번호 확인</label>
+								class="col-sm-2 col-form-label" style="color: #77B2E8">변경 할 비밀번호 확인</label>
 							<div class="col-sm-10">
 								<input type="password" class="form-control"
 									id="inputUpdatePasswordChk" name="inputUpdatePasswordChk">
 							</div>
 						</div>
 						<div class="mb-3 row">
-							<label class="col-sm-2 col-form-label" for="sample5_roadAddress">Address</label>
-							<div class="col-sm-10">
+						<label class="col-sm-2 col-form-label" for="sample5_roadAddress" style="color: #77B2E8">변경할 주소</label>
+							<div class="col-sm-10"> 
+							<input type="button" class="btn btn-primary btn-lg btn-block"
+								onclick="sample5_execDaumPostcode()" value="주소 검색"  style="background-color: #77B2E8; border-color: #77B2E8;margin-top: 0;
+    font-size: 14px;">
 								<input type="text" id="sample5_address" name="joinAddr"
 									class="form-control" value="<%=session.getAttribute("addr")%>"
-									readonly>
-							</div>
+									readonly style="width: 91%">
+						</div> 
+						<!-- <div class="form-outline mb-4">
+
+						</div> -->
 						</div>
 
-						<div class="form-outline mb-4">
-							<input type="button" class="btn btn-primary btn-lg btn-block"
-								onclick="sample5_execDaumPostcode()" value="주소 검색"><br>
-
-						</div>
 
 						<div id="map"
 							style="width: 300px; height: 300px; margin-top: 10px; display: none"></div>
@@ -340,514 +355,22 @@ Free Bootstrap 5 HTML Template
 						</script>
 
 						<button type="submit"
-							class="btn btn-primary btn-lg btn-block modal-btn">정보 수정</button>
+							class="btn btn-primary btn-lg btn-block modal-btn" style="background-color: #77B2E8; border-color: #77B2E8; padding: 0.5%" >정보 수정</button><br><br>
 						<a href="secessionMember"><button
-								class="btn btn-primary btn-lg btn-block modal-btn">회원탈퇴</button></a>
+								class="btn btn-primary btn-lg btn-block modal-btn"  style="background-color: #77B2E8; border-color: #77B2E8; padding: 0.5%;    font-size: 18px;
+    width: 123%;">회원탈퇴</button></a>
 					</form>
 
 				</div>
 			</div>
 		</section>
-		<section class="intro-section" id="intro-section"
-			style="display: none;">
-			<div class="container">
-				<div class="row justify-content-lg-center align-items-center">
-					<div class="col-lg-6 col-12">
-						<div class="reservationList">
-							<%=session.getAttribute("name")%>
-							님의 예약 내역입니다.
-							<table class="table">
-								<thead>
-									<tr>
-										<th scope="col">순번1</th>
-										<th scope="col">예약 번호</th>
-										<th scope="col">세탁기 순번</th>
-										<th scope="col">사용 시작 시간</th>
-										<th scope="col">사용 정료 시간</th>
-										<th scope="col">사용 날짜</th>
-									</tr>
-								</thead>
-								<%
-								if (details != null) {
-									for (int i = 0; i < details.size(); i++) {
-								%>
-								<tbody class="table-group-divider">
-									<tr>
-
-										<th scope="row"><%=i%></th>
-										<td><%=i + 1%></td>
-										<td><%=details.get(i).getUSING_SEQ()%></td>
-										<td><%=details.get(i).getLaundry_seq()%></td>
-										<td><%=details.get(i).getStart_time()%></td>
-										<td><%=details.get(i).getEnd_time()%></td>
-										<td><%=details.get(i).getUsing_dt()%></td>
-										<td><a
-											href="deleteReservation?using=<%=details.get(i).getUSING_SEQ()%>">예약
-												취소</a></td>
-										<td><a href="Review_WriteController">리뷰 작성</a></td>
-									</tr>
-								</tbody>
-								<%
-								}
-								} else if (details == null) {
-								%>
-								<tbody class="table-group-divider">
-									<tr>
-										<th scope="row">1</th>
-										<td colspan="4">예약 정보가 없습니다.</td>
-									</tr>
-								</tbody>
-
-								<%
-								}
-								%>
-							</table>
-						</div>
-					</div>
-
-					<div class="col-lg-6 col-12 custom-block-wrap"></div>
-				</div>
-			</div>
+				
 		</section>
 
-		<section class="services-section section-padding section-bg"
-			id="services-section">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-12 col-12">
-						<h2 class="mb-4">Our best offers</h2>
-					</div>
-
-					<div class="col-lg-6 col-12">
-						<div class="services-thumb">
-							<div class="row">
-								<div class="col-lg-5 col-md-5 col-12">
-									<div class="services-image-wrap">
-										<a href="services-detail.html"> <img
-											src="images/services/people-taking-care-office-cleaning.jpg"
-											class="services-image img-fluid" alt="" /> <img
-											src="images/services/person-taking-care-office.jpg"
-											class="services-image services-image-hover img-fluid" alt="" />
-
-											<div class="services-icon-wrap">
-												<div
-													class="d-flex justify-content-between align-items-center">
-													<p class="text-white mb-0">
-														<i class="bi-cash me-2"></i> $820
-													</p>
-
-													<p class="text-white mb-0">
-														<i class="bi-clock-fill me-2"></i> 5 hrs
-													</p>
-												</div>
-											</div>
-										</a>
-									</div>
-								</div>
-
-								<div class="col-lg-7 col-md-7 col-12 d-flex align-items-center">
-									<div class="services-info mt-4 mt-lg-0 mt-md-0">
-										<h4 class="services-title mb-1 mb-lg-2">
-											<a class="services-title-link" href="services-detail.html">Office
-												Cleaning</a>
-										</h4>
-
-										<p>Best Cleaning Service Provider Ipsum dolor sit
-											consectetur kengan</p>
-
-										<div class="d-flex flex-wrap align-items-center">
-											<div class="reviews-icons">
-												<i class="bi-star-fill"></i> <i class="bi-star-fill"></i> <i
-													class="bi-star-fill"></i> <i class="bi-star"></i> <i
-													class="bi-star"></i>
-											</div>
-
-											<a href="services-detail.html"
-												class="custom-btn btn button button--atlas mt-2 ms-auto">
-												<span>Learn More</span>
-
-												<div class="marquee" aria-hidden="true">
-													<div class="marquee__inner">
-														<span>Learn More</span> <span>Learn More</span> <span>Learn
-															More</span> <span>Learn More</span>
-													</div>
-												</div>
-											</a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-lg-6 col-12">
-						<div class="services-thumb">
-							<div class="row">
-								<div class="col-lg-5 col-md-5 col-12">
-									<div class="services-image-wrap">
-										<a href="services-detail.html"> <img
-											src="images/services/young-smiling-woman-wearing-rubber-gloves-cleaning-stove.jpg"
-											class="services-image img-fluid" alt="" /> <img
-											src="images/services/woman-holding-rag-detergent-cleaning-cooker.jpg"
-											class="services-image services-image-hover img-fluid" alt="" />
-
-											<div class="services-icon-wrap">
-												<div
-													class="d-flex justify-content-between align-items-center">
-													<p class="text-white mb-0">
-														<i class="bi-cash me-2"></i> $640
-													</p>
-
-													<p class="text-white mb-0">
-														<i class="bi-clock-fill me-2"></i> 4 hrs
-													</p>
-												</div>
-											</div>
-										</a>
-									</div>
-								</div>
-
-								<div class="col-lg-7 col-md-7 col-12 d-flex align-items-center">
-									<div class="services-info mt-4 mt-lg-0 mt-md-0">
-										<h4 class="services-title mb-1 mb-lg-2">
-											<a class="services-title-link" href="services-detail.html">Kitchen
-												Cleaning</a>
-										</h4>
-
-										<p>Best Cleaning Service Provider Ipsum dolor sit
-											consectetur kengan</p>
-
-										<div class="d-flex flex-wrap align-items-center">
-											<div class="reviews-icons">
-												<i class="bi-star-fill"></i> <i class="bi-star-fill"></i> <i
-													class="bi-star-fill"></i> <i class="bi-star-fill"></i> <i
-													class="bi-star-fill"></i>
-											</div>
-
-											<a href="services-detail.html"
-												class="custom-btn btn button button--atlas mt-2 ms-auto">
-												<span>Learn More</span>
-
-												<div class="marquee" aria-hidden="true">
-													<div class="marquee__inner">
-														<span>Learn More</span> <span>Learn More</span> <span>Learn
-															More</span> <span>Learn More</span>
-													</div>
-												</div>
-											</a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-lg-6 col-12">
-						<div class="services-thumb mb-lg-0">
-							<div class="row">
-								<div class="col-lg-5 col-md-5 col-12">
-									<div class="services-image-wrap">
-										<a href="services-detail.html"> <img
-											src="images/services/man-polishing-car-inside-car-service.jpg"
-											class="services-image img-fluid" alt="" /> <img
-											src="images/services/man-polishing-car-inside.jpg"
-											class="services-image services-image-hover img-fluid" alt="" />
-
-											<div class="services-icon-wrap">
-												<div
-													class="d-flex justify-content-between align-items-center">
-													<p class="text-white mb-0">
-														<i class="bi-cash me-2"></i> $240
-													</p>
-
-													<p class="text-white mb-0">
-														<i class="bi-clock-fill me-2"></i> 2 hrs
-													</p>
-												</div>
-											</div>
-										</a>
-									</div>
-								</div>
-
-								<div class="col-lg-7 col-md-7 col-12 d-flex align-items-center">
-									<div class="services-info mt-4 mt-lg-0 mt-md-0">
-										<h4 class="services-title mb-1 mb-lg-2">
-											<a class="services-title-link" href="services-detail.html">Car
-												Washing</a>
-										</h4>
-
-										<p>Best Cleaning Service Provider Ipsum dolor sit
-											consectetur kengan</p>
-
-										<div class="d-flex flex-wrap align-items-center">
-											<div class="reviews-icons">
-												<i class="bi-star-fill"></i> <i class="bi-star-fill"></i> <i
-													class="bi-star-fill"></i> <i class="bi-star-fill"></i> <i
-													class="bi-star-fill"></i>
-											</div>
-
-											<a href="services-detail.html"
-												class="custom-btn btn button button--atlas mt-2 ms-auto">
-												<span>Learn More</span>
-
-												<div class="marquee" aria-hidden="true">
-													<div class="marquee__inner">
-														<span>Learn More</span> <span>Learn More</span> <span>Learn
-															More</span> <span>Learn More</span>
-													</div>
-												</div>
-											</a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-lg-6 col-12">
-						<div class="services-thumb mb-lg-0">
-							<div class="row">
-								<div class="col-lg-5 col-md-5 col-12">
-									<div class="services-image-wrap">
-										<a href="services-detail.html"> <img
-											src="images/services/professional-industrial-cleaner-protective-uniform-cleaning-floor-food-processing-plant.jpg"
-											class="services-image img-fluid" alt="" /> <img
-											src="images/services/close-up-mop-cleaning-industrial-plant-floor.jpg"
-											class="services-image services-image-hover img-fluid" alt="" />
-
-											<div class="services-icon-wrap">
-												<div
-													class="d-flex justify-content-between align-items-center">
-													<p class="text-white mb-0">
-														<i class="bi-cash me-2"></i> $6,800
-													</p>
-
-													<p class="text-white mb-0">
-														<i class="bi-clock-fill me-2"></i> 30 hrs
-													</p>
-												</div>
-											</div>
-										</a>
-									</div>
-								</div>
-
-								<div class="col-lg-7 col-md-7 col-12 d-flex align-items-center">
-									<div class="services-info mt-4 mt-lg-0 mt-md-0">
-										<h4 class="services-title mb-1 mb-lg-2">
-											<a class="services-title-link" href="services-detail.html">Factory
-												Cleaning</a>
-										</h4>
-
-										<p>Best Cleaning Service Provider Ipsum dolor sit
-											consectetur kengan</p>
-
-										<div class="d-flex flex-wrap align-items-center">
-											<div class="reviews-icons">
-												<i class="bi-star-fill"></i> <i class="bi-star-fill"></i> <i
-													class="bi-star-fill"></i> <i class="bi-star-fill"></i> <i
-													class="bi-star"></i>
-											</div>
-
-											<a href="services-detail.html"
-												class="custom-btn btn button button--atlas mt-2 ms-auto">
-												<span>Learn More</span>
-
-												<div class="marquee" aria-hidden="true">
-													<div class="marquee__inner">
-														<span>Learn More</span> <span>Learn More</span> <span>Learn
-															More</span> <span>Learn More</span>
-													</div>
-												</div>
-											</a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-
-		<section class="testimonial-section section-padding section-bg">
-			<div class="section-overlay"></div>
-
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-12 col-12 text-center">
-						<h2 class="text-white mb-4">Happy Customers</h2>
-					</div>
-
-					<div class="col-lg-4 col-12">
-						<div class="featured-block">
-							<div class="d-flex align-items-center mb-3">
-								<img src="images/avatar/happy-customer-01.jpg"
-									class="avatar-image img-fluid" />
-
-								<div class="ms-3">
-									<h4 class="mb-0">Marie</h4>
-
-									<div class="reviews-icons mb-1">
-										<i class="bi-star-fill"></i> <i class="bi-star-fill"></i> <i
-											class="bi-star-fill"></i> <i class="bi-star-fill"></i> <i
-											class="bi-star"></i>
-									</div>
-								</div>
-							</div>
-
-							<p class="mb-0">Best Cleaning Service Provider Ipsum dolor
-								sit consectetur kengan</p>
-						</div>
-
-						<div class="featured-block mb-lg-0">
-							<div class="d-flex align-items-center mb-3">
-								<img src="images/avatar/happy-customer-02.jpg"
-									class="avatar-image img-fluid" />
-
-								<div class="ms-3">
-									<h4 class="mb-0">Nana</h4>
-
-									<div class="reviews-icons mb-1">
-										<i class="bi-star-fill"></i> <i class="bi-star-fill"></i> <i
-											class="bi-star-fill"></i> <i class="bi-star-fill"></i> <i
-											class="bi-star"></i>
-									</div>
-								</div>
-							</div>
-
-							<p class="mb-0">Lorem ipsum dolor sit amet, consectetur
-								adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-								dolore.</p>
-						</div>
-					</div>
-
-					<div class="col-lg-4 col-12">
-						<div class="featured-block">
-							<div class="d-flex align-items-center mb-3">
-								<img src="images/avatar/happy-customer-03.jpg"
-									class="avatar-image img-fluid" />
-
-								<div class="ms-3">
-									<h4 class="mb-0">Elon</h4>
-
-									<div class="reviews-icons mb-1">
-										<i class="bi-star-fill"></i> <i class="bi-star-fill"></i> <i
-											class="bi-star-fill"></i> <i class="bi-star-fill"></i> <i
-											class="bi-star-fill"></i>
-									</div>
-								</div>
-							</div>
-
-							<p class="mb-0">Lorem ipsum dolor sit amet, consectetur
-								adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-								dolore.</p>
-						</div>
-
-						<div class="featured-block mb-lg-0">
-							<div class="d-flex align-items-center mb-3">
-								<img src="images/avatar/happy-customer-04.jpg"
-									class="avatar-image img-fluid" />
-
-								<div class="ms-3">
-									<h4 class="mb-0">Josh</h4>
-
-									<div class="reviews-icons mb-1">
-										<i class="bi-star-fill"></i> <i class="bi-star-fill"></i> <i
-											class="bi-star-fill"></i> <i class="bi-star"></i> <i
-											class="bi-star"></i>
-									</div>
-								</div>
-							</div>
-
-							<p class="mb-0">Lorem ipsum dolor sit amet, consectetur
-								adipiscing elit, sed do eiusmod tempor.</p>
-						</div>
-					</div>
-
-					<div class="col-lg-4 col-12">
-						<div class="featured-block">
-							<div class="d-flex align-items-center mb-3">
-								<img src="images/avatar/happy-customer-05.jpg"
-									class="avatar-image img-fluid" />
-
-								<div class="ms-3">
-									<h4 class="mb-0">Katie</h4>
-
-									<div class="reviews-icons mb-1">
-										<i class="bi-star-fill"></i> <i class="bi-star-fill"></i> <i
-											class="bi-star-fill"></i> <i class="bi-star-fill"></i> <i
-											class="bi-star-fill"></i>
-									</div>
-								</div>
-							</div>
-
-							<p class="mb-0">Lorem ipsum dolor sit amet, consectetur
-								adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-								dolore.</p>
-						</div>
-
-						<div class="featured-block mb-lg-0">
-							<div class="d-flex align-items-center mb-3">
-								<img src="images/avatar/happy-customer-06.jpg"
-									class="avatar-image img-fluid" />
-
-								<div class="ms-3">
-									<h4 class="mb-0">Shai</h4>
-
-									<div class="reviews-icons mb-1">
-										<i class="bi-star-fill"></i> <i class="bi-star-fill"></i> <i
-											class="bi-star-fill"></i> <i class="bi-star"></i> <i
-											class="bi-star"></i>
-									</div>
-								</div>
-							</div>
-
-							<p class="mb-0">Lorem ipsum dolor sit amet, consectetur
-								adipiscing elit, sed do eiusmod tempor.</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-
-		<section class="partners-section">
-			<div class="container">
-				<div class="row justify-content-center align-items-center">
-					<div class="col-lg-12 col-12">
-						<h4 class="partners-section-title bg-white shadow-lg">
-							Trusted by companies</h4>
-					</div>
-
-					<div class="col-lg-2 col-md-4 col-6">
-						<img src="images/partners/toprak-leasing.svg"
-							class="partners-image img-fluid" />
-					</div>
-
-					<div class="col-lg-2 col-md-4 col-6">
-						<img src="images/partners/glorix.svg"
-							class="partners-image img-fluid" />
-					</div>
-
-					<div class="col-lg-2 col-md-4 col-6">
-						<img src="images/partners/woocommerce.svg"
-							class="partners-image img-fluid" />
-					</div>
-
-					<div class="col-lg-2 col-md-4 col-6">
-						<img src="images/partners/rolf-leasing.svg"
-							class="partners-image img-fluid" />
-					</div>
-
-					<div class="col-lg-2 col-md-4 col-6">
-						<img src="images/partners/unilabs.svg"
-							class="partners-image img-fluid" />
-					</div>
-				</div>
-			</div>
-		</section>
+		
 	</main>
 
-	<footer class="site-footer">
+	<footer class="site-footer" style="margin-top: 0">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12 col-12 d-flex align-items-center mb-4 pb-2">
@@ -977,7 +500,38 @@ Free Bootstrap 5 HTML Template
 			</div>
 		</div>
 	</footer>
+	
+	<script src="./js/jquery-3.7.0.js"></script>
+	
+	
+	<script type="text/javascript">
+	
+	$('#linkBtn1').on('click',function(){
+				$("#services-section1").css("display","block");
+		
+		 
+	});
+	$('#linkBtn2').on('click',function(){
+				$.ajax({
+					url:"selectReservationDetails",
+					success: function(result){
+						$("#services-section").html(result);
+					}
+				});		
+		 
+	});
+	$('#linkBtn3').on('click',function(){
+				$.ajax({
+					url:"Review_ViewUserController",
+					success: function(result){
+						$("#services-section").html(result);
+					}
+				});		
+		 
+	});
+	
 
+	</script>
 	<!-- JAVASCRIPT FILES -->
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>

@@ -17,7 +17,7 @@ public class Review_DeleteController extends HttpServlet {
 		int result = rlDao.delReviewData(review_seq);
 		if (result > 0) {
 
-			response.sendRedirect("mypagereview.jsp");
+			response.sendRedirect("Mypage.jsp");
 		} else {
 			System.out.println("삭제X");
 		}
