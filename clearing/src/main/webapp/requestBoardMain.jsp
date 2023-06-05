@@ -231,7 +231,7 @@ h3:after {
 	        	</tr>
 	        	<%if(sel_list.get(i).getReqType().equals("Y")){%>
 	        		<tr>
-	        		<td><%=num = num+1 %></td>
+	        		<td></td>
 	        		<td><a href="replyDetail.jsp?req_seq=<%=sel_list.get(i).getReqSeq()%>">&nbsp;&nbsp; └ RE:&nbsp;<%=sel_list.get(i).getReqTitle()%>에 관한 답글입니다.</a></td>
 	        		<td></td>
 	        		<td></td>
@@ -256,7 +256,7 @@ h3:after {
 	        	</tr>
 	        	<%if(sel_list.get(i).getReqType().equals("Y")){%>
 	        		<tr>
-	        		<td><%=num = num+1 %></td>
+	        		<td></td>
 	        		<td><a href="replyDetail.jsp?req_seq=<%=sel_list.get(i).getReqSeq()%>">&nbsp;&nbsp; └ RE:&nbsp;<%=sel_list.get(i).getReqTitle()%>에 관한 답글입니다.</a></td>
 	        		<td></td>
 	        		<td></td>
@@ -280,7 +280,7 @@ h3:after {
 		        	</tr>
 		        	<%if(sel_list.get(i).getReqType().equals("Y")){%>
 	        		<tr>
-	        		<td><%=num = num+1 %></td>
+	        		<td></td>
 	        		<td><a href="replyDetail.jsp?req_seq=<%=sel_list.get(i).getReqSeq()%>">&nbsp;&nbsp; └ RE:&nbsp;<%=sel_list.get(i).getReqTitle()%>에 관한 답글입니다.</a></td>
 	        		<td></td>
 	        		<td></td>
