@@ -42,12 +42,15 @@ public class usingVO {
 	// 결제 여부
 	private String pay_yn;
 	
+	private String store_name;
+	
 	public usingVO(String using_dt, String start_time) {
 		this.using_dt = using_dt;
 		this.start_time = start_time;
 	}
 
-	public usingVO(int laundry_seq, String user_email, String start_time, String end_time, String using_dt, int pay_amount, String pay_yn) {
+	public usingVO(int laundry_seq, String user_email, String start_time, String end_time, String using_dt, int pay_amount, String pay_yn, String store_name) {
+		this.store_name = store_name;
 		this.laundry_seq = laundry_seq;
 		this.user_email = user_email;
 		this.start_time = start_time;

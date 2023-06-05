@@ -9,6 +9,6 @@
 		select * from tbl_using where pay_yn='y' and using_dt = #{using_dt} and start_time=#{start_time}
 	</select>
 	<insert id="insert" parameterType="Using">
-		insert into tbl_using(laundry_seq,user_email,start_time,end_time,using_dt,pay_amount,pay_yn) values(#{laundry_seq},#{user_email},#{start_time},#{end_time},#{using_dt},#{pay_amount},#{pay_yn})
+		insert into tbl_using(laundry_seq,user_email,start_time,end_time,using_dt,pay_amount,pay_yn,store_name) values(#{laundry_seq},#{user_email},#{start_time},#{end_time},#{using_dt},#{pay_amount},#{pay_yn},#{store_name})
 	</insert>
 </mapper>

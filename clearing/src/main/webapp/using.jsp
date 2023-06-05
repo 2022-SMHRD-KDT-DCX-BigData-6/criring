@@ -30,70 +30,7 @@
 
 <link href="css/tooplate-clean-work.css" rel="stylesheet" />
 <link href="css/using.css" rel="stylesheet">
-<!-- <style type="text/css">
-@font-face {
-	font-family: 'gmarket';
-	src: url('./fonts/GmarketSansTTFMedium.ttf') format('truetype');
-}
 
-body {
-	font-family: 'gmarket';
-}
-
-.btn {
-	color: white;
-	border-color: white;
-	height: 80px;
-	width: 71px;
-	font-size: 15px;
-	background-color: #7CB8EB;
-}
-
-.form-select {
-	display: inline-block;
-	border: 2px solid;
-	border-color: #7CB8EB;
-	width: 180px;
-	height: 40px;
-	margin-left: 100px;
-}
-
-.form-select option {
-	text-align: center;
-}
-
-.book {
-	width: 150px;
-	height: 55px;
-	margin-right: 136px;
-	margin-left: 14px;
-}
-
-.back {
-	width: 150px;
-	height: 55px;
-}
-
-.center-pos {
-	diplay: inline-block;
-	position: relative;
-	align-items: center;
-	width: 100%;
-	height: 100%;
-}
-
-.abs-pos {
-	position: absolute;
-	top: 10%;
-	left: 10%;
-}
-
-#calendarForm {
-	width: 210px;
-	height: 50px;
-}
-</style>
- -->
 </head>
 <body>
 	<%
@@ -357,7 +294,7 @@ body {
 		    
 		    const now_date = year+"-"+month+"-"+day;
 			if(now_date!==selDate){
-				 window.location.href="http://localhost:8091/clearing3/DateController?date="+selDate;
+				 window.location.href="http://localhost:8081/clearing/DateController?date="+selDate;
 				
 			};
 		});
@@ -365,7 +302,7 @@ body {
 		$("select[name=time]").change(function(){
 		 	var selTime =$(this).val();
 		 	const selDate= document.querySelector("#Date").value;
-		 	 window.location.href="http://localhost:8091/clearing3/TimeController?time="+selTime+"&date="+selDate;//value값 가져오기 
+		 	 window.location.href="http://localhost:8081/clearing/TimeController?time="+selTime+"&date="+selDate;//value값 가져오기 
 		});
 	</script>
 	<!-- js 달력 선택 제한 스크립트 -->

@@ -41,7 +41,6 @@ public class Review_WriteController extends HttpServlet {
 		
 		
 					String path = request.getServletContext().getRealPath("./file");
-					System.out.println("저장경로 :  " + path);
 					
 					int maxSize = 1024*1024*10; // 10mb
 					
@@ -65,8 +64,6 @@ public class Review_WriteController extends HttpServlet {
 		tbl_reviewListDTO reviewDTO = new tbl_reviewListDTO();
 		
 
-		System.out.println("리뷰 내용" + review_content);
-		System.out.println("별점 : " + (review_rating));
 		
 		
 		reviewDTO.setStore_email(storeEmail);
@@ -75,10 +72,8 @@ public class Review_WriteController extends HttpServlet {
 		reviewDTO.setReview_rating(review_rating);
 		reviewDTO.setReview_photo(review_photo);
 		int result = reviewWriteDAO.insReviewData(reviewDTO);
-		System.out.println(result);
 		if (result>0) {
-			System.out.println("리뷰 등록 성공");
-			RequestDispatcher rd =request.getRequestDispatcher("UseList.jsp");
+			RequestDispatcher rd =request.getRequestDispatcher("Mypage.jsp");
 			rd.forward(request, response);
 			
 		} else {

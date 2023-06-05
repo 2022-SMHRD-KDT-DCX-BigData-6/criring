@@ -20,7 +20,7 @@ public class usingController extends HttpServlet {
 		// 아이디는 세션에서 받아올거임, 결제금액이랑 결제 여부는 ?? 어캄?
 		HttpSession session = request.getSession();
 		String user_email = (String)session.getAttribute("email");
-		
+		String store_name = (String)session.getAttribute("store_name");
 		String time =(String)session.getAttribute("time");
 		session.removeAttribute("time");
 		int laundry_seq = Integer.parseInt(request.getParameter("laundry"));
@@ -31,7 +31,7 @@ public class usingController extends HttpServlet {
 		int pay_amount = 4000;
 		String pay_yn = "y";
 		
-		usingVO uVo = new usingVO(laundry_seq, user_email, start_time, end_time, using_dt, pay_amount, pay_yn);
+		usingVO uVo = new usingVO(laundry_seq, user_email, start_time, end_time, using_dt, pay_amount, pay_yn,store_name);
 		usingDAO uDao = new usingDAO();
 		int insert =uDao.insertUsing(uVo);
 		if(insert>0) {

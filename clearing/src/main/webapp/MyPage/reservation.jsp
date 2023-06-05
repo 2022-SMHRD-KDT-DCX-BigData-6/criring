@@ -27,6 +27,7 @@ body {
 								<thead style="text-align: center">
 									<tr>
 										<th scope="col">#</th>
+										<th scope="col">업체명</th>
 										<th scope="col">세탁기 번호</th>
 										<th scope="col">사용 시작 시간</th>
 										<th scope="col">사용 종료 시간</th>
@@ -42,6 +43,7 @@ body {
 									<tr>
 
 										<th scope="row"><%=i+1%></th>
+										<td><%=details.get(i).getStore_name()%></td>
 										<td><%=details.get(i).getLaundry_seq()%></td>
 										<td><%=details.get(i).getStart_time()%></td>
 										<td><%=details.get(i).getEnd_time()%></td>
@@ -49,7 +51,7 @@ body {
 										<td><a
 											href="deleteReservation?using=<%=details.get(i).getUSING_SEQ()%>" style="color: #77B2E8">예약
 												취소</a></td>
-										<td><a href="Review_WriteController" style="color: #77B2E8">리뷰 작성</a></td>
+										<td><a href="ReviewWrite2.jsp?store_name=<%=details.get(i).getStore_name()%>" style="color: #77B2E8">리뷰 작성</a></td>
 									</tr>
 								</tbody>
 								<%

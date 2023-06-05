@@ -30,13 +30,7 @@ public class bookLaundryController extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		
 		
-//		double lat = 35.1593376161019;
-//		double lng = 126.843330918969;
-//		HttpSession session = request.getSession();
-//		if(session.getAttribute("lat")!=null && session.getAttribute("lng")!=null) {
-//			lat = (Double)session.getAttribute("lat");
-//			lng = (Double)session.getAttribute("lng");
-//		}
+
 		HttpSession session = request.getSession();
 		double lat =Double.parseDouble(request.getParameter("selectStoreLat"));
 		double lng = Double.parseDouble(request.getParameter("selectStoreLng"));
@@ -65,7 +59,6 @@ public class bookLaundryController extends HttpServlet {
 		if(laundryList!=null){
 			laundryList= uDao.usedLaundry(timeZero);
 			for(int i=0;i<laundryList.size(); i++) {
-					//list에 담아야 하나 말아야 하나 생각 해보기 <<< 시작 시간이 맞는지 종료시간이 맞는지도 확인
 					used[i] = laundryList.get(i).getLaundry_seq();
 			}
 		}
@@ -75,12 +68,7 @@ public class bookLaundryController extends HttpServlet {
 		session.setAttribute("store_addr", sVo.getSTORE_ADDR());
 		request.setAttribute("used",used );
 		request.setAttribute("nTimeNow", nTimeNow);
-		System.out.println("세션런드리카운트"+session.getAttribute("laundry_cnt"));
-		System.out.println("세션드라이카운트"+session.getAttribute("dryer_cnt"));
-		System.out.println("세션 스토어네임" + session.getAttribute("store_name"));
-		System.out.println("세션 스토어주소" + session.getAttribute("store_addr"));
-		System.out.println("리퀘스트유즈드 " + request.getAttribute("used"));
-		System.out.println("리퀘스트타임나우" + request.getAttribute("nTimeNow"));
+	
 		if(sVo!=null) {
 			RequestDispatcher requestDispatcher = request.getRequestDispatcher("using.jsp");
 			requestDispatcher.forward(request, response);

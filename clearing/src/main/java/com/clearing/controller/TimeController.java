@@ -37,7 +37,6 @@ public class TimeController extends HttpServlet {
 				used[i] = laundryList.get(i).getLaundry_seq();
 			}
 		}
-		System.out.println(laundryList);
 		request.setAttribute("used", used);
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher("using2.jsp");
 		requestDispatcher.forward(request, response);

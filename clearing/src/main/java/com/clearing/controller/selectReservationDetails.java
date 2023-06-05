@@ -25,21 +25,14 @@ public class selectReservationDetails extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		String myPageEmail = (String)session.getAttribute("email");
-		/*
-		 * String myPageName =(String)session.getAttribute("name"); String myPageAddr =
-		 * (String)session.getAttribute("addr");
-		 */
+		
 		usingVO vo = new usingVO();
 		vo.setUser_email(myPageEmail);
 		
 		reservation_detailsDAO dao = new reservation_detailsDAO();
 		ArrayList<usingVO> details= (ArrayList<usingVO>)dao.show_reservation(vo);
 		
-		/*
-		 * request.setAttribute("email",myPageEmail);
-		 * request.setAttribute("name",myPageName);
-		 * request.setAttribute("addr",myPageAddr);
-		 */
+	
 		request.setAttribute("details", details);
 		RequestDispatcher rd = request.getRequestDispatcher("MyPage/reservation.jsp");
 		rd.forward(request, response);
