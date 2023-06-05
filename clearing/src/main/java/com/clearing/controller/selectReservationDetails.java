@@ -41,5 +41,4 @@ public class selectReservationDetails extends HttpServlet {
 		RequestDispatcher rd = request.getRequestDispatcher("Mypage.jsp");
 		rd.forward(request, response);
 	}
-
 }

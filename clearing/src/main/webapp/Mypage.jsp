@@ -371,7 +371,8 @@ Free Bootstrap 5 HTML Template
 								if (details != null) {
 									for (int i = 0; i < details.size(); i++) {
 								%>
-								<tbody class="table-group-divider">
+								<tbody class="tab
+								le-group-divider">
 									<tr>
 
 										<th scope="row"><%=i%></th>
