@@ -36,10 +36,20 @@ body {
 	font-family: 'gmarket';
 }
 </style>
+<script type="text/javascript">
+		function reviewSubmit() {
+			var ratingVal = getElementById("ratingVal").value();
+			var content = getElementById("reviewContent").value();
+	    alert( ratingVal + ' vs ' + content );
+	  };
+	
+	
+	</script>
 </head>
 
 <body>
-
+	<% String store_name=request.getParameter("store_name");
+		session.setAttribute("store_name1", store_name);%>
 	<header class="site-header">
 		<div class="container">
 			<div class="row">
@@ -148,16 +158,17 @@ body {
 			<div class="container">
 				<div class="row">
 
-					<h1><%=request.getParameter("store_name") %></h1>
+					<h1><%=store_name %></h1>
 					<hr>
-					<h3>이용하신 매장은 어떠셨나요?</h3>
+					<h3>이용하신 매장은 어떠셨나요?</h3><br>
 
 					<form action="Review_WriteController" method="post"
-						enctype="multipart/form-data">
-						<fieldset class="rate" name="rating">
+						enctype="multipart/form-data" id="theForm">
+						
+						<fieldset id="ratingVal" class="rate" name="rating">
 							<input type="radio" id="rating5" name="rating" value="5"><label
 								for="rating5" title="5점"></label> <input type="radio"
-								id="rating4" name="rating" value="4""><label
+								id="rating4" name="rating" value="4"><label
 								for="rating4" title="4점"></label> <input type="radio"
 								id="rating3" name="rating" value="3"><label
 								for="rating3" title="3점"></label> <input type="radio"
@@ -169,12 +180,18 @@ body {
 						<br> <br>
 						<div>
 							리뷰내용<br>
-							<textarea rows="10" cols="50" name="textfield" maxlength="80" placeholder="80자까지 입력해주세요"></textarea>							
+							<textarea rows="10" cols="50" name="textfield" id="reviewContent" maxlength="80" placeholder="80자까지 입력해주세요"></textarea>							
 							 <!-- <input type="text" name="textfield"
 								style="height: 250px; width: 250px;">
  -->						</div>
-						<br> <input type="file" name="file"><br> <input
-							type="submit" value="작성하기">
+						<br> 
+						
+						 <div class="input-group" style="width:543px">
+						  <input type="file" name="file"class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+						  <button class="btn btn-outline-secondary" type="submit" id="inputGroupFileAddon04">작성하기</button>
+						</div>
+  						
+						
 					</form>
 
 				</div>
@@ -318,8 +335,27 @@ body {
 			</div>
 		</div>
 	</footer>
-
+	
 	<!-- JAVASCRIPT FILES -->
+	
+	<script src="./js/jquery-3.7.0.js"></script>
+	<script type="text/javascript">
+	
+	const $form = document.querySelector('form');
+
+	$form.addEventListener("submit", (event) => {
+		var content = document.getElementById("reviewContent").value;
+	  // 동작(이벤트)을 실행하지 못하게 막는 메서드입니다.
+		if(content==""){
+		  alert("리뷰내용은 필수 사항입니다!");
+		  $("#reviewContent").focus();
+		  event.preventDefault();
+		}else{
+			$(form).unbind("submit");
+		}
+	});
+	</script>
+	
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/jquery.backstretch.min.js"></script>

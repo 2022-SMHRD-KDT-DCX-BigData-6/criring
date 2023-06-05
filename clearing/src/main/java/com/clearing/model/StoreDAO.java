@@ -31,4 +31,11 @@ public class StoreDAO {
 		sqlSession.close();
 		return storeData;
 	}
+	public StoreVO storelocation(String store_name) {
+		SqlSession sqlSession = sqlSessionFactory.openSession(true);
+		
+		StoreVO storelocation = sqlSession.selectOne("com.clearing.database.MemberMapper.selLocation",store_name);
+		sqlSession.close();
+		return storelocation;
+	}
 }

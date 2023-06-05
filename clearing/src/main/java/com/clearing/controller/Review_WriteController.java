@@ -9,7 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.clearing.model.StoreDAO;
 import com.clearing.model.StoreDTO;
+import com.clearing.model.StoreVO;
 import com.clearing.model.tbl_reviewListDTO;
 import com.clearing.model.tbl_reviewWriteDAO;
 import com.clearing.model.tbl_storeDAO;
@@ -20,11 +22,17 @@ public class Review_WriteController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		double LAT = 35.1593376161019;
-		double LNG = 126.843330918969;
+		HttpSession session = request.getSession();
+		String store_name = (String)session.getAttribute("store_name1");
+		session.removeAttribute("store_name1");
+		StoreDAO sDao = new StoreDAO();
+		StoreVO sVo=sDao.storelocation(store_name);
+		
+		double LAT = sVo.getLAT();
+		double LNG = sVo.getLNG();
+		
 		request.setCharacterEncoding("UTF-8");
 
-		HttpSession session = request.getSession();
 		String email = (String)session.getAttribute("email");
 		tbl_storeDAO storeDAO = new tbl_storeDAO();
 	    StoreDTO storeDTO = new StoreDTO();
@@ -50,8 +58,15 @@ public class Review_WriteController extends HttpServlet {
 					MultipartRequest multi = new MultipartRequest(request, path, maxSize, encoding, rename);
 		
 		String review_content = multi.getParameter("textfield");
-		int review_rating =Integer.parseInt(multi.getParameter("rating"));
+		int review_rating = 0;
+		if(multi.getParameter("rating")==null) {
+			review_rating = 1;
+		}else {
+			review_rating=Integer.parseInt(multi.getParameter("rating"));
+			
+		}
 		String review_photo=null;
+		
 		if(multi.getFilesystemName("file")==null) {
 			review_photo = "0";
 		}else {
