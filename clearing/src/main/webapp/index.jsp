@@ -31,10 +31,20 @@
 <link href="css/tooplate-clean-work.css" rel="stylesheet" />
 <link href="css/login.css" rel="stylesheet">
 <link href="css/kakaoMap.css" rel="stylesheet">
+<link href="css/chatbot.css" rel="stylesheet">
 <script type="text/javascript"
-	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4fe78505e64a5ac31be2e7b890da39d4&libraries=services,clusterer,drawing"></script>
+	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=683c7e08c86fe41ea5c21dd7148dc9f3&libraries=services,clusterer,drawing"></script>
 
+<style type="text/css">
+	@font-face {
+		font-family: 'gmarket';
+		src: url('./fonts/GmarketSansTTFMedium.ttf') format('truetype');
+	}
 
+	body {
+		font-family: 'gmarket';
+	}
+</style>
 
 <!--
 
@@ -116,30 +126,32 @@ Free Bootstrap 5 HTML Template
 			<div class="collapse navbar-collapse" id="navbarNav">
 				<ul class="navbar-nav ms-auto">
 					<li class="nav-item"><a class="nav-link"
-						href="index.jsp">Home</a></li>
-					<li class="nav-item"><a class="nav-link" href="about.html">Review board
+						href="index.jsp">메인</a></li>
+					<li class="nav-item"><a class="nav-link" href="about.html">후기
 							</a></li>
-					<li class="nav-item"><a class="nav-link" href="requestBoardMain.jsp">Inquiry board
+					<li class="nav-item"><a class="nav-link" href="requestBoardMain.jsp">문의
 							</a></li>
-
+					<%if(session.getAttribute("email") == "admin") {%>
+					<!-- admin 로그인시 생기는 메뉴 TODO-->
 					<li class="nav-item"><a class="nav-link" href="contact.html">Contact</a>
 					</li>
+					<% }%>
 
 					<%
 					if (session.getAttribute("member") != null || session.getAttribute("storeMember") != null) {
 					%>
 					<li class="nav-item ms-3"><a
 						class="nav-link custom-btn custom-border-btn custom-btn-bg-white btn"
-						href="Mypage.jsp">My page</a></li>
+						href="Mypage.jsp">내 정보</a></li>
 					<li class="nav-item ms-3"><a
 						class="nav-link custom-btn custom-border-btn custom-btn-bg-white btn"
-						href="logOut">Log-Out</a></li>
+						href="logOut">로그아웃</a></li>
 					<%
 					} else {
 					%>
 					<li class="nav-item ms-3"><a
 						class="nav-link custom-btn custom-border-btn custom-btn-bg-white btn"
-						href="login1.jsp">Get Start</a></li>
+						href="login1.jsp">로그인</a></li>
 					<%
 					}
 					%>
@@ -189,6 +201,7 @@ Free Bootstrap 5 HTML Template
 
 		</section>
 	</main>
+<div class="searchWrap">
 	<section class="search_reservation"
 		style="height: 600px; position: relative;padding-right: 1.5%;">
 		<div class="searchsection" style="margin-top:5%;"></div>
@@ -212,7 +225,7 @@ Free Bootstrap 5 HTML Template
 		/* TODO 세션에 유저주소정보를 담아서 업데이트해줘야함 */
 		String searchAddr = addr;
 		if (searchAddr == null) {
-			searchAddr = "농성동";
+			searchAddr = "쌍촌동";
 		} else {
 			searchAddr = searchAddr.substring(0, 5);
 		}
@@ -225,7 +238,7 @@ Free Bootstrap 5 HTML Template
 						value="<%=searchAddr%>" id="keyword" placeholder="검색할 주소를 입력하세요"
 						aria-label="Recipient's username" aria-describedby="button-addon2"
 						size="15">
-					<button type="button" class="btn search-btn" id="button-addon2">Search
+					<button type="button" class="btn search-btn" id="button-addon2">검색
 						!</button>
 				</form>
 			</div>
@@ -251,26 +264,26 @@ Free Bootstrap 5 HTML Template
 				</div>
 				<div class="map-searchbtn-group">
 					<button type="submit"
-						class="custom-btn btn button button--atlas smoothscroll me-3">
-						<span>Reservation</span>
+						class="custom-btn btn button button--atlas smoothscroll me-3" style="width: 160px;">
+						<span>예약하기</span>
 
 						<div class="marquee" aria-hidden="true">
 							<div class="marquee__inner">
-								<span>Reservation</span> <span>Reservation</span> <span>Reservation</span>
-								<span>Reservation</span>
+								<span>예약하기</span> <span>예약하기</span> <span>Reservation</span>
+								<span>예약하기</span>
 							</div>
 						</div>
 					</button>
 					
 				</div>
-				<div class="reservation-LatLng">
+				<div class="reservation-LatLng" style="display:none;">
 					<div id="reservation-Lat"></div>
 					<div id="reservation-Lng"></div>
 				</div>
 			</div>
 		</form>
 		<form action="reviewSelect">
-			<div class="reservation-LatLng">
+			<div class="reservation-LatLng" style="display:none;">
 				<div id="reservation-Lat1"></div>
 				<div id="reservation-Lng1"></div>
 			</div>
@@ -280,7 +293,7 @@ Free Bootstrap 5 HTML Template
 		</form>
 
 	</section>
-
+</div>
 	<footer class="site-footer">
 		<div class="container">
 			<div class="row">
@@ -412,6 +425,50 @@ Free Bootstrap 5 HTML Template
 		</div>
 	</footer>
 
+	
+	<% email=(String)session.getAttribute("email"); %>
+	<!-- 유저 밸류값은 표현식으로 세션에서 저장된거 가져올거임 -->
+	<!-- Scrollable modal -->
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary chatbotMain" id="CSR" data-remote="ChatModal3.jsp"  data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+  <img alt="CSR" src="./images/CSR2.png">
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrolable">
+    <div class="modal-content">
+      <div class="modal-header"  style="background-color: #7CB8EB;color: white">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">크리링 Chat-Bot</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" >
+      
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="Exit"class="btn btn-secondary" data-bs-dismiss="modal">나가기</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+	<script src="js/bootstrap.min.js"></script>
+	<script src="./js/jquery-3.7.0.js"></script>
+<script>
+		$('#staticBackdrop').on('show.bs.modal', function(e) {
+	
+			var button = $(e.relatedTarget);
+			var modal = $(this);
+			
+			modal.find('.modal-body').load(button.data("remote"));
+	
+		});
+		$('#Exit').on('click',function(){
+			window.location.href='http://localhost:8081/clearing2/chattingStart.jsp';
+			
+		});
+	</script> 
+	
 	<!-- JAVASCRIPT FILES -->
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>

@@ -30,7 +30,7 @@
 
 <link href="css/tooplate-clean-work.css" rel="stylesheet" />
 <link href="css/using.css" rel="stylesheet">
-
+<link href="css/chatbot.css" rel="stylesheet">
 </head>
 <body>
 	<%
@@ -93,8 +93,11 @@
 					</a></li>
 					<li class="nav-item"><a class="nav-link"
 						href="requestBoardMain.jsp">문의 </a></li>
+					<%if(session.getAttribute("email") == "admin") {%>
+					<!-- admin 로그인시 생기는 메뉴 TODO-->
 					<li class="nav-item"><a class="nav-link" href="contact.html">Contact</a>
 					</li>
+					<% }%>
 
 					<li class="nav-item ms-3"><a
 						class="nav-link custom-btn custom-border-btn custom-btn-bg-white btn"
@@ -251,12 +254,12 @@
 												%>
 											</div>
 										</div>
-										<div class="res-complete-btn">
+									</div>
+									<div class="res-complete-btn">
 											<button type="submit" class="btn btn-primary book res-complete">예약하기</button>
 											<a href="services.html">
 												<button type="button" class="btn btn-primary back">돌아가기</button>
 											</a>
-										</div>
 									</div>
 								</div>
 							</div>
@@ -266,6 +269,49 @@
 			</div>
 		</section>
 	</main>
+	
+	<% String email=(String)session.getAttribute("email"); %>
+	<!-- 유저 밸류값은 표현식으로 세션에서 저장된거 가져올거임 -->
+	<!-- Scrollable modal -->
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary chatbotMain" id="CSR" data-remote="ChatModal3.jsp"  data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+  <img alt="CSR" src="./images/CSR2.png">
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrolable">
+    <div class="modal-content">
+      <div class="modal-header"  style="background-color: #7CB8EB;color: white">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">크리링 Chat-Bot</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" >
+      
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="Exit"class="btn btn-secondary" data-bs-dismiss="modal">나가기</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+	<script src="js/bootstrap.min.js"></script>
+	<script src="./js/jquery-3.7.0.js"></script>
+<script>
+		$('#staticBackdrop').on('show.bs.modal', function(e) {
+	
+			var button = $(e.relatedTarget);
+			var modal = $(this);
+			
+			modal.find('.modal-body').load(button.data("remote"));
+	
+		});
+		$('#Exit').on('click',function(){
+			window.location.href='http://localhost:8081/clearing2/chattingStart.jsp';
+			
+		});
+	</script> 
 	<!-- footer 넣어야함 TODO -->
 	<!-- 사용중인 세탁기 사용불가 js -->
 	<script type="text/javascript">
@@ -302,11 +348,7 @@
 		$("select[name=time]").change(function(){
 		 	var selTime =$(this).val();
 		 	const selDate= document.querySelector("#Date").value;
-<<<<<<< HEAD
 		 	 window.location.href="http://localhost:8081/clearing/TimeController?time="+selTime+"&date="+selDate;//value값 가져오기 
-=======
-		 	 window.location.href="http://localhost:8091/clearing/TimeController?time="+selTime+"&date="+selDate;//value값 가져오기 
->>>>>>> branch 'master' of https://github.com/2022-SMHRD-KDT-DCX-BigData-6/criring.git
 		});
 	</script>
 	<!-- js 달력 선택 제한 스크립트 -->

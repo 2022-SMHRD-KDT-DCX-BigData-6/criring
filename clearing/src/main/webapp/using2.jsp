@@ -4,7 +4,7 @@
 <%@page import="java.util.List"%>
 <%@page import="java.sql.Date"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,55 +29,53 @@
 <link href="css/bootstrap-icons.css" rel="stylesheet" />
 
 <link href="css/tooplate-clean-work.css" rel="stylesheet" />
+<link href="css/chatbot.css" rel="stylesheet">
 <link href="css/using.css" rel="stylesheet">
 </head>
 <body>
-<% 
-
-	String StoreName = (String)session.getAttribute("store_name");
-	String StoreAddr = (String)session.getAttribute("store_addr");
-	int laundry_cnt=(int)session.getAttribute("laundry_cnt");
-	int dryer_cnt=(int)session.getAttribute("dryer_cnt");
-	int used[] = (int[])request.getAttribute("used");
-	String seldate = (String)request.getAttribute("seldate");
-	String seltime = (String)request.getAttribute("seltime");
+	<%
+	String StoreName = (String) session.getAttribute("store_name");
+	String StoreAddr = (String) session.getAttribute("store_addr");
+	int laundry_cnt = (int) session.getAttribute("laundry_cnt");
+	int dryer_cnt = (int) session.getAttribute("dryer_cnt");
+	int used[] = (int[]) request.getAttribute("used");
+	String seldate = (String) request.getAttribute("seldate");
+	String seltime = (String) request.getAttribute("seltime");
 	int usedLength = 0;
-	if(used!=null){
-		usedLength =used.length;
-	}else{
-		usedLength =0;
+	if (used != null) {
+		usedLength = used.length;
+	} else {
+		usedLength = 0;
 	}
-			
-	
-%>
+	%>
 	<header class="site-header">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-12 col-12 d-flex flex-wrap">
-						<p class="d-flex me-4 mb-0">
-							<i class="bi-house-fill me-2"></i> One-Stop Cleaning Service
-						</p>
-	
-						<p class="d-flex d-lg-block d-md-block d-none me-4 mb-0">
-							<i class="bi-clock-fill me-2"></i> <strong class="me-2">Mon
-								- Fri</strong> 8:00 AM - 5:30 PM
-						</p>
-	
-						<p class="site-header-icon-wrap text-white d-flex mb-0 ms-auto">
-							<i class="site-header-icon bi-whatsapp me-2"></i> <a
-								href="tel: 110-220-9800" class="text-white"> 110 220 9800 </a>
-						</p>
-					</div>
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 col-12 d-flex flex-wrap">
+					<p class="d-flex me-4 mb-0">
+						<i class="bi-house-fill me-2"></i> One-Stop Cleaning Service
+					</p>
+
+					<p class="d-flex d-lg-block d-md-block d-none me-4 mb-0">
+						<i class="bi-clock-fill me-2"></i> <strong class="me-2">Mon
+							- Fri</strong> 8:00 AM - 5:30 PM
+					</p>
+
+					<p class="site-header-icon-wrap text-white d-flex mb-0 ms-auto">
+						<i class="site-header-icon bi-whatsapp me-2"></i> <a
+							href="tel: 110-220-9800" class="text-white"> 110 220 9800 </a>
+					</p>
 				</div>
 			</div>
+		</div>
 	</header>
-	
-	
+
+
 	<nav class="navbar navbar-expand-lg">
 		<div class="container">
 			<a class="navbar-brand" href="index.jsp"> <img
 				src="images/bubbles.png" class="logo img-fluid" alt=""> <span
-				class="ms-2">Clean Work</span>
+				class="ms-2">C&nbsp;R&nbsp;I&nbsp;R&nbsp;I&nbsp;N&nbsp;G</span>
 			</a>
 
 			<button class="navbar-toggler" type="button"
@@ -94,8 +92,14 @@
 					</a></li>
 					<li class="nav-item"><a class="nav-link"
 						href="requestBoardMain.jsp">문의 </a></li>
+					<%
+					if (session.getAttribute("email") == "admin") {
+					%>
 					<li class="nav-item"><a class="nav-link" href="contact.html">Contact</a>
 					</li>
+					<%
+					}
+					%>
 
 					<li class="nav-item ms-3"><a
 						class="nav-link custom-btn custom-border-btn custom-btn-bg-white btn"
@@ -108,7 +112,7 @@
 			</div>
 		</div>
 	</nav>
-	
+
 	<main>
 		<section
 			class="hero-section hero-section-full-height d-flex justify-content-center align-items-center">
@@ -119,76 +123,163 @@
 					<div class="col-lg-7 col-12 text-center mx-auto">
 						<h3 class="res_current">예약 현황</h3>
 						<div class="storename">
-							<span><%=StoreName%></span>
-							<span><%=StoreAddr%>점</span>
+							<span><%=StoreName%></span> <span><%=StoreAddr%>점</span>
 						</div>
 						<form action="usingController" method="post">
 							<div class="center-pos">
-									<div class="abs-pos">
-										<div class="reservation-input">
-											<input type="date" id="Date" name = "date" value="<%=seldate %>" class="date-select">
-											<select class="form-select" name="time" aria-label="multiple select example">
-												<%if(seltime==null){%>
-												<option selected="selected" disabled="disabled" >예약시간</option>
-												<% }else{%>
-													<option selected="selected" disabled="disabled" ><%=seltime %></option>
-												<%} %>
-													<%for(int i=6; i<24;i++){
-														if(i==9){%>
-															<option value="0<%=i%>:00~<%=i+1%>:00">0<%=i%>:00~<%=i+1%>:00</option>
-														<%}else if(i<9){%>
-															<option value="0<%=i%>:00~0<%=i+1%>:00">0<%=i%>:00~<%=i+1%>:00</option>
-														<%}else{%>
-															<option value="<%=i%>:00~<%=i+1%>:00"><%=i%>:00~<%=i+1%>:00</option>
-														<%} %>
-													<%} %>
-											</select>
-										</div>
-										<div class="laundry-form">
-											<div class="res-laundry">
-												<div class="laundry-group">
-													<%for(int i=1; i<=laundry_cnt; i++){ %>
-													
-														<div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-															<input type="checkbox" class="btn-check" id="btncheck<%=100+i %>" name = "laundry" value="<%=100+i %>" autocomplete="off" onclick='checkOnlyOne(this)'> 
-															<label class="res-btn btn-outline-primary" for="btncheck<%=100+i%>">세탁기</label> 
-														</div>
-													
-													<%} %>
+								<div class="abs-pos">
+									<div class="reservation-input">
+										<input type="date" id="Date" name="date" value="<%=seldate%>"
+											class="date-select"> <select class="form-select"
+											name="time" aria-label="multiple select example">
+											<%
+											if (seltime == null) {
+											%>
+											<option selected="selected" disabled="disabled">예약시간</option>
+											<%
+											} else {
+											%>
+											<option selected="selected" disabled="disabled"><%=seltime%></option>
+											<%
+											}
+											%>
+											<%
+											for (int i = 6; i < 24; i++) {
+												if (i == 9) {
+											%>
+											<option value="0<%=i%>:00~<%=i + 1%>:00">0<%=i%>:00~<%=i + 1%>:00
+											</option>
+											<%
+											} else if (i < 9) {
+											%>
+											<option value="0<%=i%>:00~0<%=i + 1%>:00">0<%=i%>:00~<%=i + 1%>:00
+											</option>
+											<%
+											} else {
+											%>
+											<option value="<%=i%>:00~<%=i + 1%>:00"><%=i%>:00~<%=i + 1%>:00
+											</option>
+											<%
+											}
+											%>
+											<%
+											}
+											%>
+										</select>
+									</div>
+									<div class="laundry-form">
+										<div class="res-laundry">
+											<div class="laundry-group">
+												<%
+												for (int i = 1; i <= laundry_cnt; i++) {
+												%>
+
+												<div class="btn-group" role="group"
+													aria-label="Basic checkbox toggle button group">
+													<input type="checkbox" class="btn-check"
+														id="btncheck<%=100 + i%>" name="laundry"
+														value="<%=100 + i%>" autocomplete="off"
+														onclick='checkOnlyOne(this)'> <label
+														class="res-btn btn-outline-primary"
+														for="btncheck<%=100 + i%>">세탁기</label>
 												</div>
-												<div class="dryer-group">
-													<%for(int i=1; i<=dryer_cnt; i++){ %>
-													
-														
-														<div class="btn-group-vertical" role="group" aria-label="Basic checkbox toggle button group">
-															<input type="checkbox" class="btn-check" id="btncheck<%=200+i %>" name = "laundry" value="<%=200+i %>" autocomplete="off" onclick='checkOnlyOne(this)'> 
-															<label class="res-btn btn-outline-primary" for="btncheck<%=200+i%>">건조기</label> 
-														</div>
-													
-													<%} %>
-												</div>
+
+												<%
+												}
+												%>
 											</div>
-											<div class="res-complete-btn">
-												<button type="submit" class="btn btn-primary book res-complete">예약하기</button>
-												<a href="services.html">
-													<button type="button" class="btn btn-primary back">돌아가기</button>
-												</a>
+											<div class="dryer-group">
+												<%
+												for (int i = 1; i <= dryer_cnt; i++) {
+												%>
+
+
+												<div class="btn-group-vertical" role="group"
+													aria-label="Basic checkbox toggle button group">
+													<input type="checkbox" class="btn-check"
+														id="btncheck<%=200 + i%>" name="laundry"
+														value="<%=200 + i%>" autocomplete="off"
+														onclick='checkOnlyOne(this)'> <label
+														class="res-btn btn-outline-primary"
+														for="btncheck<%=200 + i%>">건조기</label>
+												</div>
+
+												<%
+												}
+												%>
 											</div>
 										</div>
 									</div>
+									<div class="res-complete-btn">
+										<button type="submit"
+											class="btn btn-primary book res-complete">예약하기</button>
+										<a href="index.jsp">
+											<button type="button" class="btn btn-primary back">돌아가기</button>
+										</a>
+									</div>
 								</div>
-							</form>
+							</div>
+						</form>
 					</div>
 				</div>
 			</div>
 		</section>
 	</main>
-	
 
+	<%
+	String email = (String) session.getAttribute("email");
+	%>
+	<!-- 유저 밸류값은 표현식으로 세션에서 저장된거 가져올거임 -->
+	<!-- Scrollable modal -->
+	<!-- Button trigger modal -->
+	<button type="button" class="btn btn-primary chatbotMain" id="CSR"
+		data-remote="ChatModal3.jsp" data-bs-toggle="modal"
+		data-bs-target="#staticBackdrop">
+		<img alt="CSR" src="./images/CSR2.png">
+	</button>
+
+	<!-- Modal -->
+	<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static"
+		data-bs-keyboard="false" tabindex="-1"
+		aria-labelledby="staticBackdropLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-scrolable">
+			<div class="modal-content">
+				<div class="modal-header"
+					style="background-color: #7CB8EB; color: white">
+					<h1 class="modal-title fs-5" id="staticBackdropLabel">크리링
+						Chat-Bot</h1>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"
+						aria-label="Close"></button>
+				</div>
+				<div class="modal-body"></div>
+				<div class="modal-footer">
+					<button type="button" id="Exit" class="btn btn-secondary"
+						data-bs-dismiss="modal">나가기</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="js/bootstrap.min.js"></script>
+	<script src="./js/jquery-3.7.0.js"></script>
+	<script>
+		$('#staticBackdrop').on('show.bs.modal', function(e) {
 	
+			var button = $(e.relatedTarget);
+			var modal = $(this);
+			
+			modal.find('.modal-body').load(button.data("remote"));
+	
+		});
+		$('#Exit').on('click',function(){
+			window.location.href='http://localhost:8081/clearing2/chattingStart.jsp';
+			
+		});
+	</script>
+
 	<!-- 사용중인 세탁기 사용불가 js -->
 	<script type="text/javascript">
-	<%for(int i=0; i<usedLength;i++){%>
+	<%for (int i = 0; i < usedLength; i++) {%>
 	var num = <%=used[i]%>;
 	if(num<200){
 		var laundry = document.getElementById('btncheck<%=used[i]%>');
@@ -199,7 +290,7 @@
 	}
 	
 
-	<% }%>
+	<%}%>
 	</script>
 	<script src="./js/jquery-3.7.0.js"></script>
 	<!-- 날짜/시간 선택 js -->
@@ -213,29 +304,18 @@
 		    
 		    const now_date = year+"-"+month+"-"+day;
 			if(now_date!==selDate){
-<<<<<<< HEAD
 				window.location.href="http://localhost:8081/clearing/DateController?date="+selDate;
-=======
-				window.location.href="http://localhost:8091/clearing/DateController?date="+selDate;
->>>>>>> branch 'master' of https://github.com/2022-SMHRD-KDT-DCX-BigData-6/criring.git
 				
 			}else{
-<<<<<<< HEAD
 				window.location.href="http://localhost:8081/clearing/bookLaundryController";
-=======
-				window.location.href="http://localhost:8091/clearing/bookLaundryController";
->>>>>>> branch 'master' of https://github.com/2022-SMHRD-KDT-DCX-BigData-6/criring.git
 			}
 		});
 		
 		$("select[name=time]").change(function(){
 		 	var selTime =$(this).val();
 		 	const selDate= document.querySelector("#Date").value;
-<<<<<<< HEAD
 		 	window.location.href="http://localhost:8081/clearing/TimeController?time="+selTime+"&date="+selDate;//value값 가져오기
-=======
-		 	window.location.href="http://localhost:8091/clearing/TimeController?time="+selTime+"&date="+selDate;//value값 가져오기
->>>>>>> branch 'master' of https://github.com/2022-SMHRD-KDT-DCX-BigData-6/criring.git
+
 		});
 	</script>
 	<!-- js 달력 선택 제한 스크립트 -->

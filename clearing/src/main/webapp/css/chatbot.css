@@ -1,0 +1,9 @@
+@charset "UTF-8";
+
+.chatbotMain {
+	position: fixed;
+    top: 85%;
+    left: 90%;
+    border: 5px solid white;
+    border-radius: 30px;
+}
