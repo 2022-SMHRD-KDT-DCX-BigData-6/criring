@@ -102,3 +102,15 @@ input[type="button"].btn.btn-primary.btn-lg.btn-block {
 	justify-content: space-around;
 	margin-bottom: 2%;
 }
+
+.search_reservation {
+	background-color: rgba(66, 135, 245,0.2);
+}
+
+.res-btn {
+	width:47%;
+}
+
+.searchWrap {
+	background-color: rgba(66, 135, 245,0.2);
+}
