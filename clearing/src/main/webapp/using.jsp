@@ -365,7 +365,7 @@ body {
 		$("select[name=time]").change(function(){
 		 	var selTime =$(this).val();
 		 	const selDate= document.querySelector("#Date").value;
-		 	 window.location.href="http://localhost:8091/clearing3/TimeController?time="+selTime+"&date="+selDate;//value값 가져오기 
+		 	 window.location.href="http://localhost:8091/clearing/TimeController?time="+selTime+"&date="+selDate;//value값 가져오기 
 		});
 	</script>
 	<!-- js 달력 선택 제한 스크립트 -->
