@@ -40,7 +40,10 @@
                </tr>
                <tr>
                   <td colspan="2">
-                     <%=aDto.getReplyPhoto() %>
+                     <%if(!aDto.getReplyPhoto().equals("0")){%>
+					<img alt="x" src="./file/<%=aDto.getReplyPhoto() %>" style="width: 40%;">
+					
+					<%} %>
                   </td>
                </tr>
                <%if(session.getAttribute("email") == null){ %>

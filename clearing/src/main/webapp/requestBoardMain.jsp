@@ -174,6 +174,10 @@ h3:after {
   75%   { transform: translateX(10px)}
   100%  { transform: translateX(0)}
 }
+a {
+	text-decoration: none;
+	color: black;
+}
 
 /*
     Don't look at this last part. It's unnecessary. I was just playing with pixel gradients... Don't judge.
