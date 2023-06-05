@@ -40,7 +40,8 @@
                </tr>
                <tr>
                   <td colspan="2">
-                     <%if(!aDto.getReplyPhoto().equals("0")){%>
+                  	<%if(aDto.getReplyPhoto() == null) { %>
+                     <%}else if(aDto.getReplyPhoto() != null){%>
 					<img alt="x" src="./file/<%=aDto.getReplyPhoto() %>" style="width: 40%;">
 					
 					<%} %>
