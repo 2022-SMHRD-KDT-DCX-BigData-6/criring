@@ -200,7 +200,6 @@
 				});
 			
 		}else {
-			<%-- window.location.href='http://localhost:8081/clearing2/ChatOutController?cr_seq='+<%=cr_seq%>; --%>
 			
 		}
 		 

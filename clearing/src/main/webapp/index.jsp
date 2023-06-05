@@ -32,7 +32,7 @@
 <link href="css/login.css" rel="stylesheet">
 <link href="css/kakaoMap.css" rel="stylesheet">
 <script type="text/javascript"
-	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=683c7e08c86fe41ea5c21dd7148dc9f3&libraries=services,clusterer,drawing"></script>
+	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4fe78505e64a5ac31be2e7b890da39d4&libraries=services,clusterer,drawing"></script>
 
 
 
@@ -130,8 +130,7 @@ Free Bootstrap 5 HTML Template
 					%>
 					<li class="nav-item ms-3"><a
 						class="nav-link custom-btn custom-border-btn custom-btn-bg-white btn"
-						href="selectReservationDetails">My page</a></li>
-					<%-- href="Mypage.jsp?email=<%=email%>&addr=<%=addr%>&lat=<%=lat%>&lng=<%=lng%>" --%>
+						href="Mypage.jsp">My page</a></li>
 					<li class="nav-item ms-3"><a
 						class="nav-link custom-btn custom-border-btn custom-btn-bg-white btn"
 						href="logOut">Log-Out</a></li>
