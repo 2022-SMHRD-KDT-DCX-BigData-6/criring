@@ -21,8 +21,6 @@ public class myPageUpdate extends HttpServlet {
 		String inputAddr = request.getParameter("joinAddr");
 		double joinLat = Double.parseDouble(request.getParameter("userLatInput"));
 		double joinLng = Double.parseDouble(request.getParameter("userLngInput"));
-		System.out.println(inputEmail + inputPassword + inputUpdatePassword+inputAddr);
-		System.out.println("왜 널?" + joinLat + "얘는 ? " + joinLng);
 
 		MemberDAO dao = new MemberDAO();
 		MemberDTO udto = new MemberDTO(inputEmail, inputPassword);
