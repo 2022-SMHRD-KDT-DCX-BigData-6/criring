@@ -47,7 +47,11 @@
                </tr>
                <tr>
                   <td colspan="2">
-                     <%=rDto.getReqFile() %>
+                  	<%if(rDto.getReqFile() == null) {%>
+                     <%}else if(rDto.getReqFile() != null){%>
+					<img alt="x" src="./file/<%=rDto.getReqFile() %>" style="width: 40%;">
+					
+					<%} %>
                   </td>
                </tr>
                <%

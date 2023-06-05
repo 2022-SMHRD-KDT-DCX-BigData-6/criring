@@ -20,7 +20,7 @@ public class replyInsert extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		HttpSession session = request.getSession();
-		String path = request.getServletContext().getRealPath("");
+		String path = request.getServletContext().getRealPath("./file");
 		System.out.println("저장 경로 ㅇㄷ? : " + path);
 		int maxSize = 1024 * 1024 * 10; // 10MB
 		
