@@ -12,13 +12,18 @@
 		<typeAlias type="com.clearing.model.StoreDTO" alias="Store" />
 		<typeAlias type="com.clearing.model.LaundryDTO"
 			alias="Laundry" />
-		<typeAlias type="com.clearing.model.usingVO" alias="Using"/>
+		<typeAlias type="com.clearing.model.usingVO" alias="Using" />
 		<!-- <typeAlias type="com.clearing.model.laundryVO" alias="Laundry"/> -->
-		<typeAlias type="com.clearing.model.StoreVO" alias="StoreUse"/>
+		<typeAlias type="com.clearing.model.StoreVO"
+			alias="StoreUse" />
 		<typeAlias type="com.clearing.model.admin_reviewDTO"
 			alias="admin_review" />
-		<typeAlias type="com.clearing.model.Request_BoardDTO" alias="request_Board"/>
-		<typeAlias type="com.clearing.model.admin_replyDTO" alias="admin_reply"/>
+		<typeAlias type="com.clearing.model.Request_BoardDTO"
+			alias="request_Board" />
+		<typeAlias type="com.clearing.model.admin_replyDTO"
+			alias="admin_reply" />
+		<typeAlias type="com.clearing.model.tbl_reviewListDTO"
+			alias="Review" />
 	</typeAliases>
 	<environments default="development">
 		<environment id="development">
@@ -40,7 +45,7 @@
 		<mapper resource="com/clearing/database/MemberMapper.xml" />
 		<mapper resource="com/clearing/database/userMapper.xml" />
 		<mapper resource="com/clearing/database/adminMapper.xml" />
-		<mapper resource="com/clearing/database/requestMapper.xml"/>
-		<mapper resource="com/clearing/database/reservationMapper.xml"/>
+		<mapper resource="com/clearing/database/requestMapper.xml" />
+		<mapper resource="com/clearing/database/reservationMapper.xml" />
 	</mappers>
 </configuration>

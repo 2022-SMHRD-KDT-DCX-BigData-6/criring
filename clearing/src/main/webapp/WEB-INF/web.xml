@@ -87,6 +87,30 @@
 		<description></description>
 		<servlet-class>com.clearing.controller.reqBoardInsert</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>Review_DeleteController</servlet-name>
+		<display-name>Review_DeleteController</display-name>
+		<description></description>
+		<servlet-class>com.clearing.controller.Review_DeleteController</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>Review_ViewController</servlet-name>
+		<display-name>Review_ViewController</display-name>
+		<description></description>
+		<servlet-class>com.clearing.controller.Review_ViewController</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>Review_ViewUserController</servlet-name>
+		<display-name>Review_ViewUserController</display-name>
+		<description></description>
+		<servlet-class>com.clearing.controller.Review_ViewUserController</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>Review_WriteController</servlet-name>
+		<display-name>Review_WriteController</display-name>
+		<description></description>
+		<servlet-class>com.clearing.controller.Review_WriteController</servlet-class>
+	</servlet>
 	<servlet-mapping>
 		<servlet-name>joinMember</servlet-name>
 		<url-pattern>/joinMember</url-pattern>
@@ -142,6 +166,22 @@
 	<servlet-mapping>
 		<servlet-name>reqBoardInsert</servlet-name>
 		<url-pattern>/reqBoardInsert</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Review_DeleteController</servlet-name>
+		<url-pattern>/Review_DeleteController</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Review_ViewController</servlet-name>
+		<url-pattern>/Review_ViewController</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Review_ViewUserController</servlet-name>
+		<url-pattern>/Review_ViewUserController</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Review_WriteController</servlet-name>
+		<url-pattern>/Review_WriteController</url-pattern>
 	</servlet-mapping>
 
 </web-app>
