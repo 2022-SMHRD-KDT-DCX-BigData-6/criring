@@ -46,4 +46,11 @@ public class MemberDAO {
 		
 		return result;
 	}
+	
+	public int idDchk(String MB_EMAIL) {
+		SqlSession sqlSession = sqlSessionFactory.openSession(true);
+		int result =sqlSession.selectOne("com.clearing.database.MemberMapper.Dchk",MB_EMAIL);
+		sqlSession.close();
+		return result;
+	}
 }
