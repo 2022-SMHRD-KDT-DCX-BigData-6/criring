@@ -359,7 +359,7 @@ Free Bootstrap 5 HTML Template
 							<table class="table">
 								<thead>
 									<tr>
-										<th scope="col">순번</th>
+										<th scope="col">순번1</th>
 										<th scope="col">예약 번호</th>
 										<th scope="col">세탁기 순번</th>
 										<th scope="col">사용 시작 시간</th>
