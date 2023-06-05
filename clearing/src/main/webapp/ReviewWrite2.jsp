@@ -49,7 +49,7 @@ body {
 
 <body>
 	<% String store_name=request.getParameter("store_name");
-		session.setAttribute("store_name1", store_name);%>
+		session.setAttribute("s_name", store_name);%>
 	<header class="site-header">
 		<div class="container">
 			<div class="row">

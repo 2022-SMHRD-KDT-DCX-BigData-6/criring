@@ -23,8 +23,8 @@ public class Review_WriteController extends HttpServlet {
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		String store_name = (String)session.getAttribute("store_name1");
-		session.removeAttribute("store_name1");
+		String store_name = (String)session.getAttribute("s_name");
+		session.removeAttribute("s_name");
 		StoreDAO sDao = new StoreDAO();
 		StoreVO sVo=sDao.storelocation(store_name);
 		
