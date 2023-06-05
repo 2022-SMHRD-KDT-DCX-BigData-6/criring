@@ -46,7 +46,15 @@ Free Bootstrap 5 HTML Template
 	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript"
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=683c7e08c86fe41ea5c21dd7148dc9f3&libraries=services,clusterer,drawing"></script>
-	
+	<style type="text/css">
+	@font-face {
+    font-family: 'gmarket';
+    src: url('./fonts/GmarketSansTTFMedium.ttf') format('truetype');
+}
+body {
+	font-family: 'gmarket';
+}
+</style>
 </head>
 <body>
 	<%
@@ -201,17 +209,18 @@ Free Bootstrap 5 HTML Template
 							</div>
 						</div>
 						<div class="mb-3 row">
-						<label class="col-sm-2 col-form-label" for="sample5_roadAddress" style="color: #77B2E8">Address</label>
+						<label class="col-sm-2 col-form-label" for="sample5_roadAddress" style="color: #77B2E8">변경할 주소</label>
 							<div class="col-sm-10"> 
 							<input type="button" class="btn btn-primary btn-lg btn-block"
-								onclick="sample5_execDaumPostcode()" value="주소 검색"  style="background-color: #77B2E8; border-color: #77B2E8">
+								onclick="sample5_execDaumPostcode()" value="주소 검색"  style="background-color: #77B2E8; border-color: #77B2E8;margin-top: 0;
+    font-size: 14px;">
 								<input type="text" id="sample5_address" name="joinAddr"
 									class="form-control" value="<%=session.getAttribute("addr")%>"
-									readonly style="width: 1%">
+									readonly style="width: 91%">
 						</div> 
-						<div class="form-outline mb-4">
+						<!-- <div class="form-outline mb-4">
 
-						</div>
+						</div> -->
 						</div>
 
 
@@ -346,9 +355,10 @@ Free Bootstrap 5 HTML Template
 						</script>
 
 						<button type="submit"
-							class="btn btn-primary btn-lg btn-block modal-btn" style="background-color: #77B2E8; border-color: #77B2E8" >정보 수정</button><br><br>
+							class="btn btn-primary btn-lg btn-block modal-btn" style="background-color: #77B2E8; border-color: #77B2E8; padding: 0.5%" >정보 수정</button><br><br>
 						<a href="secessionMember"><button
-								class="btn btn-primary btn-lg btn-block modal-btn"  style="background-color: #77B2E8; border-color: #77B2E8">회원탈퇴</button></a>
+								class="btn btn-primary btn-lg btn-block modal-btn"  style="background-color: #77B2E8; border-color: #77B2E8; padding: 0.5%;    font-size: 18px;
+    width: 123%;">회원탈퇴</button></a>
 					</form>
 
 				</div>
@@ -360,7 +370,7 @@ Free Bootstrap 5 HTML Template
 		
 	</main>
 
-	<footer class="site-footer">
+	<footer class="site-footer" style="margin-top: 0">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12 col-12 d-flex align-items-center mb-4 pb-2">
