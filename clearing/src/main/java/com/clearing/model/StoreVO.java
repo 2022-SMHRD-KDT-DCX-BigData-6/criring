@@ -21,6 +21,7 @@ public class StoreVO {
 	private int DRYER_CNT;
 	private double LAT;
 	private double LNG;
+	private int cnt;
 	
 	// 일단 위도 경도만 받음
 	public StoreVO(double LAT, double LNG) {

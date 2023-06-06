@@ -1,5 +1,7 @@
 package com.clearing.model;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
@@ -37,5 +39,23 @@ public class StoreDAO {
 		StoreVO storelocation = sqlSession.selectOne("com.clearing.database.MemberMapper.selLocation",store_name);
 		sqlSession.close();
 		return storelocation;
+	}
+	
+	public List<StoreVO> storeN() {
+		SqlSession sqlSession = sqlSessionFactory.openSession(true);
+		
+		List<StoreVO> storeN = sqlSession.selectList("com.clearing.database.ReviewMapper.selNoReview");
+		sqlSession.close();
+		
+		return storeN;
+	}
+	
+	public List<StoreVO> storeReviewNum(){
+		SqlSession sqlSession = sqlSessionFactory.openSession(true);
+		
+		List<StoreVO> storeReviewNum = sqlSession.selectList("com.clearing.database.ReviewMapper.selReviewNum");
+		sqlSession.close();
+		
+		return storeReviewNum;
 	}
 }

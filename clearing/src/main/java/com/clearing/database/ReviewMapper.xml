@@ -33,4 +33,12 @@
 	<select id="selReviewStoreName" resultType="Store">
 		select store_name from tbl_store a, tbl_review b where a.store_email = b.store_email
 	</select>
+	
+	<select id="selNoReview" resultType="StoreUse">
+		SELECT A.store_name FROM  tbl_store A left OUTER JOIN  tbl_review B ON  A.store_email = B.store_email where review_seq is null
+	</select>
+	
+	<select id ="selReviewNum" resultType="StoreUse">
+		select a.store_name,cnt from tbl_store a right outer join store_review_cnt b on a.store_email=b.store_email order by cnt desc
+	</select>
 </mapper>

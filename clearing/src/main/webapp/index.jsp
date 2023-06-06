@@ -33,7 +33,7 @@
 <link href="css/kakaoMap.css" rel="stylesheet">
 <link href="css/chatbot.css" rel="stylesheet">
 <script type="text/javascript"
-	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=683c7e08c86fe41ea5c21dd7148dc9f3&libraries=services,clusterer,drawing"></script>
+	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4fe78505e64a5ac31be2e7b890da39d4&libraries=services,clusterer,drawing"></script>
 
 <style type="text/css">
 	@font-face {
@@ -282,13 +282,13 @@ Free Bootstrap 5 HTML Template
 				</div>
 			</div>
 		</form>
-		<form action="reviewSelect">
+		<form action="Review_ViewController">
 			<div class="reservation-LatLng" style="display:none;">
 				<div id="reservation-Lat1"></div>
 				<div id="reservation-Lng1"></div>
 			</div>
 			<button type="submit" class="custom-btn custom-border-btn custom-btn-bg-white btn button button--pan smoothscroll reivewbtn"
-						href="#services-section"> <span style="">Review</span>
+						> <span style="">Review</span>
 			</button>
 		</form>
 
@@ -454,6 +454,8 @@ Free Bootstrap 5 HTML Template
 
 	<script src="js/bootstrap.min.js"></script>
 	<script src="./js/jquery-3.7.0.js"></script>
+	
+
 <script>
 		$('#staticBackdrop').on('show.bs.modal', function(e) {
 	
@@ -464,7 +466,7 @@ Free Bootstrap 5 HTML Template
 	
 		});
 		$('#Exit').on('click',function(){
-			window.location.href='http://localhost:8081/clearing2/chattingStart.jsp';
+			window.location.href='http://localhost:8081/clearing/index.jsp';
 			
 		});
 	</script> 
