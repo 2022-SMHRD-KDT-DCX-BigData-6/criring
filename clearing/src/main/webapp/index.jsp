@@ -35,10 +35,10 @@
 <link href="css/kakaoMap.css" rel="stylesheet">
 <link href="css/chatbot.css" rel="stylesheet">
 <script type="text/javascript"
-
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4fe78505e64a5ac31be2e7b890da39d4&libraries=services,clusterer,drawing"></script>
 
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=0db420091d1781f4feb06d2e77972cba&libraries=services,clusterer,drawing"></script>
+<script type="text/javascript"
+	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=0db420091d1781f4feb06d2e77972cba&libraries=services,clusterer,drawing"></script>
 
 <style type="text/css">
 @font-face {
@@ -283,30 +283,8 @@ Free Bootstrap 5 HTML Template
 									<span>예약하기</span> <span>예약하기</span> <span>Reservation</span> <span>예약하기</span>
 								</div>
 							</div>
-<<<<<<< HEAD
-						</div>
-					</button>
-					
-				</div>
-				<div class="reservation-LatLng" style="display:none;">
-					<div id="reservation-Lat"></div>
-					<div id="reservation-Lng"></div>
-				</div>
-			</div>
-		</form>
-		<form action="Review_ViewController">
-			<div class="reservation-LatLng" style="display:none;">
-				<div id="reservation-Lat1"></div>
-				<div id="reservation-Lng1"></div>
-			</div>
-			<button type="submit" class="custom-btn custom-border-btn custom-btn-bg-white btn button button--pan smoothscroll reivewbtn"
-						> <span style="">Review</span>
-			</button>
-		</form>
-=======
-						</button>
->>>>>>> branch 'master' of https://github.com/2022-SMHRD-KDT-DCX-BigData-6/criring.git
 
+						</button>
 					</div>
 					<div class="reservation-LatLng" style="display: none;">
 						<div id="reservation-Lat"></div>
@@ -314,18 +292,16 @@ Free Bootstrap 5 HTML Template
 					</div>
 				</div>
 			</form>
-			<form action="reviewSelect">
+			<form action="Review_ViewController">
 				<div class="reservation-LatLng" style="display: none;">
 					<div id="reservation-Lat1"></div>
 					<div id="reservation-Lng1"></div>
 				</div>
 				<button type="submit"
-					class="custom-btn custom-border-btn custom-btn-bg-white btn button button--pan smoothscroll reivewbtn"
-					href="#services-section">
+					class="custom-btn custom-border-btn custom-btn-bg-white btn button button--pan smoothscroll reivewbtn">
 					<span style="">Review</span>
 				</button>
 			</form>
-
 		</section>
 	</div>
 	<footer class="site-footer">
@@ -645,10 +621,10 @@ Free Bootstrap 5 HTML Template
 	</div>
 
 	<script src="./js/jquery-3.7.0.js"></script>
-<<<<<<< HEAD
-	
+	<<<<<<< HEAD
 
-<script>
+
+	<script>
 =======
 	<script>
 >>>>>>> branch 'master' of https://github.com/2022-SMHRD-KDT-DCX-BigData-6/criring.git
@@ -665,11 +641,12 @@ Free Bootstrap 5 HTML Template
 			window.location.href='http://localhost:8081/clearing/index.jsp';
 			
 		});
-	</script> 
-	
-=======
 	</script>
->>>>>>> branch 'master' of https://github.com/2022-SMHRD-KDT-DCX-BigData-6/criring.git
+
+	=======
+	</script>
+	>>>>>>> branch 'master' of
+	https://github.com/2022-SMHRD-KDT-DCX-BigData-6/criring.git
 	<!-- JAVASCRIPT FILES -->
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
