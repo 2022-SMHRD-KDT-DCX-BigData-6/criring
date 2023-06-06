@@ -621,6 +621,27 @@ Free Bootstrap 5 HTML Template
 		</div>
 	</footer>
 
+<script src="./js/jquery-3.7.0.js"></script>
+	<!-- 날짜 선택 js -->
+	<script type="text/javascript">
+		$('#idCheck').on('click',function(){
+		    var email = $('#form1Example13').val();
+		    $.ajax({
+				url:"http://localhost:8081/clearing/loginDChk",
+				dataType:'text',
+				data:{MB_EMAIL:email},
+				success: function(result,textStatus){
+					if(result ==='usable'){
+						alert("사용할수 있는 아이디 입니다.");
+					}else{
+						alert("이미 사용중인 아이디 입니다.");
+					}
+				}
+			});
+				
+		});
+		</script>
+
 			<% email=(String)session.getAttribute("email"); %>
 	<!-- 유저 밸류값은 표현식으로 세션에서 저장된거 가져올거임 -->
 	<!-- Scrollable modal -->
@@ -794,6 +815,27 @@ Free Bootstrap 5 HTML Template
 	</script> 
 	
 	
+
+<script src="./js/jquery-3.7.0.js"></script>
+	<!-- 날짜 선택 js -->
+	<script type="text/javascript">
+		$('#idCheck').on('click',function(){
+		    var email = $('#form1Example13').val();
+		    $.ajax({
+				url:"http://localhost:8081/clearing/loginDChk",
+				dataType:'text',
+				data:{MB_EMAIL:email},
+				success: function(result,textStatus){
+					if(result ==='usable'){
+						alert("사용할수 있는 아이디 입니다.");
+					}else{
+						alert("이미 사용중인 아이디 입니다.");
+					}
+				}
+			});
+				
+		});
+		</script>
 	<!-- JAVASCRIPT FILES -->
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>

@@ -46,4 +46,7 @@
 	<select id="selLocation" resultType="StoreUse">
 		select lat,lng from tbl_store where store_name=#{store_name}
 	</select>
+	<select id="Dchk" resultType="int">
+	SELECT COUNT(*) FROM tbl_member WHERE mb_email = #{MB_EMAIL} AND ROWNUM = 1
+	</select>
 </mapper>

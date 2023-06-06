@@ -38,14 +38,14 @@
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=0db420091d1781f4feb06d2e77972cba&libraries=services,clusterer,drawing"></script>
 
 <style type="text/css">
-	@font-face {
-		font-family: 'gmarket';
-		src: url('./fonts/GmarketSansTTFMedium.ttf') format('truetype');
-	}
+@font-face {
+	font-family: 'gmarket';
+	src: url('./fonts/GmarketSansTTFMedium.ttf') format('truetype');
+}
 
-	body {
-		font-family: 'gmarket';
-	}
+body {
+	font-family: 'gmarket';
+}
 </style>
 
 <!--
@@ -127,14 +127,14 @@ Free Bootstrap 5 HTML Template
 
 			<div class="collapse navbar-collapse" id="navbarNav">
 				<ul class="navbar-nav ms-auto">
-					<li class="nav-item"><a class="nav-link"
-						href="index.jsp">메인</a></li>
+					<li class="nav-item"><a class="nav-link" href="index.jsp">메인</a></li>
 					<li class="nav-item"><a class="nav-link" href="NonUserReview">후기
-							</a></li>
-					<li class="nav-item"><a class="nav-link" href="requestBoardMain.jsp">문의
-							</a></li>
-					<%if(email !=null) {
-					if (email.equals("admin")) {
+					</a></li>
+					<li class="nav-item"><a class="nav-link"
+						href="requestBoardMain.jsp">문의 </a></li>
+					<%
+					if (email != null) {
+						if (email.equals("admin")) {
 					%>
 					<!-- admin 로그인시 생기는 메뉴 TODO-->
 					<li class="nav-item"><a class="nav-link" href="contact.html">관리자</a>
@@ -174,13 +174,13 @@ Free Bootstrap 5 HTML Template
 			class="hero-section hero-section-full-height d-flex justify-content-center align-items-center">
 			<div class="section-overlay"></div>
 
-			<div class="container" style="padding-bottom:20%;">
+			<div class="container" style="padding-bottom: 20%;">
 				<div class="row mainForm">
 					<div class="col-lg-7 col-12 text-center mx-auto">
 
 						<h1 class="cd-headline rotate-1 text-white mb-4 pb-2">
-							<span>코인세탁방</span> <span class="cd-words-wrapper">
-								<b class="is-visible">검색</b> <b>예약</b> <b>리뷰</b>
+							<span>코인세탁방</span> <span class="cd-words-wrapper"> <b
+								class="is-visible">검색</b> <b>예약</b> <b>리뷰</b>
 							</span>
 						</h1>
 
@@ -208,11 +208,11 @@ Free Bootstrap 5 HTML Template
 
 		</section>
 	</main>
-<div class="searchWrap">
-	<section class="search_reservation"
-		style="height: 600px; position: relative;padding-right: 1.5%;">
-		<div class="searchsection" style="margin-top:5%;"></div>
-		<%-- <div class="searchAddr">
+	<div class="searchWrap">
+		<section class="search_reservation"
+			style="height: 600px; position: relative; padding-right: 1.5%;">
+			<div class="searchsection" style="margin-top: 5%;"></div>
+			<%-- <div class="searchAddr">
 			<div class="input-group mb-3 input-group-jin" style="margin-top:15px;">
 				<input type="text" class="form-control" name="addrSearch"
 					id="keyword" placeholder="검색할 주소를 입력하세요"
@@ -227,80 +227,82 @@ Free Bootstrap 5 HTML Template
 
 
 		</div> --%>
-		<!-- 		<div id="map" style="width: 600px; height: 400px;"></div> -->
-		<%
-		/* TODO 세션에 유저주소정보를 담아서 업데이트해줘야함 */
-		String searchAddr = addr;
-		if (searchAddr == null) {
-			searchAddr = "쌍촌동";
-		} else {
-			searchAddr = searchAddr.substring(0, 5);
-		}
-		%>
-		<div class="option">
-			<div class="kakao-search">
-				<form id="searchAddrReservation"
-					onsubmit="searchPlaces(); return false;">
-					<input type="text" class="form-control" name="addrSearch"
-						value="<%=searchAddr%>" id="keyword" placeholder="검색할 주소를 입력하세요"
-						aria-label="Recipient's username" aria-describedby="button-addon2"
-						size="15">
-					<button type="button" class="btn search-btn" id="button-addon2">검색
-						!</button>
-				</form>
-			</div>
-		</div>
-		<div class="map_menu_wrap">
-			<div class="map_wrap">
-
-				<div id="map"
-					style="width: 450px; height: 450px; position: relative; overflow: hidden;"></div>
-			</div>
-			<div id="menu_wrap" class="bg_white">
-				<hr>
-				<ul id="placesList"></ul>
-				<div id="pagination"></div>
-			</div>
-		</div>
-		<form action="bookLaundryController" id="selectStore_form">
-
-			<div class="selectReservation">
-				<div class="reservation-info dp-none">
-					<div id="selectStore" class="selectStore_pos"></div>
-					<div style="margin-left: 15px;">예약하시겠습니까?</div>
+			<!-- 		<div id="map" style="width: 600px; height: 400px;"></div> -->
+			<%
+			/* TODO 세션에 유저주소정보를 담아서 업데이트해줘야함 */
+			String searchAddr = addr;
+			if (searchAddr == null) {
+				searchAddr = "쌍촌동";
+			} else {
+				searchAddr = searchAddr.substring(0, 5);
+			}
+			%>
+			<div class="option">
+				<div class="kakao-search">
+					<form id="searchAddrReservation"
+						onsubmit="searchPlaces(); return false;">
+						<input type="text" class="form-control" name="addrSearch"
+							value="<%=searchAddr%>" id="keyword" placeholder="검색할 주소를 입력하세요"
+							aria-label="Recipient's username"
+							aria-describedby="button-addon2" size="15">
+						<button type="button" class="btn search-btn" id="button-addon2">검색
+							!</button>
+					</form>
 				</div>
-				<div class="map-searchbtn-group">
-					<button type="submit"
-						class="custom-btn btn button button--atlas smoothscroll me-3" style="width: 160px;">
-						<span>예약하기</span>
+			</div>
+			<div class="map_menu_wrap">
+				<div class="map_wrap">
 
-						<div class="marquee" aria-hidden="true">
-							<div class="marquee__inner">
-								<span>예약하기</span> <span>예약하기</span> <span>Reservation</span>
-								<span>예약하기</span>
+					<div id="map"
+						style="width: 450px; height: 450px; position: relative; overflow: hidden;"></div>
+				</div>
+				<div id="menu_wrap" class="bg_white">
+					<hr>
+					<ul id="placesList"></ul>
+					<div id="pagination"></div>
+				</div>
+			</div>
+			<form action="bookLaundryController" id="selectStore_form">
+
+				<div class="selectReservation">
+					<div class="reservation-info dp-none">
+						<div id="selectStore" class="selectStore_pos"></div>
+						<div style="margin-left: 15px;">예약하시겠습니까?</div>
+					</div>
+					<div class="map-searchbtn-group">
+						<button type="submit"
+							class="custom-btn btn button button--atlas smoothscroll me-3"
+							style="width: 160px;">
+							<span>예약하기</span>
+
+							<div class="marquee" aria-hidden="true">
+								<div class="marquee__inner">
+									<span>예약하기</span> <span>예약하기</span> <span>Reservation</span> <span>예약하기</span>
+								</div>
 							</div>
-						</div>
-					</button>
-					
-				</div>
-				<div class="reservation-LatLng" style="display:none;">
-					<div id="reservation-Lat"></div>
-					<div id="reservation-Lng"></div>
-				</div>
-			</div>
-		</form>
-		<form action="reviewSelect">
-			<div class="reservation-LatLng" style="display:none;">
-				<div id="reservation-Lat1"></div>
-				<div id="reservation-Lng1"></div>
-			</div>
-			<button type="submit" class="custom-btn custom-border-btn custom-btn-bg-white btn button button--pan smoothscroll reivewbtn"
-						href="#services-section"> <span style="">Review</span>
-			</button>
-		</form>
+						</button>
 
-	</section>
-</div>
+					</div>
+					<div class="reservation-LatLng" style="display: none;">
+						<div id="reservation-Lat"></div>
+						<div id="reservation-Lng"></div>
+					</div>
+				</div>
+			</form>
+			<form action="reviewSelect">
+				<div class="reservation-LatLng" style="display: none;">
+					<div id="reservation-Lat1"></div>
+					<div id="reservation-Lng1"></div>
+				</div>
+				<button type="submit"
+					class="custom-btn custom-border-btn custom-btn-bg-white btn button button--pan smoothscroll reivewbtn"
+					href="#services-section">
+					<span style="">Review</span>
+				</button>
+			</form>
+
+		</section>
+	</div>
 	<footer class="site-footer">
 		<div class="container">
 			<div class="row">
@@ -324,29 +326,23 @@ Free Bootstrap 5 HTML Template
 					<h5 class="site-footer-title mb-3">서비스</h5>
 
 					<ul class="footer-menu">
-						<li class="footer-menu-item">
-							<a href="#" class="footer-menu-link">
-								<i
+						<li class="footer-menu-item"><a href="#"
+							class="footer-menu-link"> <i
 								class="bi-chevron-double-right footer-menu-link-icon me-2"></i>
 								코인세탁방 검색
-							</a>
-						</li>
+						</a></li>
 
-						<li class="footer-menu-item"> 
-							<a href="#" class="footer-menu-link">
-								<i
+						<li class="footer-menu-item"><a href="#"
+							class="footer-menu-link"> <i
 								class="bi-chevron-double-right footer-menu-link-icon me-2"></i>
 								예약
-							</a>
-						</li>
+						</a></li>
 
-						<li class="footer-menu-item">
-							<a href="#" class="footer-menu-link">
-									<i
-									class="bi-chevron-double-right footer-menu-link-icon me-2"></i>
-									리뷰
-							</a>
-						</li>
+						<li class="footer-menu-item"><a href="#"
+							class="footer-menu-link"> <i
+								class="bi-chevron-double-right footer-menu-link-icon me-2"></i>
+								리뷰
+						</a></li>
 
 						<li class="footer-menu-item"><a href="#"
 							class="footer-menu-link"> <i
@@ -361,12 +357,13 @@ Free Bootstrap 5 HTML Template
 
 					<p class="text-white d-flex mt-3 mb-2">
 						<i class="bi-geo-alt-fill me-2"></i> 광주 서구 경열로 20
-						
+
 					</p>
 
 					<p class="text-white d-flex mb-2">
-						<i class="bi-telephone-fill me-2"></i> <a href="tel: 010-1234-1234"
-							class="site-footer-link"> 010-1234-1234 </a>
+						<i class="bi-telephone-fill me-2"></i> <a
+							href="tel: 010-1234-1234" class="site-footer-link">
+							010-1234-1234 </a>
 					</p>
 
 					<p class="text-white d-flex">
@@ -428,8 +425,8 @@ Free Bootstrap 5 HTML Template
 		</div>
 	</footer>
 
-	
-<%
+
+	<%
 	email = (String) session.getAttribute("email");
 	%>
 	<!-- 유저 밸류값은 표현식으로 세션에서 저장된거 가져올거임 -->
@@ -480,8 +477,7 @@ Free Bootstrap 5 HTML Template
 					<br> 고객님, 지금은 운영시간이 아닙니다.<br> <br> 현재는 챗봇 상담만 가능하며,
 					상담사 연결은 운영시간 내 문의 부탁드립니다.<br> 감사합니다.<br> <br> [운영시간]
 					&#128342;<br> 평일 : 10시 - 17시 (공휴일 제외)<br> <br> 문의사항을
-					선택하거나 번호를 입력해 주세요.<br>
-					<br>
+					선택하거나 번호를 입력해 주세요.<br> <br>
 
 					<div id="allbutton">
 						<button class="btn btn-primary sel" type="button" value="1"
@@ -514,8 +510,7 @@ Free Bootstrap 5 HTML Template
 					<br> 안녕하세요 고객님&#128075;<br> 크리링 &#129302;챗봇 상담입니다.<br>
 					<br> 문의유형을 선택해주세요!<br> <br> 상담원과의 대화가 필요할 경우<br>
 					[상담원 연결] 버튼을 눌러주세요 : )<br> * 상담원 연결 후 문의사항을 말씀해주세요.<br> *
-					대화 내용은 상담을 위해서만 사용됩니다.<br>
-					<br>
+					대화 내용은 상담을 위해서만 사용됩니다.<br> <br>
 					<!-- 타임딜레이 -->
 					<div id="allbutton">
 						<button class="btn btn-primary sel" type="button" value="1"
@@ -634,7 +629,7 @@ Free Bootstrap 5 HTML Template
 			modal.find('.modal-body').load(button.data("remote"));
 
 		});
-	</script>	
+	</script>
 	<!-- JAVASCRIPT FILES -->
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>

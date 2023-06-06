@@ -33,6 +33,7 @@
 <link href="css/tooplate-clean-work.css" rel="stylesheet" />
 <link href="css/login.css" rel="stylesheet">
 <link href="css/mypageJ.css" rel="stylesheet">
+<link href="css/chatbot.css" rel="stylesheet">
 <!--
 
 Tooplate 2132 Clean Work
@@ -47,7 +48,7 @@ Free Bootstrap 5 HTML Template
 <script
 	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript"
-	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=683c7e08c86fe41ea5c21dd7148dc9f3&libraries=services,clusterer,drawing"></script>
+	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=0db420091d1781f4feb06d2e77972cba&libraries=services,clusterer,drawing"></script>
 	<style type="text/css">
 	@font-face {
     font-family: 'gmarket';
@@ -540,7 +541,7 @@ body {
 	});
 	
 
-	
+	</script>
 	<% email=(String)session.getAttribute("email"); %>
 	<!-- 유저 밸류값은 표현식으로 세션에서 저장된거 가져올거임 -->
 	<!-- Scrollable modal -->
@@ -616,13 +617,16 @@ body {
   		<button class="btn btn-primary sel" type="button" value="5" style="background-color: #7CB8EB;border-color:#7CB8EB">5. 상담원 연결</button><br>
 		</div>
 	<%} %>
-	
+	      </div>
+      <div class="modal-footer">
+        <button type="button" id="Exit"class="btn btn-secondary" data-bs-dismiss="modal">나가기</button>
+      </div>
+    </div>
+  </div>
+</div>
 	
 	
 	<form action="#" id="ajaxDisplay">
-	
-	
-	
 	
 	</form>
 	
@@ -693,13 +697,7 @@ body {
 		 
 	});
 	</script>
-      </div>
-      <div class="modal-footer">
-        <button type="button" id="Exit"class="btn btn-secondary" data-bs-dismiss="modal">나가기</button>
-      </div>
-    </div>
-  </div>
-</div>
+
 
 	<script src="./js/jquery-3.7.0.js"></script>
 	<script>
@@ -712,7 +710,6 @@ body {
 	
 		});
 	</script> 
-	</script>
 	<!-- JAVASCRIPT FILES -->
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>

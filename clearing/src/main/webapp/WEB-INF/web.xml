@@ -141,6 +141,12 @@
 		<description></description>
 		<servlet-class>com.clearing.controller.reqBoardDelete</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>loginDChk</servlet-name>
+		<display-name>loginDChk</display-name>
+		<description></description>
+		<servlet-class>com.clearing.controller.loginDChk</servlet-class>
+	</servlet>
 	<servlet-mapping>
 		<servlet-name>reqBoardDelete</servlet-name>
 		<url-pattern>/reqBoardDelete</url-pattern>
@@ -232,6 +238,10 @@
 	<servlet-mapping>
 		<servlet-name>Review_WriteController</servlet-name>
 		<url-pattern>/Review_WriteController</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>loginDChk</servlet-name>
+		<url-pattern>/loginDChk</url-pattern>
 	</servlet-mapping>
 
 </web-app>
