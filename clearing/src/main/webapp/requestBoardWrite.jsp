@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,10 +8,12 @@
 <title>Insert title here</title>
 </head>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-        
+
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        
-<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+
+<link
+	href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,700;1,400&display=swap"
+	rel="stylesheet">
 
 <link href="css/bootstrap.min.css" rel="stylesheet">
 
@@ -22,19 +24,22 @@
 @import 'https://fonts.googleapis.com/css?family=Open+Sans:600,700';
 
 @font-face {
-    font-family: 'gmarket';
-    src: url('./fonts/GmarketSansTTFMedium.ttf') format('truetype');
+	font-family: 'gmarket';
+	src: url('./fonts/GmarketSansTTFMedium.ttf') format('truetype');
 }
+
 body {
 	font-family: 'gmarket';
 }
+
 input[type=reset], input[type=submit], input[type=button] {
 	border: none;
 }
 
 .requestWrite {
-	margin-top:70px;
+	margin-top: 40px;
 }
+
 .requestWriteTable {
 	margin: 0 auto;
 }
@@ -42,6 +47,22 @@ input[type=reset], input[type=submit], input[type=button] {
 .requestBack {
 	border: none;
 }
+
+.reqname {
+	margin-top: 50px;
+}
+.reqtitle {
+	margin-top: 5px;
+    margin-bottom: 15px;
+    }
+
+.reqbtn {
+	width: 70px;
+    height: 40px;
+    border: 1px solid var(--white-color);
+    background-color: #7cb8eb;
+    border-radius: 10px;
+    }
 </style>
 <body>
 	<header class="site-header">
@@ -65,8 +86,8 @@ input[type=reset], input[type=submit], input[type=button] {
 			</div>
 		</div>
 	</header>
-	
-  <nav class="navbar navbar-expand-lg">
+
+	<nav class="navbar navbar-expand-lg">
 		<div class="container">
 			<a class="navbar-brand" href="index.jsp"> <img
 				src="images/bubbles.png" class="logo img-fluid" alt="" /> <span
@@ -90,9 +111,9 @@ input[type=reset], input[type=submit], input[type=button] {
 						href="requestBoardMain.jsp">문의</a></li>
 
 					<%
-					if(session.getAttribute("email")!=null){
-					String email = (String)session.getAttribute("email");
-					if (email.equals("admin")) {
+					if (session.getAttribute("email") != null) {
+						String email = (String) session.getAttribute("email");
+						if (email.equals("admin")) {
 					%>
 					<!-- admin 로그인시 생기는 메뉴 TODO-->
 					<li class="nav-item"><a class="nav-link" href="contact.html">관리자</a>
@@ -127,66 +148,53 @@ input[type=reset], input[type=submit], input[type=button] {
 			</div>
 		</div>
 	</nav>
-	 <main>
-		   <section class="banner-section d-flex justify-content-center align-items-end">
-	                <div class="section-overlay"></div>
-	
-	                <div class="container">
-	                    <div class="row">
-	
-	                        <div class="col-lg-7 col-12">
-	                            <h1 class="text-white mb-lg-0">문의 게시판</h1>
-	                        </div>
-	
-	
-	                    </div>
-	                    
-	                    
-	                </div>
-			</section>
-			<section class="d-flex justify-content-center align-items-end">
-				<div id = "board" class="requestWrite">
-					            <form action="reqBoardInsert" method="post" enctype="multipart/form-data">
-						            <table id="list" class="requestWriteTable">
-						               <tr>
-						                  <td>제목</td>
-						                  <td>
-						                  		<input type="text" name="req_title" class="form-control" placeholder="name@example.com">
-						                  </td>
-						               </tr>
-						               <tr>
-						                  <td>작성자</td>
-						                  <td>
-						                  		<input type="hidden" name="req_email"><%=session.getAttribute("email") %>
-						                  </td>
-						               </tr>
-						               <tr>
-						                  <td colspan="2">내용</td>
-						               </tr>
-						               <tr>
-						                  <td colspan="2">
-						                     <textarea  rows="6" name="req_content" class="form-control" style="resize: none;"></textarea>         
-						                  </td>
-						               </tr>
-						               <tr>
-						               		<td colspan="2">
-							                     <input type="file" class="form-control" name="req_file"/>
-						               		</td>
-						               </tr>
-						               <tr>
-						                  <td colspan="2">
-						                     <input type="reset" value="초기화">
-						                     <input type="submit" value="작성하기">
-						                     <a href="requestBoardMain.jsp" class="requestBack"><input type="button" value="돌아가기"></a>
-						                  </td>
-						               </tr>
-						            </table>
-					            </form>
-					         </div>
-			</section>
+	<main>
+		<section
+			class="banner-section d-flex justify-content-center align-items-end">
+			<div class="section-overlay"></div>
+
+			<div class="container">
+				<div class="row">
+
+					<div class="col-lg-7 col-12">
+						<h1 class="text-white mb-lg-0">문의 게시판</h1>
+					</div>
+
+
+				</div>
+
+
+			</div>
+		</section>
+		<section class="d-flex justify-content-center align-items-end">
+			<div class="container">
+				<div class="row">
+					<h1 class="reqname">문의 작성</h1>
+					<hr>
+					<div id="board" class="requestWrite">
+						<form action="reqBoardInsert" method="post"
+							enctype="multipart/form-data">
+							제목 <input type="text" name="req_title" class="form-control reqtitle">
+								<div class="reqwriter">작성자&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="hidden" name="req_email"><span><%=session.getAttribute("email")%></span></div>
+								<br>
+							내용
+							<textarea rows="6" name="req_content" class="form-control"
+								style="resize: none; margin-bottom: 10px"></textarea>
+							<input type="file" class="form-control" name="req_file" style="margin-bottom: 20px;"/>  <input type="submit" class="reqbtn"
+								value="작성하기">
+								<input
+								type="reset" class="reqbtn" value="초기화">
+								<a href="requestBoardMain.jsp"
+								class="requestBack"><input type="button" class="reqbtn" value="돌아가기"></a>
+
+						</form>
+					</div>
+				</div>
+			</div>
+		</section>
 	</main>
-			
-         
+
+
 	<footer class="site-footer">
 		<div class="container">
 			<div class="row">
@@ -210,29 +218,23 @@ input[type=reset], input[type=submit], input[type=button] {
 					<h5 class="site-footer-title mb-3">서비스</h5>
 
 					<ul class="footer-menu">
-						<li class="footer-menu-item">
-							<a href="#" class="footer-menu-link">
-								<i
+						<li class="footer-menu-item"><a href="#"
+							class="footer-menu-link"> <i
 								class="bi-chevron-double-right footer-menu-link-icon me-2"></i>
 								코인세탁방 검색
-							</a>
-						</li>
+						</a></li>
 
-						<li class="footer-menu-item"> 
-							<a href="#" class="footer-menu-link">
-								<i
+						<li class="footer-menu-item"><a href="#"
+							class="footer-menu-link"> <i
 								class="bi-chevron-double-right footer-menu-link-icon me-2"></i>
 								예약
-							</a>
-						</li>
+						</a></li>
 
-						<li class="footer-menu-item">
-							<a href="#" class="footer-menu-link">
-									<i
-									class="bi-chevron-double-right footer-menu-link-icon me-2"></i>
-									리뷰
-							</a>
-						</li>
+						<li class="footer-menu-item"><a href="#"
+							class="footer-menu-link"> <i
+								class="bi-chevron-double-right footer-menu-link-icon me-2"></i>
+								리뷰
+						</a></li>
 
 						<li class="footer-menu-item"><a href="#"
 							class="footer-menu-link"> <i
@@ -247,12 +249,13 @@ input[type=reset], input[type=submit], input[type=button] {
 
 					<p class="text-white d-flex mt-3 mb-2">
 						<i class="bi-geo-alt-fill me-2"></i> 광주 서구 경열로 20
-						
+
 					</p>
 
 					<p class="text-white d-flex mb-2">
-						<i class="bi-telephone-fill me-2"></i> <a href="tel: 010-1234-1234"
-							class="site-footer-link"> 010-1234-1234 </a>
+						<i class="bi-telephone-fill me-2"></i> <a
+							href="tel: 010-1234-1234" class="site-footer-link">
+							010-1234-1234 </a>
 					</p>
 
 					<p class="text-white d-flex">

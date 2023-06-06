@@ -29,6 +29,41 @@
 body {
 	font-family: 'gmarket';
 }
+
+img {
+	border-radius: 10px;
+}
+
+.reqimg {
+	display:inline-block;
+	width: 40%;
+    height: 40%;
+    margin-bottom: 15px;
+}
+
+.reqtitle {
+	margin-top:50px;
+    margin-bottom: 15px;
+}
+.reqwriter {
+	margin-bottom: 15px;
+}
+
+.reqtext {
+	margin-left: 10px;
+	margin-bottom: 10px;
+	border-radius: 10px;
+	resize: none;
+}
+
+
+.reqbtn {
+	width: 70px;
+    height: 40px;
+    border: 1px solid var(--white-color);
+    background-color: #7cb8eb;
+    border-radius: 10px;
+}
 </style>
 <body>
 		        <header class="site-header">
@@ -139,66 +174,45 @@ body {
 			session.setAttribute("req_title", req_title);
 		%>
 		
-		
-	
-	         <!-- 게시글 세부내용 조회 -->   
-	         <div id = "board">
-	            <table id="reqDetail">
-	               <tr>
-	                  <td>제목</td>
-	               </tr>
-	               <tr>
-	                  <td><%=rDto.getReqTitle() %></td>
-	               </tr>
-	               <tr>
-	                  <td>작성자</td>
-	               </tr>
-	               <tr>
-	                  <td><%=rDto.getReqEmail() %></td>
-	               </tr>
-	               <tr>
-	                  <td colspan="2">내용</td>
-	               </tr>
-	               <tr>
-	                  <td colspan="2">
-	                     
-	                  </td>
-	               </tr>
-	               <tr>
-	                  <td colspan="2"><%=rDto.getReqContent() %></td>
-	               </tr>
-	               <tr>
-	                  <td colspan="2">
+		<section class="d-flex justify-content-center align-items-end">
+	   		<div class="container">
+	   			<div class="row">
+	   				      <!-- 게시글 세부내용 조회 -->   
+	     <h1 class="reqtitle">제목<%=rDto.getReqTitle() %></h1><br>
+	     <h5 class="reqwriter">작성자<%=rDto.getReqEmail() %></h5><br>
+	     <hr>
+	     <h5>내용</h5><br>
+	     <textarea class="reqtext" rows="10" cols="50" readonly="readonly"><%=rDto.getReqContent() %></textarea>
+	     <div class="reqimg">
 	                  	<%if(rDto.getReqFile() == null) {%>
 	                     <%}else if(rDto.getReqFile() != null){%>
+	                     
 						<img alt="x" src="./file/<%=rDto.getReqFile() %>" style="width: 40%;">
 						
 						<%} %>
-	                  </td>
-	               </tr>
-	               <%
+	     </div>
+		<div class="reqbtngroup">
+				               <%
 	               // 로그인 아이디가 작성자의 아이디와 일치할 시 수정가능
 	               if (session.getAttribute("email") == null ) {
 	            	   
 	               } else if(session.getAttribute("email").equals(rDto.getReqEmail())) { %>
-	               <tr>
-	                  <td colspan="2"><a href="update_request.jsp"><button>수정</button></a></td>
-	               </tr>
+	               <a href="update_request.jsp"><button class="reqbtn">수정</button></a>
+	               
 	               <%} %>
 	               <%
 	               // 로그인 아이디가 관리자 또는 작성자일 시 삭제 가능
 	               if (session.getAttribute("email") == null) {
 	            	   
 	               } else if(session.getAttribute("email").equals(rDto.getReqEmail()) || session.getAttribute("email").equals("kissmejr@naver.com")) { %>
-	               <tr>
-	                  <td colspan="2"><a href="reqBoardDelete"><button>삭제</button></a></td>
-	               </tr>
+	               <a href="reqBoardDelete"><button class="reqbtn">삭제</button></a>
 	               <%} %>
-	               <tr>
-	                  <td colspan="2"><a href="requestBoardMain.jsp"><button>뒤로가기</button></a></td>
-	               </tr>
-	            </table>
-	         </div>
+	               <a href="requestBoardMain.jsp"><button class="reqbtn" style="width: 76px;">뒤로가기</button></a>  
+		</div>   
+	   			</div>
+	   		</div>
+		</section>
+	
 	   </main>
 	   
 	   	<footer class="site-footer">
