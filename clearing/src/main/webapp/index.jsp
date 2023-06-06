@@ -1,3 +1,5 @@
+<%@page import="java.util.Date"%>
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
 <%@page import="java.lang.reflect.Member"%>
 <%@page import="com.clearing.model.StoreDTO"%>
@@ -33,17 +35,20 @@
 <link href="css/kakaoMap.css" rel="stylesheet">
 <link href="css/chatbot.css" rel="stylesheet">
 <script type="text/javascript"
+
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4fe78505e64a5ac31be2e7b890da39d4&libraries=services,clusterer,drawing"></script>
 
-<style type="text/css">
-	@font-face {
-		font-family: 'gmarket';
-		src: url('./fonts/GmarketSansTTFMedium.ttf') format('truetype');
-	}
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=0db420091d1781f4feb06d2e77972cba&libraries=services,clusterer,drawing"></script>
 
-	body {
-		font-family: 'gmarket';
-	}
+<style type="text/css">
+@font-face {
+	font-family: 'gmarket';
+	src: url('./fonts/GmarketSansTTFMedium.ttf') format('truetype');
+}
+
+body {
+	font-family: 'gmarket';
+}
 </style>
 
 <!--
@@ -91,17 +96,17 @@ Free Bootstrap 5 HTML Template
 			<div class="row">
 				<div class="col-lg-12 col-12 d-flex flex-wrap">
 					<p class="d-flex me-4 mb-0">
-						<i class="bi-house-fill me-2"></i> One-Stop Cleaning Service
+						<i class="bi-house-fill me-2"></i> 온라인 코인세탁방 예약
 					</p>
 
 					<p class="d-flex d-lg-block d-md-block d-none me-4 mb-0">
-						<i class="bi-clock-fill me-2"></i> <strong class="me-2">Mon
-							- Fri</strong> 8:00 AM - 5:30 PM
+						<i class="bi-clock-fill me-2"></i> <strong class="me-2">월
+							- 금</strong> 8:00 AM - 5:30 PM
 					</p>
 
 					<p class="site-header-icon-wrap text-white d-flex mb-0 ms-auto">
 						<i class="site-header-icon bi-whatsapp me-2"></i> <a
-							href="tel: 110-220-9800" class="text-white"> 110 220 9800 </a>
+							href="tel: 110-220-9800" class="text-white"> 010-1234-1234 </a>
 					</p>
 				</div>
 			</div>
@@ -125,17 +130,22 @@ Free Bootstrap 5 HTML Template
 
 			<div class="collapse navbar-collapse" id="navbarNav">
 				<ul class="navbar-nav ms-auto">
+					<li class="nav-item"><a class="nav-link" href="index.jsp">메인</a></li>
+					<li class="nav-item"><a class="nav-link" href="NonUserReview">후기
+					</a></li>
 					<li class="nav-item"><a class="nav-link"
-						href="index.jsp">메인</a></li>
-					<li class="nav-item"><a class="nav-link" href="about.html">후기
-							</a></li>
-					<li class="nav-item"><a class="nav-link" href="requestBoardMain.jsp">문의
-							</a></li>
-					<%if(session.getAttribute("email") == "admin") {%>
+						href="requestBoardMain.jsp">문의 </a></li>
+					<%
+					if (email != null) {
+						if (email.equals("admin")) {
+					%>
 					<!-- admin 로그인시 생기는 메뉴 TODO-->
-					<li class="nav-item"><a class="nav-link" href="contact.html">Contact</a>
+					<li class="nav-item"><a class="nav-link" href="contact.html">관리자</a>
 					</li>
-					<% }%>
+					<%
+					}
+					}
+					%>
 
 					<%
 					if (session.getAttribute("member") != null || session.getAttribute("storeMember") != null) {
@@ -167,13 +177,13 @@ Free Bootstrap 5 HTML Template
 			class="hero-section hero-section-full-height d-flex justify-content-center align-items-center">
 			<div class="section-overlay"></div>
 
-			<div class="container" style="padding-bottom:20%;">
+			<div class="container" style="padding-bottom: 20%;">
 				<div class="row mainForm">
 					<div class="col-lg-7 col-12 text-center mx-auto">
 
 						<h1 class="cd-headline rotate-1 text-white mb-4 pb-2">
-							<span>We clean your</span> <span class="cd-words-wrapper">
-								<b class="is-visible">House</b> <b>Office</b> <b>Kitchen</b>
+							<span>코인세탁방</span> <span class="cd-words-wrapper"> <b
+								class="is-visible">검색</b> <b>예약</b> <b>리뷰</b>
 							</span>
 						</h1>
 
@@ -201,11 +211,11 @@ Free Bootstrap 5 HTML Template
 
 		</section>
 	</main>
-<div class="searchWrap">
-	<section class="search_reservation"
-		style="height: 600px; position: relative;padding-right: 1.5%;">
-		<div class="searchsection" style="margin-top:5%;"></div>
-		<%-- <div class="searchAddr">
+	<div class="searchWrap">
+		<section class="search_reservation"
+			style="height: 600px; position: relative; padding-right: 1.5%;">
+			<div class="searchsection" style="margin-top: 5%;"></div>
+			<%-- <div class="searchAddr">
 			<div class="input-group mb-3 input-group-jin" style="margin-top:15px;">
 				<input type="text" class="form-control" name="addrSearch"
 					id="keyword" placeholder="검색할 주소를 입력하세요"
@@ -220,58 +230,60 @@ Free Bootstrap 5 HTML Template
 
 
 		</div> --%>
-		<!-- 		<div id="map" style="width: 600px; height: 400px;"></div> -->
-		<%
-		/* TODO 세션에 유저주소정보를 담아서 업데이트해줘야함 */
-		String searchAddr = addr;
-		if (searchAddr == null) {
-			searchAddr = "쌍촌동";
-		} else {
-			searchAddr = searchAddr.substring(0, 5);
-		}
-		%>
-		<div class="option">
-			<div class="kakao-search">
-				<form id="searchAddrReservation"
-					onsubmit="searchPlaces(); return false;">
-					<input type="text" class="form-control" name="addrSearch"
-						value="<%=searchAddr%>" id="keyword" placeholder="검색할 주소를 입력하세요"
-						aria-label="Recipient's username" aria-describedby="button-addon2"
-						size="15">
-					<button type="button" class="btn search-btn" id="button-addon2">검색
-						!</button>
-				</form>
-			</div>
-		</div>
-		<div class="map_menu_wrap">
-			<div class="map_wrap">
-
-				<div id="map"
-					style="width: 450px; height: 450px; position: relative; overflow: hidden;"></div>
-			</div>
-			<div id="menu_wrap" class="bg_white">
-				<hr>
-				<ul id="placesList"></ul>
-				<div id="pagination"></div>
-			</div>
-		</div>
-		<form action="bookLaundryController" id="selectStore_form">
-
-			<div class="selectReservation">
-				<div class="reservation-info dp-none">
-					<div id="selectStore" class="selectStore_pos"></div>
-					<div style="margin-left: 15px;">예약하시겠습니까?</div>
+			<!-- 		<div id="map" style="width: 600px; height: 400px;"></div> -->
+			<%
+			/* TODO 세션에 유저주소정보를 담아서 업데이트해줘야함 */
+			String searchAddr = addr;
+			if (searchAddr == null) {
+				searchAddr = "쌍촌동";
+			} else {
+				searchAddr = searchAddr.substring(0, 5);
+			}
+			%>
+			<div class="option">
+				<div class="kakao-search">
+					<form id="searchAddrReservation"
+						onsubmit="searchPlaces(); return false;">
+						<input type="text" class="form-control" name="addrSearch"
+							value="<%=searchAddr%>" id="keyword" placeholder="검색할 주소를 입력하세요"
+							aria-label="Recipient's username"
+							aria-describedby="button-addon2" size="15">
+						<button type="button" class="btn search-btn" id="button-addon2">검색
+							!</button>
+					</form>
 				</div>
-				<div class="map-searchbtn-group">
-					<button type="submit"
-						class="custom-btn btn button button--atlas smoothscroll me-3" style="width: 160px;">
-						<span>예약하기</span>
+			</div>
+			<div class="map_menu_wrap">
+				<div class="map_wrap">
 
-						<div class="marquee" aria-hidden="true">
-							<div class="marquee__inner">
-								<span>예약하기</span> <span>예약하기</span> <span>Reservation</span>
-								<span>예약하기</span>
+					<div id="map"
+						style="width: 450px; height: 450px; position: relative; overflow: hidden;"></div>
+				</div>
+				<div id="menu_wrap" class="bg_white">
+					<hr>
+					<ul id="placesList"></ul>
+					<div id="pagination"></div>
+				</div>
+			</div>
+			<form action="bookLaundryController" id="selectStore_form">
+
+				<div class="selectReservation">
+					<div class="reservation-info dp-none">
+						<div id="selectStore" class="selectStore_pos"></div>
+						<div style="margin-left: 15px;">예약하시겠습니까?</div>
+					</div>
+					<div class="map-searchbtn-group">
+						<button type="submit"
+							class="custom-btn btn button button--atlas smoothscroll me-3"
+							style="width: 160px;">
+							<span>예약하기</span>
+
+							<div class="marquee" aria-hidden="true">
+								<div class="marquee__inner">
+									<span>예약하기</span> <span>예약하기</span> <span>Reservation</span> <span>예약하기</span>
+								</div>
 							</div>
+<<<<<<< HEAD
 						</div>
 					</button>
 					
@@ -291,9 +303,31 @@ Free Bootstrap 5 HTML Template
 						> <span style="">Review</span>
 			</button>
 		</form>
+=======
+						</button>
+>>>>>>> branch 'master' of https://github.com/2022-SMHRD-KDT-DCX-BigData-6/criring.git
 
-	</section>
-</div>
+					</div>
+					<div class="reservation-LatLng" style="display: none;">
+						<div id="reservation-Lat"></div>
+						<div id="reservation-Lng"></div>
+					</div>
+				</div>
+			</form>
+			<form action="reviewSelect">
+				<div class="reservation-LatLng" style="display: none;">
+					<div id="reservation-Lat1"></div>
+					<div id="reservation-Lng1"></div>
+				</div>
+				<button type="submit"
+					class="custom-btn custom-border-btn custom-btn-bg-white btn button button--pan smoothscroll reivewbtn"
+					href="#services-section">
+					<span style="">Review</span>
+				</button>
+			</form>
+
+		</section>
+	</div>
 	<footer class="site-footer">
 		<div class="container">
 			<div class="row">
@@ -307,48 +341,38 @@ Free Bootstrap 5 HTML Template
 							class="footer-menu-link">About Us</a></li>
 
 						<li class="footer-menu-item"><a href="#"
-							class="footer-menu-link">Blog</a></li>
-
+							class="footer-menu-link">후기</a></li>
 						<li class="footer-menu-item"><a href="#"
-							class="footer-menu-link">Reviews</a></li>
-
-						<li class="footer-menu-item"><a href="#"
-							class="footer-menu-link">Contact</a></li>
+							class="footer-menu-link">문의</a></li>
 					</ul>
 				</div>
 
 				<div class="col-lg-5 col-12 mb-4 mb-lg-0">
-					<h5 class="site-footer-title mb-3">Our Services</h5>
+					<h5 class="site-footer-title mb-3">서비스</h5>
 
 					<ul class="footer-menu">
 						<li class="footer-menu-item"><a href="#"
 							class="footer-menu-link"> <i
 								class="bi-chevron-double-right footer-menu-link-icon me-2"></i>
-								House Cleaning
+								코인세탁방 검색
 						</a></li>
 
 						<li class="footer-menu-item"><a href="#"
 							class="footer-menu-link"> <i
 								class="bi-chevron-double-right footer-menu-link-icon me-2"></i>
-								Car Washing
+								예약
 						</a></li>
 
 						<li class="footer-menu-item"><a href="#"
 							class="footer-menu-link"> <i
 								class="bi-chevron-double-right footer-menu-link-icon me-2"></i>
-								Laundry
+								리뷰
 						</a></li>
 
 						<li class="footer-menu-item"><a href="#"
 							class="footer-menu-link"> <i
 								class="bi-chevron-double-right footer-menu-link-icon me-2"></i>
-								Office Cleaning
-						</a></li>
-
-						<li class="footer-menu-item"><a href="#"
-							class="footer-menu-link"> <i
-								class="bi-chevron-double-right footer-menu-link-icon me-2"></i>
-								Toilet Cleaning
+								문의
 						</a></li>
 					</ul>
 				</div>
@@ -357,19 +381,20 @@ Free Bootstrap 5 HTML Template
 					<h5 class="site-footer-title mb-3">Office</h5>
 
 					<p class="text-white d-flex mt-3 mb-2">
-						<i class="bi-geo-alt-fill me-2"></i> Akershusstranda 20, 0150
-						Oslo, Norway
+						<i class="bi-geo-alt-fill me-2"></i> 광주 서구 경열로 20
+
 					</p>
 
 					<p class="text-white d-flex mb-2">
-						<i class="bi-telephone-fill me-2"></i> <a href="tel: 110-220-9800"
-							class="site-footer-link"> 110-220-9800 </a>
+						<i class="bi-telephone-fill me-2"></i> <a
+							href="tel: 010-1234-1234" class="site-footer-link">
+							010-1234-1234 </a>
 					</p>
 
 					<p class="text-white d-flex">
 						<i class="bi-envelope-fill me-2"></i> <a
-							href="mailto:info@company.com" class="site-footer-link">
-							info@company.com </a>
+							href="youjinseozzang1004@gmail.com" class="site-footer-link">
+							youjinseozzang1004@gmail.com </a>
 					</p>
 
 					<ul class="social-icon mt-4">
@@ -392,13 +417,13 @@ Free Bootstrap 5 HTML Template
 
 				<div class="col-lg-3 col-md-6 col-6 mt-3 mt-lg-0 mt-md-0">
 					<div class="featured-block">
-						<h5 class="text-white mb-3">Service Hours</h5>
+						<h5 class="text-white mb-3">이용 시간</h5>
 
-						<strong class="d-block text-white mb-1">Mon - Fri</strong>
+						<strong class="d-block text-white mb-1">월 - 금</strong>
 
 						<p class="text-white mb-3">8:00 AM - 5:30 PM</p>
 
-						<strong class="d-block text-white mb-1">Sat</strong>
+						<strong class="d-block text-white mb-1">토</strong>
 
 						<p class="text-white mb-0">6:00 AM - 2:30 PM</p>
 					</div>
@@ -425,52 +450,226 @@ Free Bootstrap 5 HTML Template
 		</div>
 	</footer>
 
-	
-	<% email=(String)session.getAttribute("email"); %>
+
+	<%
+	email = (String) session.getAttribute("email");
+	%>
 	<!-- 유저 밸류값은 표현식으로 세션에서 저장된거 가져올거임 -->
 	<!-- Scrollable modal -->
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary chatbotMain" id="CSR" data-remote="ChatModal3.jsp"  data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-  <img alt="CSR" src="./images/CSR2.png">
-</button>
+	<!-- Button trigger modal -->
+	<button type="button" class="btn btn-primary chatbotMain" id="CSR"
+		data-remote="ChatModal3.jsp" data-bs-toggle="modal"
+		data-bs-target="#staticBackdrop">
+		<img alt="CSR" src="./images/CSR2.png">
+	</button>
 
-<!-- Modal -->
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrolable">
-    <div class="modal-content">
-      <div class="modal-header"  style="background-color: #7CB8EB;color: white">
-        <h1 class="modal-title fs-5" id="staticBackdropLabel">크리링 Chat-Bot</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body" >
-      
-      </div>
-      <div class="modal-footer">
-        <button type="button" id="Exit"class="btn btn-secondary" data-bs-dismiss="modal">나가기</button>
-      </div>
-    </div>
-  </div>
-</div>
+	<!-- Modal -->
+	<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static"
+		data-bs-keyboard="false" tabindex="-1"
+		aria-labelledby="staticBackdropLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-scrolable">
+			<div class="modal-content">
+				<div class="modal-header"
+					style="background-color: #7CB8EB; color: white">
+					<h1 class="modal-title fs-5" id="staticBackdropLabel">크리링
+						Chat-Bot</h1>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"
+						aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<%
+					Date date = new Date();
+					SimpleDateFormat sd = new SimpleDateFormat("yyyy년-MM월-dd일");
+					SimpleDateFormat tsd = new SimpleDateFormat("HHmm");
+					SimpleDateFormat tsd2 = new SimpleDateFormat("a HH:mm");
+					String nowDate = sd.format(date);
+					String time = tsd.format(date);
+					String talkTime = tsd2.format(date);
+					int numTime = Integer.parseInt(time);
+					String cr_email = null;
+					if (session.getAttribute("email") == null) {
+						cr_email = "Guest";
+					} else {
+						cr_email = (String) session.getAttribute("email");
+					}
+					%>
+					<%
+					if (numTime < 1000 || numTime > 1700) {
+					%>
+					<span
+						style="background-color: lightgray; padding: 1% 1%; margin-left: 34%; border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;"><%=nowDate%></span><br>
+					<br> 안녕하세요 고객님 &#128075;<br> 크리링 &#129302;챗봇 상담입니다.<br>
+					<br> 고객님, 지금은 운영시간이 아닙니다.<br> <br> 현재는 챗봇 상담만 가능하며,
+					상담사 연결은 운영시간 내 문의 부탁드립니다.<br> 감사합니다.<br> <br> [운영시간]
+					&#128342;<br> 평일 : 10시 - 17시 (공휴일 제외)<br> <br> 문의사항을
+					선택하거나 번호를 입력해 주세요.<br> <br>
 
-	<script src="js/bootstrap.min.js"></script>
+					<div id="allbutton">
+						<button class="btn btn-primary sel" type="button" value="1"
+							style="background-color: #7CB8EB; border-color: #7CB8EB;">1.
+							요금 문의</button>
+						<br>
+						<button class="btn btn-primary sel" type="button" value="2"
+							style="background-color: #7CB8EB; border-color: #7CB8EB;">2.
+							환불 문의</button>
+						<br>
+						<button class="btn btn-primary sel" type="button" value="3"
+							style="background-color: #7CB8EB; border-color: #7CB8EB;">3.
+							세탁시 주의 사항</button>
+						<br>
+						<button class="btn btn-primary sel" type="button" value="4"
+							style="background-color: #7CB8EB; border-color: #7CB8EB;">4.
+							업체 정보 수정 문의</button>
+						<br>
+						<button class="btn btn-primary sel" type="button" value="5"
+							style="background-color: #7CB8EB; border-color: #7CB8EB;">5.
+							상담원 연결</button>
+						<br>
+					</div>
+
+					<%
+					} else {
+					%>
+					<span
+						style="background-color: lightgray; padding: 1% 1%; margin-left: 34%; border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;"><%=nowDate%></span><br>
+					<br> 안녕하세요 고객님&#128075;<br> 크리링 &#129302;챗봇 상담입니다.<br>
+					<br> 문의유형을 선택해주세요!<br> <br> 상담원과의 대화가 필요할 경우<br>
+					[상담원 연결] 버튼을 눌러주세요 : )<br> * 상담원 연결 후 문의사항을 말씀해주세요.<br> *
+					대화 내용은 상담을 위해서만 사용됩니다.<br> <br>
+					<!-- 타임딜레이 -->
+					<div id="allbutton">
+						<button class="btn btn-primary sel" type="button" value="1"
+							style="background-color: #7CB8EB; border-color: #7CB8EB;">1.
+							요금 문의</button>
+						<br>
+						<button class="btn btn-primary sel" type="button" value="2"
+							style="background-color: #7CB8EB; border-color: #7CB8EB">2.
+							환불 문의</button>
+						<br>
+						<button class="btn btn-primary sel" type="button" value="3"
+							style="background-color: #7CB8EB; border-color: #7CB8EB">3.
+							세탁시 주의 사항</button>
+						<br>
+						<button class="btn btn-primary sel" type="button" value="4"
+							style="background-color: #7CB8EB; border-color: #7CB8EB">4.
+							업체 정보 수정 문의</button>
+						<br>
+						<button class="btn btn-primary sel" type="button" value="5"
+							style="background-color: #7CB8EB; border-color: #7CB8EB">5.
+							상담원 연결</button>
+						<br>
+					</div>
+					<%
+					}
+					%>
+
+
+
+					<form action="#" id="ajaxDisplay"></form>
+
+					<script src="./js/jquery-3.7.0.js"></script>
+
+
+					<script type="text/javascript">
+	$('.btn').on('click',function(){
+		var qna=$(this).attr('value');
+		var cr_email = "<%=cr_email%>
+						";
+							//setTimeout(function() {    },700);
+							if (qna == "1") {
+								$('#allbutton').css("display", "none");
+								$.ajax({
+									url : "chatBotScript2/userSel1.jsp",
+									success : function(result) {
+										$("#ajaxDisplay").html(result);
+									}
+								});
+							} else if (qna == "2") {
+								$('#allbutton').css("display", "none");
+								$.ajax({
+									url : "chatBotScript2/userSel2.jsp",
+									success : function(result) {
+										$("#ajaxDisplay").html(result);
+									}
+								});
+							} else if (qna == "3") {
+								$('#allbutton').css("display", "none");
+								$.ajax({
+									url : "chatBotScript2/userSel3.jsp",
+									success : function(result) {
+										$("#ajaxDisplay").html(result);
+									}
+								});
+
+							} else if (qna == "4") {
+								$('#allbutton').css("display", "none");
+								if (cr_email == "Guest") {
+									$.ajax({
+										url : "chatBotScript2/userSel4_1.jsp",
+										success : function(result) {
+											$("#ajaxDisplay").html(result);
+										}
+									});
+									$('#userbutton4').css("display", "block");
+								} else {
+									$.ajax({
+										url : "chatBotScript2/userSel4_2.jsp",
+										success : function(result) {
+											$("#ajaxDisplay").html(result);
+										}
+									});
+
+								}
+							} else if (qna == "5") {
+								$('#allbutton').css("display", "none");
+								$.ajax({
+									url : "chatBotScript2/userSel5.jsp",
+									success : function(result) {
+										$("#ajaxDisplay").html(result);
+									}
+								});
+
+							} else {
+
+							}
+
+						});
+					</script>
+				</div>
+				<div class="modal-footer">
+					<button type="button" id="Exit" class="btn btn-secondary"
+						data-bs-dismiss="modal">나가기</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
 	<script src="./js/jquery-3.7.0.js"></script>
+<<<<<<< HEAD
 	
 
 <script>
+=======
+	<script>
+>>>>>>> branch 'master' of https://github.com/2022-SMHRD-KDT-DCX-BigData-6/criring.git
 		$('#staticBackdrop').on('show.bs.modal', function(e) {
-	
+
 			var button = $(e.relatedTarget);
 			var modal = $(this);
-			
+
 			modal.find('.modal-body').load(button.data("remote"));
-	
+
 		});
+<<<<<<< HEAD
 		$('#Exit').on('click',function(){
 			window.location.href='http://localhost:8081/clearing/index.jsp';
 			
 		});
 	</script> 
 	
+=======
+	</script>
+>>>>>>> branch 'master' of https://github.com/2022-SMHRD-KDT-DCX-BigData-6/criring.git
 	<!-- JAVASCRIPT FILES -->
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>

@@ -44,9 +44,14 @@ https://www.tooplate.com/view/2132-clean-work
   --font-weight-bold:             700;
 }
 
+@font-face {
+    font-family: 'gmarket';
+    src: url('./fonts/GmarketSansTTFMedium.ttf') format('truetype');
+}
+
 body {
   background-color: var(--white-color);
-  font-family: var(--body-font-family); 
+	font-family: 'gmarket';
 }
 
 
