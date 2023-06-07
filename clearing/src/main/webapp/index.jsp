@@ -36,28 +36,19 @@
 <link href="css/chatbot.css" rel="stylesheet">
 <style type="text/css">
 @font-face {
-    font-family: 'gmarket';
-    src: url('./fonts/GmarketSansTTFMedium.ttf') format('truetype');
+	font-family: 'gmarket';
+	src: url('./fonts/GmarketSansTTFMedium.ttf') format('truetype');
 }
 
 body {
-  background-color: var(--white-color);
+	background-color: var(--white-color);
 	font-family: 'gmarket';
 }
 </style>
 <script type="text/javascript"
-
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4fe78505e64a5ac31be2e7b890da39d4&libraries=services,clusterer,drawing"></script>
-<script src="https://kit.fontawesome.com/a32650dbb1.js" crossorigin="anonymous"></script>
-<!--
-
-Tooplate 2132 Clean Work
-
-https://www.tooplate.com/view/2132-clean-work
-
-Free Bootstrap 5 HTML Template
-
--->
+<script src="https://kit.fontawesome.com/a32650dbb1.js"
+	crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -209,12 +200,12 @@ Free Bootstrap 5 HTML Template
 
 		</section>
 	</main>
-		<section class="search_reservation"
-			style="position: relative; padding-right: 1.5%;">
-			<div class="container">
-				<div class="row">
-					<div class="searchsection" style="margin-top: 5%;"></div>
-					<%-- <div class="searchAddr">
+	<section class="search_reservation"
+		style="position: relative; padding-right: 1.5%;">
+		<div class="container">
+			<div class="row">
+				<div class="searchsection" style="margin-top: 5%;"></div>
+				<%-- <div class="searchAddr">
 			<div class="input-group mb-3 input-group-jin" style="margin-top:15px;">
 				<input type="text" class="form-control" name="addrSearch"
 					id="keyword" placeholder="검색할 주소를 입력하세요"
@@ -229,84 +220,84 @@ Free Bootstrap 5 HTML Template
 
 
 		</div> --%>
-					<!-- 		<div id="map" style="width: 600px; height: 400px;"></div> -->
-					<%
-					/* TODO 세션에 유저주소정보를 담아서 업데이트해줘야함 */
-					String searchAddr = addr;
-					if (searchAddr == null) {
-						searchAddr = "쌍촌동";
-					} else {
-						searchAddr = searchAddr.substring(0, 5);
-					}
-					%>
-					<div class="option">
-						<div class="kakao-search">
-							<form id="searchAddrReservation"
-								onsubmit="searchPlaces(); return false;">
-								<div class="searchaddruser">
-									<input type="text" class="form-control" name="addrSearch"
+				<!-- 		<div id="map" style="width: 600px; height: 400px;"></div> -->
+				<%
+				/* TODO 세션에 유저주소정보를 담아서 업데이트해줘야함 */
+				String searchAddr = addr;
+				if (searchAddr == null) {
+					searchAddr = "쌍촌동";
+				} else {
+					searchAddr = searchAddr.substring(0, 5);
+				}
+				%>
+				<div class="option">
+					<div class="kakao-search">
+						<form id="searchAddrReservation"
+							onsubmit="searchPlaces(); return false;">
+							<div class="searchaddruser">
+								<input type="text" class="form-control" name="addrSearch"
 									value="<%=searchAddr%>" id="keyword"
 									placeholder="검색할 주소를 입력하세요" aria-label="Recipient's username"
 									aria-describedby="button-addon2" size="15">
 								<button type="submit" class="btn search-btn" id="button-addon2">검색
 									!</button>
-								</div>
-							</form>
-						</div>
+							</div>
+						</form>
 					</div>
-					<div class="map_menu_wrap">
-						<div class="map_wrap">
-
-							<div id="map"></div>
-						</div>
-						<div id="menu_wrap" class="bg_white">
-							<hr>
-							<ul id="placesList"></ul>
-							<div id="pagination"></div>
-						</div>
-					</div>
-					<form action="bookLaundryController" id="selectStore_form">
-
-						<div class="selectReservation">
-							<div class="reservation-info dp-none">
-								<div id="selectStore" class="selectStore_pos"></div>
-								<div style="margin-left: 15px;">예약하시겠습니까?</div>
-							</div>
-							<div class="map-searchbtn-group">
-								<button type="submit"
-									class="custom-btn btn button button--atlas smoothscroll me-3"
-									style="width: 160px;">
-									<span>예약하기</span>
-
-									<div class="marquee" aria-hidden="true">
-										<div class="marquee__inner">
-											<span>예약하기</span> <span>예약하기</span> <span>Reservation</span>
-											<span>예약하기</span>
-										</div>
-									</div>
-
-								</button>
-							</div>
-							<div class="reservation-LatLng" style="display: none;">
-								<div id="reservation-Lat"></div>
-								<div id="reservation-Lng"></div>
-							</div>
-						</div>
-					</form>
-					<form action="Review_ViewController">
-						<div class="reservation-LatLng" style="display: none;">
-							<div id="reservation-Lat1"></div>
-							<div id="reservation-Lng1"></div>
-						</div>
-						<button type="submit"
-							class="custom-btn custom-border-btn custom-btn-bg-white btn button button--pan smoothscroll reivewbtn">
-							<span style="">Review</span>
-						</button>
-					</form>
 				</div>
-			</div>
+				<div class="map_menu_wrap">
+					<div class="map_wrap">
 
-		</section>
+						<div id="map"></div>
+					</div>
+					<div id="menu_wrap" class="bg_white">
+						<hr>
+						<ul id="placesList"></ul>
+						<div id="pagination"></div>
+					</div>
+				</div>
+
+				<form action="bookLaundryController" id="selectStore_form">
+
+					<div class="selectReservation">
+						<div class="reservation-info dp-none">
+							<div id="selectStore" class="selectStore_pos"></div>
+							<div style="margin-left: 15px;">예약하시겠습니까?</div>
+						</div>
+						<div class="map-searchbtn-group">
+							<button type="submit"
+								class="custom-btn btn button button--atlas smoothscroll me-3"
+								style="width: 160px;">
+								<span>예약하기</span>
+
+								<div class="marquee" aria-hidden="true">
+									<div class="marquee__inner">
+										<span>예약하기</span> <span>예약하기</span> <span>Reservation</span> <span>예약하기</span>
+									</div>
+								</div>
+
+							</button>
+						</div>
+						<div class="reservation-LatLng" style="display: none;">
+							<div id="reservation-Lat"></div>
+							<div id="reservation-Lng"></div>
+						</div>
+					</div>
+				</form>
+				<form action="Review_ViewController" id="reviewController">
+					<div class="reservation-LatLng" style="display: none;">
+						<div id="reservation-Lat1"></div>
+						<div id="reservation-Lng1"></div>
+					</div>
+					<button type="submit"
+						class="custom-btn custom-border-btn custom-btn-bg-white btn button button--pan smoothscroll reivewbtn">
+						<span style="">Review</span>
+					</button>
+				</form>
+			</div>
+		</div>
+
+	</section>
 	<footer class="site-footer">
 		<div class="container">
 			<div class="row">
@@ -348,9 +339,9 @@ Free Bootstrap 5 HTML Template
 								후기
 						</a></li>
 
-						<li class="footer-menu-item"><a href="requestBoardMain.jsp?boardPage=1"
-							class="footer-menu-link"> <i
-								class="bi-chevron-double-right footer-menu-link-icon me-2"></i>
+						<li class="footer-menu-item"><a
+							href="requestBoardMain.jsp?boardPage=1" class="footer-menu-link">
+								<i class="bi-chevron-double-right footer-menu-link-icon me-2"></i>
 								문의
 						</a></li>
 					</ul>
@@ -372,20 +363,23 @@ Free Bootstrap 5 HTML Template
 
 					<p class="text-white d-flex">
 						<i class="bi-envelope-fill me-2"></i> <a
-							href="email: youjinseozzang1004@gmail.com" class="site-footer-link">
-							youjinseozzang1004@gmail.com </a>
+							href="email: youjinseozzang1004@gmail.com"
+							class="site-footer-link"> youjinseozzang1004@gmail.com </a>
 					</p>
 
 					<ul class="social-icon mt-4">
-						<li class="social-icon-item"><a class="social-icon-link button button--skoll"> <span></span>
+						<li class="social-icon-item"><a
+							class="social-icon-link button button--skoll"> <span></span>
 								<span class="bi-twitter"></span>
 						</a></li>
 
-						<li class="social-icon-item"><a class="social-icon-link button button--skoll"> <span></span>
+						<li class="social-icon-item"><a
+							class="social-icon-link button button--skoll"> <span></span>
 								<span class="bi-facebook"></span>
 						</a></li>
 
-						<li class="social-icon-item"><a class="social-icon-link button button--skoll"> <span></span>
+						<li class="social-icon-item"><a
+							class="social-icon-link button button--skoll"> <span></span>
 								<span class="bi-instagram"></span>
 						</a></li>
 					</ul>
@@ -427,10 +421,11 @@ Free Bootstrap 5 HTML Template
 	</footer>
 
 
-	<button type="button" class="btn btn-primary scrolltop" onclick="goToTop(); return false;">
+	<button type="button" class="btn btn-primary scrolltop"
+		onclick="goToTop(); return false;">
 		<i class="fa-solid fa-arrow-up"></i>
 	</button>
-	
+
 	<%
 	email = (String) session.getAttribute("email");
 	%>
@@ -442,7 +437,7 @@ Free Bootstrap 5 HTML Template
 		data-bs-target="#staticBackdrop">
 		<img alt="CSR" src="./images/CSR2.png">
 	</button>
-	
+
 	<!-- Modal -->
 	<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static"
 		data-bs-keyboard="false" tabindex="-1"
@@ -640,8 +635,8 @@ Free Bootstrap 5 HTML Template
 			
 		});
 	</script>
-	
-		<script type="text/javascript">
+
+	<script type="text/javascript">
 		
 		const $form = document.getElementById('selectStore_form');
 		$form.addEventListener("submit", (event) => {
@@ -654,20 +649,32 @@ Free Bootstrap 5 HTML Template
 				$(form).unbind("submit");
 			}
 		});
-		</script>
-		<script type="text/javascript">
-		const $form = document.getElementById('selectStore_form');
-		$form.addEventListener("submit", (event) => {
+		
+		const $form2 = document.getElementById('selectStore_form');
+		$form2.addEventListener("submit", (event) => {
 			var lat = $('#selectStoreLat-dp-none').val();
 		  // 동작(이벤트)을 실행하지 못하게 막는 메서드입니다.
 			if(typeof lat == "undefined"){
-			  alert("세탁소를 선택 이용해주세요~!");
+			  alert("세탁소를 선택 후 이용해주세요~!");
 			  event.preventDefault();
 			}else{
-				$(form).unbind("submit");
+				$(form2).unbind("submit");
+			}
+		});
+		
+		const $form1 = document.getElementById('reviewController');
+		$form1.addEventListener("submit", (event) => {
+			var lat = $('#selectStoreLat1-dp-none').val();
+		  // 동작(이벤트)을 실행하지 못하게 막는 메서드입니다.
+			if(typeof lat == "undefined"){
+			  alert("세탁소를 선택 후 이용해주세요~!");
+			  event.preventDefault();
+			}else{
+				$(form1).unbind("submit");
 			}
 		});
 		</script>
+
 
 	<!-- JAVASCRIPT FILES -->
 	<script src="js/jquery.min.js"></script>
@@ -681,5 +688,23 @@ Free Bootstrap 5 HTML Template
 	<script src="js/custom.js"></script>
 	<script src="js/kakaoMap.js"></script>
 	<script src="js/btnScroll.js"></script>
+	<script type="text/javascript">
+		window.onload = function() {
+		var storeList = document.querySelectorAll('.item');
+		storeList.forEach((store) => {
+			store.addEventListener('click', () => {
+				storeList.forEach((e) => {
+					e.classList.remove('active');
+				})
+				store.classList.add('active');
+			})
+		});
+		}
+			
+			
+			
+	</script>
+
 </body>
 </html>
+

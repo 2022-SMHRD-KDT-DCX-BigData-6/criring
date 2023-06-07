@@ -319,7 +319,7 @@ Free Bootstrap 5 HTML Template
 										</div>
 										<!-- Submit button -->
 										<button type="submit"
-											class="btn btn-primary btn-lg btn-block modal-btn" onclick="formChk(); return false;">
+											class="btn btn-primary btn-lg btn-block modal-btn" onclick="return formChk(); ">
 											Sign up</button>
 									</form>
 								</div>

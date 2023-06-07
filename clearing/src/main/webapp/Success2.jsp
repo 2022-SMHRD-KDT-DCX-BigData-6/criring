@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!doctype html>
 <html lang="en">
     <head>
@@ -7,7 +9,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>Under Construction | Bootstrap 5 Theme</title>
+        <title>About Us | Bootstrap 5 Theme</title>
 
         <!-- CSS FILES -->        
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,15 +23,16 @@
         <link href="css/bootstrap-icons.css" rel="stylesheet">
 
         <link href="css/tooplate-clean-work.css" rel="stylesheet">
-<!--
+        <style type="text/css">
+        @import 'https://fonts.googleapis.com/css?family=Open+Sans:600,700';
 
-Tooplate 2132 Clean Work
+@font-face {
+    font-family: 'gmarket';
+    src: url('./fonts/GmarketSansTTFMedium.ttf') format('truetype');
+}
+        
+        </style>
 
-https://www.tooplate.com/view/2132-clean-work
-
-Free Bootstrap 5 HTML Template
-
--->
     </head>
     
     <body>
@@ -81,7 +84,7 @@ Free Bootstrap 5 HTML Template
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="about.html">About Us</a>
+                            <a class="nav-link active" href="about.html">About Us</a>
                         </li>
 
                         <li class="nav-item dropdown">
@@ -90,7 +93,7 @@ Free Bootstrap 5 HTML Template
                             <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
                                 <li><a class="dropdown-item" href="services.html">Our Services</a></li>
 
-                                <li><a class="dropdown-item active" href="coming-soon.html">Coming Soon</a></li>
+                                <li><a class="dropdown-item" href="coming-soon.html">Coming Soon</a></li>
 
                                 <li><a class="dropdown-item" href="page-404.html">Page 404</a></li>
                             </ul>
@@ -117,7 +120,7 @@ Free Bootstrap 5 HTML Template
                     <div class="row">
 
                         <div class="col-lg-7 col-12">
-                            <h1 class="text-white mb-lg-0">Under Construction</h1>
+                            <h1 class="text-white mb-lg-0">예약완료</h1>
                         </div>
 
                         <div class="col-lg-4 col-12 d-flex justify-content-lg-end align-items-center ms-auto">
@@ -125,7 +128,7 @@ Free Bootstrap 5 HTML Template
                                 <ol class="breadcrumb justify-content-center">
                                     <li class="breadcrumb-item"><a href="index.jsp">Home</a></li>
 
-                                    <li class="breadcrumb-item active" aria-current="page">Coming Soon</li>
+                                    <li class="breadcrumb-item active" aria-current="page">예약완료</li>
                                 </ol>
                             </nav>
                         </div>
@@ -139,41 +142,39 @@ Free Bootstrap 5 HTML Template
                 <div class="container">
                     <div class="row">
 
-                        <div class="col-lg-8 col-12 text-center mx-auto">
-                            <ul class="countdown d-flex flex-wrap justify-content-center align-items-center">
-                               <li class="countdown-item d-flex flex-column justify-content-center align-items-center">
-                                    <h3 class="countdown-title days">14</h3>
-                                    <span class="countdown-text">Days</span>
+                        <div class="col-lg-6 col-12">
+                            <img src="images/bubbles.png" class="featured-image img-fluid" style="width: 54%;margin-left: 29%;">
+                        </div>
 
-                                    <div class="countdown-item-overlay"></div>
-                               </li>
+                        <div class="col-lg-6 col-12" style="margin-top: 2%;">
+                            <div class="featured-block">
+                                <h2 class="mb-4"><span style="color: #7CB8EB">회원가입</span>이 완료 되었습니다.</h2>
 
-                               <li class="countdown-item d-flex flex-column justify-content-center align-items-center">
-                                    <h3 class="countdown-title hours">10</h3>
-                                    <span class="countdown-text">hours</span>
-                               </li>
 
-                               <li class="countdown-item d-flex flex-column justify-content-center align-items-center">
-                                    <h3 class="countdown-title minutes">15</h3>
-                                    <span class="countdown-text">minutes</span>
-                               </li>
 
-                               <li class="countdown-item d-flex flex-column justify-content-center align-items-center">
-                                    <h3 class="countdown-title seconds">34</h3>
-                                    <span class="countdown-text">seconds</span>
-                               </li>     
-                            </ul>
-
-                            <h2 class="">Our website is currently under construction</h2>
-                            <p>You can set the launch date time in init.js file.</p>
+                                <a class="custom-btn btn button button--atlas mt-3" href="index.jsp">
+                                    <span>홈으로 이동</span>
+    
+                                    <div class="marquee" aria-hidden="true">
+                                        <div class="marquee__inner">
+                                            <span>⇨⇨⇨</span>
+                                            <span>⇨⇨⇨</span>
+                                            <span>⇨⇨⇨</span>
+                                            <span>⇨⇨⇨</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
                         </div>
 
                     </div>
                 </div>
             </section>
-        </main>
 
-        <footer class="site-footer">
+
+            
+
+         <footer class="site-footer" style="margin-top: 0">
             <div class="container">
                 <div class="row">
 

@@ -253,6 +253,15 @@ section.search_reservation a.smoothscroll:hover {
 .search_reservation {
 		height: 650px;
 	}
+	
+	
+.item.active {
+	background-color: #7cb8eb;
+}
+
+.item:not(.active) {
+	background-color:white;
+}
 @media ( max-width : 767px) {
 	body {
 		background-color: antiquewhite;

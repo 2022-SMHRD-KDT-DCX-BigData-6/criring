@@ -1,3 +1,5 @@
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.Date"%>
 <%@page import="com.clearing.model.Request_BoardDAO"%>
 <%@page import="com.clearing.model.Request_BoardDTO"%>
 <%@page import="com.clearing.model.admin_replyDTO"%>
@@ -11,6 +13,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
+<script src="https://kit.fontawesome.com/a32650dbb1.js" crossorigin="anonymous"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,6 +27,7 @@
 <link href="css/bootstrap-icons.css" rel="stylesheet">
 
 <link href="css/tooplate-clean-work.css" rel="stylesheet">
+<link href="css/chatbot.css" rel="stylesheet">
 <style type="text/css">
 @import 'https://fonts.googleapis.com/css?family=Open+Sans:600,700';
 
@@ -356,5 +360,232 @@ input[type=reset], input[type=submit], input[type=button] {
 			</div>
 		</div>
 	</footer>
+	
+		<button type="button" class="btn btn-primary scrolltop" onclick="goToTop(); return false;">
+		<i class="fa-solid fa-arrow-up"></i>
+	</button>
+	
+	<%
+	String email = (String) session.getAttribute("email");
+	%>
+	<!-- 유저 밸류값은 표현식으로 세션에서 저장된거 가져올거임 -->
+	<!-- Scrollable modal -->
+	<!-- Button trigger modal -->
+	<button type="button" class="btn btn-primary chatbotMain" id="CSR"
+		data-remote="ChatModal3.jsp" data-bs-toggle="modal"
+		data-bs-target="#staticBackdrop">
+		<img alt="CSR" src="./images/CSR2.png">
+	</button>
+	
+	<!-- Modal -->
+	<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static"
+		data-bs-keyboard="false" tabindex="-1"
+		aria-labelledby="staticBackdropLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-scrolable">
+			<div class="modal-content">
+				<div class="modal-header"
+					style="background-color: #7CB8EB; color: white">
+					<h1 class="modal-title fs-5" id="staticBackdropLabel">크리링
+						Chat-Bot</h1>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"
+						aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<%
+					Date date = new Date();
+					SimpleDateFormat sd = new SimpleDateFormat("yyyy년-MM월-dd일");
+					SimpleDateFormat tsd = new SimpleDateFormat("HHmm");
+					SimpleDateFormat tsd2 = new SimpleDateFormat("a HH:mm");
+					String nowDate = sd.format(date);
+					String time = tsd.format(date);
+					String talkTime = tsd2.format(date);
+					int numTime = Integer.parseInt(time);
+					String cr_email = null;
+					if (session.getAttribute("email") == null) {
+						cr_email = "Guest";
+					} else {
+						cr_email = (String) session.getAttribute("email");
+					}
+					%>
+					<%
+					if (numTime < 1000 || numTime > 1700) {
+					%>
+					<span
+						style="background-color: lightgray; padding: 1% 1%; margin-left: 34%; border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;"><%=nowDate%></span><br>
+					<br> 안녕하세요 고객님 &#128075;<br> 크리링 &#129302;챗봇 상담입니다.<br>
+					<br> 고객님, 지금은 운영시간이 아닙니다.<br> <br> 현재는 챗봇 상담만 가능하며,
+					상담사 연결은 운영시간 내 문의 부탁드립니다.<br> 감사합니다.<br> <br> [운영시간]
+					&#128342;<br> 평일 : 10시 - 17시 (공휴일 제외)<br> <br> 문의사항을
+					선택하거나 번호를 입력해 주세요.<br> <br>
+
+					<div id="allbutton">
+						<button class="btn btn-primary sel" type="button" value="1"
+							style="background-color: #7CB8EB; border-color: #7CB8EB;">1.
+							요금 문의</button>
+						<br>
+						<button class="btn btn-primary sel" type="button" value="2"
+							style="background-color: #7CB8EB; border-color: #7CB8EB;">2.
+							환불 문의</button>
+						<br>
+						<button class="btn btn-primary sel" type="button" value="3"
+							style="background-color: #7CB8EB; border-color: #7CB8EB;">3.
+							세탁시 주의 사항</button>
+						<br>
+						<button class="btn btn-primary sel" type="button" value="4"
+							style="background-color: #7CB8EB; border-color: #7CB8EB;">4.
+							업체 정보 수정 문의</button>
+						<br>
+						<button class="btn btn-primary sel" type="button" value="5"
+							style="background-color: #7CB8EB; border-color: #7CB8EB;">5.
+							상담원 연결</button>
+						<br>
+					</div>
+
+					<%
+					} else {
+					%>
+					<span
+						style="background-color: lightgray; padding: 1% 1%; margin-left: 34%; border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;"><%=nowDate%></span><br>
+					<br> 안녕하세요 고객님&#128075;<br> 크리링 &#129302;챗봇 상담입니다.<br>
+					<br> 문의유형을 선택해주세요!<br> <br> 상담원과의 대화가 필요할 경우<br>
+					[상담원 연결] 버튼을 눌러주세요 : )<br> * 상담원 연결 후 문의사항을 말씀해주세요.<br> *
+					대화 내용은 상담을 위해서만 사용됩니다.<br> <br>
+					<!-- 타임딜레이 -->
+					<div id="allbutton">
+						<button class="btn btn-primary sel" type="button" value="1"
+							style="background-color: #7CB8EB; border-color: #7CB8EB;">1.
+							요금 문의</button>
+						<br>
+						<button class="btn btn-primary sel" type="button" value="2"
+							style="background-color: #7CB8EB; border-color: #7CB8EB">2.
+							환불 문의</button>
+						<br>
+						<button class="btn btn-primary sel" type="button" value="3"
+							style="background-color: #7CB8EB; border-color: #7CB8EB">3.
+							세탁시 주의 사항</button>
+						<br>
+						<button class="btn btn-primary sel" type="button" value="4"
+							style="background-color: #7CB8EB; border-color: #7CB8EB">4.
+							업체 정보 수정 문의</button>
+						<br>
+						<button class="btn btn-primary sel" type="button" value="5"
+							style="background-color: #7CB8EB; border-color: #7CB8EB">5.
+							상담원 연결</button>
+						<br>
+					</div>
+					<%
+					}
+					%>
+
+
+
+					<form action="#" id="ajaxDisplay"></form>
+
+					<script src="./js/jquery-3.7.0.js"></script>
+
+
+					<script type="text/javascript">
+	$('.btn').on('click',function(){
+		var qna=$(this).attr('value');
+		var cr_email = "<%=cr_email%>";
+							//setTimeout(function() {    },700);
+							if (qna == "1") {
+								$('#allbutton').css("display", "none");
+								$.ajax({
+									url : "chatBotScript2/userSel1.jsp",
+									success : function(result) {
+										$("#ajaxDisplay").html(result);
+									}
+								});
+							} else if (qna == "2") {
+								$('#allbutton').css("display", "none");
+								$.ajax({
+									url : "chatBotScript2/userSel2.jsp",
+									success : function(result) {
+										$("#ajaxDisplay").html(result);
+									}
+								});
+							} else if (qna == "3") {
+								$('#allbutton').css("display", "none");
+								$.ajax({
+									url : "chatBotScript2/userSel3.jsp",
+									success : function(result) {
+										$("#ajaxDisplay").html(result);
+									}
+								});
+
+							} else if (qna == "4") {
+								$('#allbutton').css("display", "none");
+								if (cr_email == "Guest") {
+									$.ajax({
+										url : "chatBotScript2/userSel4_1.jsp",
+										success : function(result) {
+											$("#ajaxDisplay").html(result);
+										}
+									});
+									$('#userbutton4').css("display", "block");
+								} else {
+									$.ajax({
+										url : "chatBotScript2/userSel4_2.jsp",
+										success : function(result) {
+											$("#ajaxDisplay").html(result);
+										}
+									});
+
+								}
+							} else if (qna == "5") {
+								$('#allbutton').css("display", "none");
+								$.ajax({
+									url : "chatBotScript2/userSel5.jsp",
+									success : function(result) {
+										$("#ajaxDisplay").html(result);
+									}
+								});
+
+							} else {
+
+							}
+
+						});
+					</script>
+				</div>
+				<div class="modal-footer">
+					<button type="button" id="Exit" class="btn btn-secondary"
+						data-bs-dismiss="modal">나가기</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="./js/jquery-3.7.0.js"></script>
+	<script>
+
+		$('#staticBackdrop').on('show.bs.modal', function(e) {
+
+			var button = $(e.relatedTarget);
+			var modal = $(this);
+
+			modal.find('.modal-body').load(button.data("remote"));
+
+		});
+
+		$('#Exit').on('click',function(){
+			window.location.href='http://localhost:8081/clearing/index.jsp';
+			
+		});
+	</script>
+
+	<!-- JAVASCRIPT FILES -->
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/jquery.backstretch.min.js"></script>
+	<script src="js/counter.js"></script>
+	<script src="js/countdown.js"></script>
+	<script src="js/init.js"></script>
+	<script src="js/modernizr.js"></script>
+	<script src="js/animated-headline.js"></script>
+	<script src="js/custom.js"></script>
+	<script src="js/kakaoMap.js"></script>
+	<script src="js/btnScroll.js"></script>
 </body>
 </html>
