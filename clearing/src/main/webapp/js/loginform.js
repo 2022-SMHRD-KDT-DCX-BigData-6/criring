@@ -1,36 +1,65 @@
-function signChk() {
-	var inputName = $("#userinputName");
-	var inputId = $("#userinputId");
-	var inputPw = $("#userinputPw");
-	var inputPwChk = $("#userinputPwChk");
-	var getName = RegExp(/^[가-힣]+$/);
-	var getId = RegExp(/^[a-zA-Z0-9]{4,12}$/);
-	var getPw = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
-	var form = document.userInfo;
-
-	if (!form.joinEmail.value) {
-		alert("이메일을 입력하세요.");
+function formChk() {
+	var member = document.querySelector('input[name="flexRadioDefault"]:checked').value;
+	var email = document.getElementById("form1Example13");
+	var pw = document.getElementById("form1Example23");
+	var name = document.getElementById("form1Example24");
+	var addr = document.getElementById("sample5_address");
+	var laundryCnt = document.getElementById("form1Example25");
+	var dryerCnt = document.getElementById("form1Example26");
+	
+	/* 정규식*/
+	var exptext = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
+	if(email.value =="") {
+		alert("이메일을 입력하세요");
+		email.focus();
+		
+		return false;
+	}else {
+		
+		if(!exptext.test(email.value)) {
+			alert("이메일형식이 올바르지 않습니다.");
+			email.focus();
+			
+			return false;
+		}
+	}
+	
+	if(pw.value =="") {
+		alert("비밀번호를 입력하세요");
+		pw.focus();
+		
 		return false;
 	}
-	if (form.emailDuplication.value != "idCheck") {
-		alert("아이디 중복체크를 해주세요.");
+	
+	if(name.value == "") {
+		alert("이름 또는 사업자명을 입력하세요");
+		name.focus();
+		
 		return false;
 	}
-	if (!form.joinPw.value) {
-		alert("비밀번호를 입력하세요.");
+	
+	if(addr.value =="") {
+		alert("주소 검색을 이용하여 주소를 입력하세요");
+		addr.focus();
+		
 		return false;
 	}
-	if (!form.joinName.value) {
-		alert("이름을 입력하세요.");
-		return false;
+	
+	if(member == "store") {
+		
+		if(laundryCnt.value =="") {
+			alert("세탁기 수를 입력하세요");
+			laundryCnt.focus();
+			
+			return false;
+		}
+		if(dryerCnt.value =="") {
+			alert("건조기 수를 입력하세요.");
+			dryerCnt.focus();
+			
+			return false;
+		}
 	}
-	if (!form.joinAddr.value) {
-		alert("주소를 입력하세요.");
-		return false;
-	}
-
-
-
 }
 
 function openChkEmail() {

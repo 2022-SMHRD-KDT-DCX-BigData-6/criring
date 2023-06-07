@@ -25,13 +25,8 @@ public class reqBoardInsert extends HttpServlet {
 		
 		DefaultFileRenamePolicy rename = new DefaultFileRenamePolicy();
 		
-		MultipartRequest multi = null;
-		
-		try {
-			multi = new MultipartRequest(request, path, maxSize, encoding, rename);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		MultipartRequest multi = new MultipartRequest(request, path, maxSize, encoding, rename);
+		System.out.println(path);
 		int boardPage = (int)session.getAttribute("boardPage");
 		String req_title = multi.getParameter("req_title");
 		String req_email = (String)session.getAttribute("email");

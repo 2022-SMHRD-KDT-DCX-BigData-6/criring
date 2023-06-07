@@ -150,7 +150,7 @@ h3:after {
 			<div class="collapse navbar-collapse" id="navbarNav">
 				<ul class="navbar-nav ms-auto">
 					<li class="nav-item"><a class="nav-link" href="index.jsp">메인</a></li>
-					<li class="nav-item"><a class="nav-link" href="about.html">후기
+					<li class="nav-item"><a class="nav-link" href="NonUserReview">후기
 					</a></li>
 					<li class="nav-item"><a class="nav-link"
 						href="requestBoardMain.jsp">문의</a></li>
@@ -173,7 +173,7 @@ h3:after {
 					%>
 					<li class="nav-item ms-3"><a
 						class="nav-link custom-btn custom-border-btn custom-btn-bg-white btn"
-						href="selectReservationDetails">내 정보</a></li>
+						href="Mypage.jsp">내 정보</a></li>
 					<li class="nav-item ms-3"><a
 						class="nav-link custom-btn custom-border-btn custom-btn-bg-white btn"
 						href="logOut">로그아웃</a></li>
@@ -449,31 +449,25 @@ h3:after {
 					<h5 class="site-footer-title mb-3">서비스</h5>
 
 					<ul class="footer-menu">
-						<li class="footer-menu-item">
-							<a href="#" class="footer-menu-link">
-								<i
+						<li class="footer-menu-item"><a href="#"
+							class="footer-menu-link"> <i
 								class="bi-chevron-double-right footer-menu-link-icon me-2"></i>
 								코인세탁방 검색
-							</a>
-						</li>
-
-						<li class="footer-menu-item"> 
-							<a href="#" class="footer-menu-link">
-								<i
-								class="bi-chevron-double-right footer-menu-link-icon me-2"></i>
-								예약
-							</a>
-						</li>
-
-						<li class="footer-menu-item">
-							<a href="#" class="footer-menu-link">
-									<i
-									class="bi-chevron-double-right footer-menu-link-icon me-2"></i>
-									리뷰
-							</a>
-						</li>
+						</a></li>
 
 						<li class="footer-menu-item"><a href="#"
+							class="footer-menu-link"> <i
+								class="bi-chevron-double-right footer-menu-link-icon me-2"></i>
+								예약
+						</a></li>
+
+						<li class="footer-menu-item"><a href="NonUserReview"
+							class="footer-menu-link"> <i
+								class="bi-chevron-double-right footer-menu-link-icon me-2"></i>
+								후기
+						</a></li>
+
+						<li class="footer-menu-item"><a href="requestBoardMain.jsp?boardPage=1"
 							class="footer-menu-link"> <i
 								class="bi-chevron-double-right footer-menu-link-icon me-2"></i>
 								문의
@@ -486,33 +480,31 @@ h3:after {
 
 					<p class="text-white d-flex mt-3 mb-2">
 						<i class="bi-geo-alt-fill me-2"></i> 광주 서구 경열로 20
-						
+
 					</p>
 
 					<p class="text-white d-flex mb-2">
-						<i class="bi-telephone-fill me-2"></i> <a href="tel: 010-1234-1234"
-							class="site-footer-link"> 010-1234-1234 </a>
+						<i class="bi-telephone-fill me-2"></i> <a
+							href="tel: 010-1234-1234" class="site-footer-link">
+							010-1234-1234 </a>
 					</p>
 
 					<p class="text-white d-flex">
 						<i class="bi-envelope-fill me-2"></i> <a
-							href="youjinseozzang1004@gmail.com" class="site-footer-link">
+							href="email: youjinseozzang1004@gmail.com" class="site-footer-link">
 							youjinseozzang1004@gmail.com </a>
 					</p>
 
 					<ul class="social-icon mt-4">
-						<li class="social-icon-item"><a href="#"
-							class="social-icon-link button button--skoll"> <span></span>
+						<li class="social-icon-item"><a class="social-icon-link button button--skoll"> <span></span>
 								<span class="bi-twitter"></span>
 						</a></li>
 
-						<li class="social-icon-item"><a href="#"
-							class="social-icon-link button button--skoll"> <span></span>
+						<li class="social-icon-item"><a class="social-icon-link button button--skoll"> <span></span>
 								<span class="bi-facebook"></span>
 						</a></li>
 
-						<li class="social-icon-item"><a href="#"
-							class="social-icon-link button button--skoll"> <span></span>
+						<li class="social-icon-item"><a class="social-icon-link button button--skoll"> <span></span>
 								<span class="bi-instagram"></span>
 						</a></li>
 					</ul>

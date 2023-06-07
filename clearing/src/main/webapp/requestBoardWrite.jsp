@@ -105,7 +105,7 @@ input[type=reset], input[type=submit], input[type=button] {
 			<div class="collapse navbar-collapse" id="navbarNav">
 				<ul class="navbar-nav ms-auto">
 					<li class="nav-item"><a class="nav-link" href="index.jsp">메인</a></li>
-					<li class="nav-item"><a class="nav-link" href="about.html">후기
+					<li class="nav-item"><a class="nav-link" href="NonUserReview">후기
 					</a></li>
 					<li class="nav-item"><a class="nav-link"
 						href="requestBoardMain.jsp">문의</a></li>
@@ -229,13 +229,13 @@ input[type=reset], input[type=submit], input[type=button] {
 								예약
 						</a></li>
 
-						<li class="footer-menu-item"><a href="#"
+						<li class="footer-menu-item"><a href="NonUserReview"
 							class="footer-menu-link"> <i
 								class="bi-chevron-double-right footer-menu-link-icon me-2"></i>
-								리뷰
+								후기
 						</a></li>
 
-						<li class="footer-menu-item"><a href="#"
+						<li class="footer-menu-item"><a href="requestBoardMain.jsp?boardPage=1"
 							class="footer-menu-link"> <i
 								class="bi-chevron-double-right footer-menu-link-icon me-2"></i>
 								문의
@@ -259,23 +259,20 @@ input[type=reset], input[type=submit], input[type=button] {
 
 					<p class="text-white d-flex">
 						<i class="bi-envelope-fill me-2"></i> <a
-							href="youjinseozzang1004@gmail.com" class="site-footer-link">
+							href="email: youjinseozzang1004@gmail.com" class="site-footer-link">
 							youjinseozzang1004@gmail.com </a>
 					</p>
 
 					<ul class="social-icon mt-4">
-						<li class="social-icon-item"><a href="#"
-							class="social-icon-link button button--skoll"> <span></span>
+						<li class="social-icon-item"><a class="social-icon-link button button--skoll"> <span></span>
 								<span class="bi-twitter"></span>
 						</a></li>
 
-						<li class="social-icon-item"><a href="#"
-							class="social-icon-link button button--skoll"> <span></span>
+						<li class="social-icon-item"><a class="social-icon-link button button--skoll"> <span></span>
 								<span class="bi-facebook"></span>
 						</a></li>
 
-						<li class="social-icon-item"><a href="#"
-							class="social-icon-link button button--skoll"> <span></span>
+						<li class="social-icon-item"><a class="social-icon-link button button--skoll"> <span></span>
 								<span class="bi-instagram"></span>
 						</a></li>
 					</ul>

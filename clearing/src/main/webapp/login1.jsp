@@ -30,6 +30,19 @@
 <link href="css/tooplate-clean-work.css" rel="stylesheet" />
 <link href="css/login.css" rel="stylesheet"/>
 <link href="css/chatbot.css" rel="stylesheet">
+<style type="text/css">
+@font-face {
+    font-family: 'gmarket';
+    src: url('./fonts/GmarketSansTTFMedium.ttf') format('truetype');
+}
+body {
+	font-family: 'gmarket';
+}
+
+.modal label {
+	color: black;
+}
+</style>
 <!--
 
 Tooplate 2132 Clean Work
@@ -47,7 +60,7 @@ Free Bootstrap 5 HTML Template
 <script
 	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script
-	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=683c7e08c86fe41ea5c21dd7148dc9f3&libraries=services"></script>
+	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=0db420091d1781f4feb06d2e77972cba&libraries=services"></script>
 <script src="https://kit.fontawesome.com/a32650dbb1.js" crossorigin="anonymous"></script>
 </head>
 
@@ -131,7 +144,7 @@ Free Bootstrap 5 HTML Template
 											<label class="form-label" for="form1Example13">Email
 												address</label>
 												<input type="email" id="form1Example13" name="joinEmail" class="form-control form-control-lg" />
-												<button id ="idCheck" type="button">중복체크</button>
+												<button id ="idCheck" type="button" class="btn btn-primary btn-lg btn-block">중복체크</button>
 												<input type="hidden" name="emailDuplication" value="emailUncheck">
 												
 										</div>
@@ -306,7 +319,7 @@ Free Bootstrap 5 HTML Template
 										</div>
 										<!-- Submit button -->
 										<button type="submit"
-											class="btn btn-primary btn-lg btn-block modal-btn" onclick="formChk();">
+											class="btn btn-primary btn-lg btn-block modal-btn" onclick="formChk(); return false;">
 											Sign up</button>
 									</form>
 								</div>
@@ -360,7 +373,7 @@ Free Bootstrap 5 HTML Template
 				<ul class="navbar-nav ms-auto">
 					<li class="nav-item"><a class="nav-link"
 						href="index.jsp">메인</a></li>
-					<li class="nav-item"><a class="nav-link" href="about.html">후기
+					<li class="nav-item"><a class="nav-link" href="NonUserReview">후기
 							</a></li>
 					<li class="nav-item"><a class="nav-link" href="requestBoardMain.jsp">문의
 							</a></li>
@@ -456,24 +469,18 @@ Free Bootstrap 5 HTML Template
 
 											<div
 												class="d-flex justify-content-around align-items-center mb-4">
-												<!-- Checkbox -->
-												<div class="form-check">
-													<input class="form-check-input" type="checkbox" value=""
-														id="form1Example3" checked /> <label
-														class="form-check-label" for="form1Example3">
-														Remember me </label>
-												</div>
-												<a href="#!">Forgot password?</a>
+												
+												
 											</div>
 
 											<!-- Submit button -->
 											<div class="joinform-btn">
 												<button type="submit"
-													class="btn btn-primary btn-lg btn-block">Sign in</button>
+													class="btn btn-primary btn-lg btn-block">로그인</button>
 												<button type="button"
 													class="btn btn-primary btn-lg btn-block"
 													data-bs-toggle="modal" data-bs-target="#exampleModal">
-													Join in</button>
+													회원 가입</button>
 											</div>
 										</form>
 
@@ -515,31 +522,25 @@ Free Bootstrap 5 HTML Template
 					<h5 class="site-footer-title mb-3">서비스</h5>
 
 					<ul class="footer-menu">
-						<li class="footer-menu-item">
-							<a href="#" class="footer-menu-link">
-								<i
+						<li class="footer-menu-item"><a href="#"
+							class="footer-menu-link"> <i
 								class="bi-chevron-double-right footer-menu-link-icon me-2"></i>
 								코인세탁방 검색
-							</a>
-						</li>
-
-						<li class="footer-menu-item"> 
-							<a href="#" class="footer-menu-link">
-								<i
-								class="bi-chevron-double-right footer-menu-link-icon me-2"></i>
-								예약
-							</a>
-						</li>
-
-						<li class="footer-menu-item">
-							<a href="#" class="footer-menu-link">
-									<i
-									class="bi-chevron-double-right footer-menu-link-icon me-2"></i>
-									리뷰
-							</a>
-						</li>
+						</a></li>
 
 						<li class="footer-menu-item"><a href="#"
+							class="footer-menu-link"> <i
+								class="bi-chevron-double-right footer-menu-link-icon me-2"></i>
+								예약
+						</a></li>
+
+						<li class="footer-menu-item"><a href="NonUserReview"
+							class="footer-menu-link"> <i
+								class="bi-chevron-double-right footer-menu-link-icon me-2"></i>
+								후기
+						</a></li>
+
+						<li class="footer-menu-item"><a href="requestBoardMain.jsp?boardPage=1"
 							class="footer-menu-link"> <i
 								class="bi-chevron-double-right footer-menu-link-icon me-2"></i>
 								문의
@@ -552,33 +553,31 @@ Free Bootstrap 5 HTML Template
 
 					<p class="text-white d-flex mt-3 mb-2">
 						<i class="bi-geo-alt-fill me-2"></i> 광주 서구 경열로 20
-						
+
 					</p>
 
 					<p class="text-white d-flex mb-2">
-						<i class="bi-telephone-fill me-2"></i> <a href="tel: 010-1234-1234"
-							class="site-footer-link"> 010-1234-1234 </a>
+						<i class="bi-telephone-fill me-2"></i> <a
+							href="tel: 010-1234-1234" class="site-footer-link">
+							010-1234-1234 </a>
 					</p>
 
 					<p class="text-white d-flex">
 						<i class="bi-envelope-fill me-2"></i> <a
-							href="youjinseozzang1004@gmail.com" class="site-footer-link">
+							href="email: youjinseozzang1004@gmail.com" class="site-footer-link">
 							youjinseozzang1004@gmail.com </a>
 					</p>
 
 					<ul class="social-icon mt-4">
-						<li class="social-icon-item"><a href="#"
-							class="social-icon-link button button--skoll"> <span></span>
+						<li class="social-icon-item"><a class="social-icon-link button button--skoll"> <span></span>
 								<span class="bi-twitter"></span>
 						</a></li>
 
-						<li class="social-icon-item"><a href="#"
-							class="social-icon-link button button--skoll"> <span></span>
+						<li class="social-icon-item"><a class="social-icon-link button button--skoll"> <span></span>
 								<span class="bi-facebook"></span>
 						</a></li>
 
-						<li class="social-icon-item"><a href="#"
-							class="social-icon-link button button--skoll"> <span></span>
+						<li class="social-icon-item"><a class="social-icon-link button button--skoll"> <span></span>
 								<span class="bi-instagram"></span>
 						</a></li>
 					</ul>

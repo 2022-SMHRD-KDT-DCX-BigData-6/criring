@@ -210,7 +210,7 @@ body {
 
 	</main>
 
-<footer class="site-footer">
+	<footer class="site-footer">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12 col-12 d-flex align-items-center mb-4 pb-2">
@@ -245,13 +245,13 @@ body {
 								예약
 						</a></li>
 
-						<li class="footer-menu-item"><a href="#"
+						<li class="footer-menu-item"><a href="NonUserReview"
 							class="footer-menu-link"> <i
 								class="bi-chevron-double-right footer-menu-link-icon me-2"></i>
-								리뷰
+								후기
 						</a></li>
 
-						<li class="footer-menu-item"><a href="#"
+						<li class="footer-menu-item"><a href="requestBoardMain.jsp?boardPage=1"
 							class="footer-menu-link"> <i
 								class="bi-chevron-double-right footer-menu-link-icon me-2"></i>
 								문의
@@ -275,23 +275,20 @@ body {
 
 					<p class="text-white d-flex">
 						<i class="bi-envelope-fill me-2"></i> <a
-							href="youjinseozzang1004@gmail.com" class="site-footer-link">
+							href="email: youjinseozzang1004@gmail.com" class="site-footer-link">
 							youjinseozzang1004@gmail.com </a>
 					</p>
 
 					<ul class="social-icon mt-4">
-						<li class="social-icon-item"><a href="#"
-							class="social-icon-link button button--skoll"> <span></span>
+						<li class="social-icon-item"><a class="social-icon-link button button--skoll"> <span></span>
 								<span class="bi-twitter"></span>
 						</a></li>
 
-						<li class="social-icon-item"><a href="#"
-							class="social-icon-link button button--skoll"> <span></span>
+						<li class="social-icon-item"><a class="social-icon-link button button--skoll"> <span></span>
 								<span class="bi-facebook"></span>
 						</a></li>
 
-						<li class="social-icon-item"><a href="#"
-							class="social-icon-link button button--skoll"> <span></span>
+						<li class="social-icon-item"><a class="social-icon-link button button--skoll"> <span></span>
 								<span class="bi-instagram"></span>
 						</a></li>
 					</ul>

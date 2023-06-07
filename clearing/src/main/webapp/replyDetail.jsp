@@ -218,7 +218,7 @@ input[type=reset], input[type=submit], input[type=button] {
 			               <%
 			               // 로그인 아이디가 작성자의 아이디와 일치할 시 수정가능
 			               if (session.getAttribute("email") == null ) {%>
-			               <%} else if(session.getAttribute("email").equals(aDto.getAdminId())) {%>
+			               <%} else if(session.getAttribute("email").equals("admin")) {%>
 			               <a href="update_reply.jsp"><button class="replybtn">수정</button></a>
 			               <a href="replyDelete"><button class="replybtn">삭제</button></a>
 			               <%} else if(session.getAttribute("email") != null) {%>

@@ -1,6 +1,7 @@
 package com.clearing.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -76,6 +77,9 @@ public class joinMember extends HttpServlet {
 						System.out.println("건조기 등록 실패");
 					}
 				}
+				PrintWriter writer = response.getWriter();
+				writer.println("<script>alert('회원가입 완료 !');</script>"); 
+				writer.close();
 				response.sendRedirect("login1.jsp");
 			} else {
 				System.out.println("업체 등록 실패");
