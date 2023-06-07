@@ -129,7 +129,6 @@ input[type=reset], input[type=submit], input[type=button] {
 					<li class="nav-item ms-3"><a
 						class="nav-link custom-btn custom-border-btn custom-btn-bg-white btn"
 						href="selectReservationDetails">내 정보</a></li>
-					<%-- href="Mypage.jsp?email=<%=email%>&addr=<%=addr%>&lat=<%=lat%>&lng=<%=lng%>" --%>
 					<li class="nav-item ms-3"><a
 						class="nav-link custom-btn custom-border-btn custom-btn-bg-white btn"
 						href="logOut">로그아웃</a></li>
@@ -184,7 +183,7 @@ input[type=reset], input[type=submit], input[type=button] {
 								value="작성하기">
 								<input
 								type="reset" class="reqbtn" value="초기화">
-								<a href="requestBoardMain.jsp"
+								<a href="requestBoardMain.jsp?boardPage=1"
 								class="requestBack"><input type="button" class="reqbtn" value="돌아가기"></a>
 
 						</form>

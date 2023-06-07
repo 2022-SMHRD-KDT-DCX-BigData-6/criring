@@ -21,7 +21,6 @@ public class replyInsert extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		String path = request.getServletContext().getRealPath("./file");
-		System.out.println("저장 경로 ㅇㄷ? : " + path);
 		int maxSize = 1024 * 1024 * 10; // 10MB
 		
 		String encoding = "UTF-8";
@@ -35,15 +34,11 @@ public class replyInsert extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		int boardPage = (int)session.getAttribute("boardPage");
 		int req_seq = (int)session.getAttribute("req_seq");
 		String admin_id = (String)session.getAttribute("email");
 		String reply_content = multi.getParameter("reply_content");
 		String reply_photo = multi.getFilesystemName("reply_photo");
-		
-		System.out.println("문의넘버 : " + req_seq);
-		System.out.println("작성자 : " + admin_id);
-		System.out.println("내용 : " + reply_content);
-		System.out.println("파일 : " + reply_photo);
 		
 		admin_replyDTO dto = new admin_replyDTO();
 		admin_replyDAO dao = new admin_replyDAO();
@@ -56,11 +51,9 @@ public class replyInsert extends HttpServlet {
 		if (insert > 0) {
 			Request_BoardDAO uDao = new Request_BoardDAO();
 			int update = uDao.update_reqTypeY(req_seq);
-			System.out.println("성공");
-			response.sendRedirect("requestBoardMain.jsp");
+			response.sendRedirect("requestBoardMain.jsp?boardPage=" + boardPage);
 		} else {
-			System.out.println("실패");
-			response.sendRedirect("requestBoardMain.jsp");
+			response.sendRedirect("requestBoardMain.jsp?boardPage=" + boardPage);
 		}
 	}
 

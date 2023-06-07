@@ -1,3 +1,4 @@
+<%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
 <%@page import="com.clearing.model.Request_BoardDAO"%>
 <%@page import="com.clearing.model.Request_BoardDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -26,19 +27,26 @@
     font-family: 'gmarket';
     src: url('./fonts/GmarketSansTTFMedium.ttf') format('truetype');
 }
+
+
 body {
 	font-family: 'gmarket';
 }
 
 img {
-	border-radius: 10px;
+	border-radius: 40px;
 }
 
-.reqimg {
-	display:inline-block;
-	width: 40%;
-    height: 40%;
-    margin-bottom: 15px;
+input[type=reset], input[type=submit], input[type=button] {
+	border: none;
+}
+
+.requestWriteTable {
+	margin: 0 auto;
+}
+
+.reqname {
+	margin-top: 50px;
 }
 
 .reqtitle {
@@ -49,13 +57,19 @@ img {
 	margin-bottom: 15px;
 }
 
+.reqimg {
+	display:inline-block;
+	width: 80%;
+    height: 80%;
+    margin-bottom: 15px;
+}
 .reqtext {
 	margin-left: 10px;
 	margin-bottom: 10px;
 	border-radius: 10px;
 	resize: none;
+	width: 50%
 }
-
 
 .reqbtn {
 	width: 70px;
@@ -130,7 +144,6 @@ img {
 					<li class="nav-item ms-3"><a
 						class="nav-link custom-btn custom-border-btn custom-btn-bg-white btn"
 						href="selectReservationDetails">내 정보</a></li>
-					<%-- href="Mypage.jsp?email=<%=email%>&addr=<%=addr%>&lat=<%=lat%>&lng=<%=lng%>" --%>
 					<li class="nav-item ms-3"><a
 						class="nav-link custom-btn custom-border-btn custom-btn-bg-white btn"
 						href="logOut">로그아웃</a></li>
@@ -149,6 +162,7 @@ img {
 			</div>
 		</div>
 	</nav>
+	
 	   <main>
 		   <section class="banner-section d-flex justify-content-center align-items-end">
 	                <div class="section-overlay"></div>
@@ -165,29 +179,29 @@ img {
 	                </div>
 			</section>
 		<%	
+			int boardPage = (int)session.getAttribute("boardPage");
 			int req_seq = Integer.parseInt(request.getParameter("req_seq"));
-			String req_title = request.getParameter("req_title");
-			Request_BoardDTO dto = new Request_BoardDTO(req_seq, req_title);
+			Request_BoardDTO dto = new Request_BoardDTO(req_seq);
 			Request_BoardDAO dao = new Request_BoardDAO();
 			Request_BoardDTO rDto = dao.selectDetail_request(dto);
 			session.setAttribute("req_seq", req_seq);
-			session.setAttribute("req_title", req_title);
 		%>
 		
 		<section class="d-flex justify-content-center align-items-end">
 	   		<div class="container">
 	   			<div class="row">
 	   				      <!-- 게시글 세부내용 조회 -->   
-	     <h1 class="reqtitle">제목<%=rDto.getReqTitle() %></h1><br>
-	     <h5 class="reqwriter">작성자<%=rDto.getReqEmail() %></h5><br>
+	     <h2 class="reqtitle"><%=rDto.getReqTitle() %></h2><br>
+	     <hr>
+	     <h5 class="reqwriter">작성자 : <%=rDto.getReqEmail() %></h5><br>
 	     <hr>
 	     <h5>내용</h5><br>
-	     <textarea class="reqtext" rows="10" cols="50" readonly="readonly"><%=rDto.getReqContent() %></textarea>
-	     <div class="reqimg">
+	     <div class="row">
+	     <textarea class="reqtext" rows="10" cols="50" readonly="readonly"><%if (rDto.getReqContent() == null) {%><%}else if (rDto.getReqContent() != null) {%><%=rDto.getReqContent() %><%} %></textarea>
 	                  	<%if(rDto.getReqFile() == null) {%>
 	                     <%}else if(rDto.getReqFile() != null){%>
 	                     
-						<img alt="x" src="./file/<%=rDto.getReqFile() %>" style="width: 40%;">
+						<img alt="x" src="./file/<%=rDto.getReqFile() %>" style="display: inline-block; width: 45%; height: 97%; margin-left: 4%;">
 						
 						<%} %>
 	     </div>
@@ -207,7 +221,7 @@ img {
 	               } else if(session.getAttribute("email").equals(rDto.getReqEmail()) || session.getAttribute("email").equals("kissmejr@naver.com")) { %>
 	               <a href="reqBoardDelete"><button class="reqbtn">삭제</button></a>
 	               <%} %>
-	               <a href="requestBoardMain.jsp"><button class="reqbtn" style="width: 76px;">뒤로가기</button></a>  
+	               <a href="requestBoardMain.jsp?boardPage=<%=boardPage%>"><button class="reqbtn" style="width: 76px;">돌아가기</button></a>  
 		</div>   
 	   			</div>
 	   		</div>

@@ -24,9 +24,9 @@ public class reqBoardDelete extends HttpServlet {
 		 * req_seq = Integer.parseInt(request.getParameter("req_seq")); }
 		 */
 		HttpSession session = request.getSession();
+		int boardPage = (int)session.getAttribute("boardPage");
 		int req_seq = (int)session.getAttribute("req_seq");
-		String req_title = (String)session.getAttribute("req_title");
-		Request_BoardDTO sdto = new Request_BoardDTO(req_seq, req_title);
+		Request_BoardDTO sdto = new Request_BoardDTO(req_seq);
 		Request_BoardDAO sdao = new Request_BoardDAO();
 		Request_BoardDTO selDto = sdao.selectDetail_request(sdto);
 		if (selDto.getReqType().equals("Y")) {
@@ -43,9 +43,9 @@ public class reqBoardDelete extends HttpServlet {
 		
 		
 		if (delete > 0) {
-			response.sendRedirect("requestBoardMain.jsp");
+			response.sendRedirect("requestBoardMain.jsp?boardPage=" + boardPage);
 		} else {
-			response.sendRedirect("requestBoardMain.jsp");
+			response.sendRedirect("requestBoardMain.jsp?boardPage=" + boardPage);
 		}
 		
 	}
