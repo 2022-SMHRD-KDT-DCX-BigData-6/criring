@@ -276,6 +276,7 @@ Free Bootstrap 5 HTML Template
 						<button type="submit"
 							class="custom-btn btn button button--atlas smoothscroll me-3"
 							style="width: 160px;">
+						</button>
 							<span>예약하기</span>
 
 							<div class="marquee" aria-hidden="true">
@@ -283,7 +284,6 @@ Free Bootstrap 5 HTML Template
 									<span>예약하기</span> <span>예약하기</span> <span>Reservation</span> <span>예약하기</span>
 								</div>
 							</div>
-<<<<<<< HEAD
 						</div>
 					</button>
 					
@@ -299,13 +299,10 @@ Free Bootstrap 5 HTML Template
 				<div id="reservation-Lat1"></div>
 				<div id="reservation-Lng1"></div>
 			</div>
-			<button type="submit" class="custom-btn custom-border-btn custom-btn-bg-white btn button button--pan smoothscroll reivewbtn"
-						> <span style="">Review</span>
+			<button type="submit" class="custom-btn custom-border-btn custom-btn-bg-white btn button button--pan smoothscroll reivewbtn"> 
+			<span style="">Review</span>
 			</button>
 		</form>
-=======
-						</button>
->>>>>>> branch 'master' of https://github.com/2022-SMHRD-KDT-DCX-BigData-6/criring.git
 
 					</div>
 					<div class="reservation-LatLng" style="display: none;">
