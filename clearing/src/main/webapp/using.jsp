@@ -279,7 +279,7 @@
 									</div>
 									<div class="res-complete-btn">
 											<button type="submit" class="btn btn-primary book res-complete">예약하기</button>
-											<a href="services.html">
+											<a href="index.jsp">
 												<button type="button" class="btn btn-primary back">돌아가기</button>
 											</a>
 									</div>

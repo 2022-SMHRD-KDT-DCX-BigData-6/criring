@@ -36,6 +36,7 @@ public class usingController extends HttpServlet {
 		int insert =uDao.insertUsing(uVo);
 		if(insert>0) {
 			System.out.println("등록성공");
+			response.sendRedirect("Success.jsp");
 		}
 		
 		
