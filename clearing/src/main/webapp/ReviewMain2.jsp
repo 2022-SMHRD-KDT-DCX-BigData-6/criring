@@ -196,17 +196,7 @@ Free Bootstrap 5 HTML Template
 				</div>
 			</div>
 <!-- 페이징 나중에 잡기..... 너무 바쁨 -->
-			<nav aria-label="Page navigation example">
-				<ul class="pagination justify-content-center">
-					<li class="page-item disabled"><a class="page-link">Previous</a>
-					</li>
-					<%for(int i=0; i<(ListSize/10)+1;i++){%>
-					<li class="page-item"><a class="page-link" href="#"><%=i+1 %></a></li>
-					
-					<% }%>
-					<li class="page-item"><a class="page-link" href="#">Next</a></li>
-				</ul>
-			</nav>
+			
 		</section>
 
 

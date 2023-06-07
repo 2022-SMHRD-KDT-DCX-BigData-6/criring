@@ -42,7 +42,6 @@ public class Review_ViewController extends HttpServlet {
 		double star = 0.0;
 		tbl_reviewListDAO reviewDAO = new tbl_reviewListDAO();
 		ArrayList<tbl_reviewListDTO> reviewList = (ArrayList<tbl_reviewListDTO>) reviewDAO.selReviewData(storeEmail);
-
 		for (int i = 0; i < reviewList.size(); i++) {
 			totalStar += reviewList.get(i).getReview_rating();
 			star = (totalStar / reviewList.size());

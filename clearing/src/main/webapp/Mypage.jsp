@@ -384,7 +384,7 @@ body {
 		
 	</main>
 
-	<footer class="site-footer">
+	<footer class="site-footer" style="margin-top: 0">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12 col-12 d-flex align-items-center mb-4 pb-2">

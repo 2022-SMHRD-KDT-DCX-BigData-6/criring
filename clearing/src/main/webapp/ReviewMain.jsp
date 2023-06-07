@@ -173,9 +173,8 @@ Free Bootstrap 5 HTML Template
 
 	
 
-
 		<section class="services-section section-padding section-bg">
-						<%if(reviewList==null){%>
+						<%if(reviewList.isEmpty()){%>
 							<div align="center">
 							<img alt="x" src="images/plz_Write.png"><br>
 							<br>
