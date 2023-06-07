@@ -189,13 +189,83 @@ Free Bootstrap 5 HTML Template
 					<div id="carouselExampleControls" class="carousel slide"
 						data-bs-ride="carousel">
 						<div class="carousel-inner">
-							<%if(reviewList.size()%4>0){
-						for(int k = 0;k<(reviewList.size()/4)+1;k++){%>
+						<%if(reviewList.size()/4==1){%>
+						<%if(reviewList.size()%4>0){%>
+							
 							<div class="carousel-item active" data-bs-interval="10000">
 
 							<div class="container">
 						<div class="row">
-							<%for(int i=0; i<reviewList.size();i++){ %>
+							<%for(int i=0; i<4;i++){ %>
+								
+								<div class="col-lg-6 col-12"> 
+									<div class="services-thumb mb-lg-0">
+										<div class="row">
+											<div class="col-lg-5 col-md-5 col-12">
+												<div class="services-image-wrap">
+												<%if (!reviewList.get(i).getReview_photo().equals("0")) {%>
+												
+													<img src="./file/<%=reviewList.get(i).getReview_photo()%>"
+														class="services-image img-fluid" alt="">
+												<%}else{%>
+													<img src="images/bubbles.png"
+														class="services-image img-fluid" alt="">
+												<%} %>
+												</div>
+											</div>
+
+											<div
+												class="col-lg-7 col-md-7 col-12 d-flex align-items-center">
+												<div class="services-info mt-4 mt-lg-0 mt-md-0">
+
+													<%String[] user_email=reviewList.get(i).getUser_email().split("@");
+													   String email_front=user_email[0];
+													   String numStr = email_front.replaceAll("[0-9]", "*");
+													   %>
+													<div class="d-flex flex-wrap align-items-center">
+													작성자:<%=numStr%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+														<div class="reviews-icons">
+															<%
+															for ( int j = 0; j < reviewList.get(i).getReview_rating(); j++) {
+															%>
+															<i class="bi-star-fill"></i>
+															<%
+															}
+															%>
+															<%
+															for ( int j  = 0; j < 5 - (reviewList.get(i).getReview_rating()); j++) {
+															%>
+															<i class="bi-star"></i>
+
+															<%
+															}
+															%>
+														</div>
+													</div><br>
+													<div id="fb-root"></div>
+													<%=reviewList.get(i).getReview_content()%><br><br>
+													<p>
+													<%=reviewList.get(i).getReview_dt().substring(0, 10)%>
+													</p>
+
+												</div>
+											</div>
+										</div>
+									</div> 
+								<br>
+								</div>
+								
+							<%} %>
+							
+							</div>
+								</div>
+								
+							</div>
+							<div class="carousel-item active" data-bs-interval="10000">
+
+							<div class="container">
+						<div class="row">
+							<%for(int i=4; i<reviewList.size();i++){ %>
 								
 								<div class="col-lg-6 col-12"> 
 									<div class="services-thumb mb-lg-0">
@@ -261,7 +331,7 @@ Free Bootstrap 5 HTML Template
 								
 							</div>
 						
-						<% }
+						<% 
 						}else{
 						for(int k = 0;k<(reviewList.size()/4);k++){%>
 							<div class="carousel-item active" data-bs-interval="10000">
@@ -337,7 +407,7 @@ Free Bootstrap 5 HTML Template
 						<%}
 						}
 						%>
-						
+						<%} %>
 						
 						</div>
 							<button class="carousel-control-prev" type="button"

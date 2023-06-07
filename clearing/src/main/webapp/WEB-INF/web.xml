@@ -153,6 +153,12 @@
 		<description></description>
 		<servlet-class>com.clearing.controller.NonUserReview</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>RV2</servlet-name>
+		<display-name>RV2</display-name>
+		<description></description>
+		<servlet-class>com.clearing.controller.RV2</servlet-class>
+	</servlet>
 	<servlet-mapping>
 		<servlet-name>reqBoardDelete</servlet-name>
 		<url-pattern>/reqBoardDelete</url-pattern>
@@ -252,6 +258,10 @@
 	<servlet-mapping>
 		<servlet-name>NonUserReview</servlet-name>
 		<url-pattern>/NonUserReview</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>RV2</servlet-name>
+		<url-pattern>/RV2</url-pattern>
 	</servlet-mapping>
 
 </web-app>

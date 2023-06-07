@@ -142,8 +142,7 @@ Free Bootstrap 5 HTML Template
 							<ol class="breadcrumb justify-content-center">
 								<li class="breadcrumb-item"><a href="index.jsp">Home</a></li>
 
-								<li class="breadcrumb-item active" aria-current="page">Services
-									Listing</li>
+								<li class="breadcrumb-item active" aria-current="page">등록업체 리뷰 목록</li>
 							</ol>
 						</nav>
 					</div>
@@ -172,7 +171,7 @@ Free Bootstrap 5 HTML Template
 							%>
 
 							<tr>
-								<td><%=storeReviewList.get(i).getSTORE_NAME()%></td>
+								<td><a href="RV2?store_name=<%=storeReviewList.get(i).getSTORE_NAME()%>"><%=storeReviewList.get(i).getSTORE_NAME()%></a></td>
 								<td><%=storeReviewList.get(i).getCnt()%></td>
 							</tr>
 							<%
@@ -195,7 +194,6 @@ Free Bootstrap 5 HTML Template
 
 				</div>
 			</div>
-<!-- 페이징 나중에 잡기..... 너무 바쁨 -->
 			
 		</section>
 
