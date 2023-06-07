@@ -176,9 +176,12 @@ Free Bootstrap 5 HTML Template
 
 		<section class="services-section section-padding section-bg">
 						<%if(reviewList==null){%>
-							
-							<img alt="x" src="images/plz_Write.png"> 리뷰가 아직 없네요.. 처음으로 작성해보세요!
-						
+							<div align="center">
+							<img alt="x" src="images/plz_Write.png"><br>
+							<br>
+							등록된 리뷰가 없습니다..<br>
+							 처음으로 작성해보세요❗
+							</div>
 						
 						<% }else{%>
 			<div class="container">
@@ -337,23 +340,23 @@ Free Bootstrap 5 HTML Template
 						%>
 						
 						
+						</div>
+							<button class="carousel-control-prev" type="button"
+								data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+								<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+								<span class="visually-hidden">Previous</span>
+							</button>
+							<button class="carousel-control-next" type="button"
+								data-bs-target="#carouselExampleControls" data-bs-slide="next">
+								<span class="carousel-control-next-icon" aria-hidden="true"></span>
+								<span class="visually-hidden">Next</span>
+							</button>
+						</div>
 						
 						<%} %>
 						
 							
 						
-						</div>
-						<button class="carousel-control-prev" type="button"
-							data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-							<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-							<span class="visually-hidden">Previous</span>
-						</button>
-						<button class="carousel-control-next" type="button"
-							data-bs-target="#carouselExampleControls" data-bs-slide="next">
-							<span class="carousel-control-next-icon" aria-hidden="true"></span>
-							<span class="visually-hidden">Next</span>
-						</button>
-					</div>
 
 
 				</div>
@@ -364,7 +367,7 @@ Free Bootstrap 5 HTML Template
 
 	</main>
 
-	<footer class="site-footer">
+	<footer class="site-footer" style="margin-top: 0">
 		<div class="container">
 			<div class="row">
 

@@ -35,10 +35,8 @@
 <link href="css/kakaoMap.css" rel="stylesheet">
 <link href="css/chatbot.css" rel="stylesheet">
 <script type="text/javascript"
-	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4fe78505e64a5ac31be2e7b890da39d4&libraries=services,clusterer,drawing"></script>
 
-<script type="text/javascript"
-	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=0db420091d1781f4feb06d2e77972cba&libraries=services,clusterer,drawing"></script>
+	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4fe78505e64a5ac31be2e7b890da39d4&libraries=services,clusterer,drawing"></script>
 <script src="https://kit.fontawesome.com/a32650dbb1.js" crossorigin="anonymous"></script>
 <!--
 
@@ -296,6 +294,7 @@ Free Bootstrap 5 HTML Template
 					</form>
 				</div>
 			</div>
+
 		</section>
 	<footer class="site-footer">
 		<div class="container">
@@ -616,7 +615,6 @@ Free Bootstrap 5 HTML Template
 	</div>
 
 	<script src="./js/jquery-3.7.0.js"></script>
-
 	<script>
 
 		$('#staticBackdrop').on('show.bs.modal', function(e) {
@@ -632,7 +630,8 @@ Free Bootstrap 5 HTML Template
 			window.location.href='http://localhost:8081/clearing/index.jsp';
 			
 		});
-	</script>
+	</script> 
+	
 	<!-- JAVASCRIPT FILES -->
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
