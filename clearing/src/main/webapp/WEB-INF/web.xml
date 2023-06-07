@@ -153,6 +153,16 @@
 		<description></description>
 		<servlet-class>com.clearing.controller.NonUserReview</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>reqBoardPaging</servlet-name>
+		<display-name>reqBoardPaging</display-name>
+		<description></description>
+		<servlet-class>com.clearing.controller.reqBoardPaging</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>reqBoardPaging</servlet-name>
+		<url-pattern>/reqBoardPaging</url-pattern>
+	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>reqBoardDelete</servlet-name>
 		<url-pattern>/reqBoardDelete</url-pattern>

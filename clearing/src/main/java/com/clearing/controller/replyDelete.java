@@ -15,6 +15,7 @@ public class replyDelete extends HttpServlet {
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
+		int boardPage = (int)session.getAttribute("boardPage");
 		int reply_seq = (int)session.getAttribute("reply_seq");
 		int req_seq = (int)session.getAttribute("req_seq");
 		admin_replyDAO dao = new admin_replyDAO();
@@ -23,12 +24,10 @@ public class replyDelete extends HttpServlet {
 		if (delete > 0) {
 			Request_BoardDAO uDao = new Request_BoardDAO();
 			int update = uDao.update_reqTypeN(req_seq);
-			System.out.println("성공");
 			session.removeAttribute("reply_seq");
-			response.sendRedirect("requestBoardMain.jsp");
+			response.sendRedirect("requestBoardMain.jsp?boardPage=" + boardPage);
 		} else {
-			System.out.println("실패");
-			response.sendRedirect("requestBoardMain.jsp");
+			response.sendRedirect("requestBoardMain.jsp?boardPage=" + boardPage);
 		}
 	}
 

@@ -11,7 +11,7 @@ public class Request_BoardDTO {
     @NonNull private int req_seq;
 
     // 질의 제목 
-    @NonNull private String req_title;
+    private String req_title;
 
     // 질의 내용 
     private String req_content;

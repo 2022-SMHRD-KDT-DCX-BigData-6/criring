@@ -19,7 +19,6 @@ public class reqBoardInsert extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		String path = request.getServletContext().getRealPath("./file");
-		System.out.println("저장 경로 ㅇㄷ? : " + path);
 		int maxSize = 1024 * 1024 * 10; // 10MB
 		
 		String encoding = "UTF-8";
@@ -33,16 +32,11 @@ public class reqBoardInsert extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+		int boardPage = (int)session.getAttribute("boardPage");
 		String req_title = multi.getParameter("req_title");
 		String req_email = (String)session.getAttribute("email");
 		String req_file = multi.getFilesystemName("req_file");
 		String req_content = multi.getParameter("req_content");
-		
-		System.out.println("제목 : " + req_title);
-		System.out.println("작성자 : " + req_email);
-		System.out.println("파일 : " + req_file);
-		System.out.println("내용 : " + req_content);
 		
 		Request_BoardDTO dto = new Request_BoardDTO();
 		Request_BoardDAO dao = new Request_BoardDAO();
@@ -54,9 +48,9 @@ public class reqBoardInsert extends HttpServlet {
 		
 		int insert = dao.insert_req(dto);
 		if (insert > 0) {
-			response.sendRedirect("requestBoardMain.jsp");
+			response.sendRedirect("requestBoardMain.jsp?boardPage=" + boardPage);
 		} else {
-			response.sendRedirect("requestBoardMain.jsp");
+			response.sendRedirect("requestBoardMain.jsp?boardPage=" + boardPage);
 		}
 		
 	}

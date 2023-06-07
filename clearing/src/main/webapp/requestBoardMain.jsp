@@ -44,10 +44,6 @@ body {
 	float: left;
 }
 
-
-/* THE END OF THE IMPORTANT STUFF */
-
-/* Basic Styling */
 .req_board {
   	display: block;
   	text-align: center;
@@ -73,6 +69,7 @@ h3:after {
   -webkit-animation: leftRight 2s linear infinite reverse;
   animation: leftRight 2s linear infinite reverse;
 }
+
 @-webkit-keyframes leftRight {
   0%    { -webkit-transform: translateX(0)}
   25%   { -webkit-transform: translateX(-10px)}
@@ -104,16 +101,11 @@ h3:after {
 	text-align: center;
 	margin: auto;
 }
+.btn-group me-2{
+	text-align: center;
+	display: inline-block;
+}
 </style>
-<!--
-
-Tooplate 2132 Clean Work
-
-https://www.tooplate.com/view/2132-clean-work
-
-Free Bootstrap 5 HTML Template
-
--->
     </head>
     
     <body>
@@ -182,7 +174,6 @@ Free Bootstrap 5 HTML Template
 					<li class="nav-item ms-3"><a
 						class="nav-link custom-btn custom-border-btn custom-btn-bg-white btn"
 						href="selectReservationDetails">내 정보</a></li>
-					<%-- href="Mypage.jsp?email=<%=email%>&addr=<%=addr%>&lat=<%=lat%>&lng=<%=lng%>" --%>
 					<li class="nav-item ms-3"><a
 						class="nav-link custom-btn custom-border-btn custom-btn-bg-white btn"
 						href="logOut">로그아웃</a></li>
@@ -225,96 +216,19 @@ Free Bootstrap 5 HTML Template
 		Request_BoardDAO dao = new Request_BoardDAO();
 		List<Request_BoardDTO> sel_list = dao.selectAll_request();
 		int num = 0;
+		int boardPage = Integer.parseInt(request.getParameter("boardPage"));
+		int count = 10;
+		int totalPage = ((sel_list.size() -1) / count) + 1;
+		int displayPageNum = 10;
+		int endPage = (((boardPage - 1) / displayPageNum) + 1) * displayPageNum;
+		if (totalPage < endPage) {
+			endPage = totalPage;
+		}
+		int startPage = ((boardPage -1) / displayPageNum) * displayPageNum + 1;
+		boolean prev = (boardPage == 1) ? false : true;
+		boolean next = (endPage == totalPage) ? false : true;
+		session.setAttribute("boardPage", boardPage);
 	%>
-
-<!-- 		</section>
-	</main> -->
-	
-<%-- 	<div class="container req_board">
-	<%if(session.getAttribute("email") != null){ %>
-	<a href="requestBoardWrite.jsp"><button type="button" class="btn btn-secondary" id="writer">게시글 작성</button></a>
-	<%} else {%>
-	<%} %>
-	  <table class="rwd-table">
-	    <tbody>
-	    <%// 관리자로 로그인하면 응답이 뜸 N으로 되어있으면 답글이 없는거 Y로 되어있으면 답글완료한거 확인용도 %>
-	    <%if(session.getAttribute("email") == null){ %>
-	    <tr>
-	        <th>번호</th>
-	        <th>제목</th>
-	        <th>작성자</th>
-	        <th>작성일</th>
-	      </tr>
-	      <%for (int i = 0; i < sel_list.size(); i++) {%>
-	        	<tr>
-	        		<td><%=num = num+1 %></td>
-	        		<td><a class="title" href="requestBoardDetail.jsp?req_seq=<%=sel_list.get(i).getReqSeq()%>&req_title=<%=sel_list.get(i).getReqTitle()%>"><%=sel_list.get(i).getReqTitle() %></a></td>
-	        		<td><%=sel_list.get(i).getReqEmail() %></td>
-	        		<td><%=sel_list.get(i).getReqDt() %></td>
-	        	</tr>
-	        	<%if(sel_list.get(i).getReqType().equals("Y")){%>
-	        		<tr>
-	        		<td></td>
-	        		<td><a class="title" href="replyDetail.jsp?req_seq=<%=sel_list.get(i).getReqSeq()%>">&nbsp;&nbsp; └ RE:&nbsp;<%=sel_list.get(i).getReqTitle()%>에 관한 답글입니다.</a></td>
-	        		<td>관리자</td>
-	        		<td></td>
-	        		</tr>
-	        	<%} %>
-	        <%} %>
-	        <%} else if(session.getAttribute("email").equals("kissmejr@naver.com")) {%>
-	      <tr>
-	        <th>번호</th>
-	        <th>제목</th>
-	        <th>작성자</th>
-	        <th>작성일</th>
-	        <th>응답</th>
-	      </tr>
-	      <%for (int i = 0; i < sel_list.size(); i++) {%>
-	        	<tr>
-	        		<td><%=num = num+1 %></td>
-	        		<td><a class="title" href="requestBoardDetail.jsp?req_seq=<%=sel_list.get(i).getReqSeq()%>&req_title=<%=sel_list.get(i).getReqTitle()%>"><%=sel_list.get(i).getReqTitle() %></a></td>
-	        		<td><%=sel_list.get(i).getReqEmail() %></td>
-	        		<td><%=sel_list.get(i).getReqDt() %></td>
-	        		<td><a class="title" href="replyWrite.jsp?req_seq=<%=sel_list.get(i).getReqSeq()%>&req_title=<%=sel_list.get(i).getReqTitle()%>">답글달기</a></td>
-	        	</tr>
-	        	<%if(sel_list.get(i).getReqType().equals("Y")){%>
-	        		<tr>
-	        		<td></td>
-	        		<td><a class="title" href="replyDetail.jsp?req_seq=<%=sel_list.get(i).getReqSeq()%>">&nbsp;&nbsp; └ RE:&nbsp;<%=sel_list.get(i).getReqTitle()%>에 관한 답글입니다.</a></td>
-	        		<td></td>
-	        		<td></td>
-	        		<td></td>
-	        		</tr>
-	        	<%} %>
-	        <%} %>
-	        <%} else if(session.getAttribute("email") != null) { %>
-		    <tr>
-		        <th>번호</th>
-		        <th>제목</th>
-		        <th>작성자</th>
-		        <th>작성일</th>
-		      </tr>
-		      <%for (int i = 0; i < sel_list.size(); i++) {%>
-		        	<tr>
-		        		<td><%=num = num+1 %></td>
-		        		<td><a class="title" href="requestBoardDetail.jsp?req_seq=<%=sel_list.get(i).getReqSeq()%>&req_title=<%=sel_list.get(i).getReqTitle()%>"><%=sel_list.get(i).getReqTitle() %></a></td>
-		        		<td><%=sel_list.get(i).getReqEmail() %></td>
-		        		<td><%=sel_list.get(i).getReqDt() %></td>
-		        	</tr>
-		        	<%if(sel_list.get(i).getReqType().equals("Y")){%>
-	        		<tr>
-	        		<td></td>
-	        		<td><a class="title" href="replyDetail.jsp?req_seq=<%=sel_list.get(i).getReqSeq()%>">&nbsp;&nbsp; └ RE:&nbsp;<%=sel_list.get(i).getReqTitle()%>에 관한 답글입니다.</a></td>
-	        		<td></td>
-	        		<td></td>
-	        		</tr>
-	        	<%} %>
-		        <%} %>
-	        <%} %>
-	    </tbody>
-	  </table>
-	  <h3 class="paging">Resize Me</h3>
-	</div> --%>
 	
 	<div class="request">
 	<%if(session.getAttribute("email") != null){ %>
@@ -333,10 +247,11 @@ Free Bootstrap 5 HTML Template
 	        <th>작성일</th>
 	      </tr>
 	   </thead>
-	      <%for (int i = 0; i < sel_list.size(); i++) {%>
+	   	  <%if (sel_list.size() <= (boardPage*10)){ %>
+			<%for(int i = (boardPage * 10) - 10;i < sel_list.size();i++){ %>
 	        	<tr>
-	        		<td><%=num = num+1 %></td>
-	        		<td><a class="title" href="requestBoardDetail.jsp?req_seq=<%=sel_list.get(i).getReqSeq()%>&req_title=<%=sel_list.get(i).getReqTitle()%>"><%=sel_list.get(i).getReqTitle() %></a></td>
+	        		<td><%=i + 1 %></td>
+	        		<td><a class="title" href="requestBoardDetail.jsp?req_seq=<%=sel_list.get(i).getReqSeq()%>"><%=sel_list.get(i).getReqTitle() %></a></td>
 	        		<td><%=sel_list.get(i).getReqEmail() %></td>
 	        		<td><%=sel_list.get(i).getReqDt() %></td>
 	        	</tr>
@@ -348,7 +263,25 @@ Free Bootstrap 5 HTML Template
 	        		<td></td>
 	        		</tr>
 	        	<%} %>
-	        <%} %>
+			<%} %>
+		  <%} else {%>
+			<%for(int i = (boardPage * 10) - 10;i < boardPage * 10;i++){ %>
+	        	<tr>
+	        		<td><%=i + 1 %></td>
+	        		<td><a class="title" href="requestBoardDetail.jsp?req_seq=<%=sel_list.get(i).getReqSeq()%>"><%=sel_list.get(i).getReqTitle() %></a></td>
+	        		<td><%=sel_list.get(i).getReqEmail() %></td>
+	        		<td><%=sel_list.get(i).getReqDt() %></td>
+	        	</tr>
+	        	<%if(sel_list.get(i).getReqType().equals("Y")){%>
+	        		<tr colspan="2" class="table-active">
+	        		<td></td>
+	        		<td><a class="title" href="replyDetail.jsp?req_seq=<%=sel_list.get(i).getReqSeq()%>">&nbsp;&nbsp; └ RE:&nbsp;<%=sel_list.get(i).getReqTitle()%>에 관한 답글입니다.</a></td>
+	        		<td>관리자</td>
+	        		<td></td>
+	        		</tr>
+	        	<%} %>
+			<%} %>
+		  <%} %>
 	        <%} else if(session.getAttribute("email").equals("kissmejr@naver.com")) {%>
 	   <thead>
 	      <tr>
@@ -359,26 +292,55 @@ Free Bootstrap 5 HTML Template
 	        <th>응답</th>
 	      </tr>
 	   </thead>   
-	      
-	      <%for (int i = 0; i < sel_list.size(); i++) {%>
+	   
+	   <%if (sel_list.size() <= (boardPage*10)){ %>
+			<%for(int i = (boardPage * 10) - 10;i < sel_list.size();i++){ %>
 	        	<tr>
-	        		<td><%=num = num+1 %></td>
-	        		<td><a class="title" href="requestBoardDetail.jsp?req_seq=<%=sel_list.get(i).getReqSeq()%>&req_title=<%=sel_list.get(i).getReqTitle()%>"><%=sel_list.get(i).getReqTitle() %></a></td>
+	        		<td><%=i + 1 %></td>
+	        		<td><a class="title" href="requestBoardDetail.jsp?req_seq=<%=sel_list.get(i).getReqSeq()%>"><%=sel_list.get(i).getReqTitle() %></a></td>
 	        		<td><%=sel_list.get(i).getReqEmail() %></td>
 	        		<td><%=sel_list.get(i).getReqDt() %></td>
-	        		<td><a class="title" href="replyWrite.jsp?req_seq=<%=sel_list.get(i).getReqSeq()%>&req_title=<%=sel_list.get(i).getReqTitle()%>">답글달기</a></td>
+	        		<%if(sel_list.get(i).getReqType().equals("Y")){%>
+	        			<td></td>
+		        	<%} else {%>
+		        		<td><a class="title" href="replyWrite.jsp?req_seq=<%=sel_list.get(i).getReqSeq()%>">답글달기</a></td>
+		        	<%} %>
 	        	</tr>
 	        	<%if(sel_list.get(i).getReqType().equals("Y")){%>
 	        		<tr colspan="2" class="table-active">
 	        		<td></td>
 	        		<td><a class="title" href="replyDetail.jsp?req_seq=<%=sel_list.get(i).getReqSeq()%>">&nbsp;&nbsp; └ RE:&nbsp;<%=sel_list.get(i).getReqTitle()%>에 관한 답글입니다.</a></td>
-	        		<td></td>
+	        		<td>관리자</td>
 	        		<td></td>
 	        		<td></td>
 	        		</tr>
 	        	<%} %>
-	        <%} %>
-	        <%} else if(session.getAttribute("email") != null) { %>
+			<%} %>
+		  <%} else {%>
+			<%for(int i = (boardPage * 10) - 10;i < boardPage * 10;i++){ %>
+	        	<tr>
+	        		<td><%=i + 1 %></td>
+	        		<td><a class="title" href="requestBoardDetail.jsp?req_seq=<%=sel_list.get(i).getReqSeq()%>"><%=sel_list.get(i).getReqTitle() %></a></td>
+	        		<td><%=sel_list.get(i).getReqEmail() %></td>
+	        		<td><%=sel_list.get(i).getReqDt() %></td>
+	        	<%if(sel_list.get(i).getReqType().equals("Y")){%>
+	        		<td></td>
+	        	<%} else {%>
+	        		<td><a class="title" href="replyWrite.jsp?req_seq=<%=sel_list.get(i).getReqSeq()%>">답글달기</a></td>
+	        	<%} %>
+	        	</tr>
+	        	<%if(sel_list.get(i).getReqType().equals("Y")){%>
+	        		<tr colspan="2" class="table-active">
+	        		<td></td>
+	        		<td><a class="title" href="replyDetail.jsp?req_seq=<%=sel_list.get(i).getReqSeq()%>">&nbsp;&nbsp; └ RE:&nbsp;<%=sel_list.get(i).getReqTitle()%>에 관한 답글입니다.</a></td>
+	        		<td>관리자</td>
+	        		<td></td>
+	        		<td></td>
+	        		</tr>
+	        	<%} %>
+			<%} %>
+		  	<%} %>
+	     <%} else if(session.getAttribute("email") != null) { %>
 		 <thead>
 		    <tr>
 		        <th>번호</th>
@@ -387,31 +349,82 @@ Free Bootstrap 5 HTML Template
 		        <th>작성일</th>
 		    </tr>
 		 </thead>
-		      <%for (int i = 0; i < sel_list.size(); i++) {%>
-		        	<tr>
-		        		<td><%=num = num+1 %></td>
-		        		<td><a class="title" href="requestBoardDetail.jsp?req_seq=<%=sel_list.get(i).getReqSeq()%>&req_title=<%=sel_list.get(i).getReqTitle()%>"><%=sel_list.get(i).getReqTitle() %></a></td>
-		        		<td><%=sel_list.get(i).getReqEmail() %></td>
-		        		<td><%=sel_list.get(i).getReqDt() %></td>
-		        	</tr>
-		        	<%if(sel_list.get(i).getReqType().equals("Y")){%>
+		      <%if (sel_list.size() <= (boardPage*10)){ %>
+			<%for(int i = (boardPage * 10) - 10;i < sel_list.size();i++){ %>
+	        	<tr>
+	        		<td><%=i + 1 %></td>
+	        		<td><a class="title" href="requestBoardDetail.jsp?req_seq=<%=sel_list.get(i).getReqSeq()%>"><%=sel_list.get(i).getReqTitle() %></a></td>
+	        		<td><%=sel_list.get(i).getReqEmail() %></td>
+	        		<td><%=sel_list.get(i).getReqDt() %></td>
+	        	</tr>
+	        	<%if(sel_list.get(i).getReqType().equals("Y")){%>
 	        		<tr colspan="2" class="table-active">
 	        		<td></td>
 	        		<td><a class="title" href="replyDetail.jsp?req_seq=<%=sel_list.get(i).getReqSeq()%>">&nbsp;&nbsp; └ RE:&nbsp;<%=sel_list.get(i).getReqTitle()%>에 관한 답글입니다.</a></td>
-	        		<td></td>
+	        		<td>관리자</td>
 	        		<td></td>
 	        		</tr>
 	        	<%} %>
-		        <%} %>
-	        <%} %>
+			<%} %>
+		  <%} else {%>
+			<%for(int i = (boardPage * 10) - 10;i < boardPage * 10;i++){ %>
+	        	<tr>
+	        		<td><%=i + 1 %></td>
+	        		<td><a class="title" href="requestBoardDetail.jsp?req_seq=<%=sel_list.get(i).getReqSeq()%>"><%=sel_list.get(i).getReqTitle() %></a></td>
+	        		<td><%=sel_list.get(i).getReqEmail() %></td>
+	        		<td><%=sel_list.get(i).getReqDt() %></td>
+	        	</tr>
+	        	<%if(sel_list.get(i).getReqType().equals("Y")){%>
+	        		<tr colspan="2" class="table-active">
+	        		<td></td>
+	        		<td><a class="title" href="replyDetail.jsp?req_seq=<%=sel_list.get(i).getReqSeq()%>">&nbsp;&nbsp; └ RE:&nbsp;<%=sel_list.get(i).getReqTitle()%>에 관한 답글입니다.</a></td>
+	        		<td>관리자</td>
+	        		<td></td>
+	        		</tr>
+	        	<%} %>
+			<%} %>
+		  <%} %>
+		 <%} %>
   </tbody>
 </table>
-	<h3 class="paging">Resize Me</h3>
+	<!-- <h3 class="paging"></h3> -->
+		<div class="btn-group me-2" role="group" aria-label="First group">
+			<%if (totalPage <= count) {%>
+				<%if(prev == true) {%>
+				<a href="reqBoardPaging?pagebutton=<%=boardPage - 1 %>"><button type="button" class="btn btn-outline-secondary" id="pagebutton">이전페이지</button></a>
+				<%} %>
+				<%for(int i = startPage; i <= endPage; i++){ %>
+					<%if (i == boardPage) {%>
+					<a href="reqBoardPaging?pagebutton=<%=i %>"><button type="button" class="btn btn-secondary" id="pagebutton"><%=i %></button></a>
+					<%} else {%>
+					<a href="reqBoardPaging?pagebutton=<%=i %>"><button type="button" class="btn btn-outline-secondary" id="pagebutton"><%=i %></button></a>
+					<%} %>
+				<%} %>
+				<%if(boardPage != totalPage) {%>
+					<a href="reqBoardPaging?pagebutton=<%=boardPage + 1 %>"><button type="button" class="btn btn-outline-secondary" id="pagebutton">다음페이지</button></a>
+				<%} else {%>
+					
+				<%} %>
+			<%} else {%>
+				<%if(prev == true) {%>
+				<a href="reqBoardPaging?pagebutton=<%=boardPage - 1 %>"><button type="button" class="btn btn-outline-secondary" id="pagebutton">이전페이지</button></a>
+				<%} %>
+				<%for(int i = startPage; i <= endPage; i++){ %>
+					<%if (i == boardPage) {%>
+					<a href="reqBoardPaging?pagebutton=<%=i %>"><button type="button" class="btn btn-secondary" id="pagebutton"><%=i %></button></a>
+					<%} else {%>
+					<a href="reqBoardPaging?pagebutton=<%=i %>"><button type="button" class="btn btn-outline-secondary" id="pagebutton"><%=i %></button></a>
+					<%} %>
+				<%} %>
+				<%if(next == true) {%>
+					<a href="reqBoardPaging?pagebutton=<%=boardPage + 1 %>"><button type="button" class="btn btn-outline-secondary" id="pagebutton">다음페이지</button></a>
+				<%} %>
+				
+			<%} %>
+		</div>
 	</div>
-	
-	<!-- JavaScript Bundle with Popper -->
 </section>
-        </main>
+</main>
 
 	<footer class="site-footer">
 		<div class="container">

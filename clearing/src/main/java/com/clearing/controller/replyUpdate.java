@@ -18,8 +18,7 @@ public class replyUpdate extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		HttpSession session = request.getSession();
-		String path = request.getServletContext().getRealPath("");
-		System.out.println("저장 경로 ㅇㄷ? : " + path);
+		String path = request.getServletContext().getRealPath("./file");
 		int maxSize = 1024 * 1024 * 10; // 10MB
 		
 		String encoding = "UTF-8";
@@ -28,14 +27,10 @@ public class replyUpdate extends HttpServlet {
 		
 		MultipartRequest multi = new MultipartRequest(request, path, maxSize, encoding, rename);
 		
+		int boardPage = (int)session.getAttribute("boardPage");
 		int reply_seq = (int)session.getAttribute("reply_seq");
-		System.out.println("이거 숫자 몇 : " + reply_seq);
 		String reply_content = multi.getParameter("reply_content");
 		String reply_photo = multi.getFilesystemName("reply_photo");
-		
-		System.out.println("내용 : " + reply_content);
-		System.out.println("파일 : " + reply_photo);
-		
 		
 		admin_replyDTO dto = new admin_replyDTO();
 		admin_replyDAO dao = new admin_replyDAO();
@@ -45,11 +40,9 @@ public class replyUpdate extends HttpServlet {
 		
 		int update = dao.update_reply(dto);
 		if (update > 0) {
-			System.out.println("수정완");
-			response.sendRedirect("requestBoardMain.jsp");
+			response.sendRedirect("requestBoardMain.jsp?boardPage=" + boardPage);
 		} else {
-			System.out.println("수정실패");
-			response.sendRedirect("requestBoardMain.jsp");
+			response.sendRedirect("requestBoardMain.jsp?boardPage=" + boardPage);
 		}
 		
 	}

@@ -18,8 +18,7 @@ public class reqBoardUpdate extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		HttpSession session = request.getSession();
-		String path = request.getServletContext().getRealPath("");
-		System.out.println("저장 경로 ㅇㄷ? : " + path);
+		String path = request.getServletContext().getRealPath("./file");
 		int maxSize = 1024 * 1024 * 10; // 10MB
 		
 		String encoding = "UTF-8";
@@ -32,16 +31,12 @@ public class reqBoardUpdate extends HttpServlet {
 		 * try { multi = new MultipartRequest(request, path, maxSize, encoding, rename);
 		 * } catch (Exception e) { e.printStackTrace(); }
 		 */
-		
 		String req_title = multi.getParameter("req_title");
 		String req_file = multi.getFilesystemName("req_file");
 		String req_content = multi.getParameter("req_content");
 		
-		System.out.println("제목 : " + req_title);
-		System.out.println("파일 : " + req_file);
-		System.out.println("내용 : " + req_content);
-		
-		 int req_seq = (int)session.getAttribute("req_seq");
+		int boardPage = (int)session.getAttribute("boardPage");
+		int req_seq = (int)session.getAttribute("req_seq");
 		 
 		Request_BoardDTO dto = new Request_BoardDTO();
 		Request_BoardDAO dao = new Request_BoardDAO();
@@ -52,11 +47,9 @@ public class reqBoardUpdate extends HttpServlet {
 		dto.setReqContent(req_content);
 		int update = dao.update_req(dto);
 		if (update > 0) {
-			System.out.println("수정완");
-			response.sendRedirect("requestBoardMain.jsp");
+			response.sendRedirect("requestBoardMain.jsp?boardPage=" + boardPage);
 		} else {
-			System.out.println("수정실패");
-			response.sendRedirect("requestBoardMain.jsp");
+			response.sendRedirect("requestBoardMain.jsp?boardPage=" + boardPage);
 		}
 		
 	}
