@@ -642,6 +642,9 @@ Free Bootstrap 5 HTML Template
 		});
 		</script>
 
+	<button type="button" class="btn btn-primary scrolltop" onclick="goToTop(); return false;">
+		<i class="fa-solid fa-arrow-up"></i>
+	</button>
 			<% email=(String)session.getAttribute("email"); %>
 	<!-- 유저 밸류값은 표현식으로 세션에서 저장된거 가져올거임 -->
 	<!-- Scrollable modal -->

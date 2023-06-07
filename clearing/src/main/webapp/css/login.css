@@ -93,10 +93,6 @@ input[type="button"].btn.btn-primary.btn-lg.btn-block {
 	flex-direction: column;
 }
 
-.search_reservation {
-	margin-top: 5%;
-}
-
 .memberLoginChk {
 	display: flex;
 	justify-content: space-around;

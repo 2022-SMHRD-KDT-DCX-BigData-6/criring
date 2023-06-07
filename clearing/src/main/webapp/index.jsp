@@ -39,18 +39,7 @@
 
 <script type="text/javascript"
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=0db420091d1781f4feb06d2e77972cba&libraries=services,clusterer,drawing"></script>
-
-<style type="text/css">
-@font-face {
-	font-family: 'gmarket';
-	src: url('./fonts/GmarketSansTTFMedium.ttf') format('truetype');
-}
-
-body {
-	font-family: 'gmarket';
-}
-</style>
-
+<script src="https://kit.fontawesome.com/a32650dbb1.js" crossorigin="anonymous"></script>
 <!--
 
 Tooplate 2132 Clean Work
@@ -211,11 +200,12 @@ Free Bootstrap 5 HTML Template
 
 		</section>
 	</main>
-	<div class="searchWrap">
 		<section class="search_reservation"
-			style="height: 600px; position: relative; padding-right: 1.5%;">
-			<div class="searchsection" style="margin-top: 5%;"></div>
-			<%-- <div class="searchAddr">
+			style="position: relative; padding-right: 1.5%;">
+			<div class="container">
+				<div class="row">
+					<div class="searchsection" style="margin-top: 5%;"></div>
+					<%-- <div class="searchAddr">
 			<div class="input-group mb-3 input-group-jin" style="margin-top:15px;">
 				<input type="text" class="form-control" name="addrSearch"
 					id="keyword" placeholder="검색할 주소를 입력하세요"
@@ -230,80 +220,83 @@ Free Bootstrap 5 HTML Template
 
 
 		</div> --%>
-			<!-- 		<div id="map" style="width: 600px; height: 400px;"></div> -->
-			<%
-			/* TODO 세션에 유저주소정보를 담아서 업데이트해줘야함 */
-			String searchAddr = addr;
-			if (searchAddr == null) {
-				searchAddr = "쌍촌동";
-			} else {
-				searchAddr = searchAddr.substring(0, 5);
-			}
-			%>
-			<div class="option">
-				<div class="kakao-search">
-					<form id="searchAddrReservation"
-						onsubmit="searchPlaces(); return false;">
-						<input type="text" class="form-control" name="addrSearch"
-							value="<%=searchAddr%>" id="keyword" placeholder="검색할 주소를 입력하세요"
-							aria-label="Recipient's username"
-							aria-describedby="button-addon2" size="15">
-						<button type="button" class="btn search-btn" id="button-addon2">검색
-							!</button>
+					<!-- 		<div id="map" style="width: 600px; height: 400px;"></div> -->
+					<%
+					/* TODO 세션에 유저주소정보를 담아서 업데이트해줘야함 */
+					String searchAddr = addr;
+					if (searchAddr == null) {
+						searchAddr = "쌍촌동";
+					} else {
+						searchAddr = searchAddr.substring(0, 5);
+					}
+					%>
+					<div class="option">
+						<div class="kakao-search">
+							<form id="searchAddrReservation"
+								onsubmit="searchPlaces(); return false;">
+								<div class="searchaddruser">
+									<input type="text" class="form-control" name="addrSearch"
+									value="<%=searchAddr%>" id="keyword"
+									placeholder="검색할 주소를 입력하세요" aria-label="Recipient's username"
+									aria-describedby="button-addon2" size="15">
+								<button type="button" class="btn search-btn" id="button-addon2">검색
+									!</button>
+								</div>
+							</form>
+						</div>
+					</div>
+					<div class="map_menu_wrap">
+						<div class="map_wrap">
+
+							<div id="map"></div>
+						</div>
+						<div id="menu_wrap" class="bg_white">
+							<hr>
+							<ul id="placesList"></ul>
+							<div id="pagination"></div>
+						</div>
+					</div>
+					<form action="bookLaundryController" id="selectStore_form">
+
+						<div class="selectReservation">
+							<div class="reservation-info dp-none">
+								<div id="selectStore" class="selectStore_pos"></div>
+								<div style="margin-left: 15px;">예약하시겠습니까?</div>
+							</div>
+							<div class="map-searchbtn-group">
+								<button type="submit"
+									class="custom-btn btn button button--atlas smoothscroll me-3"
+									style="width: 160px;">
+									<span>예약하기</span>
+
+									<div class="marquee" aria-hidden="true">
+										<div class="marquee__inner">
+											<span>예약하기</span> <span>예약하기</span> <span>Reservation</span>
+											<span>예약하기</span>
+										</div>
+									</div>
+
+								</button>
+							</div>
+							<div class="reservation-LatLng" style="display: none;">
+								<div id="reservation-Lat"></div>
+								<div id="reservation-Lng"></div>
+							</div>
+						</div>
+					</form>
+					<form action="Review_ViewController">
+						<div class="reservation-LatLng" style="display: none;">
+							<div id="reservation-Lat1"></div>
+							<div id="reservation-Lng1"></div>
+						</div>
+						<button type="submit"
+							class="custom-btn custom-border-btn custom-btn-bg-white btn button button--pan smoothscroll reivewbtn">
+							<span style="">Review</span>
+						</button>
 					</form>
 				</div>
 			</div>
-			<div class="map_menu_wrap">
-				<div class="map_wrap">
-
-					<div id="map"
-						style="width: 450px; height: 450px; position: relative; overflow: hidden;"></div>
-				</div>
-				<div id="menu_wrap" class="bg_white">
-					<hr>
-					<ul id="placesList"></ul>
-					<div id="pagination"></div>
-				</div>
-			</div>
-			<form action="bookLaundryController" id="selectStore_form">
-
-				<div class="selectReservation">
-					<div class="reservation-info dp-none">
-						<div id="selectStore" class="selectStore_pos"></div>
-						<div style="margin-left: 15px;">예약하시겠습니까?</div>
-					</div>
-					<div class="map-searchbtn-group">
-						<button type="submit"
-							class="custom-btn btn button button--atlas smoothscroll me-3"
-							style="width: 160px;">
-							<span>예약하기</span>
-
-							<div class="marquee" aria-hidden="true">
-								<div class="marquee__inner">
-									<span>예약하기</span> <span>예약하기</span> <span>Reservation</span> <span>예약하기</span>
-								</div>
-							</div>
-
-						</button>
-					</div>
-					<div class="reservation-LatLng" style="display: none;">
-						<div id="reservation-Lat"></div>
-						<div id="reservation-Lng"></div>
-					</div>
-				</div>
-			</form>
-			<form action="Review_ViewController">
-				<div class="reservation-LatLng" style="display: none;">
-					<div id="reservation-Lat1"></div>
-					<div id="reservation-Lng1"></div>
-				</div>
-				<button type="submit"
-					class="custom-btn custom-border-btn custom-btn-bg-white btn button button--pan smoothscroll reivewbtn">
-					<span style="">Review</span>
-				</button>
-			</form>
 		</section>
-	</div>
 	<footer class="site-footer">
 		<div class="container">
 			<div class="row">
@@ -433,12 +426,15 @@ Free Bootstrap 5 HTML Template
 	<!-- 유저 밸류값은 표현식으로 세션에서 저장된거 가져올거임 -->
 	<!-- Scrollable modal -->
 	<!-- Button trigger modal -->
+	<button type="button" class="btn btn-primary scrolltop" onclick="goToTop(); return false;">
+		<i class="fa-solid fa-arrow-up"></i>
+	</button>
 	<button type="button" class="btn btn-primary chatbotMain" id="CSR"
 		data-remote="ChatModal3.jsp" data-bs-toggle="modal"
 		data-bs-target="#staticBackdrop">
 		<img alt="CSR" src="./images/CSR2.png">
 	</button>
-
+	
 	<!-- Modal -->
 	<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static"
 		data-bs-keyboard="false" tabindex="-1"
@@ -549,8 +545,7 @@ Free Bootstrap 5 HTML Template
 					<script type="text/javascript">
 	$('.btn').on('click',function(){
 		var qna=$(this).attr('value');
-		var cr_email = "<%=cr_email%>
-						";
+		var cr_email = "<%=cr_email%>";
 							//setTimeout(function() {    },700);
 							if (qna == "1") {
 								$('#allbutton').css("display", "none");
@@ -621,13 +616,9 @@ Free Bootstrap 5 HTML Template
 	</div>
 
 	<script src="./js/jquery-3.7.0.js"></script>
-	<<<<<<< HEAD
-
 
 	<script>
-=======
-	<script>
->>>>>>> branch 'master' of https://github.com/2022-SMHRD-KDT-DCX-BigData-6/criring.git
+
 		$('#staticBackdrop').on('show.bs.modal', function(e) {
 
 			var button = $(e.relatedTarget);
@@ -636,17 +627,12 @@ Free Bootstrap 5 HTML Template
 			modal.find('.modal-body').load(button.data("remote"));
 
 		});
-<<<<<<< HEAD
+
 		$('#Exit').on('click',function(){
 			window.location.href='http://localhost:8081/clearing/index.jsp';
 			
 		});
 	</script>
-
-	=======
-	</script>
-	>>>>>>> branch 'master' of
-	https://github.com/2022-SMHRD-KDT-DCX-BigData-6/criring.git
 	<!-- JAVASCRIPT FILES -->
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>

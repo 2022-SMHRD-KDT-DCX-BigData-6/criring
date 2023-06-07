@@ -419,6 +419,11 @@
 			</div>
 		</div>
 	</footer>
+	
+		<button type="button" class="btn btn-primary scrolltop" onclick="goToTop(); return false;">
+		<i class="fa-solid fa-arrow-up"></i>
+	</button>
+	
 	<!-- 사용중인 세탁기 사용불가 js -->
 			<% email=(String)session.getAttribute("email"); %>
 	<!-- 유저 밸류값은 표현식으로 세션에서 저장된거 가져올거임 -->
