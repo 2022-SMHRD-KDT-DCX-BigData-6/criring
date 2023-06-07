@@ -32,6 +32,17 @@
 <link href="css/bootstrap-icons.css" rel="stylesheet">
 
 <link href="css/tooplate-clean-work.css" rel="stylesheet">
+<style type="text/css">
+@font-face {
+    font-family: 'gmarket';
+    src: url('./fonts/GmarketSansTTFMedium.ttf') format('truetype');
+}
+
+body {
+  	background-color: var(--white-color);
+	font-family: 'gmarket' !important;
+}
+</style>
 <!--
 
 Tooplate 2132 Clean Work
@@ -52,23 +63,21 @@ Free Bootstrap 5 HTML Template
 	<header class="site-header">
 		<div class="container">
 			<div class="row">
-
 				<div class="col-lg-12 col-12 d-flex flex-wrap">
 					<p class="d-flex me-4 mb-0">
-						<i class="bi-house-fill me-2"></i> One-Stop Cleaning Service
+						<i class="bi-house-fill me-2"></i> 온라인 코인세탁방 예약
 					</p>
 
 					<p class="d-flex d-lg-block d-md-block d-none me-4 mb-0">
-						<i class="bi-clock-fill me-2"></i> <strong class="me-2">Mon
-							- Fri</strong> 8:00 AM - 5:30 PM
+						<i class="bi-clock-fill me-2"></i> <strong class="me-2">월
+							- 금</strong> 8:00 AM - 5:30 PM
 					</p>
 
 					<p class="site-header-icon-wrap text-white d-flex mb-0 ms-auto">
 						<i class="site-header-icon bi-whatsapp me-2"></i> <a
-							href="tel: 110-220-9800" class="text-white"> 110 220 9800 </a>
+							href="tel: 110-220-9800" class="text-white"> 010-1234-1234 </a>
 					</p>
 				</div>
-
 			</div>
 		</div>
 	</header>
@@ -76,8 +85,9 @@ Free Bootstrap 5 HTML Template
 	<nav class="navbar navbar-expand-lg">
 		<div class="container">
 			<a class="navbar-brand" href="index.jsp"> <img
-				src="images/bubbles.png" class="logo img-fluid" alt=""> <span
-				class="ms-2">Clean Work</span>
+				src="images/bubbles.png" class="logo img-fluid" alt="" /> <span
+				class="ms-2">C&nbsp;R&nbsp;I&nbsp;R&nbsp;I&nbsp;N&nbsp;G</span>
+
 			</a>
 
 			<button class="navbar-toggler" type="button"
@@ -89,35 +99,44 @@ Free Bootstrap 5 HTML Template
 
 			<div class="collapse navbar-collapse" id="navbarNav">
 				<ul class="navbar-nav ms-auto">
-					<li class="nav-item"><a class="nav-link" href="index.jsp">Home</a>
+					<li class="nav-item"><a class="nav-link" href="index.jsp">메인</a></li>
+					<li class="nav-item"><a class="nav-link" href="NonUserReview">후기
+					</a></li>
+					<li class="nav-item"><a class="nav-link"
+						href="requestBoardMain.jsp?boardPage=1">문의</a></li>
+					<%
+					String email = (String) session.getAttribute("email");
+					if (email != null) {
+						if (email.equals("admin")) {
+					%>
+					<!-- admin 로그인시 생기는 메뉴 TODO-->
+					<li class="nav-item"><a class="nav-link" href="contact.html">관리자</a>
 					</li>
+					<%
+					}
+					}
+					%>
 
-					<li class="nav-item"><a class="nav-link" href="about.html">About
-							Us</a></li>
-
-					<li class="nav-item dropdown"><a
-						class="nav-link dropdown-toggle" href="#section_5"
-						id="navbarLightDropdownMenuLink" role="button"
-						data-bs-toggle="dropdown" aria-expanded="false">Pages</a>
-
-						<ul class="dropdown-menu dropdown-menu-light"
-							aria-labelledby="navbarLightDropdownMenuLink">
-							<li><a class="dropdown-item active" href="services.html">Our
-									Services</a></li>
-
-							<li><a class="dropdown-item" href="coming-soon.html">Coming
-									Soon</a></li>
-
-							<li><a class="dropdown-item" href="page-404.html">Page
-									404</a></li>
-						</ul></li>
-
-					<li class="nav-item"><a class="nav-link" href="contact.html">Contact</a>
-					</li>
-
+					<%
+					if (session.getAttribute("member") != null || session.getAttribute("storeMember") != null) {
+					%>
 					<li class="nav-item ms-3"><a
 						class="nav-link custom-btn custom-border-btn custom-btn-bg-white btn"
-						href="#">Get started</a></li>
+						href="Mypage.jsp">내 정보</a></li>
+					<li class="nav-item ms-3"><a
+						class="nav-link custom-btn custom-border-btn custom-btn-bg-white btn"
+						href="logOut">로그아웃</a></li>
+					<%
+					} else {
+					%>
+					<li class="nav-item ms-3"><a
+						class="nav-link custom-btn custom-border-btn custom-btn-bg-white btn"
+						href="login1.jsp">로그인</a></li>
+					<%
+					}
+					%>
+
+
 				</ul>
 			</div>
 		</div>
@@ -142,8 +161,7 @@ Free Bootstrap 5 HTML Template
 							<ol class="breadcrumb justify-content-center">
 								<li class="breadcrumb-item"><a href="index.jsp">Home</a></li>
 
-								<li class="breadcrumb-item active" aria-current="page">Services
-									Listing</li>
+								<li class="breadcrumb-item active" aria-current="page">등록업체 리뷰 목록</li>
 							</ol>
 						</nav>
 					</div>
@@ -172,7 +190,7 @@ Free Bootstrap 5 HTML Template
 							%>
 
 							<tr>
-								<td><%=storeReviewList.get(i).getSTORE_NAME()%></td>
+								<td><a href="RV2?store_name=<%=storeReviewList.get(i).getSTORE_NAME()%>"><%=storeReviewList.get(i).getSTORE_NAME()%></a></td>
 								<td><%=storeReviewList.get(i).getCnt()%></td>
 							</tr>
 							<%
@@ -195,7 +213,6 @@ Free Bootstrap 5 HTML Template
 
 				</div>
 			</div>
-<!-- 페이징 나중에 잡기..... 너무 바쁨 -->
 			
 		</section>
 
@@ -206,10 +223,9 @@ Free Bootstrap 5 HTML Template
 	<footer class="site-footer">
 		<div class="container">
 			<div class="row">
-
 				<div class="col-lg-12 col-12 d-flex align-items-center mb-4 pb-2">
 					<div>
-						<img src="images/bubbles.png" class="logo img-fluid" alt="">
+						<img src="images/bubbles.png" class="logo img-fluid" alt="" />
 					</div>
 
 					<ul class="footer-menu d-flex flex-wrap ms-5">
@@ -217,48 +233,38 @@ Free Bootstrap 5 HTML Template
 							class="footer-menu-link">About Us</a></li>
 
 						<li class="footer-menu-item"><a href="#"
-							class="footer-menu-link">Blog</a></li>
-
+							class="footer-menu-link">후기</a></li>
 						<li class="footer-menu-item"><a href="#"
-							class="footer-menu-link">Reviews</a></li>
-
-						<li class="footer-menu-item"><a href="#"
-							class="footer-menu-link">Contact</a></li>
+							class="footer-menu-link">문의</a></li>
 					</ul>
 				</div>
 
 				<div class="col-lg-5 col-12 mb-4 mb-lg-0">
-					<h5 class="site-footer-title mb-3">Our Services</h5>
+					<h5 class="site-footer-title mb-3">서비스</h5>
 
 					<ul class="footer-menu">
 						<li class="footer-menu-item"><a href="#"
 							class="footer-menu-link"> <i
 								class="bi-chevron-double-right footer-menu-link-icon me-2"></i>
-								House Cleaning
+								코인세탁방 검색
 						</a></li>
 
 						<li class="footer-menu-item"><a href="#"
 							class="footer-menu-link"> <i
 								class="bi-chevron-double-right footer-menu-link-icon me-2"></i>
-								Car Washing
+								예약
 						</a></li>
 
 						<li class="footer-menu-item"><a href="#"
 							class="footer-menu-link"> <i
 								class="bi-chevron-double-right footer-menu-link-icon me-2"></i>
-								Laundry
+								리뷰
 						</a></li>
 
 						<li class="footer-menu-item"><a href="#"
 							class="footer-menu-link"> <i
 								class="bi-chevron-double-right footer-menu-link-icon me-2"></i>
-								Office Cleaning
-						</a></li>
-
-						<li class="footer-menu-item"><a href="#"
-							class="footer-menu-link"> <i
-								class="bi-chevron-double-right footer-menu-link-icon me-2"></i>
-								Toilet Cleaning
+								문의
 						</a></li>
 					</ul>
 				</div>
@@ -267,19 +273,20 @@ Free Bootstrap 5 HTML Template
 					<h5 class="site-footer-title mb-3">Office</h5>
 
 					<p class="text-white d-flex mt-3 mb-2">
-						<i class="bi-geo-alt-fill me-2"></i> Akershusstranda 20, 0150
-						Oslo, Norway
+						<i class="bi-geo-alt-fill me-2"></i> 광주 서구 경열로 20
+
 					</p>
 
 					<p class="text-white d-flex mb-2">
-						<i class="bi-telephone-fill me-2"></i> <a href="tel: 110-220-9800"
-							class="site-footer-link"> 110-220-9800 </a>
+						<i class="bi-telephone-fill me-2"></i> <a
+							href="tel: 010-1234-1234" class="site-footer-link">
+							010-1234-1234 </a>
 					</p>
 
 					<p class="text-white d-flex">
 						<i class="bi-envelope-fill me-2"></i> <a
-							href="mailto:info@company.com" class="site-footer-link">
-							info@company.com </a>
+							href="youjinseozzang1004@gmail.com" class="site-footer-link">
+							youjinseozzang1004@gmail.com </a>
 					</p>
 
 					<ul class="social-icon mt-4">
@@ -302,13 +309,13 @@ Free Bootstrap 5 HTML Template
 
 				<div class="col-lg-3 col-md-6 col-6 mt-3 mt-lg-0 mt-md-0">
 					<div class="featured-block">
-						<h5 class="text-white mb-3">Service Hours</h5>
+						<h5 class="text-white mb-3">이용 시간</h5>
 
-						<strong class="d-block text-white mb-1">Mon - Fri</strong>
+						<strong class="d-block text-white mb-1">월 - 금</strong>
 
 						<p class="text-white mb-3">8:00 AM - 5:30 PM</p>
 
-						<strong class="d-block text-white mb-1">Sat</strong>
+						<strong class="d-block text-white mb-1">토</strong>
 
 						<p class="text-white mb-0">6:00 AM - 2:30 PM</p>
 					</div>
@@ -319,7 +326,6 @@ Free Bootstrap 5 HTML Template
 		<div class="site-footer-bottom">
 			<div class="container">
 				<div class="row">
-
 					<div class="col-lg-6 col-12">
 						<p class="copyright-text mb-0">Copyright © 2036 Clean Work
 							Co., Ltd.</p>
@@ -331,7 +337,6 @@ Free Bootstrap 5 HTML Template
 								target="_parent">Tooplate</a> //
 						</p>
 					</div>
-
 				</div>
 			</div>
 		</div>

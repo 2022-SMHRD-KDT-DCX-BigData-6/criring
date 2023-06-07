@@ -25,26 +25,12 @@ public class NonUserReview extends HttpServlet {
 		ArrayList<StoreVO> noReviewList= (ArrayList<StoreVO>)sDao.storeN();
 		
 		ArrayList<StoreVO> storeReviewList = (ArrayList<StoreVO>)sDao.storeReviewNum();
-		ArrayList<StoreVO> emptyList = new ArrayList<StoreVO>();
 		int num = noReviewList.size()+storeReviewList.size();
 		request.setAttribute("ListSize", num);
-		if(storeReviewList.size()<10) {
-			request.setAttribute("storeReviewList", storeReviewList);
-			for(int i=0;i<10-(storeReviewList.size());i++) {
-				emptyList.add(i, noReviewList.get(i));
-				request.setAttribute("noReviewList", emptyList);
+		request.setAttribute("storeReviewList", storeReviewList);
+		request.setAttribute("noReviewList", noReviewList);
 				
-			}
-		}else {
-			/*
-			 * for(int i=0;i<10;i++) { emptyList.set(i, storeReviewList.get(i));
-			 * request.setAttribute("storeReviewList", emptyList);
-			 * 
-			 * }
-			 */
-		}
-		
-		//request.setAttribute("noReviewList", noReviewList);
+	
 		RequestDispatcher rd = request.getRequestDispatcher("ReviewMain2.jsp");
 		rd.forward(request, response);
 	

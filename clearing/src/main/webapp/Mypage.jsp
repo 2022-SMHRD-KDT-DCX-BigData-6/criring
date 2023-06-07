@@ -109,10 +109,10 @@ body {
 			<div class="collapse navbar-collapse" id="navbarNav">
 				<ul class="navbar-nav ms-auto">
 					<li class="nav-item"><a class="nav-link" href="index.jsp">메인</a></li>
-					<li class="nav-item"><a class="nav-link" href="about.html">후기
+					<li class="nav-item"><a class="nav-link" href="NonUserReview">후기
 					</a></li>
 					<li class="nav-item"><a class="nav-link"
-						href="requestBoardMain.jsp">문의</a></li>
+						href="requestBoardMain.jsp?boardPage=1">문의</a></li>
 					<!-- 문제있다면 여기일수있음 check -->
 					<%
 					String email = (String) session.getAttribute("email");
@@ -158,19 +158,19 @@ body {
 			<ul class="menu_icon_group">
 				<li class="menu_icon">
 					<button class="linkBtn" id="linkBtn1" onclick="goToScroll('services-section'); return false;">
-						<i class="fa-solid fa-user mypagebtn"></i> <span>회원 정보 수정</span>
+						<i class="fa-solid fa-user mypagebtn"></i> <span class="mypagespan">회원 정보 수정</span>
 					</button>
 
 				</li>
 				<li class="menu_icon">
 					<button class="linkBtn" id="linkBtn2" onclick="goToScroll('services-section'); return false;">
-						<i class="fa-solid fa-calendar-days mypagebtn"></i> <span>예약 내역 조회</span>
+						<i class="fa-solid fa-calendar-days mypagebtn"></i> <span class="mypagespan">예약 내역 조회</span>
 					</button>
 
 				</li>
 				<li class="menu_icon">
 					<button class="linkBtn" id="linkBtn3" onclick="goToScroll('services-section'); return false;">
-						<i class="fa-solid fa-camera-retro mypagebtn"></i> <span>내가 쓴 리뷰</span>
+						<i class="fa-solid fa-camera-retro mypagebtn"></i> <span class="mypagespan" style="padding-left: 25px;">내가 쓴 리뷰</span>
 					</button>
 				</li>
 			</ul>

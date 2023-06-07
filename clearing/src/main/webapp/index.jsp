@@ -34,6 +34,17 @@
 <link href="css/login.css" rel="stylesheet">
 <link href="css/kakaoMap.css" rel="stylesheet">
 <link href="css/chatbot.css" rel="stylesheet">
+<style type="text/css">
+@font-face {
+    font-family: 'gmarket';
+    src: url('./fonts/GmarketSansTTFMedium.ttf') format('truetype');
+}
+
+body {
+  background-color: var(--white-color);
+	font-family: 'gmarket';
+}
+</style>
 <script type="text/javascript"
 
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4fe78505e64a5ac31be2e7b890da39d4&libraries=services,clusterer,drawing"></script>

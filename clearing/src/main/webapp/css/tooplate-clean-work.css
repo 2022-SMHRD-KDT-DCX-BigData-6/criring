@@ -50,8 +50,8 @@ https://www.tooplate.com/view/2132-clean-work
 }
 
 body {
-  background-color: var(--white-color);
-	font-family: 'gmarket';
+  	background-color: var(--white-color);
+	font-family: 'gmarket' !important;
 }
 
 
