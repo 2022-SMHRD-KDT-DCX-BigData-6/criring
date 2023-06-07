@@ -49,7 +49,7 @@ body {
 										<td><%=details.get(i).getEnd_time()%></td>
 										<td><%=details.get(i).getUsing_dt().substring(0, 10)%></td>
 										<td><a
-											href="deleteReservation?using=<%=details.get(i).getUSING_SEQ()%>" style="color: #77B2E8">예약
+											href="deleteReservation1?using=<%=details.get(i).getUSING_SEQ()%>" style="color: #77B2E8">예약
 												취소</a></td>
 										<td><a href="ReviewWrite2.jsp?store_name=<%=details.get(i).getStore_name()%>" style="color: #77B2E8">리뷰 작성</a></td>
 									</tr>

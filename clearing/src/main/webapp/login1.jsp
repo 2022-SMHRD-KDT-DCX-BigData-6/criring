@@ -48,9 +48,7 @@ Free Bootstrap 5 HTML Template
 	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=683c7e08c86fe41ea5c21dd7148dc9f3&libraries=services"></script>
-<script>
-	
-</script>
+<script src="https://kit.fontawesome.com/a32650dbb1.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -850,5 +848,6 @@ Free Bootstrap 5 HTML Template
 	<script src="js/animated-headline.js"></script>
 	<script src="js/custom.js"></script>
 	<script src="js/loginform.js"></script>
+	<script src="js/btnScroll.js"></script>
 </body>
 </html>

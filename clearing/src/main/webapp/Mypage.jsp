@@ -49,11 +49,14 @@ Free Bootstrap 5 HTML Template
 	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript"
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=0db420091d1781f4feb06d2e77972cba&libraries=services,clusterer,drawing"></script>
-	<style type="text/css">
-	@font-face {
-    font-family: 'gmarket';
-    src: url('./fonts/GmarketSansTTFMedium.ttf') format('truetype');
+<script src="https://kit.fontawesome.com/a32650dbb1.js"
+	crossorigin="anonymous"></script>
+<style type="text/css">
+@font-face {
+	font-family: 'gmarket';
+	src: url('./fonts/GmarketSansTTFMedium.ttf') format('truetype');
 }
+
 body {
 	font-family: 'gmarket';
 }
@@ -112,7 +115,7 @@ body {
 						href="requestBoardMain.jsp">문의</a></li>
 					<!-- 문제있다면 여기일수있음 check -->
 					<%
-					String email = (String)session.getAttribute("email");
+					String email = (String) session.getAttribute("email");
 					if (email.equals("admin")) {
 					%>
 					<!-- admin 로그인시 생기는 메뉴 TODO-->
@@ -127,7 +130,7 @@ body {
 					%>
 					<li class="nav-item ms-3"><a
 						class="nav-link custom-btn custom-border-btn custom-btn-bg-white btn"
-						href="selectReservationDetails">내 정보</a></li>
+						href="#" >내 정보</a></li>
 					<%-- href="Mypage.jsp?email=<%=email%>&addr=<%=addr%>&lat=<%=lat%>&lng=<%=lng%>" --%>
 					<li class="nav-item ms-3"><a
 						class="nav-link custom-btn custom-border-btn custom-btn-bg-white btn"
@@ -154,104 +157,104 @@ body {
 			<div class="section-overlay"></div>
 			<ul class="menu_icon_group">
 				<li class="menu_icon">
-					<button class="linkBtn" id="linkBtn1">
-						<i class="fa-solid fa-user"></i>
-						<span>회원 정보 수정</span>
+					<button class="linkBtn" id="linkBtn1" onclick="goToScroll('services-section'); return false;">
+						<i class="fa-solid fa-user mypagebtn"></i> <span>회원 정보 수정</span>
 					</button>
-					
+
 				</li>
 				<li class="menu_icon">
-					<button class="linkBtn" id="linkBtn2">
-						<i class="fa-solid fa-calendar-days"></i>
-						<span>예약 내역 조회</span>
+					<button class="linkBtn" id="linkBtn2" onclick="goToScroll('services-section'); return false;">
+						<i class="fa-solid fa-calendar-days mypagebtn"></i> <span>예약 내역 조회</span>
 					</button>
-					
+
 				</li>
 				<li class="menu_icon">
-					<button class="linkBtn" id="linkBtn3">
-						<i class="fa-solid fa-camera-retro"></i>
-						<span>내가 쓴 리뷰</span>
+					<button class="linkBtn" id="linkBtn3" onclick="goToScroll('services-section'); return false;">
+						<i class="fa-solid fa-camera-retro mypagebtn"></i> <span>내가 쓴 리뷰</span>
 					</button>
 				</li>
 			</ul>
 		</section>
 
 
-		
+
 
 		<section class="services-section section-padding section-bg"
 			id="services-section">
-		<section id="services-section1" style="display: none;">
-			<div class="section-overlay"></div>
+			<section id="services-section1" style="display: none;">
+				<div class="section-overlay"></div>
 
-			<div class="container" style="margin-top: -2%;">
-				<div class="row">
-					<form action="myPageUpdate" method="post" class="myPageUpdateForm">
-						<div class="mb-3 row">
-							<label for="staticEmail" class="col-sm-2 col-form-label" style="color: #77B2E8">Email</label>
-							<div class="col-sm-10">
-								<input type="text" readonly class="form-control-plaintext"
-									id="staticEmail" name="inputEmail"
-									value="<%=session.getAttribute("email")%>">
+				<div class="container" style="margin-top: -2%;">
+					<div class="row">
+						<form action="myPageUpdate" method="post" class="myPageUpdateForm">
+							<div class="mb-3 row">
+								<label for="staticEmail" class="col-sm-2 col-form-label"
+									style="color: #77B2E8">Email</label>
+								<div class="col-sm-10">
+									<input type="text" readonly class="form-control-plaintext"
+										id="staticEmail" name="inputEmail"
+										value="<%=session.getAttribute("email")%>">
+								</div>
 							</div>
-						</div>
-						<!-- 원래 비밀번호 확인 -->
-						<div class="mb-3 row">
-							<label for="inputPassword" class="col-sm-2 col-form-label" style="color: #77B2E8">기존
-								비밀번호</label>
-							<div class="col-sm-10">
-								<input type="password" class="form-control" id="inputPassword"
-									name="inputPassword">
+							<!-- 원래 비밀번호 확인 -->
+							<div class="mb-3 row">
+								<label for="inputPassword" class="col-sm-2 col-form-label"
+									style="color: #77B2E8">기존 비밀번호</label>
+								<div class="col-sm-10">
+									<input type="password" class="form-control" id="inputPassword"
+										name="inputPassword">
+								</div>
 							</div>
-						</div>
-						<!-- 수정할 비밀번호 -->
-						<div class="mb-3 row">
-							<label for="inputUpdatePassword" class="col-sm-2 col-form-label" style="color: #77B2E8">변경
-								할 비밀번호</label>
-							<div class="col-sm-10">
-								<input type="password" class="form-control"
-									id="inputUpdatePassword" name="inputUpdatePassword">
+							<!-- 수정할 비밀번호 -->
+							<div class="mb-3 row">
+								<label for="inputUpdatePassword" class="col-sm-2 col-form-label"
+									style="color: #77B2E8">변경 할 비밀번호</label>
+								<div class="col-sm-10">
+									<input type="password" class="form-control"
+										id="inputUpdatePassword" name="inputUpdatePassword">
+								</div>
 							</div>
-						</div>
-						<!-- 수정한 비밀번호 확인 -->
-						<div class="mb-3 row">
-							<label for="inputUpdatePasswordChk"
-								class="col-sm-2 col-form-label" style="color: #77B2E8">변경 할 비밀번호 확인</label>
-							<div class="col-sm-10">
-								<input type="password" class="form-control"
-									id="inputUpdatePasswordChk" name="inputUpdatePasswordChk">
+							<!-- 수정한 비밀번호 확인 -->
+							<div class="mb-3 row">
+								<label for="inputUpdatePasswordChk"
+									class="col-sm-2 col-form-label" style="color: #77B2E8">변경
+									할 비밀번호 확인</label>
+								<div class="col-sm-10">
+									<input type="password" class="form-control"
+										id="inputUpdatePasswordChk" name="inputUpdatePasswordChk">
+								</div>
 							</div>
-						</div>
-						<div class="mb-3 row">
-						<label class="col-sm-2 col-form-label" for="sample5_roadAddress" style="color: #77B2E8">변경할 주소</label>
-							<div class="col-sm-10"> 
-							<input type="button" class="btn btn-primary btn-lg btn-block"
-								onclick="sample5_execDaumPostcode()" value="주소 검색"  style="background-color: #77B2E8; border-color: #77B2E8;margin-top: 0;
-    font-size: 14px;">
-								<input type="text" id="sample5_address" name="joinAddr"
-									class="form-control" value="<%=session.getAttribute("addr")%>"
-									readonly style="width: 91%">
-						</div> 
-						<!-- <div class="form-outline mb-4">
+							<div class="mb-3 row">
+								<label class="col-sm-2 col-form-label" for="sample5_roadAddress"
+									style="color: #77B2E8">변경할 주소</label>
+								<div class="col-sm-10">
+									<input type="button" class="btn btn-primary btn-lg btn-block"
+										onclick="sample5_execDaumPostcode()" value="주소 검색"
+										style="background-color: #77B2E8; border-color: #77B2E8; margin-top: 0; font-size: 14px;">
+									<input type="text" id="sample5_address" name="joinAddr"
+										class="form-control" value="<%=session.getAttribute("addr")%>"
+										readonly style="width: 91%">
+								</div>
+								<!-- <div class="form-outline mb-4">
 
 						</div> -->
-						</div>
+							</div>
 
 
-						<div id="map"
-							style="width: 300px; height: 300px; margin-top: 10px; display: none"></div>
-						<div id="searchLat" style="display: none;">
-							<input type="text" name="userLatInput" id="userLat-input"
-								value="<%=request.getParameter("lat")%>">
-							<!-- class="dp-none;" -->
-						</div>
-						<div id="searchLng" style="display: none;">
-							<input type="text" name="userLngInput" id="userLng-input"
-								value="<%=request.getParameter("lng")%>">
-							<!-- class="dp-none;" -->
-						</div>
+							<div id="map"
+								style="width: 300px; height: 300px; margin-top: 10px; display: none"></div>
+							<div id="searchLat" style="display: none;">
+								<input type="text" name="userLatInput" id="userLat-input"
+									value="<%=request.getParameter("lat")%>">
+								<!-- class="dp-none;" -->
+							</div>
+							<div id="searchLng" style="display: none;">
+								<input type="text" name="userLngInput" id="userLng-input"
+									value="<%=request.getParameter("lng")%>">
+								<!-- class="dp-none;" -->
+							</div>
 
-						<script>
+							<script>
 							function sample4_execDaumPostcode() {
 								new daum.Postcode(
 										{
@@ -368,20 +371,23 @@ body {
 							}
 						</script>
 
-						<button type="submit"
-							class="btn btn-primary btn-lg btn-block modal-btn" style="background-color: #77B2E8; border-color: #77B2E8; padding: 0.5%" >정보 수정</button><br><br>
-						<a href="secessionMember"><button
-								class="btn btn-primary btn-lg btn-block modal-btn"  style="background-color: #77B2E8; border-color: #77B2E8; padding: 0.5%;    font-size: 18px;
-    width: 123%;">회원탈퇴</button></a>
-					</form>
+							<button type="submit"
+								class="btn btn-primary btn-lg btn-block modal-btn"
+								style="background-color: #77B2E8; border-color: #77B2E8; padding: 0.5%">정보
+								수정</button>
+							<br>
+							<br> <a href="secessionMember"><button
+									class="btn btn-primary btn-lg btn-block modal-btn"
+									style="background-color: #77B2E8; border-color: #77B2E8; padding: 0.5%; font-size: 18px; width: 123%;">회원탈퇴</button></a>
+						</form>
 
+					</div>
 				</div>
-			</div>
-		</section>
-				
+			</section>
+
 		</section>
 
-		
+
 	</main>
 
 	<footer class="site-footer" style="margin-top: 0">
@@ -407,29 +413,23 @@ body {
 					<h5 class="site-footer-title mb-3">서비스</h5>
 
 					<ul class="footer-menu">
-						<li class="footer-menu-item">
-							<a href="#" class="footer-menu-link">
-								<i
+						<li class="footer-menu-item"><a href="#"
+							class="footer-menu-link"> <i
 								class="bi-chevron-double-right footer-menu-link-icon me-2"></i>
 								코인세탁방 검색
-							</a>
-						</li>
+						</a></li>
 
-						<li class="footer-menu-item"> 
-							<a href="#" class="footer-menu-link">
-								<i
+						<li class="footer-menu-item"><a href="#"
+							class="footer-menu-link"> <i
 								class="bi-chevron-double-right footer-menu-link-icon me-2"></i>
 								예약
-							</a>
-						</li>
+						</a></li>
 
-						<li class="footer-menu-item">
-							<a href="#" class="footer-menu-link">
-									<i
-									class="bi-chevron-double-right footer-menu-link-icon me-2"></i>
-									리뷰
-							</a>
-						</li>
+						<li class="footer-menu-item"><a href="#"
+							class="footer-menu-link"> <i
+								class="bi-chevron-double-right footer-menu-link-icon me-2"></i>
+								리뷰
+						</a></li>
 
 						<li class="footer-menu-item"><a href="#"
 							class="footer-menu-link"> <i
@@ -444,12 +444,13 @@ body {
 
 					<p class="text-white d-flex mt-3 mb-2">
 						<i class="bi-geo-alt-fill me-2"></i> 광주 서구 경열로 20
-						
+
 					</p>
 
 					<p class="text-white d-flex mb-2">
-						<i class="bi-telephone-fill me-2"></i> <a href="tel: 010-1234-1234"
-							class="site-footer-link"> 010-1234-1234 </a>
+						<i class="bi-telephone-fill me-2"></i> <a
+							href="tel: 010-1234-1234" class="site-footer-link">
+							010-1234-1234 </a>
 					</p>
 
 					<p class="text-white d-flex">
@@ -510,10 +511,10 @@ body {
 			</div>
 		</div>
 	</footer>
-	
+
 	<script src="./js/jquery-3.7.0.js"></script>
-	
-	
+
+
 	<script type="text/javascript">
 	
 	$('#linkBtn1').on('click',function(){
@@ -542,180 +543,222 @@ body {
 	
 
 	</script>
-	
-	
-	<button type="button" class="btn btn-primary scrolltop" onclick="goToTop(); return false;">
+
+
+	<button type="button" class="btn btn-primary scrolltop"
+		onclick="goToTop(); return false;">
 		<i class="fa-solid fa-arrow-up"></i>
 	</button>
-	
-	<% email=(String)session.getAttribute("email"); %>
+
+<%
+	email = (String) session.getAttribute("email");
+	%>
 	<!-- 유저 밸류값은 표현식으로 세션에서 저장된거 가져올거임 -->
 	<!-- Scrollable modal -->
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary chatbotMain" id="CSR" data-remote="ChatModal3.jsp"  data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-  <img alt="CSR" src="./images/CSR2.png">
-</button>
+	<!-- Button trigger modal -->
+	<button type="button" class="btn btn-primary chatbotMain" id="CSR"
+		data-remote="ChatModal3.jsp" data-bs-toggle="modal"
+		data-bs-target="#staticBackdrop">
+		<img alt="CSR" src="./images/CSR2.png">
+	</button>
+	
+	<!-- Modal -->
+	<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static"
+		data-bs-keyboard="false" tabindex="-1"
+		aria-labelledby="staticBackdropLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-scrolable">
+			<div class="modal-content">
+				<div class="modal-header"
+					style="background-color: #7CB8EB; color: white">
+					<h1 class="modal-title fs-5" id="staticBackdropLabel">크리링
+						Chat-Bot</h1>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"
+						aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<%
+					Date date = new Date();
+					SimpleDateFormat sd = new SimpleDateFormat("yyyy년-MM월-dd일");
+					SimpleDateFormat tsd = new SimpleDateFormat("HHmm");
+					SimpleDateFormat tsd2 = new SimpleDateFormat("a HH:mm");
+					String nowDate = sd.format(date);
+					String time = tsd.format(date);
+					String talkTime = tsd2.format(date);
+					int numTime = Integer.parseInt(time);
+					String cr_email = null;
+					if (session.getAttribute("email") == null) {
+						cr_email = "Guest";
+					} else {
+						cr_email = (String) session.getAttribute("email");
+					}
+					%>
+					<%
+					if (numTime < 1000 || numTime > 1700) {
+					%>
+					<span
+						style="background-color: lightgray; padding: 1% 1%; margin-left: 34%; border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;"><%=nowDate%></span><br>
+					<br> 안녕하세요 고객님 &#128075;<br> 크리링 &#129302;챗봇 상담입니다.<br>
+					<br> 고객님, 지금은 운영시간이 아닙니다.<br> <br> 현재는 챗봇 상담만 가능하며,
+					상담사 연결은 운영시간 내 문의 부탁드립니다.<br> 감사합니다.<br> <br> [운영시간]
+					&#128342;<br> 평일 : 10시 - 17시 (공휴일 제외)<br> <br> 문의사항을
+					선택하거나 번호를 입력해 주세요.<br> <br>
 
-<!-- Modal -->
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrolable">
-    <div class="modal-content">
-      <div class="modal-header"  style="background-color: #7CB8EB;color: white">
-        <h1 class="modal-title fs-5" id="staticBackdropLabel">크리링 Chat-Bot</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body" >
-      	<% Date date = new Date();
-	SimpleDateFormat sd = new SimpleDateFormat("yyyy년-MM월-dd일");
-	SimpleDateFormat tsd = new SimpleDateFormat("HHmm");
-	SimpleDateFormat tsd2 = new SimpleDateFormat("a HH:mm");
-	String nowDate = sd.format(date);
-	String time =tsd.format(date);
-	String talkTime = tsd2.format(date);
-	int numTime = Integer.parseInt(time);
-		String cr_email = null;
-	if(session.getAttribute("email")==null){
-		cr_email = "Guest";
-	}else{
-		cr_email = (String)session.getAttribute("email");
-	}
-%>
-	<% if(numTime<1000||numTime>1700){%>
-		<span style="background-color:lightgray;padding: 1% 1%;margin-left: 34%;border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;"><%=nowDate %></span><br><br>
-		안녕하세요 고객님 &#128075;<br>
-		크리링 &#129302;챗봇 상담입니다.<br>
-	<br>
-		고객님, 지금은 운영시간이 아닙니다.<br>
-	<br>
-		현재는 챗봇 상담만 가능하며, 상담사 연결은 운영시간 내 문의 부탁드립니다.<br>
-		감사합니다.<br>
-	<br>
-		[운영시간] &#128342;<br>
-		평일 : 10시 - 17시 (공휴일 제외)<br>
-		<br>
-		문의사항을 선택하거나 번호를 입력해 주세요.<br><br>
-		
-		<div id = "allbutton">
-  		<button class="btn btn-primary sel" type="button" value="1" style="background-color: #7CB8EB;border-color:#7CB8EB;">1. 요금 문의</button><br>
-  		<button class="btn btn-primary sel" type="button" value="2" style="background-color: #7CB8EB;border-color:#7CB8EB;">2. 환불 문의</button><br>
-  		<button class="btn btn-primary sel" type="button" value="3" style="background-color: #7CB8EB;border-color:#7CB8EB;">3. 세탁시 주의 사항</button><br>
-  		<button class="btn btn-primary sel" type="button" value="4" style="background-color: #7CB8EB;border-color:#7CB8EB;">4. 업체 정보 수정 문의</button><br>
-  		<button class="btn btn-primary sel" type="button" value="5" style="background-color: #7CB8EB;border-color:#7CB8EB;">5. 상담원 연결</button><br>
-		</div>
-		
-	<%}else{%>
-		<span style="background-color:lightgray;padding: 1% 1%;margin-left: 34%;border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;"><%=nowDate %></span><br><br>
-		안녕하세요 고객님&#128075;<br>
-		크리링 &#129302;챗봇 상담입니다.<br>
-		<br>
-		문의유형을 선택해주세요!<br>
-		<br>
-		상담원과의 대화가 필요할 경우<br>
-		[상담원 연결] 버튼을 눌러주세요 : )<br>
-		* 상담원 연결 후 문의사항을 말씀해주세요.<br>
-		* 대화 내용은 상담을 위해서만 사용됩니다.<br><br>
-		<!-- 타임딜레이 -->	
-		<div id = "allbutton">
-		<button class="btn btn-primary sel" type="button" value="1" style="background-color: #7CB8EB;border-color:#7CB8EB;">1. 요금 문의</button><br>
-  		<button class="btn btn-primary sel" type="button" value="2" style="background-color: #7CB8EB;border-color:#7CB8EB">2. 환불 문의</button><br>
-  		<button class="btn btn-primary sel" type="button" value="3" style="background-color: #7CB8EB;border-color:#7CB8EB">3. 세탁시 주의 사항</button><br>
-  		<button class="btn btn-primary sel" type="button" value="4" style="background-color: #7CB8EB;border-color:#7CB8EB">4. 업체 정보 수정 문의</button><br>
-  		<button class="btn btn-primary sel" type="button" value="5" style="background-color: #7CB8EB;border-color:#7CB8EB">5. 상담원 연결</button><br>
-		</div>
-	<%} %>
-	      </div>
-      <div class="modal-footer">
-        <button type="button" id="Exit"class="btn btn-secondary" data-bs-dismiss="modal">나가기</button>
-      </div>
-    </div>
-  </div>
-</div>
-	
-	
-	<form action="#" id="ajaxDisplay">
-	
-	</form>
-	
-	<script src="./js/jquery-3.7.0.js"></script>
-	
-	
-	<script type="text/javascript">
+					<div id="allbutton">
+						<button class="btn btn-primary sel" type="button" value="1"
+							style="background-color: #7CB8EB; border-color: #7CB8EB;">1.
+							요금 문의</button>
+						<br>
+						<button class="btn btn-primary sel" type="button" value="2"
+							style="background-color: #7CB8EB; border-color: #7CB8EB;">2.
+							환불 문의</button>
+						<br>
+						<button class="btn btn-primary sel" type="button" value="3"
+							style="background-color: #7CB8EB; border-color: #7CB8EB;">3.
+							세탁시 주의 사항</button>
+						<br>
+						<button class="btn btn-primary sel" type="button" value="4"
+							style="background-color: #7CB8EB; border-color: #7CB8EB;">4.
+							업체 정보 수정 문의</button>
+						<br>
+						<button class="btn btn-primary sel" type="button" value="5"
+							style="background-color: #7CB8EB; border-color: #7CB8EB;">5.
+							상담원 연결</button>
+						<br>
+					</div>
+
+					<%
+					} else {
+					%>
+					<span
+						style="background-color: lightgray; padding: 1% 1%; margin-left: 34%; border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;"><%=nowDate%></span><br>
+					<br> 안녕하세요 고객님&#128075;<br> 크리링 &#129302;챗봇 상담입니다.<br>
+					<br> 문의유형을 선택해주세요!<br> <br> 상담원과의 대화가 필요할 경우<br>
+					[상담원 연결] 버튼을 눌러주세요 : )<br> * 상담원 연결 후 문의사항을 말씀해주세요.<br> *
+					대화 내용은 상담을 위해서만 사용됩니다.<br> <br>
+					<!-- 타임딜레이 -->
+					<div id="allbutton">
+						<button class="btn btn-primary sel" type="button" value="1"
+							style="background-color: #7CB8EB; border-color: #7CB8EB;">1.
+							요금 문의</button>
+						<br>
+						<button class="btn btn-primary sel" type="button" value="2"
+							style="background-color: #7CB8EB; border-color: #7CB8EB">2.
+							환불 문의</button>
+						<br>
+						<button class="btn btn-primary sel" type="button" value="3"
+							style="background-color: #7CB8EB; border-color: #7CB8EB">3.
+							세탁시 주의 사항</button>
+						<br>
+						<button class="btn btn-primary sel" type="button" value="4"
+							style="background-color: #7CB8EB; border-color: #7CB8EB">4.
+							업체 정보 수정 문의</button>
+						<br>
+						<button class="btn btn-primary sel" type="button" value="5"
+							style="background-color: #7CB8EB; border-color: #7CB8EB">5.
+							상담원 연결</button>
+						<br>
+					</div>
+					<%
+					}
+					%>
+
+
+
+					<form action="#" id="ajaxDisplay"></form>
+
+					<script src="./js/jquery-3.7.0.js"></script>
+
+
+					<script type="text/javascript">
 	$('.btn').on('click',function(){
 		var qna=$(this).attr('value');
 		var cr_email = "<%=cr_email%>";
-		 //setTimeout(function() {    },700);
-		if(qna=="1"){
-			$('#allbutton').css("display","none");
-			$.ajax({
-				url:"chatBotScript2/userSel1.jsp",
-				success: function(result){
-					$("#ajaxDisplay").html(result);
-				}
-			});	
-		}else if(qna=="2"){
-			$('#allbutton').css("display","none");
-			$.ajax({
-				url:"chatBotScript2/userSel2.jsp",
-				success: function(result){
-					$("#ajaxDisplay").html(result);
-				}
-			});	
-		}else if(qna=="3"){
-			$('#allbutton').css("display","none");
-				$.ajax({
-					url:"chatBotScript2/userSel3.jsp",
-					success: function(result){
-						$("#ajaxDisplay").html(result);
-					}
-				});
-			
-		}else if(qna=="4"){
-			$('#allbutton').css("display","none");
-				if(cr_email=="Guest"){
-				$.ajax({
-					url:"chatBotScript2/userSel4_1.jsp",
-					success: function(result){
-						$("#ajaxDisplay").html(result);
-					}
-				});
-				$('#userbutton4').css("display","block");
-				}else{
-				$.ajax({
-					url:"chatBotScript2/userSel4_2.jsp",
-					success: function(result){
-						$("#ajaxDisplay").html(result);
-					}
-				});
-				
-				}
-		}else if(qna=="5"){
-			$('#allbutton').css("display","none");
-				$.ajax({
-					url:"chatBotScript2/userSel5.jsp",
-					success: function(result){
-						$("#ajaxDisplay").html(result);
-					}
-				});
-			
-		}else {
-			
-		}
-		 
-	});
-	</script>
+							//setTimeout(function() {    },700);
+							if (qna == "1") {
+								$('#allbutton').css("display", "none");
+								$.ajax({
+									url : "chatBotScript2/userSel1.jsp",
+									success : function(result) {
+										$("#ajaxDisplay").html(result);
+									}
+								});
+							} else if (qna == "2") {
+								$('#allbutton').css("display", "none");
+								$.ajax({
+									url : "chatBotScript2/userSel2.jsp",
+									success : function(result) {
+										$("#ajaxDisplay").html(result);
+									}
+								});
+							} else if (qna == "3") {
+								$('#allbutton').css("display", "none");
+								$.ajax({
+									url : "chatBotScript2/userSel3.jsp",
+									success : function(result) {
+										$("#ajaxDisplay").html(result);
+									}
+								});
 
+							} else if (qna == "4") {
+								$('#allbutton').css("display", "none");
+								if (cr_email == "Guest") {
+									$.ajax({
+										url : "chatBotScript2/userSel4_1.jsp",
+										success : function(result) {
+											$("#ajaxDisplay").html(result);
+										}
+									});
+									$('#userbutton4').css("display", "block");
+								} else {
+									$.ajax({
+										url : "chatBotScript2/userSel4_2.jsp",
+										success : function(result) {
+											$("#ajaxDisplay").html(result);
+										}
+									});
+
+								}
+							} else if (qna == "5") {
+								$('#allbutton').css("display", "none");
+								$.ajax({
+									url : "chatBotScript2/userSel5.jsp",
+									success : function(result) {
+										$("#ajaxDisplay").html(result);
+									}
+								});
+
+							} else {
+
+							}
+
+						});
+					</script>
+				</div>
+				<div class="modal-footer">
+					<button type="button" id="Exit" class="btn btn-secondary"
+						data-bs-dismiss="modal">나가기</button>
+				</div>
+			</div>
+		</div>
+	</div>
 
 	<script src="./js/jquery-3.7.0.js"></script>
 	<script>
+
 		$('#staticBackdrop').on('show.bs.modal', function(e) {
-	
+
 			var button = $(e.relatedTarget);
 			var modal = $(this);
-			
+
 			modal.find('.modal-body').load(button.data("remote"));
-	
+
 		});
-	</script> 
+
+		$('#Exit').on('click',function(){
+			window.location.href='http://localhost:8081/clearing/Mypage.jsp';
+			
+		});
+	</script>
 	<!-- JAVASCRIPT FILES -->
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>

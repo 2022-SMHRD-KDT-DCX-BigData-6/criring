@@ -159,6 +159,12 @@
 		<description></description>
 		<servlet-class>com.clearing.controller.reqBoardPaging</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>deleteReservation1</servlet-name>
+		<display-name>deleteReservation1</display-name>
+		<description></description>
+		<servlet-class>com.clearing.controller.deleteReservation1</servlet-class>
+	</servlet>
 	<servlet-mapping>
 		<servlet-name>reqBoardPaging</servlet-name>
 		<url-pattern>/reqBoardPaging</url-pattern>
@@ -262,6 +268,10 @@
 	<servlet-mapping>
 		<servlet-name>NonUserReview</servlet-name>
 		<url-pattern>/NonUserReview</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>deleteReservation1</servlet-name>
+		<url-pattern>/deleteReservation1</url-pattern>
 	</servlet-mapping>
 
 </web-app>

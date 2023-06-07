@@ -4,4 +4,8 @@
 	<select id="selectdetailList" resultType="Using">
 		SELECT * FROM TBL_USING WHERE USER_EMAIL = #{user_email}
 	</select>
+	
+	<delete id="deleteReservation" parameterType="Using">
+		DELETE FROM TBL_USING WHERE USING_SEQ = #{USING_SEQ}
+	</delete>
 </mapper>

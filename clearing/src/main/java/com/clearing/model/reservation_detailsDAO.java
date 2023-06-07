@@ -18,4 +18,12 @@ public class reservation_detailsDAO {
 		sqlSession.close();
 		return details;
 	}
+	
+	public int deleteReservation(usingVO vo) {
+		SqlSession sqlSession = sqlSessionFactory.openSession(true);
+		int result = sqlSession.delete("com.clearing.database.reservationMapper.deleteReservation", vo);
+		
+		sqlSession.close();
+		return result;
+	}
 }

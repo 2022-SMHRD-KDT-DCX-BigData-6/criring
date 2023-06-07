@@ -121,7 +121,7 @@ Free Bootstrap 5 HTML Template
 					<li class="nav-item"><a class="nav-link" href="NonUserReview">후기
 					</a></li>
 					<li class="nav-item"><a class="nav-link"
-						href="requestBoardMain.jsp">문의 </a></li>
+						href="requestBoardMain.jsp?boardPage=1">문의</a></li>
 					<%
 					if (email != null) {
 						if (email.equals("admin")) {
@@ -419,15 +419,16 @@ Free Bootstrap 5 HTML Template
 	</footer>
 
 
+	<button type="button" class="btn btn-primary scrolltop" onclick="goToTop(); return false;">
+		<i class="fa-solid fa-arrow-up"></i>
+	</button>
+	
 	<%
 	email = (String) session.getAttribute("email");
 	%>
 	<!-- 유저 밸류값은 표현식으로 세션에서 저장된거 가져올거임 -->
 	<!-- Scrollable modal -->
 	<!-- Button trigger modal -->
-	<button type="button" class="btn btn-primary scrolltop" onclick="goToTop(); return false;">
-		<i class="fa-solid fa-arrow-up"></i>
-	</button>
 	<button type="button" class="btn btn-primary chatbotMain" id="CSR"
 		data-remote="ChatModal3.jsp" data-bs-toggle="modal"
 		data-bs-target="#staticBackdrop">
@@ -630,8 +631,8 @@ Free Bootstrap 5 HTML Template
 			window.location.href='http://localhost:8081/clearing/index.jsp';
 			
 		});
-	</script> 
-	
+	</script>
+
 	<!-- JAVASCRIPT FILES -->
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
