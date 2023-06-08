@@ -28,13 +28,14 @@
 <link href="css/bootstrap-icons.css" rel="stylesheet" />
 
 <link href="css/tooplate-clean-work.css" rel="stylesheet" />
-<link href="css/login.css" rel="stylesheet"/>
+<link href="css/login.css" rel="stylesheet" />
 <link href="css/chatbot.css" rel="stylesheet">
 <style type="text/css">
 @font-face {
-    font-family: 'gmarket';
-    src: url('./fonts/GmarketSansTTFMedium.ttf') format('truetype');
+	font-family: 'gmarket';
+	src: url('./fonts/GmarketSansTTFMedium.ttf') format('truetype');
 }
+
 body {
 	font-family: 'gmarket';
 }
@@ -61,7 +62,8 @@ Free Bootstrap 5 HTML Template
 	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=0db420091d1781f4feb06d2e77972cba&libraries=services"></script>
-<script src="https://kit.fontawesome.com/a32650dbb1.js" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/a32650dbb1.js"
+	crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -142,11 +144,13 @@ Free Bootstrap 5 HTML Template
 										<!-- Email input -->
 										<div class="form-outline mb-4">
 											<label class="form-label" for="form1Example13">Email
-												address</label>
-												<input type="email" id="form1Example13" name="joinEmail" class="form-control form-control-lg" />
-												<button id ="idCheck" type="button" class="btn btn-primary btn-lg btn-block">중복체크</button>
-												<input type="hidden" name="emailDuplication" value="emailUncheck">
-												
+												address</label> <input type="email" id="form1Example13"
+												name="joinEmail" class="form-control form-control-lg" />
+											<button id="idCheck" type="button"
+												class="btn btn-primary btn-lg btn-block">중복체크</button>
+											<input type="hidden" name="emailDuplication"
+												value="emailUncheck">
+
 										</div>
 
 										<!-- Password input -->
@@ -165,8 +169,8 @@ Free Bootstrap 5 HTML Template
 										<div class="form-outline mb-4">
 											<label class="form-label" for="sample5_roadAddress">Address</label>
 											<input type="text" id="sample5_address" name="joinAddr"
-												class="form-control form-control-lg" placeholder="주소" readonly
-												 > <input type="button"
+												class="form-control form-control-lg" placeholder="주소"
+												readonly> <input type="button"
 												class="btn btn-primary btn-lg btn-block"
 												onclick="sample5_execDaumPostcode()" value="주소 검색"><br>
 											<!-- <input type="text" id="sample4_roadAddress"
@@ -319,8 +323,8 @@ Free Bootstrap 5 HTML Template
 										</div>
 										<!-- Submit button -->
 										<button type="submit"
-											class="btn btn-primary btn-lg btn-block modal-btn" onclick="return formChk(); ">
-											Sign up</button>
+											class="btn btn-primary btn-lg btn-block modal-btn"
+											onclick="return formChk(); ">Sign up</button>
 									</form>
 								</div>
 							</div>
@@ -371,19 +375,18 @@ Free Bootstrap 5 HTML Template
 
 			<div class="collapse navbar-collapse" id="navbarNav">
 				<ul class="navbar-nav ms-auto">
-					<li class="nav-item"><a class="nav-link"
-						href="index.jsp">메인</a></li>
+					<li class="nav-item"><a class="nav-link" href="index.jsp">메인</a></li>
 					<li class="nav-item"><a class="nav-link" href="NonUserReview">후기
-							</a></li>
-					<li class="nav-item"><a class="nav-link" href="requestBoardMain.jsp">문의
-							</a></li>
+					</a></li>
+					<li class="nav-item"><a class="nav-link"
+						href="requestBoardMain.jsp?boardPage=1">문의 </a></li>
 					<%
-					String email = (String)session.getAttribute("email");
-					if(email !=null) {
-					if (email.equals("admin")) {
+					String email = (String) session.getAttribute("email");
+					if (email != null) {
+						if (email.equals("admin")) {
 					%>
 					<!-- admin 로그인시 생기는 메뉴 TODO-->
-					<li class="nav-item"><a class="nav-link" href="contact.html">관리자</a>
+					<li class="nav-item"><a class="nav-link" href="#">관리자</a>
 					</li>
 					<%
 					}
@@ -429,9 +432,6 @@ Free Bootstrap 5 HTML Template
 								<div
 									class="row d-flex align-items-center justify-content-center h-100">
 									<div class="col-md-8 col-lg-7 col-xl-6">
-										<img
-											src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
-											class="img-fluid" alt="Phone image" />
 									</div>
 									<div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
 
@@ -448,8 +448,9 @@ Free Bootstrap 5 HTML Template
 												<div class="form-check">
 													<input class="form-check-input" type="radio"
 														name="loginMemberStore" id="flexRadioDefault2"
-														value="loginMemberStore"> <label class="form-check-label"
-														for="flexRadioDefault2"> 사업자 로그인 </label>
+														value="loginMemberStore"> <label
+														class="form-check-label" for="flexRadioDefault2">
+														사업자 로그인 </label>
 												</div>
 											</div>
 											<!-- Email input -->
@@ -469,8 +470,8 @@ Free Bootstrap 5 HTML Template
 
 											<div
 												class="d-flex justify-content-around align-items-center mb-4">
-												
-												
+
+
 											</div>
 
 											<!-- Submit button -->
@@ -540,9 +541,9 @@ Free Bootstrap 5 HTML Template
 								후기
 						</a></li>
 
-						<li class="footer-menu-item"><a href="requestBoardMain.jsp?boardPage=1"
-							class="footer-menu-link"> <i
-								class="bi-chevron-double-right footer-menu-link-icon me-2"></i>
+						<li class="footer-menu-item"><a
+							href="requestBoardMain.jsp?boardPage=1" class="footer-menu-link">
+								<i class="bi-chevron-double-right footer-menu-link-icon me-2"></i>
 								문의
 						</a></li>
 					</ul>
@@ -564,20 +565,23 @@ Free Bootstrap 5 HTML Template
 
 					<p class="text-white d-flex">
 						<i class="bi-envelope-fill me-2"></i> <a
-							href="email: youjinseozzang1004@gmail.com" class="site-footer-link">
-							youjinseozzang1004@gmail.com </a>
+							href="email: youjinseozzang1004@gmail.com"
+							class="site-footer-link"> youjinseozzang1004@gmail.com </a>
 					</p>
 
 					<ul class="social-icon mt-4">
-						<li class="social-icon-item"><a class="social-icon-link button button--skoll"> <span></span>
+						<li class="social-icon-item"><a
+							class="social-icon-link button button--skoll"> <span></span>
 								<span class="bi-twitter"></span>
 						</a></li>
 
-						<li class="social-icon-item"><a class="social-icon-link button button--skoll"> <span></span>
+						<li class="social-icon-item"><a
+							class="social-icon-link button button--skoll"> <span></span>
 								<span class="bi-facebook"></span>
 						</a></li>
 
-						<li class="social-icon-item"><a class="social-icon-link button button--skoll"> <span></span>
+						<li class="social-icon-item"><a
+							class="social-icon-link button button--skoll"> <span></span>
 								<span class="bi-instagram"></span>
 						</a></li>
 					</ul>
@@ -618,7 +622,7 @@ Free Bootstrap 5 HTML Template
 		</div>
 	</footer>
 
-<script src="./js/jquery-3.7.0.js"></script>
+	<script src="./js/jquery-3.7.0.js"></script>
 	<!-- 날짜 선택 js -->
 	<script type="text/javascript">
 		$('#idCheck').on('click',function(){
@@ -639,203 +643,241 @@ Free Bootstrap 5 HTML Template
 		});
 		</script>
 
-	<button type="button" class="btn btn-primary scrolltop" onclick="goToTop(); return false;">
+	<button type="button" class="btn btn-primary scrolltop"
+		onclick="goToTop(); return false;">
 		<i class="fa-solid fa-arrow-up"></i>
 	</button>
-			<% email=(String)session.getAttribute("email"); %>
+	<%
+	email = (String) session.getAttribute("email");
+	%>
 	<!-- 유저 밸류값은 표현식으로 세션에서 저장된거 가져올거임 -->
 	<!-- Scrollable modal -->
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary chatbotMain" id="CSR" data-remote="ChatModal3.jsp"  data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-  <img alt="CSR" src="./images/CSR2.png">
-</button>
+	<!-- Button trigger modal -->
+	<button type="button" class="btn btn-primary chatbotMain" id="CSR"
+		data-remote="ChatModal3.jsp" data-bs-toggle="modal"
+		data-bs-target="#staticBackdrop">
+		<img alt="CSR" src="./images/CSR2.png">
+	</button>
 
-<!-- Modal -->
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrolable">
-    <div class="modal-content">
-      <div class="modal-header"  style="background-color: #7CB8EB;color: white">
-        <h1 class="modal-title fs-5" id="staticBackdropLabel">크리링 Chat-Bot</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body" >
-      	<% Date date = new Date();
-	SimpleDateFormat sd = new SimpleDateFormat("yyyy년-MM월-dd일");
-	SimpleDateFormat tsd = new SimpleDateFormat("HHmm");
-	SimpleDateFormat tsd2 = new SimpleDateFormat("a HH:mm");
-	String nowDate = sd.format(date);
-	String time =tsd.format(date);
-	String talkTime = tsd2.format(date);
-	int numTime = Integer.parseInt(time);
-		String cr_email = null;
-	if(session.getAttribute("email")==null){
-		cr_email = "Guest";
-	}else{
-		cr_email = (String)session.getAttribute("email");
-	}
-%>
-	<% if(numTime<1000||numTime>1700){%>
-		<span style="background-color:lightgray;padding: 1% 1%;margin-left: 34%;border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;"><%=nowDate %></span><br><br>
-		안녕하세요 고객님 &#128075;<br>
-		크리링 &#129302;챗봇 상담입니다.<br>
-	<br>
-		고객님, 지금은 운영시간이 아닙니다.<br>
-	<br>
-		현재는 챗봇 상담만 가능하며, 상담사 연결은 운영시간 내 문의 부탁드립니다.<br>
-		감사합니다.<br>
-	<br>
-		[운영시간] &#128342;<br>
-		평일 : 10시 - 17시 (공휴일 제외)<br>
-		<br>
-		문의사항을 선택하거나 번호를 입력해 주세요.<br><br>
-		
-		<div id = "allbutton">
-  		<button class="btn btn-primary sel" type="button" value="1" style="background-color: #7CB8EB;border-color:#7CB8EB;">1. 요금 문의</button><br>
-  		<button class="btn btn-primary sel" type="button" value="2" style="background-color: #7CB8EB;border-color:#7CB8EB;">2. 환불 문의</button><br>
-  		<button class="btn btn-primary sel" type="button" value="3" style="background-color: #7CB8EB;border-color:#7CB8EB;">3. 세탁시 주의 사항</button><br>
-  		<button class="btn btn-primary sel" type="button" value="4" style="background-color: #7CB8EB;border-color:#7CB8EB;">4. 업체 정보 수정 문의</button><br>
-  		<button class="btn btn-primary sel" type="button" value="5" style="background-color: #7CB8EB;border-color:#7CB8EB;">5. 상담원 연결</button><br>
-		</div>
-		
-	<%}else{%>
-		<span style="background-color:lightgray;padding: 1% 1%;margin-left: 34%;border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;"><%=nowDate %></span><br><br>
-		안녕하세요 고객님&#128075;<br>
-		크리링 &#129302;챗봇 상담입니다.<br>
-		<br>
-		문의유형을 선택해주세요!<br>
-		<br>
-		상담원과의 대화가 필요할 경우<br>
-		[상담원 연결] 버튼을 눌러주세요 : )<br>
-		* 상담원 연결 후 문의사항을 말씀해주세요.<br>
-		* 대화 내용은 상담을 위해서만 사용됩니다.<br><br>
-		<!-- 타임딜레이 -->	
-		<div id = "allbutton">
-		<button class="btn btn-primary sel" type="button" value="1" style="background-color: #7CB8EB;border-color:#7CB8EB;">1. 요금 문의</button><br>
-  		<button class="btn btn-primary sel" type="button" value="2" style="background-color: #7CB8EB;border-color:#7CB8EB">2. 환불 문의</button><br>
-  		<button class="btn btn-primary sel" type="button" value="3" style="background-color: #7CB8EB;border-color:#7CB8EB">3. 세탁시 주의 사항</button><br>
-  		<button class="btn btn-primary sel" type="button" value="4" style="background-color: #7CB8EB;border-color:#7CB8EB">4. 업체 정보 수정 문의</button><br>
-  		<button class="btn btn-primary sel" type="button" value="5" style="background-color: #7CB8EB;border-color:#7CB8EB">5. 상담원 연결</button><br>
-		</div>
-	<%} %>
-	
-	
-	
-	<form action="#" id="ajaxDisplay">
-	
-	
-	
-	
-	</form>
-	
-	<script src="./js/jquery-3.7.0.js"></script>
-	
-	
-	<script type="text/javascript">
+	<!-- Modal -->
+	<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static"
+		data-bs-keyboard="false" tabindex="-1"
+		aria-labelledby="staticBackdropLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-scrolable">
+			<div class="modal-content">
+				<div class="modal-header"
+					style="background-color: #7CB8EB; color: white">
+					<h1 class="modal-title fs-5" id="staticBackdropLabel">크리링
+						Chat-Bot</h1>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"
+						aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<%
+					Date date = new Date();
+					SimpleDateFormat sd = new SimpleDateFormat("yyyy년-MM월-dd일");
+					SimpleDateFormat tsd = new SimpleDateFormat("HHmm");
+					SimpleDateFormat tsd2 = new SimpleDateFormat("a HH:mm");
+					String nowDate = sd.format(date);
+					String time = tsd.format(date);
+					String talkTime = tsd2.format(date);
+					int numTime = Integer.parseInt(time);
+					String cr_email = null;
+					if (session.getAttribute("email") == null) {
+						cr_email = "Guest";
+					} else {
+						cr_email = (String) session.getAttribute("email");
+					}
+					%>
+					<%
+					if (numTime < 1000 || numTime > 1700) {
+					%>
+					<span
+						style="background-color: lightgray; padding: 1% 1%; margin-left: 34%; border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;"><%=nowDate%></span><br>
+					<br> 안녕하세요 고객님 &#128075;<br> 크리링 &#129302;챗봇 상담입니다.<br>
+					<br> 고객님, 지금은 운영시간이 아닙니다.<br> <br> 현재는 챗봇 상담만 가능하며,
+					상담사 연결은 운영시간 내 문의 부탁드립니다.<br> 감사합니다.<br> <br> [운영시간]
+					&#128342;<br> 평일 : 10시 - 17시 (공휴일 제외)<br> <br> 문의사항을
+					선택하거나 번호를 입력해 주세요.<br>
+					<br>
+
+					<div id="allbutton">
+						<button class="btn btn-primary sel" type="button" value="1"
+							style="background-color: #7CB8EB; border-color: #7CB8EB;">1.
+							요금 문의</button>
+						<br>
+						<button class="btn btn-primary sel" type="button" value="2"
+							style="background-color: #7CB8EB; border-color: #7CB8EB;">2.
+							환불 문의</button>
+						<br>
+						<button class="btn btn-primary sel" type="button" value="3"
+							style="background-color: #7CB8EB; border-color: #7CB8EB;">3.
+							세탁시 주의 사항</button>
+						<br>
+						<button class="btn btn-primary sel" type="button" value="4"
+							style="background-color: #7CB8EB; border-color: #7CB8EB;">4.
+							업체 정보 수정 문의</button>
+						<br>
+						<button class="btn btn-primary sel" type="button" value="5"
+							style="background-color: #7CB8EB; border-color: #7CB8EB;">5.
+							상담원 연결</button>
+						<br>
+					</div>
+
+					<%
+					} else {
+					%>
+					<span
+						style="background-color: lightgray; padding: 1% 1%; margin-left: 34%; border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;"><%=nowDate%></span><br>
+					<br> 안녕하세요 고객님&#128075;<br> 크리링 &#129302;챗봇 상담입니다.<br>
+					<br> 문의유형을 선택해주세요!<br> <br> 상담원과의 대화가 필요할 경우<br>
+					[상담원 연결] 버튼을 눌러주세요 : )<br> * 상담원 연결 후 문의사항을 말씀해주세요.<br> *
+					대화 내용은 상담을 위해서만 사용됩니다.<br>
+					<br>
+					<!-- 타임딜레이 -->
+					<div id="allbutton">
+						<button class="btn btn-primary sel" type="button" value="1"
+							style="background-color: #7CB8EB; border-color: #7CB8EB;">1.
+							요금 문의</button>
+						<br>
+						<button class="btn btn-primary sel" type="button" value="2"
+							style="background-color: #7CB8EB; border-color: #7CB8EB">2.
+							환불 문의</button>
+						<br>
+						<button class="btn btn-primary sel" type="button" value="3"
+							style="background-color: #7CB8EB; border-color: #7CB8EB">3.
+							세탁시 주의 사항</button>
+						<br>
+						<button class="btn btn-primary sel" type="button" value="4"
+							style="background-color: #7CB8EB; border-color: #7CB8EB">4.
+							업체 정보 수정 문의</button>
+						<br>
+						<button class="btn btn-primary sel" type="button" value="5"
+							style="background-color: #7CB8EB; border-color: #7CB8EB">5.
+							상담원 연결</button>
+						<br>
+					</div>
+					<%
+					}
+					%>
+
+
+
+					<form action="#" id="ajaxDisplay"></form>
+
+					<script src="./js/jquery-3.7.0.js"></script>
+
+
+					<script type="text/javascript">
 	$('.btn').on('click',function(){
 		var qna=$(this).attr('value');
-		var cr_email = "<%=cr_email%>";
-		 //setTimeout(function() {    },700);
-		if(qna=="1"){
-			$('#allbutton').css("display","none");
-			$.ajax({
-				url:"chatBotScript2/userSel1.jsp",
-				success: function(result){
-					$("#ajaxDisplay").html(result);
-				}
-			});	
-		}else if(qna=="2"){
-			$('#allbutton').css("display","none");
-			$.ajax({
-				url:"chatBotScript2/userSel2.jsp",
-				success: function(result){
-					$("#ajaxDisplay").html(result);
-				}
-			});	
-		}else if(qna=="3"){
-			$('#allbutton').css("display","none");
-				$.ajax({
-					url:"chatBotScript2/userSel3.jsp",
-					success: function(result){
-						$("#ajaxDisplay").html(result);
-					}
-				});
-			
-		}else if(qna=="4"){
-			$('#allbutton').css("display","none");
-				if(cr_email=="Guest"){
-				$.ajax({
-					url:"chatBotScript2/userSel4_1.jsp",
-					success: function(result){
-						$("#ajaxDisplay").html(result);
-					}
-				});
-				$('#userbutton4').css("display","block");
-				}else{
-				$.ajax({
-					url:"chatBotScript2/userSel4_2.jsp",
-					success: function(result){
-						$("#ajaxDisplay").html(result);
-					}
-				});
-				
-				}
-		}else if(qna=="5"){
-			$('#allbutton').css("display","none");
-				$.ajax({
-					url:"chatBotScript2/userSel5.jsp",
-					success: function(result){
-						$("#ajaxDisplay").html(result);
-					}
-				});
-			
-		}else {
-			
-		}
-		 
-	});
-	</script>
-      </div>
-      <div class="modal-footer">
-        <button type="button" id="Exit"class="btn btn-secondary" data-bs-dismiss="modal">나가기</button>
-      </div>
-    </div>
-  </div>
-</div>
+		var cr_email = "<%=cr_email%>
+						";
+							//setTimeout(function() {    },700);
+							if (qna == "1") {
+								$('#allbutton').css("display", "none");
+								$.ajax({
+									url : "chatBotScript2/userSel1.jsp",
+									success : function(result) {
+										$("#ajaxDisplay").html(result);
+									}
+								});
+							} else if (qna == "2") {
+								$('#allbutton').css("display", "none");
+								$.ajax({
+									url : "chatBotScript2/userSel2.jsp",
+									success : function(result) {
+										$("#ajaxDisplay").html(result);
+									}
+								});
+							} else if (qna == "3") {
+								$('#allbutton').css("display", "none");
+								$.ajax({
+									url : "chatBotScript2/userSel3.jsp",
+									success : function(result) {
+										$("#ajaxDisplay").html(result);
+									}
+								});
+
+							} else if (qna == "4") {
+								$('#allbutton').css("display", "none");
+								if (cr_email == "Guest") {
+									$.ajax({
+										url : "chatBotScript2/userSel4_1.jsp",
+										success : function(result) {
+											$("#ajaxDisplay").html(result);
+										}
+									});
+									$('#userbutton4').css("display", "block");
+								} else {
+									$.ajax({
+										url : "chatBotScript2/userSel4_2.jsp",
+										success : function(result) {
+											$("#ajaxDisplay").html(result);
+										}
+									});
+
+								}
+							} else if (qna == "5") {
+								$('#allbutton').css("display", "none");
+								$.ajax({
+									url : "chatBotScript2/userSel5.jsp",
+									success : function(result) {
+										$("#ajaxDisplay").html(result);
+									}
+								});
+
+							} else {
+
+							}
+
+						});
+					</script>
+				</div>
+				<div class="modal-footer">
+					<button type="button" id="Exit" class="btn btn-secondary"
+						data-bs-dismiss="modal">나가기</button>
+				</div>
+			</div>
+		</div>
+	</div>
 
 	<script src="./js/jquery-3.7.0.js"></script>
 	<script>
 		$('#staticBackdrop').on('show.bs.modal', function(e) {
-	
+
 			var button = $(e.relatedTarget);
 			var modal = $(this);
-			
-			modal.find('.modal-body').load(button.data("remote"));
-	
-		});
-	</script> 
-	
-	
 
-<script src="./js/jquery-3.7.0.js"></script>
+			modal.find('.modal-body').load(button.data("remote"));
+
+		});
+	</script>
+
+
+
+	<script src="./js/jquery-3.7.0.js"></script>
 	<!-- 날짜 선택 js -->
 	<script type="text/javascript">
-		$('#idCheck').on('click',function(){
-		    var email = $('#form1Example13').val();
-		    $.ajax({
-				url:"http://localhost:8081/clearing/loginDChk",
-				dataType:'text',
-				data:{MB_EMAIL:email},
-				success: function(result,textStatus){
-					if(result ==='usable'){
+		$('#idCheck').on('click', function() {
+			var email = $('#form1Example13').val();
+			$.ajax({
+				url : "http://localhost:8081/clearing/loginDChk",
+				dataType : 'text',
+				data : {
+					MB_EMAIL : email
+				},
+				success : function(result, textStatus) {
+					if (result === 'usable') {
 						alert("사용할수 있는 아이디 입니다.");
-					}else{
+					} else {
 						alert("이미 사용중인 아이디 입니다.");
 					}
 				}
 			});
-				
+
 		});
-		</script>
+	</script>
 	<!-- JAVASCRIPT FILES -->
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>

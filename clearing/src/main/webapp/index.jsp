@@ -49,6 +49,7 @@ body {
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4fe78505e64a5ac31be2e7b890da39d4&libraries=services,clusterer,drawing"></script>
 <script src="https://kit.fontawesome.com/a32650dbb1.js"
 	crossorigin="anonymous"></script>
+	
 </head>
 
 <body>
@@ -129,7 +130,7 @@ body {
 						if (email.equals("admin")) {
 					%>
 					<!-- admin 로그인시 생기는 메뉴 TODO-->
-					<li class="nav-item"><a class="nav-link" href="contact.html">관리자</a>
+					<li class="nav-item"><a class="nav-link" href="#">관리자</a>
 					</li>
 					<%
 					}
@@ -272,7 +273,7 @@ body {
 
 								<div class="marquee" aria-hidden="true">
 									<div class="marquee__inner">
-										<span>예약하기</span> <span>예약하기</span> <span>Reservation</span> <span>예약하기</span>
+										<span>예약하기</span> <span>예약하기</span> <span>예약하기</span> <span>예약하기</span>
 									</div>
 								</div>
 

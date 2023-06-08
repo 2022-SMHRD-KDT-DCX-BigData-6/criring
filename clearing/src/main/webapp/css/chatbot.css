@@ -7,6 +7,7 @@
 	border: 5px solid #717275;
 	border-radius: 30px;
 	background-color: #f0f8ff;
+	z-index:10000;
 }
 
 .chatbotMain:hover, .scrolltop:hover {
@@ -93,6 +94,6 @@
 	.chatbotMain {
 		top: 80%;
     	left: 75%;
-    	z-index: 100;
+    	z-index: 10000;
 	}
 }

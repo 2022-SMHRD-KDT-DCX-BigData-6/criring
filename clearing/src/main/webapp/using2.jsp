@@ -32,6 +32,19 @@
 <link href="css/tooplate-clean-work.css" rel="stylesheet" />
 <link href="css/chatbot.css" rel="stylesheet">
 <link href="css/using.css" rel="stylesheet">
+<script src="https://kit.fontawesome.com/a32650dbb1.js" crossorigin="anonymous"></script>
+<style type="text/css">
+@font-face {
+    font-family: 'gmarket';
+    src: url('./fonts/GmarketSansTTFMedium.ttf') format('truetype');
+}
+
+body {
+  	background-color: var(--white-color);
+	font-family: 'gmarket' !important;
+}
+
+</style>
 </head>
 <body>
 	<%
@@ -93,14 +106,14 @@
 					<li class="nav-item"><a class="nav-link" href="about.html">후기
 					</a></li>
 					<li class="nav-item"><a class="nav-link"
-						href="requestBoardMain.jsp">문의</a></li>
+						href="requestBoardMain.jsp?boardPage=1">문의</a></li>
 
 					<%
 					String email = (String)session.getAttribute("email");
 					if (email.equals("admin")) {
 					%>
 					<!-- admin 로그인시 생기는 메뉴 TODO-->
-					<li class="nav-item"><a class="nav-link" href="contact.html">관리자</a>
+					<li class="nav-item"><a class="nav-link" href="#">관리자</a>
 					</li>
 					<%
 					}
@@ -617,7 +630,16 @@
 			  element.checked = true;
 			}
 	 </script>
-
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/jquery.backstretch.min.js"></script>
+	<script src="js/counter.js"></script>
+	<script src="js/countdown.js"></script>
+	<script src="js/init.js"></script>
+	<script src="js/modernizr.js"></script>
+	<script src="js/animated-headline.js"></script>
+	<script src="js/custom.js"></script>
+	<script src="js/btnScroll.js"></script>
 
 </body>
 </html>

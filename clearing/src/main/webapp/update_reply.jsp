@@ -161,14 +161,14 @@ input[type=reset], input[type=submit], input[type=button] {
 					<li class="nav-item"><a class="nav-link" href="about.html">후기
 					</a></li>
 					<li class="nav-item"><a class="nav-link"
-						href="requestBoardMain.jsp">문의</a></li>
+						href="requestBoardMain.jsp?boardPage=1">문의</a></li>
 
 					<%
 					if (session.getAttribute("email") != null) {
 						String email = (String) session.getAttribute("email");
 						if (email.equals("admin")) {
 					%>
-					<li class="nav-item"><a class="nav-link" href="contact.html">관리자</a>
+					<li class="nav-item"><a class="nav-link" href="#">관리자</a>
 					</li>
 					<%
 					}

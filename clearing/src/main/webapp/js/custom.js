@@ -10,9 +10,9 @@
 
     // BACKSTRETCH SLIDESHOW
     $('.hero-section').backstretch([
-      "images/slideshow/background-jisoo.jpeg", 
-      "images/slideshow/background-jisoo1.jpg",
-      "images/slideshow/background-pinkbean.jpg"
+      "images/slideshow/5.png", 
+      "images/slideshow/6.jpg",
+      "images/slideshow/8.jpg"
     ],  {duration: 2000, fade: 750});
     
     // CUSTOM LINK

@@ -188,6 +188,7 @@
 #pagination a {
 	display: inline-block;
 	margin-right: 10px;
+	color: #6c757d;
 }
 
 #pagination .on {
