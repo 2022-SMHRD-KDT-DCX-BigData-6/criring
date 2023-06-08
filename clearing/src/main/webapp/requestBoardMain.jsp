@@ -219,8 +219,8 @@ h3:after {
 		Request_BoardDAO dao = new Request_BoardDAO();
 		List<Request_BoardDTO> sel_list = dao.selectAll_request();
 		int num = 0;
-			int boardPage = 1;		
-			if(request.getParameter(request.getParameter("boardPage")) != null) {
+			int boardPage = 1;
+			if(request.getParameter("boardPage") != null) {
 				boardPage = Integer.parseInt(request.getParameter("boardPage"));
 			}
 			int count = 10;

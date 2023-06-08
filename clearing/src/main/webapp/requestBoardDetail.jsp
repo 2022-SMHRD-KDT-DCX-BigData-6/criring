@@ -222,7 +222,7 @@ input[type=reset], input[type=submit], input[type=button] {
 	               // 로그인 아이디가 관리자 또는 작성자일 시 삭제 가능
 	               if (session.getAttribute("email") == null) {
 	            	   
-	               } else if(session.getAttribute("email").equals(rDto.getReqEmail()) || session.getAttribute("email").equals("kissmejr@naver.com")) { %>
+	               } else if(session.getAttribute("email").equals(rDto.getReqEmail()) || session.getAttribute("email").equals("admin")) { %>
 	               <a href="reqBoardDelete"><button class="reqbtn">삭제</button></a>
 	               <%} %>
 	               <a href="requestBoardMain.jsp?boardPage=<%=boardPage%>"><button class="reqbtn" style="width: 76px;">돌아가기</button></a>  

@@ -228,9 +228,9 @@ h3:after {
     	StoreDAO sDao = new StoreDAO();
     	List<StoreVO> vo_list = sDao.selAll();
     	int number = 1;
-		int boardPage = Integer.parseInt(request.getParameter("boardPage"));
-			if(request.getParameter("boardPage") == null) {
-				boardPage = 1;		
+		int boardPage = 1;
+			if(request.getParameter("boardPage") != null) {
+				boardPage = Integer.parseInt(request.getParameter("boardPage"));
 			}
 		int count = 10;
 		int totalPage = ((sel_list.size() -1) / count) + 1;
@@ -244,7 +244,7 @@ h3:after {
 		boolean next = (endPage == totalPage) ? false : true;
 		
 	%>
-	
+	<%=vo_list.size() %>
 	<div class="request">
 	<table class="table">
   <tbody>
@@ -261,7 +261,7 @@ h3:after {
 	   
 	   <%
 	   if (sel_list.size() <= (boardPage*10)){ %>
-			<%for(int i = 0;i < sel_list.size();i++){ %>
+			<%for(int i = (boardPage * 10) - 10;i < sel_list.size();i++){ %>
 				   <%
 				   int num = 0;
 	   				String store_email = sel_list.get(i).getStore_email();
@@ -281,8 +281,6 @@ h3:after {
 	        		<td><%=sel_list.get(i).getUser_email() %></td>
 	        		<td><%=sel_list.get(i).getReview_rating() %></td>
 	        		<td><a class="title" href="deleteReview?review_seq=<%=sel_list.get(i).getReview_seq()%>">삭제</a></td>
-			<td>
-			</td>
 	        	</tr>
 			<%} %>
 		  <%} else {%>
@@ -302,11 +300,11 @@ h3:after {
 	        	<tr>
 	        		<td><%=number + i %></td>
 	        		<td><a class="title" href="RV2?store_name=<%=vo_list.get(num).getSTORE_NAME()%>"><%=sel_list.get(i).getReview_content() %></a></td>
-	        		<td><%=vo_list.get(i).getSTORE_NAME() %></td>
-	        		<td><%=vo_list.get(num).getSTORE_NAME() %>///<%=store_email %></td>
+	        		<td><%=vo_list.get(num).getSTORE_NAME() %></td>
 	        		<td><%=sel_list.get(i).getUser_email() %></td>
 	        		<td><%=sel_list.get(i).getReview_rating() %></td>
 	        		<td><a class="title" href="deleteReview?review_seq=<%=sel_list.get(i).getReview_seq()%>">삭제</a></td>
+	        	</tr>
 			<%} %>
 	     <%} %>
   </tbody>

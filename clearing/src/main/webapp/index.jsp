@@ -46,7 +46,7 @@ body {
 }
 </style>
 <script type="text/javascript"
-	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4fe78505e64a5ac31be2e7b890da39d4&libraries=services,clusterer,drawing"></script>
+	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=0db420091d1781f4feb06d2e77972cba&libraries=services,clusterer,drawing"></script>
 <script src="https://kit.fontawesome.com/a32650dbb1.js"
 	crossorigin="anonymous"></script>
 	
@@ -634,7 +634,8 @@ body {
 				$(form).unbind("submit");
 			}
 		});
-		
+	</script>
+	<script type="text/javascript">
 		const $form2 = document.getElementById('selectStore_form');
 		$form2.addEventListener("submit", (event) => {
 			var lat = $('#selectStoreLat-dp-none').val();
@@ -646,7 +647,8 @@ body {
 				$(form2).unbind("submit");
 			}
 		});
-		
+		</script>
+		<script type="text/javascript">
 		const $form1 = document.getElementById('reviewController');
 		$form1.addEventListener("submit", (event) => {
 			var lat = $('#selectStoreLat1-dp-none').val();
