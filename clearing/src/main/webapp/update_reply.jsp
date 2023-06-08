@@ -168,7 +168,7 @@ input[type=reset], input[type=submit], input[type=button] {
 						String email = (String) session.getAttribute("email");
 						if (email.equals("admin")) {
 					%>
-					<li class="nav-item"><a class="nav-link" href="#">관리자</a>
+					<li class="nav-item"><a class="nav-link" href="adminReviewBoardMain.jsp?boardPage=1">관리자</a>
 					</li>
 					<%
 					}

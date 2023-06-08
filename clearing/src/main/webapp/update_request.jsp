@@ -130,7 +130,7 @@ img {
 					if (email.equals("admin")) {
 					%>
 					<!-- admin 로그인시 생기는 메뉴 TODO-->
-					<li class="nav-item"><a class="nav-link" href="#">관리자</a>
+					<li class="nav-item"><a class="nav-link" href="adminReviewBoardMain.jsp?boardPage=1">관리자</a>
 					</li>
 					<%
 					}

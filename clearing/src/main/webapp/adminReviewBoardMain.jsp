@@ -169,7 +169,7 @@ h3:after {
 					if (email.equals("admin")) {
 					%>
 					<!-- admin 로그인시 생기는 메뉴 TODO-->
-					<li class="nav-item"><a class="nav-link" href="contact.html">관리자</a>
+					<li class="nav-item"><a class="nav-link" href="adminReviewBoardMain.jsp?boardPage=1">관리자</a>
 					</li>
 					<%
 					}
@@ -210,7 +210,7 @@ h3:after {
                     <div class="row">
 
                         <div class="col-lg-7 col-12">
-                            <h1 class="text-white mb-lg-0">관리자 리뷰 게시판</h1>
+                            <h1 class="text-white mb-lg-0">리뷰 관리</h1>
                         </div>
 
 
@@ -227,7 +227,7 @@ h3:after {
     	StoreVO sVo = new StoreVO();
     	StoreDAO sDao = new StoreDAO();
     	List<StoreVO> vo_list = sDao.selAll();
-    	
+    	int number = 1;
 		int boardPage = Integer.parseInt(request.getParameter("boardPage"));
 			if(request.getParameter("boardPage") == null) {
 				boardPage = 1;		
@@ -275,7 +275,7 @@ h3:after {
 					}
 				   %>
 	        	<tr>
-	        		<td><%=sel_list.get(i).getReview_seq() %></td>
+	        		<td><%=number + i %></td>
 	        		<td><a class="title" href="RV2?store_name=<%=vo_list.get(num).getSTORE_NAME()%>"><%=sel_list.get(i).getReview_content() %></a></td>
 	        		<td><%=vo_list.get(num).getSTORE_NAME() %></td>
 	        		<td><%=sel_list.get(i).getUser_email() %></td>
@@ -300,7 +300,7 @@ h3:after {
 					}
 				   %>
 	        	<tr>
-	        		<td><%=sel_list.get(i).getReview_seq() %></td>
+	        		<td><%=number + i %></td>
 	        		<td><a class="title" href="RV2?store_name=<%=vo_list.get(num).getSTORE_NAME()%>"><%=sel_list.get(i).getReview_content() %></a></td>
 	        		<td><%=vo_list.get(i).getSTORE_NAME() %></td>
 	        		<td><%=vo_list.get(num).getSTORE_NAME() %>///<%=store_email %></td>
