@@ -114,7 +114,7 @@ Free Bootstrap 5 HTML Template
 						if (email.equals("admin")) {
 					%>
 					<!-- admin 로그인시 생기는 메뉴 TODO-->
-					<li class="nav-item"><a class="nav-link" href="contact.html">관리자</a>
+					<li class="nav-item"><a class="nav-link" href="#">관리자</a>
 					</li>
 					<%
 					}
@@ -156,7 +156,7 @@ Free Bootstrap 5 HTML Template
 				<div class="row">
 
 					<div class="col-lg-7 col-12">
-						<h1 class="text-white mb-lg-0">Services Listing</h1>
+						<h1 class="text-white mb-lg-0">등록업체 리뷰 목록</h1>
 					</div>
 
 					<div

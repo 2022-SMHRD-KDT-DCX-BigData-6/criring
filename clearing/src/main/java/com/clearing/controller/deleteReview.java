@@ -26,9 +26,9 @@ public class deleteReview extends HttpServlet {
 			
 		if (delete > 0) {
 			session.removeAttribute("review_seq");
-			response.sendRedirect("search_review.jsp");
+			response.sendRedirect("adminReviewBoardMain.jsp?boardPage=1");
 		} else {
-			response.sendRedirect("search_review.jsp");
+			response.sendRedirect("adminReviewBoardMain.jsp?boardPage=1");
 		}
 		
 		}

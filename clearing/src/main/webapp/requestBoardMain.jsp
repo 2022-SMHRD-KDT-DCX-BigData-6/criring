@@ -156,7 +156,7 @@ h3:after {
 					<li class="nav-item"><a class="nav-link" href="NonUserReview">후기
 					</a></li>
 					<li class="nav-item"><a class="nav-link"
-						href="requestBoardMain.jsp">문의</a></li>
+						href="requestBoardMain.jsp?boardPage=1">문의</a></li>
 
 					<%
 					if(session.getAttribute("email")!=null){
@@ -164,7 +164,7 @@ h3:after {
 					if (email.equals("admin")) {
 					%>
 					<!-- admin 로그인시 생기는 메뉴 TODO-->
-					<li class="nav-item"><a class="nav-link" href="contact.html">관리자</a>
+					<li class="nav-item"><a class="nav-link" href="#">관리자</a>
 					</li>
 					<%
 					}
@@ -289,7 +289,7 @@ h3:after {
 	        	<%} %>
 			<%} %>
 		  <%} %>
-	        <%} else if(session.getAttribute("email").equals("kissmejr@naver.com")) {%>
+	        <%} else if(session.getAttribute("email").equals("admin")) {%>
 	   <thead>
 	      <tr>
 	        <th>번호</th>

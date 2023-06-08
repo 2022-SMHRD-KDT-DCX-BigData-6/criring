@@ -135,7 +135,7 @@ input[type=reset], input[type=submit], input[type=button] {
 					<li class="nav-item"><a class="nav-link" href="about.html">후기
 					</a></li>
 					<li class="nav-item"><a class="nav-link"
-						href="requestBoardMain.jsp">문의</a></li>
+						href="requestBoardMain.jsp?boardPage=1">문의</a></li>
 
 					<%
 					if (session.getAttribute("email") != null) {
@@ -143,7 +143,7 @@ input[type=reset], input[type=submit], input[type=button] {
 						if (email.equals("admin")) {
 					%>
 					<!-- admin 로그인시 생기는 메뉴 TODO-->
-					<li class="nav-item"><a class="nav-link" href="contact.html">관리자</a>
+					<li class="nav-item"><a class="nav-link" href="#">관리자</a>
 					</li>
 					<%
 					}

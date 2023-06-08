@@ -19,7 +19,8 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
 	crossorigin="anonymous"></script>
-<script src="https://kit.fontawesome.com/a32650dbb1.js" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/a32650dbb1.js"
+	crossorigin="anonymous"></script>
 
 <!-- CSS FILES -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -38,22 +39,22 @@
 <link href="css/chatbot.css" rel="stylesheet">
 <style type="text/css">
 @font-face {
-    font-family: 'gmarket';
-    src: url('./fonts/GmarketSansTTFMedium.ttf') format('truetype');
+	font-family: 'gmarket';
+	src: url('./fonts/GmarketSansTTFMedium.ttf') format('truetype');
 }
 
 body {
-  	background-color: var(--white-color);
+	background-color: var(--white-color);
 	font-family: 'gmarket' !important;
 }
 
-.carousel-control-prev:hover{
-background-color: #7CB8EB;
-}
-.carousel-control-next:hover{
-background-color: #7CB8EB;
+.carousel-control-prev:hover {
+	background-color: #7CB8EB;
 }
 
+.carousel-control-next:hover {
+	background-color: #7CB8EB;
+}
 </style>
 <!--
 
@@ -72,10 +73,10 @@ Free Bootstrap 5 HTML Template
 	String storeAdd = (String) request.getAttribute("storeAdd");
 	String storeTel = (String) request.getAttribute("storeTel");
 	ArrayList<tbl_reviewListDTO> reviewList = new ArrayList<tbl_reviewListDTO>();
-	if(request.getAttribute("reviewList")==null){
-		reviewList=null;		
-	}else{
-			reviewList =(ArrayList<tbl_reviewListDTO>) request.getAttribute("reviewList");
+	if (request.getAttribute("reviewList") == null) {
+		reviewList = null;
+	} else {
+		reviewList = (ArrayList<tbl_reviewListDTO>) request.getAttribute("reviewList");
 	}
 
 	String star = (String) request.getAttribute("star");
@@ -127,15 +128,14 @@ Free Bootstrap 5 HTML Template
 					<!-- 문제있다면 여기일수있음 check -->
 					<%
 					String email = "비회원";
-					
-					if(session.getAttribute("email") != null) {
-					email = (String)session.getAttribute("email");
+
+					if (session.getAttribute("email") != null) {
+						email = (String) session.getAttribute("email");
 					}
 					if (email.equals("admin")) {
 					%>
 					<!-- admin 로그인시 생기는 메뉴 TODO-->
-					<li class="nav-item"><a class="nav-link" href="contact.html">관리자</a>
-					</li>
+					<li class="nav-item"><a class="nav-link" href="#">관리자</a></li>
 					<%
 					}
 					%>
@@ -145,7 +145,7 @@ Free Bootstrap 5 HTML Template
 					%>
 					<li class="nav-item ms-3"><a
 						class="nav-link custom-btn custom-border-btn custom-btn-bg-white btn"
-						href="Mypage.jsp" >내 정보</a></li>
+						href="Mypage.jsp">내 정보</a></li>
 					<%-- href="Mypage.jsp?email=<%=email%>&addr=<%=addr%>&lat=<%=lat%>&lng=<%=lng%>" --%>
 					<li class="nav-item ms-3"><a
 						class="nav-link custom-btn custom-border-btn custom-btn-bg-white btn"
@@ -176,7 +176,11 @@ Free Bootstrap 5 HTML Template
 
 					<div class="col-lg-7 col-12">
 						<h2 class="text-white mb-lg-0">
-							<%=storeName %> <p style="color: white;font-size: 20px">주소 : <%=storeAdd %>&nbsp;&nbsp;&nbsp; ☎ : <%=storeTel %>&nbsp;&nbsp;&nbsp;&nbsp; ★<%=star %></p>
+							<%=storeName%>
+							<p style="color: white; font-size: 20px">
+								주소 :
+								<%=storeAdd%>&nbsp;&nbsp;&nbsp; ☎ :
+								<%=storeTel%>&nbsp;&nbsp;&nbsp;&nbsp; ★<%=star%></p>
 						</h2>
 					</div>
 
@@ -187,7 +191,7 @@ Free Bootstrap 5 HTML Template
 								<li class="breadcrumb-item"><a href="index.jsp">Home</a></li>
 
 								<li class="breadcrumb-item active" aria-current="page"><%=storeName%>
-									</li>
+								</li>
 							</ol>
 						</nav>
 					</div>
@@ -197,321 +201,408 @@ Free Bootstrap 5 HTML Template
 		</section>
 
 
-	
+
 
 		<section class="services-section section-padding section-bg">
-						<%if(reviewList.isEmpty()){%>
-							<div align="center">
-							<img alt="x" src="images/plz_Write.png"><br>
-							<br>
-							등록된 리뷰가 없습니다..<br>
-							 처음으로 작성해보세요❗
-							</div>
-						
-						<% }else{%>
+			<%
+			if (reviewList.isEmpty()) {
+			%>
+			<div align="center">
+				<img alt="x" src="images/plz_Write.png"><br> <br>
+				등록된 리뷰가 없습니다..<br> 처음으로 작성해보세요❗
+			</div>
+
+			<%
+			} else {
+			%>
 			<div class="container">
 				<div class="row">
 
 					<div id="carouselExampleControls" class="carousel slide"
 						data-bs-ride="carousel">
 						<div class="carousel-inner">
-						<%if(reviewList.size()/4==1){%>
-						<%if(reviewList.size()%4>0){%>
-							
+							<%
+							if (reviewList.size() / 4 == 1) {
+							%>
+							<%
+							if (reviewList.size() % 4 > 0) {
+							%>
+
 							<div class="carousel-item active" data-bs-interval="10000">
 
-							<div class="container">
-						<div class="row">
-							<%for(int i=0; i<4;i++){ %>
-								
-								<div class="col-lg-6 col-12"> 
-									<div class="services-thumb mb-lg-0">
-										<div class="row">
-											<div class="col-lg-5 col-md-5 col-12">
-												<div class="services-image-wrap">
-												<%if (!reviewList.get(i).getReview_photo().equals("0")) {%>
-												
-													<img src="./file/<%=reviewList.get(i).getReview_photo()%>"
-														class="services-image img-fluid" alt="">
-												<%}else{%>
-													<img src="images/bubbles.png"
-														class="services-image img-fluid" alt="">
-												<%} %>
-												</div>
-											</div>
+								<div class="container">
+									<div class="row">
+										<%
+										for (int i = 0; i < 4; i++) {
+										%>
 
-											<div
-												class="col-lg-7 col-md-7 col-12 d-flex align-items-center">
-												<div class="services-info mt-4 mt-lg-0 mt-md-0">
+										<div class="col-lg-6 col-12">
+											<div class="services-thumb mb-lg-0">
+												<div class="row">
+													<div class="col-lg-5 col-md-5 col-12">
+														<div class="services-image-wrap">
+															<%
+															if (!reviewList.get(i).getReview_photo().equals("0")) {
+															%>
 
-													<%String[] user_email=reviewList.get(i).getUser_email().split("@");
-													   String email_front=user_email[0];
-													   String numStr = email_front.replaceAll("[0-9]", "*");
-													   %>
-													<div class="d-flex flex-wrap align-items-center">
-													작성자:<%=numStr%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-														<div class="reviews-icons">
+															<img
+																src="./file/<%=reviewList.get(i).getReview_photo()%>"
+																class="services-image img-fluid" alt="">
 															<%
-															for ( int j = 0; j < reviewList.get(i).getReview_rating(); j++) {
+															} else {
 															%>
-															<i class="bi-star-fill"></i>
-															<%
-															}
-															%>
-															<%
-															for ( int j  = 0; j < 5 - (reviewList.get(i).getReview_rating()); j++) {
-															%>
-															<i class="bi-star"></i>
-
+															<img src="images/bubbles.png"
+																class="services-image img-fluid" alt="">
 															<%
 															}
 															%>
 														</div>
-													</div><br>
-													<div id="fb-root"></div>
-													<%=reviewList.get(i).getReview_content()%><br><br>
-													<p>
-													<%=reviewList.get(i).getReview_dt().substring(0, 10)%>
-													</p>
+													</div>
 
+													<div
+														class="col-lg-7 col-md-7 col-12 d-flex align-items-center">
+														<div class="services-info mt-4 mt-lg-0 mt-md-0">
+
+															<%
+															String[] user_email = reviewList.get(i).getUser_email().split("@");
+															String email_front = user_email[0];
+															String numStr = email_front.replaceAll("[0-9]", "*");
+															%>
+															<div class="d-flex flex-wrap align-items-center">
+																작성자:<%=numStr%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+																<div class="reviews-icons">
+																	<%
+																	for (int j = 0; j < reviewList.get(i).getReview_rating(); j++) {
+																	%>
+																	<i class="bi-star-fill"></i>
+																	<%
+																	}
+																	%>
+																	<%
+																	for (int j = 0; j < 5 - (reviewList.get(i).getReview_rating()); j++) {
+																	%>
+																	<i class="bi-star"></i>
+
+																	<%
+																	}
+																	%>
+																</div>
+															</div>
+															<br>
+															<div id="fb-root"></div>
+															<%=reviewList.get(i).getReview_content()%><br>
+															<br>
+															<p>
+																<%=reviewList.get(i).getReview_dt().substring(0, 10)%>
+															</p>
+
+														</div>
+													</div>
 												</div>
 											</div>
+											<br>
 										</div>
-									</div> 
-								<br>
+
+										<%
+										}
+										%>
+
+									</div>
 								</div>
-								
-							<%} %>
-							
-							</div>
-								</div>
-								
+
 							</div>
 							<div class="carousel-item active" data-bs-interval="10000">
 
-							<div class="container">
-						<div class="row">
-							<%for(int i=4; i<reviewList.size();i++){ %>
-								
-								<div class="col-lg-6 col-12"> 
-									<div class="services-thumb mb-lg-0">
-										<div class="row">
-											<div class="col-lg-5 col-md-5 col-12">
-												<div class="services-image-wrap">
-												<%if (!reviewList.get(i).getReview_photo().equals("0")) {%>
-												
-													<img src="./file/<%=reviewList.get(i).getReview_photo()%>"
-														class="services-image img-fluid" alt="">
-												<%}else{%>
-													<img src="images/bubbles.png"
-														class="services-image img-fluid" alt="">
-												<%} %>
-												</div>
-											</div>
+								<div class="container">
+									<div class="row">
+										<%
+										for (int i = 4; i < reviewList.size(); i++) {
+										%>
 
-											<div
-												class="col-lg-7 col-md-7 col-12 d-flex align-items-center">
-												<div class="services-info mt-4 mt-lg-0 mt-md-0">
+										<div class="col-lg-6 col-12">
+											<div class="services-thumb mb-lg-0">
+												<div class="row">
+													<div class="col-lg-5 col-md-5 col-12">
+														<div class="services-image-wrap">
+															<%
+															if (!reviewList.get(i).getReview_photo().equals("0")) {
+															%>
 
-													<%String[] user_email=reviewList.get(i).getUser_email().split("@");
-													   String email_front=user_email[0];
-													   String numStr = email_front.replaceAll("[0-9]", "*");
-													   %>
-													<div class="d-flex flex-wrap align-items-center">
-													작성자:<%=numStr%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-														<div class="reviews-icons">
+															<img
+																src="./file/<%=reviewList.get(i).getReview_photo()%>"
+																class="services-image img-fluid" alt="">
 															<%
-															for ( int j = 0; j < reviewList.get(i).getReview_rating(); j++) {
+															} else {
 															%>
-															<i class="bi-star-fill"></i>
-															<%
-															}
-															%>
-															<%
-															for ( int j  = 0; j < 5 - (reviewList.get(i).getReview_rating()); j++) {
-															%>
-															<i class="bi-star"></i>
-
+															<img src="images/bubbles.png"
+																class="services-image img-fluid" alt="">
 															<%
 															}
 															%>
 														</div>
-													</div><br>
-													<div id="fb-root"></div>
-													<%=reviewList.get(i).getReview_content()%><br><br>
-													<p>
-													<%=reviewList.get(i).getReview_dt().substring(0, 10)%>
-													</p>
+													</div>
 
+													<div
+														class="col-lg-7 col-md-7 col-12 d-flex align-items-center">
+														<div class="services-info mt-4 mt-lg-0 mt-md-0">
+
+															<%
+															String[] user_email = reviewList.get(i).getUser_email().split("@");
+															String email_front = user_email[0];
+															String numStr = email_front.replaceAll("[0-9]", "*");
+															%>
+															<div class="d-flex flex-wrap align-items-center">
+																작성자:<%=numStr%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+																<div class="reviews-icons">
+																	<%
+																	for (int j = 0; j < reviewList.get(i).getReview_rating(); j++) {
+																	%>
+																	<i class="bi-star-fill"></i>
+																	<%
+																	}
+																	%>
+																	<%
+																	for (int j = 0; j < 5 - (reviewList.get(i).getReview_rating()); j++) {
+																	%>
+																	<i class="bi-star"></i>
+
+																	<%
+																	}
+																	%>
+																</div>
+															</div>
+															<br>
+															<div id="fb-root"></div>
+															<%=reviewList.get(i).getReview_content()%><br>
+															<br>
+															<p>
+																<%=reviewList.get(i).getReview_dt().substring(0, 10)%>
+															</p>
+
+														</div>
+													</div>
 												</div>
 											</div>
+											<br>
 										</div>
-									</div> 
-								<br>
+
+										<%
+										}
+										%>
+
+									</div>
 								</div>
-								
-							<%} %>
-							
+
 							</div>
-								</div>
-								
-							</div>
-						
-						<% 
-						}else{
-						for(int k = 0;k<(reviewList.size()/4);k++){%>
+
+							<%
+							} else {
+							for (int k = 0; k < (reviewList.size() / 4); k++) {
+							%>
 							<div class="carousel-item active" data-bs-interval="10000">
 
-							<div class="container">
-						<div class="row">
-							<%for(int i=0; i<reviewList.size();i++){ %>
-								
-								<div class="col-lg-6 col-12"> 
-									<div class="services-thumb mb-lg-0">
-										<div class="row">
-											<div class="col-lg-5 col-md-5 col-12">
-												<div class="services-image-wrap">
-												<%if (!reviewList.get(i).getReview_photo().equals("0")) {%>
-												
-													<img src="./file/<%=reviewList.get(i).getReview_photo()%>"
-														class="services-image img-fluid" alt="">
-												<%}else{%>
-													<img src="images/bubbles.png"
-														class="services-image img-fluid" alt="">
-												<%} %>
-												</div>
-											</div>
+								<div class="container">
+									<div class="row">
+										<%
+										for (int i = 0; i < reviewList.size(); i++) {
+										%>
 
-											<div
-												class="col-lg-7 col-md-7 col-12 d-flex align-items-center">
-												<div class="services-info mt-4 mt-lg-0 mt-md-0">
+										<div class="col-lg-6 col-12">
+											<div class="services-thumb mb-lg-0">
+												<div class="row">
+													<div class="col-lg-5 col-md-5 col-12">
+														<div class="services-image-wrap">
+															<%
+															if (!reviewList.get(i).getReview_photo().equals("0")) {
+															%>
 
-													<%String[] user_email=reviewList.get(i).getUser_email().split("@");
-													   String email_front=user_email[0];
-													   String numStr = email_front.replaceAll("[0-9]", "*");
-													   %>
-													<div class="d-flex flex-wrap align-items-center">
-													작성자:<%=numStr%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-														<div class="reviews-icons">
+															<img
+																src="./file/<%=reviewList.get(i).getReview_photo()%>"
+																class="services-image img-fluid" alt="">
 															<%
-															for ( int j = 0; j < reviewList.get(i).getReview_rating(); j++) {
+															} else {
 															%>
-															<i class="bi-star-fill"></i>
-															<%
-															}
-															%>
-															<%
-															for ( int j  = 0; j < 5 - (reviewList.get(i).getReview_rating()); j++) {
-															%>
-															<i class="bi-star"></i>
-
+															<img src="images/bubbles.png"
+																class="services-image img-fluid" alt="">
 															<%
 															}
 															%>
 														</div>
-													</div><br>
-													<div id="fb-root"></div>
-													<%=reviewList.get(i).getReview_content()%><br><br>
-													<p>
-													<%=reviewList.get(i).getReview_dt().substring(0, 10)%>
-													</p>
+													</div>
 
+													<div
+														class="col-lg-7 col-md-7 col-12 d-flex align-items-center">
+														<div class="services-info mt-4 mt-lg-0 mt-md-0">
+
+															<%
+															String[] user_email = reviewList.get(i).getUser_email().split("@");
+															String email_front = user_email[0];
+															String numStr = email_front.replaceAll("[0-9]", "*");
+															%>
+															<div class="d-flex flex-wrap align-items-center">
+																작성자:<%=numStr%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+																<div class="reviews-icons">
+																	<%
+																	for (int j = 0; j < reviewList.get(i).getReview_rating(); j++) {
+																	%>
+																	<i class="bi-star-fill"></i>
+																	<%
+																	}
+																	%>
+																	<%
+																	for (int j = 0; j < 5 - (reviewList.get(i).getReview_rating()); j++) {
+																	%>
+																	<i class="bi-star"></i>
+
+																	<%
+																	}
+																	%>
+																</div>
+															</div>
+															<br>
+															<div id="fb-root"></div>
+															<%=reviewList.get(i).getReview_content()%><br>
+															<br>
+															<p>
+																<%=reviewList.get(i).getReview_dt().substring(0, 10)%>
+															</p>
+
+														</div>
+													</div>
 												</div>
 											</div>
+											<br>
 										</div>
-									</div> 
-								<br>
+
+										<%
+										}
+										%>
+
+									</div>
 								</div>
-								
-							<%} %>
-							
+
 							</div>
+
+							<%
+							}
+							}
+							%>
+							<%
+							} else if (reviewList.size() / 4 == 0) {
+							%>
+							<div class="carousel-item active" data-bs-interval="10000">
+
+								<div class="container">
+									<div class="row">
+										<%
+										for (int i = 0; i < reviewList.size(); i++) {
+										%>
+
+										<div class="col-lg-6 col-12">
+											<div class="services-thumb mb-lg-0">
+												<div class="row">
+													<div class="col-lg-5 col-md-5 col-12">
+														<div class="services-image-wrap">
+															<%
+															if (!reviewList.get(i).getReview_photo().equals("0")) {
+															%>
+
+															<img
+																src="./file/<%=reviewList.get(i).getReview_photo()%>"
+																class="services-image img-fluid" alt="">
+															<%
+															} else {
+															%>
+															<img src="images/bubbles.png"
+																class="services-image img-fluid" alt="">
+															<%
+															}
+															%>
+														</div>
+													</div>
+
+													<div
+														class="col-lg-7 col-md-7 col-12 d-flex align-items-center">
+														<div class="services-info mt-4 mt-lg-0 mt-md-0">
+
+															<%
+															String[] user_email = reviewList.get(i).getUser_email().split("@");
+															String email_front = user_email[0];
+															String numStr = email_front.replaceAll("[0-9]", "*");
+															%>
+															<div class="d-flex flex-wrap align-items-center">
+																작성자:<%=numStr%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+																<div class="reviews-icons">
+																	<%
+																	for (int j = 0; j < reviewList.get(i).getReview_rating(); j++) {
+																	%>
+																	<i class="bi-star-fill"></i>
+																	<%
+																	}
+																	%>
+																	<%
+																	for (int j = 0; j < 5 - (reviewList.get(i).getReview_rating()); j++) {
+																	%>
+																	<i class="bi-star"></i>
+
+																	<%
+																	}
+																	%>
+																</div>
+															</div>
+															<br>
+															<div id="fb-root"></div>
+															<%=reviewList.get(i).getReview_content()%><br>
+															<br>
+															<p>
+																<%=reviewList.get(i).getReview_dt().substring(0, 10)%>
+															</p>
+
+														</div>
+													</div>
+												</div>
+											</div>
+											<br>
+										</div>
+
+										<%
+										}
+										%>
+
+									</div>
 								</div>
-								
+
 							</div>
-						
-						<%}
+							<%
+							}
+							%>
+
+						</div>
+						<%
+						if (reviewList.size() / 4 == 1) {
+						%>
+						<button class="carousel-control-prev" type="button"
+							data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+							<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+							<span class="visually-hidden">Previous</span>
+						</button>
+						<button class="carousel-control-next" type="button"
+							data-bs-target="#carouselExampleControls" data-bs-slide="next">
+							<span class="carousel-control-next-icon" aria-hidden="true"></span>
+							<span class="visually-hidden">Next</span>
+						</button>
+
+						<%
 						}
 						%>
-						<%}else if(reviewList.size()/4==0){%>
-							<div class="carousel-item active" data-bs-interval="10000">
+					</div>
 
-							<div class="container">
-						<div class="row">
-							<%for(int i=0; i<reviewList.size();i++){ %>
-								
-								<div class="col-lg-6 col-12"> 
-									<div class="services-thumb mb-lg-0">
-										<div class="row">
-											<div class="col-lg-5 col-md-5 col-12">
-												<div class="services-image-wrap">
-												<%if (!reviewList.get(i).getReview_photo().equals("0")) {%>
-												
-													<img src="./file/<%=reviewList.get(i).getReview_photo()%>"
-														class="services-image img-fluid" alt="">
-												<%}else{%>
-													<img src="images/bubbles.png"
-														class="services-image img-fluid" alt="">
-												<%} %>
-												</div>
-											</div>
+					<%
+					}
+					%>
 
-											<div
-												class="col-lg-7 col-md-7 col-12 d-flex align-items-center">
-												<div class="services-info mt-4 mt-lg-0 mt-md-0">
 
-													<%String[] user_email=reviewList.get(i).getUser_email().split("@");
-													   String email_front=user_email[0];
-													   String numStr = email_front.replaceAll("[0-9]", "*");
-													   %>
-													<div class="d-flex flex-wrap align-items-center">
-													작성자:<%=numStr%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-														<div class="reviews-icons">
-															<%
-															for ( int j = 0; j < reviewList.get(i).getReview_rating(); j++) {
-															%>
-															<i class="bi-star-fill"></i>
-															<%
-															}
-															%>
-															<%
-															for ( int j  = 0; j < 5 - (reviewList.get(i).getReview_rating()); j++) {
-															%>
-															<i class="bi-star"></i>
 
-															<%
-															}
-															%>
-														</div>
-													</div><br>
-													<div id="fb-root"></div>
-													<%=reviewList.get(i).getReview_content()%><br><br>
-													<p>
-													<%=reviewList.get(i).getReview_dt().substring(0, 10)%>
-													</p>
-
-												</div>
-											</div>
-										</div>
-									</div> 
-								<br>
-								</div>
-								
-							<%} %>
-							
-							</div>
-								</div>
-								
-							</div>
-						<%} %>
-						
-						</div>
-						</div>
-						
-						<%} %>
-						
-							
-						
 
 
 				</div>
@@ -563,9 +654,9 @@ Free Bootstrap 5 HTML Template
 								후기
 						</a></li>
 
-						<li class="footer-menu-item"><a href="requestBoardMain.jsp?boardPage=1"
-							class="footer-menu-link"> <i
-								class="bi-chevron-double-right footer-menu-link-icon me-2"></i>
+						<li class="footer-menu-item"><a
+							href="requestBoardMain.jsp?boardPage=1" class="footer-menu-link">
+								<i class="bi-chevron-double-right footer-menu-link-icon me-2"></i>
 								문의
 						</a></li>
 					</ul>
@@ -587,20 +678,23 @@ Free Bootstrap 5 HTML Template
 
 					<p class="text-white d-flex">
 						<i class="bi-envelope-fill me-2"></i> <a
-							href="email: youjinseozzang1004@gmail.com" class="site-footer-link">
-							youjinseozzang1004@gmail.com </a>
+							href="email: youjinseozzang1004@gmail.com"
+							class="site-footer-link"> youjinseozzang1004@gmail.com </a>
 					</p>
 
 					<ul class="social-icon mt-4">
-						<li class="social-icon-item"><a class="social-icon-link button button--skoll"> <span></span>
+						<li class="social-icon-item"><a
+							class="social-icon-link button button--skoll"> <span></span>
 								<span class="bi-twitter"></span>
 						</a></li>
 
-						<li class="social-icon-item"><a class="social-icon-link button button--skoll"> <span></span>
+						<li class="social-icon-item"><a
+							class="social-icon-link button button--skoll"> <span></span>
 								<span class="bi-facebook"></span>
 						</a></li>
 
-						<li class="social-icon-item"><a class="social-icon-link button button--skoll"> <span></span>
+						<li class="social-icon-item"><a
+							class="social-icon-link button button--skoll"> <span></span>
 								<span class="bi-instagram"></span>
 						</a></li>
 					</ul>
@@ -642,10 +736,11 @@ Free Bootstrap 5 HTML Template
 	</footer>
 
 
-		<button type="button" class="btn btn-primary scrolltop" onclick="goToTop(); return false;">
+	<button type="button" class="btn btn-primary scrolltop"
+		onclick="goToTop(); return false;">
 		<i class="fa-solid fa-arrow-up"></i>
 	</button>
-	
+
 	<%
 	email = (String) session.getAttribute("email");
 	%>
@@ -657,7 +752,7 @@ Free Bootstrap 5 HTML Template
 		data-bs-target="#staticBackdrop">
 		<img alt="CSR" src="./images/CSR2.png">
 	</button>
-	
+
 	<!-- Modal -->
 	<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static"
 		data-bs-keyboard="false" tabindex="-1"
@@ -768,7 +863,8 @@ Free Bootstrap 5 HTML Template
 					<script type="text/javascript">
 	$('.btn').on('click',function(){
 		var qna=$(this).attr('value');
-		var cr_email = "<%=cr_email%>";
+		var cr_email = "<%=cr_email%>
+						";
 							//setTimeout(function() {    },700);
 							if (qna == "1") {
 								$('#allbutton').css("display", "none");
@@ -840,7 +936,6 @@ Free Bootstrap 5 HTML Template
 
 	<script src="./js/jquery-3.7.0.js"></script>
 	<script>
-
 		$('#staticBackdrop').on('show.bs.modal', function(e) {
 
 			var button = $(e.relatedTarget);
@@ -850,9 +945,9 @@ Free Bootstrap 5 HTML Template
 
 		});
 
-		$('#Exit').on('click',function(){
-			window.location.href='http://localhost:8081/clearing/index.jsp';
-			
+		$('#Exit').on('click', function() {
+			window.location.href = 'http://localhost:8081/clearing/index.jsp';
+
 		});
 	</script>
 	<!-- JAVASCRIPT FILES -->

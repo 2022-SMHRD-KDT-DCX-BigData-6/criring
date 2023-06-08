@@ -210,7 +210,7 @@ h3:after {
                     <div class="row">
 
                         <div class="col-lg-7 col-12">
-                            <h1 class="text-white mb-lg-0">문의 게시판</h1>
+                            <h1 class="text-white mb-lg-0">관리자 리뷰 게시판</h1>
                         </div>
 
 
@@ -254,7 +254,8 @@ h3:after {
 	        <th>내용</th>
 	        <th>업체명</th>
 	        <th>작성자</th>
-	        <th>평점/삭제</th>
+	        <th>평점</th>
+	        <th>삭제</th>
 	      </tr>
 	   </thead>   
 	   
@@ -278,7 +279,8 @@ h3:after {
 	        		<td><a class="title" href="RV2?store_name=<%=vo_list.get(num).getSTORE_NAME()%>"><%=sel_list.get(i).getReview_content() %></a></td>
 	        		<td><%=vo_list.get(num).getSTORE_NAME() %></td>
 	        		<td><%=sel_list.get(i).getUser_email() %></td>
-	        		<td><%=sel_list.get(i).getReview_rating() %>//<a class="title" href="replyWrite.jsp?req_seq=<%=sel_list.get(i).getReview_seq()%>">삭제</a></td>
+	        		<td><%=sel_list.get(i).getReview_rating() %></td>
+	        		<td><a class="title" href="deleteReview?review_seq=<%=sel_list.get(i).getReview_seq()%>">삭제</a></td>
 			<td>
 			</td>
 	        	</tr>
@@ -303,7 +305,8 @@ h3:after {
 	        		<td><%=vo_list.get(i).getSTORE_NAME() %></td>
 	        		<td><%=vo_list.get(num).getSTORE_NAME() %>///<%=store_email %></td>
 	        		<td><%=sel_list.get(i).getUser_email() %></td>
-	        		<td><%=sel_list.get(i).getReview_rating() %>/<a class="title" href="replyWrite.jsp?req_seq=<%=sel_list.get(i).getReview_seq()%>">삭제</a></td>
+	        		<td><%=sel_list.get(i).getReview_rating() %></td>
+	        		<td><a class="title" href="deleteReview?review_seq=<%=sel_list.get(i).getReview_seq()%>">삭제</a></td>
 			<%} %>
 	     <%} %>
   </tbody>

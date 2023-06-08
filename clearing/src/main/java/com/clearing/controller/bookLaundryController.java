@@ -52,8 +52,14 @@ public class bookLaundryController extends HttpServlet {
 		StoreVO sVo = new StoreVO(lat, lng);
 		
 		sVo = sDao.storeData(sVo);
-		int dcnt = sVo.getDRYER_CNT();
-		int lcnt = sVo.getLAUNDRY_CNT();
+		int dcnt = 0;
+		int lcnt = 0;
+		if(sVo!=null) {
+			dcnt = sVo.getDRYER_CNT();
+			lcnt = sVo.getLAUNDRY_CNT();
+			session.setAttribute("store_name", sVo.getSTORE_NAME());
+			session.setAttribute("store_addr", sVo.getSTORE_ADDR());
+		}
 		laundryList = uDao.usedLaundry(timeZero);
 		int [] used = new int[laundryList.size()];
 		if(laundryList!=null){
@@ -64,13 +70,16 @@ public class bookLaundryController extends HttpServlet {
 		}
 		session.setAttribute("laundry_cnt", lcnt);
 		session.setAttribute("dryer_cnt", dcnt);
-		session.setAttribute("store_name", sVo.getSTORE_NAME());
-		session.setAttribute("store_addr", sVo.getSTORE_ADDR());
+
+
 		request.setAttribute("used",used );
 		request.setAttribute("nTimeNow", nTimeNow);
 	
 		if(sVo!=null) {
 			RequestDispatcher requestDispatcher = request.getRequestDispatcher("using.jsp");
+			requestDispatcher.forward(request, response);
+		} else {
+			RequestDispatcher requestDispatcher = request.getRequestDispatcher("page-405.jsp");
 			requestDispatcher.forward(request, response);
 		}
 	}
