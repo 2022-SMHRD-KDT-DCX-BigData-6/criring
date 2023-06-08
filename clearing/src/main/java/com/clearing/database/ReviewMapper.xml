@@ -41,4 +41,8 @@
 	<select id ="selReviewNum" resultType="StoreUse">
 		select a.store_name,cnt from tbl_store a right outer join store_review_cnt b on a.store_email=b.store_email order by cnt desc
 	</select>
+	
+	<select id="selAll" resultType="StoreUse">
+		select a.store_name,a.store_email from tbl_store a right outer join store_review_cnt b on a.store_email=b.store_email order by cnt desc
+	</select>
 </mapper>

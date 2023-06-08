@@ -1,86 +1,124 @@
-<%@page import="java.util.Date"%>
-<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
-<%@page import="java.lang.reflect.Member"%>
-<%@page import="com.clearing.model.StoreDTO"%>
-<%@page import="com.clearing.model.MemberDTO"%>
+<%@page import="com.clearing.model.StoreDAO"%>
+<%@page import="com.clearing.model.StoreVO"%>
+<%@page import="com.clearing.model.admin_reviewDAO"%>
+<%@page import="com.clearing.model.admin_reviewDTO"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.Date"%>
+<%@page import="com.clearing.model.Request_BoardDTO"%>
+<%@page import="java.util.List"%>
+<%@page import="com.clearing.model.Request_BoardDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+    <head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-<meta name="description" content="" />
-<meta name="author" content="" />
+<meta name="description" content="">
+<meta name="author" content="">
 
-<title>Clean Work HTML CSS Template</title>
+<title>About Us | Bootstrap 5 Theme</title>
+<script src="https://kit.fontawesome.com/a32650dbb1.js" crossorigin="anonymous"></script>
+<!-- CSS FILES -->        
+<link rel="preconnect" href="https://fonts.googleapis.com">
+        
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
 
-<!-- CSS FILES -->
-<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="css/bootstrap.min.css" rel="stylesheet">
 
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="css/bootstrap-icons.css" rel="stylesheet">
 
-<link
-	href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,700;1,400&display=swap"
-	rel="stylesheet" />
-
-<link href="css/bootstrap.min.css" rel="stylesheet" />
-
-<link href="css/bootstrap-icons.css" rel="stylesheet" />
-
-<link href="css/tooplate-clean-work.css" rel="stylesheet" />
-<link href="css/login.css" rel="stylesheet">
-<link href="css/kakaoMap.css" rel="stylesheet">
+<link href="css/tooplate-clean-work.css" rel="stylesheet">
 <link href="css/chatbot.css" rel="stylesheet">
 <style type="text/css">
+@import 'https://fonts.googleapis.com/css?family=Open+Sans:600,700';
+
 @font-face {
+    font-family: 'gmarket';
+    src: url('./fonts/GmarketSansTTFMedium.ttf') format('truetype');
+}
+body {
 	font-family: 'gmarket';
-	src: url('./fonts/GmarketSansTTFMedium.ttf') format('truetype');
+}
+#writer{
+	float: right;
 }
 
-body {
-	background-color: var(--white-color);
-	font-family: 'gmarket';
+#main{
+	float: left;
+}
+
+.req_board {
+  	display: block;
+  	text-align: center;
+}
+h3 {
+  display: inline-block;
+  position: relative;
+  text-align: center;
+  font-size: 1.5em;
+  color: #cecece;
+}
+h3:before {
+  content: "\25C0";
+  position: absolute;
+  left: -50px;
+  -webkit-animation: leftRight 2s linear infinite;
+  animation: leftRight 2s linear infinite;
+}
+h3:after {
+  content: "\25b6";
+  position: absolute;
+  right: -50px;
+  -webkit-animation: leftRight 2s linear infinite reverse;
+  animation: leftRight 2s linear infinite reverse;
+}
+
+@-webkit-keyframes leftRight {
+  0%    { -webkit-transform: translateX(0)}
+  25%   { -webkit-transform: translateX(-10px)}
+  75%   { -webkit-transform: translateX(10px)}
+  100%  { -webkit-transform: translateX(0)}
+}
+@keyframes leftRight {
+  0%    { transform: translateX(0)}
+  25%   { transform: translateX(-10px)}
+  75%   { transform: translateX(10px)}
+  100%  { transform: translateX(0)}
+}
+.title {
+	text-decoration: none;
+	color: black;
+}
+.ju {
+    bottom: 570px;
+    position: absolute;
+}
+.ms-2{
+	color: #FFFFFF;
+}
+.paging{
+	margin-top: 30px;
+}
+.request{
+	width: 80%;
+	text-align: center;
+	margin: auto;
+}
+.btn-group me-2{
+	text-align: center;
+	display: inline-block;
 }
 </style>
-<script type="text/javascript"
-	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4fe78505e64a5ac31be2e7b890da39d4&libraries=services,clusterer,drawing"></script>
-<script src="https://kit.fontawesome.com/a32650dbb1.js"
-	crossorigin="anonymous"></script>
-</head>
+    </head>
+    
+    <body>
 
-<body>
-
-	<%
-	String email = null;
-	String name = null;
-	String addr = null;
-	Double lat = 0.0;
-	Double lng = 0.0;
-	MemberDTO member = (MemberDTO) session.getAttribute("member");
-	StoreDTO storeMember = (StoreDTO) session.getAttribute("storeMember");
-	if (member != null) {
-		email = member.getMB_EMAIL();
-		name = member.getMB_NAME();
-		addr = member.getMB_ADDR();
-		lat = member.getLAT();
-		lng = member.getLNG();
-	} else if (storeMember != null) {
-		email = storeMember.getSTORE_EMAIL();
-		name = storeMember.getSTORE_NAME();
-		addr = storeMember.getSTORE_ADDR();
-		lat = storeMember.getLAT();
-		lng = storeMember.getLNG();
-	}
-	session.setAttribute("email", email);
-	session.setAttribute("name", name);
-	session.setAttribute("addr", addr);
-	session.setAttribute("lat", lat);
-	session.setAttribute("lng", lng);
-	%>
-	<header class="site-header">
+        <header class="site-header">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12 col-12 d-flex flex-wrap">
@@ -102,7 +140,7 @@ body {
 		</div>
 	</header>
 
-	<nav class="navbar navbar-expand-lg">
+        <nav class="navbar navbar-expand-lg">
 		<div class="container">
 			<a class="navbar-brand" href="index.jsp"> <img
 				src="images/bubbles.png" class="logo img-fluid" alt="" /> <span
@@ -123,13 +161,15 @@ body {
 					<li class="nav-item"><a class="nav-link" href="NonUserReview">후기
 					</a></li>
 					<li class="nav-item"><a class="nav-link"
-						href="requestBoardMain.jsp?boardPage=1">문의</a></li>
+						href="requestBoardMain.jsp">문의</a></li>
+
 					<%
-					if (email != null) {
-						if (email.equals("admin")) {
+					if(session.getAttribute("email")!=null){
+					String email = (String)session.getAttribute("email");
+					if (email.equals("admin")) {
 					%>
 					<!-- admin 로그인시 생기는 메뉴 TODO-->
-					<li class="nav-item"><a class="nav-link" href="adminReviewBoardMain.jsp?boardPage=1">관리자</a>
+					<li class="nav-item"><a class="nav-link" href="contact.html">관리자</a>
 					</li>
 					<%
 					}
@@ -161,143 +201,152 @@ body {
 		</div>
 	</nav>
 
-	<main>
-		<section
-			class="hero-section hero-section-full-height d-flex justify-content-center align-items-center">
-			<div class="section-overlay"></div>
+        <main>
 
-			<div class="container" style="padding-bottom: 20%;">
-				<div class="row mainForm">
-					<div class="col-lg-7 col-12 text-center mx-auto">
+            <section class="banner-section d-flex justify-content-center align-items-end">
+                <div class="section-overlay"></div>
 
-						<h1 class="cd-headline rotate-1 text-white mb-4 pb-2">
-							<span>코인세탁방</span> <span class="cd-words-wrapper"> <b
-								class="is-visible">검색</b> <b>예약</b> <b>리뷰</b>
-							</span>
-						</h1>
+                <div class="container">
+                    <div class="row">
 
-						<button
-							class="custom-btn btn button button--atlas smoothscroll me-3"
-							onclick="goToScroll('search_reservation');return false;">
-							<span>Start Search !</span>
+                        <div class="col-lg-7 col-12">
+                            <h1 class="text-white mb-lg-0">문의 게시판</h1>
+                        </div>
 
-							<div class="marquee" aria-hidden="true">
-								<div class="marquee__inner">
-									<span>Start Search !</span> <span>Start Search !</span> <span>Start
-										Search !</span> <span>Start Search !</span>
-								</div>
-							</div>
-						</button>
-						<a
-							class="custom-btn custom-border-btn custom-btn-bg-white btn button button--pan smoothscroll"
-							href="#services-section"> <span>Explore Services</span>
-						</a>
 
-						<!-- 사용자 주소 입력 및 검색 input -->
-					</div>
-				</div>
-			</div>
+                    </div>
+                </div>
+            </section>
+         
 
-		</section>
-	</main>
-	<section class="search_reservation"
-		style="position: relative; padding-right: 1.5%;">
-		<div class="container">
-			<div class="row">
-				<div class="searchsection" style="margin-top: 5%;"></div>
-				<%-- <div class="searchAddr">
-			<div class="input-group mb-3 input-group-jin" style="margin-top:15px;">
-				<input type="text" class="form-control" name="addrSearch"
-					id="keyword" placeholder="검색할 주소를 입력하세요"
-					aria-label="Recipient's username" aria-describedby="button-addon2">
+<section class="section-padding">
+    <%
+		admin_reviewDTO aDto = new admin_reviewDTO();
+    	admin_reviewDAO aDao = new admin_reviewDAO();
+    	List<admin_reviewDTO> sel_list = aDao.selectAll_review();
+    	StoreVO sVo = new StoreVO();
+    	StoreDAO sDao = new StoreDAO();
+    	List<StoreVO> vo_list = sDao.selAll();
+    	
+		int boardPage = Integer.parseInt(request.getParameter("boardPage"));
+			if(request.getParameter("boardPage") == null) {
+				boardPage = 1;		
+			}
+		int count = 10;
+		int totalPage = ((sel_list.size() -1) / count) + 1;
+		int displayPageNum = 10;
+		int endPage = (((boardPage - 1) / displayPageNum) + 1) * displayPageNum;
+		if (totalPage < endPage) {
+			endPage = totalPage;
+		}
+		int startPage = ((boardPage -1) / displayPageNum) * displayPageNum + 1;
+		boolean prev = (boardPage == 1) ? false : true;
+		boolean next = (endPage == totalPage) ? false : true;
+		
+	%>
+	
+	<div class="request">
+	<table class="table">
+  <tbody>
+	   <thead>
+	      <tr>
+	        <th>번호</th>
+	        <th>내용</th>
+	        <th>업체명</th>
+	        <th>작성자</th>
+	        <th>평점/삭제</th>
+	      </tr>
+	   </thead>   
+	   
+	   <%
+	   if (sel_list.size() <= (boardPage*10)){ %>
+			<%for(int i = 0;i < sel_list.size();i++){ %>
+				   <%
+				   int num = 0;
+	   				String store_email = sel_list.get(i).getStore_email();
+	   				for (int j = 0;j <= vo_list.size()-1; j++){
+	   				String store_name = vo_list.get(j).getSTORE_NAME();
+						if(store_email.equals(vo_list.get(j).getSTORE_EMAIL())){
+							store_name = vo_list.get(j).getSTORE_NAME();
+							num = j;
+						}
+						
+					}
+				   %>
+	        	<tr>
+	        		<td><%=sel_list.get(i).getReview_seq() %></td>
+	        		<td><a class="title" href="RV2?store_name=<%=vo_list.get(num).getSTORE_NAME()%>"><%=sel_list.get(i).getReview_content() %></a></td>
+	        		<td><%=vo_list.get(num).getSTORE_NAME() %></td>
+	        		<td><%=sel_list.get(i).getUser_email() %></td>
+	        		<td><%=sel_list.get(i).getReview_rating() %>//<a class="title" href="replyWrite.jsp?req_seq=<%=sel_list.get(i).getReview_seq()%>">삭제</a></td>
+			<td>
+			</td>
+	        	</tr>
+			<%} %>
+		  <%} else {%>
+			<%for(int i = (boardPage * 10) - 10;i < boardPage * 10;i++){ %>
 				<%
-				String searchAddr = request.getParameter("addrSearch");
-				%>
-				<button class="btn btn-outline-secondary search-btn"
-					id="button-addon2" style="height: 100%; background-color: #4f83d1;">Search</button>
-
-			</div>
-
-
-		</div> --%>
-				<!-- 		<div id="map" style="width: 600px; height: 400px;"></div> -->
-				<%
-				/* TODO 세션에 유저주소정보를 담아서 업데이트해줘야함 */
-				String searchAddr = addr;
-				if (searchAddr == null) {
-					searchAddr = "쌍촌동";
-				} else {
-					searchAddr = searchAddr.substring(0, 5);
-				}
-				%>
-				<div class="option">
-					<div class="kakao-search">
-						<form id="searchAddrReservation"
-							onsubmit="searchPlaces(); return false;">
-							<div class="searchaddruser">
-								<input type="text" class="form-control" name="addrSearch"
-									value="<%=searchAddr%>" id="keyword"
-									placeholder="검색할 주소를 입력하세요" aria-label="Recipient's username"
-									aria-describedby="button-addon2" size="15">
-								<button type="submit" class="btn search-btn" id="button-addon2">검색
-									!</button>
-							</div>
-						</form>
-					</div>
-				</div>
-				<div class="map_menu_wrap">
-					<div class="map_wrap">
-
-						<div id="map"></div>
-					</div>
-					<div id="menu_wrap" class="bg_white">
-						<hr>
-						<ul id="placesList"></ul>
-						<div id="pagination"></div>
-					</div>
-				</div>
-
-				<form action="bookLaundryController" id="selectStore_form">
-
-					<div class="selectReservation">
-						<div class="reservation-info dp-none">
-							<div id="selectStore" class="selectStore_pos"></div>
-							<div style="margin-left: 15px;">예약하시겠습니까?</div>
-						</div>
-						<div class="map-searchbtn-group">
-							<button type="submit"
-								class="custom-btn btn button button--atlas smoothscroll me-3"
-								style="width: 160px;">
-								<span>예약하기</span>
-
-								<div class="marquee" aria-hidden="true">
-									<div class="marquee__inner">
-										<span>예약하기</span> <span>예약하기</span> <span>Reservation</span> <span>예약하기</span>
-									</div>
-								</div>
-
-							</button>
-						</div>
-						<div class="reservation-LatLng" style="display: none;">
-							<div id="reservation-Lat"></div>
-							<div id="reservation-Lng"></div>
-						</div>
-					</div>
-				</form>
-				<form action="Review_ViewController" id="reviewController">
-					<div class="reservation-LatLng" style="display: none;">
-						<div id="reservation-Lat1"></div>
-						<div id="reservation-Lng1"></div>
-					</div>
-					<button type="submit"
-						class="custom-btn custom-border-btn custom-btn-bg-white btn button button--pan smoothscroll reivewbtn">
-						<span style="">Review</span>
-					</button>
-				</form>
-			</div>
+				   int num = 0;
+	   				String store_email = sel_list.get(i).getStore_email();
+	   				for (int j = 0;j <= vo_list.size()-1; j++){
+	   				String store_name = vo_list.get(j).getSTORE_NAME();
+						if(store_email.equals(vo_list.get(j).getSTORE_EMAIL())){
+							store_name = vo_list.get(j).getSTORE_NAME();
+							num = j;
+						}
+						
+					}
+				   %>
+	        	<tr>
+	        		<td><%=sel_list.get(i).getReview_seq() %></td>
+	        		<td><a class="title" href="RV2?store_name=<%=vo_list.get(num).getSTORE_NAME()%>"><%=sel_list.get(i).getReview_content() %></a></td>
+	        		<td><%=vo_list.get(i).getSTORE_NAME() %></td>
+	        		<td><%=vo_list.get(num).getSTORE_NAME() %>///<%=store_email %></td>
+	        		<td><%=sel_list.get(i).getUser_email() %></td>
+	        		<td><%=sel_list.get(i).getReview_rating() %>/<a class="title" href="replyWrite.jsp?req_seq=<%=sel_list.get(i).getReview_seq()%>">삭제</a></td>
+			<%} %>
+	     <%} %>
+  </tbody>
+</table>
+	<!-- <h3 class="paging"></h3> -->
+		<div class="btn-group me-2" role="group" aria-label="First group">
+			<%if (totalPage <= count) {%>
+				<%if(prev == true) {%>
+				<a href="adminReviewPaging?pagebutton=<%=boardPage - 1 %>"><button type="button" class="btn btn-outline-secondary" id="pagebutton">이전페이지</button></a>
+				<%} %>
+				<%for(int i = startPage; i <= endPage; i++){ %>
+					<%if (i == boardPage) {%>
+					<a href="adminReviewPaging?pagebutton=<%=i %>"><button type="button" class="btn btn-secondary" id="pagebutton"><%=i %></button></a>
+					<%} else {%>
+					<a href="adminReviewPaging?pagebutton=<%=i %>"><button type="button" class="btn btn-outline-secondary" id="pagebutton"><%=i %></button></a>
+					<%} %>
+				<%} %>
+				<%if(boardPage != totalPage) {%>
+					<a href="adminReviewPaging?pagebutton=<%=boardPage + 1 %>"><button type="button" class="btn btn-outline-secondary" id="pagebutton">다음페이지</button></a>
+				<%} else {%>
+					
+				<%} %>
+			<%} else {%>
+				<%if(prev == true) {%>
+				<a href="adminReviewPaging?pagebutton=<%=boardPage - 1 %>"><button type="button" class="btn btn-outline-secondary" id="pagebutton">이전페이지</button></a>
+				<%} %>
+				<%for(int i = startPage; i <= endPage; i++){ %>
+					<%if (i == boardPage) {%>
+					<a href="adminReviewPaging?pagebutton=<%=i %>"><button type="button" class="btn btn-secondary" id="pagebutton"><%=i %></button></a>
+					<%} else {%>
+					<a href="adminReviewPaging?pagebutton=<%=i %>"><button type="button" class="btn btn-outline-secondary" id="pagebutton"><%=i %></button></a>
+					<%} %>
+				<%} %>
+				<%if(next == true) {%>
+					<a href="adminReviewPaging?pagebutton=<%=boardPage + 1 %>"><button type="button" class="btn btn-outline-secondary" id="pagebutton">다음페이지</button></a>
+				<%} %>
+				
+			<%} %>
 		</div>
+	</div>
+</section>
+</main>
 
-	</section>
 	<footer class="site-footer">
 		<div class="container">
 			<div class="row">
@@ -339,9 +388,9 @@ body {
 								후기
 						</a></li>
 
-						<li class="footer-menu-item"><a
-							href="requestBoardMain.jsp?boardPage=1" class="footer-menu-link">
-								<i class="bi-chevron-double-right footer-menu-link-icon me-2"></i>
+						<li class="footer-menu-item"><a href="requestBoardMain.jsp?boardPage=1"
+							class="footer-menu-link"> <i
+								class="bi-chevron-double-right footer-menu-link-icon me-2"></i>
 								문의
 						</a></li>
 					</ul>
@@ -363,23 +412,20 @@ body {
 
 					<p class="text-white d-flex">
 						<i class="bi-envelope-fill me-2"></i> <a
-							href="email: youjinseozzang1004@gmail.com"
-							class="site-footer-link"> youjinseozzang1004@gmail.com </a>
+							href="email: youjinseozzang1004@gmail.com" class="site-footer-link">
+							youjinseozzang1004@gmail.com </a>
 					</p>
 
 					<ul class="social-icon mt-4">
-						<li class="social-icon-item"><a
-							class="social-icon-link button button--skoll"> <span></span>
+						<li class="social-icon-item"><a class="social-icon-link button button--skoll"> <span></span>
 								<span class="bi-twitter"></span>
 						</a></li>
 
-						<li class="social-icon-item"><a
-							class="social-icon-link button button--skoll"> <span></span>
+						<li class="social-icon-item"><a class="social-icon-link button button--skoll"> <span></span>
 								<span class="bi-facebook"></span>
 						</a></li>
 
-						<li class="social-icon-item"><a
-							class="social-icon-link button button--skoll"> <span></span>
+						<li class="social-icon-item"><a class="social-icon-link button button--skoll"> <span></span>
 								<span class="bi-instagram"></span>
 						</a></li>
 					</ul>
@@ -421,13 +467,12 @@ body {
 	</footer>
 
 
-	<button type="button" class="btn btn-primary scrolltop"
-		onclick="goToTop(); return false;">
+	<button type="button" class="btn btn-primary scrolltop" onclick="goToTop(); return false;">
 		<i class="fa-solid fa-arrow-up"></i>
 	</button>
-
+	
 	<%
-	email = (String) session.getAttribute("email");
+	String email = (String) session.getAttribute("email");
 	%>
 	<!-- 유저 밸류값은 표현식으로 세션에서 저장된거 가져올거임 -->
 	<!-- Scrollable modal -->
@@ -437,7 +482,7 @@ body {
 		data-bs-target="#staticBackdrop">
 		<img alt="CSR" src="./images/CSR2.png">
 	</button>
-
+	
 	<!-- Modal -->
 	<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static"
 		data-bs-keyboard="false" tabindex="-1"
@@ -635,76 +680,17 @@ body {
 			
 		});
 	</script>
+        <!-- JAVASCRIPT FILES -->
+        <script src="js/jquery.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/jquery.backstretch.min.js"></script>
+        <script src="js/counter.js"></script>
+        <script src="js/countdown.js"></script>
+        <script src="js/init.js"></script>
+        <script src="js/modernizr.js"></script>
+        <script src="js/animated-headline.js"></script>
+        <script src="js/custom.js"></script>
+        <script src="js/btnScroll.js"></script>
 
-	<script type="text/javascript">
-		
-		const $form = document.getElementById('selectStore_form');
-		$form.addEventListener("submit", (event) => {
-			var content = <%=email%>;
-		  // 동작(이벤트)을 실행하지 못하게 막는 메서드입니다.
-			if(content==null){
-			  alert("로그인 후 이용해주세요~!");
-			  event.preventDefault();
-			}else{
-				$(form).unbind("submit");
-			}
-		});
-		
-		const $form2 = document.getElementById('selectStore_form');
-		$form2.addEventListener("submit", (event) => {
-			var lat = $('#selectStoreLat-dp-none').val();
-		  // 동작(이벤트)을 실행하지 못하게 막는 메서드입니다.
-			if(typeof lat == "undefined"){
-			  alert("세탁소를 선택 후 이용해주세요~!");
-			  event.preventDefault();
-			}else{
-				$(form2).unbind("submit");
-			}
-		});
-		
-		const $form1 = document.getElementById('reviewController');
-		$form1.addEventListener("submit", (event) => {
-			var lat = $('#selectStoreLat1-dp-none').val();
-		  // 동작(이벤트)을 실행하지 못하게 막는 메서드입니다.
-			if(typeof lat == "undefined"){
-			  alert("세탁소를 선택 후 이용해주세요~!");
-			  event.preventDefault();
-			}else{
-				$(form1).unbind("submit");
-			}
-		});
-		</script>
-
-
-	<!-- JAVASCRIPT FILES -->
-	<script src="js/jquery.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/jquery.backstretch.min.js"></script>
-	<script src="js/counter.js"></script>
-	<script src="js/countdown.js"></script>
-	<script src="js/init.js"></script>
-	<script src="js/modernizr.js"></script>
-	<script src="js/animated-headline.js"></script>
-	<script src="js/custom.js"></script>
-	<script src="js/kakaoMap.js"></script>
-	<script src="js/btnScroll.js"></script>
-	<script type="text/javascript">
-		window.onload = function() {
-		var storeList = document.querySelectorAll('.item');
-		storeList.forEach((store) => {
-			store.addEventListener('click', () => {
-				storeList.forEach((e) => {
-					e.classList.remove('active');
-				})
-				store.classList.add('active');
-			})
-		});
-		}
-			
-			
-			
-	</script>
-
-</body>
+    </body>
 </html>
-

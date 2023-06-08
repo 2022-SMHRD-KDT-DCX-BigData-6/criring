@@ -58,4 +58,15 @@ public class StoreDAO {
 		
 		return storeReviewNum;
 	}
+	
+	public List<StoreVO> selAll(){
+		SqlSession sqlSession = sqlSessionFactory.openSession(true);
+		
+		List<StoreVO> selAll = sqlSession.selectList("com.clearing.database.ReviewMapper.selAll");
+		sqlSession.close();
+		
+		return selAll;
+		
+		
+	}
 }
