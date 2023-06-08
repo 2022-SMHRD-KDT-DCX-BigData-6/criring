@@ -206,22 +206,6 @@ body {
 		<div class="container">
 			<div class="row">
 				<div class="searchsection" style="margin-top: 5%;"></div>
-				<%-- <div class="searchAddr">
-			<div class="input-group mb-3 input-group-jin" style="margin-top:15px;">
-				<input type="text" class="form-control" name="addrSearch"
-					id="keyword" placeholder="검색할 주소를 입력하세요"
-					aria-label="Recipient's username" aria-describedby="button-addon2">
-				<%
-				String searchAddr = request.getParameter("addrSearch");
-				%>
-				<button class="btn btn-outline-secondary search-btn"
-					id="button-addon2" style="height: 100%; background-color: #4f83d1;">Search</button>
-
-			</div>
-
-
-		</div> --%>
-				<!-- 		<div id="map" style="width: 600px; height: 400px;"></div> -->
 				<%
 				/* TODO 세션에 유저주소정보를 담아서 업데이트해줘야함 */
 				String searchAddr = addr;
@@ -690,7 +674,7 @@ body {
 	<script src="js/kakaoMap.js"></script>
 	<script src="js/btnScroll.js"></script>
 	<script type="text/javascript">
-		window.onload = function() {
+	 window.onload = function() {
 		var storeList = document.querySelectorAll('.item');
 		storeList.forEach((store) => {
 			store.addEventListener('click', () => {
@@ -700,12 +684,8 @@ body {
 				store.classList.add('active');
 			})
 		});
-		}
-			
-			
-			
+		} 
 	</script>
-
 </body>
 </html>
 

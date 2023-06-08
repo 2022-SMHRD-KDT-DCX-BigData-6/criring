@@ -123,6 +123,17 @@ function displayPlaces(places) {
 				reservationLng.innerHTML = '<input type="text" name="selectStoreLng" id="selectStoreLng1-dp-none">'
 				var addStoreLng = document.getElementById('selectStoreLng1-dp-none');
 				addStoreLng.value = marker.getPosition().getLng();
+				console.log('ok');	
+				
+				/*this.classList.add('active');*/				
+		    /*    storeList.forEach((store) => {
+			    store.addEventListener('click', () => {
+				storeList.forEach((e) => {
+					e.classList.remove('active');
+				})
+				store.classList.add('active');
+			})
+		});*/
 			};
 
 			kakao.maps.event.addListener(marker, 'click', function() {
