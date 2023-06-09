@@ -128,7 +128,7 @@
                     <div class="row">
 
                         <div class="col-lg-7 col-12">
-                            <h1 class="text-white mb-lg-0">예약완료</h1>
+                            <h1 class="text-white mb-lg-0">가입완료</h1>
                         </div>
 
                         <div class="col-lg-4 col-12 d-flex justify-content-lg-end align-items-center ms-auto">

@@ -376,9 +376,9 @@ body {
 								style="background-color: #77B2E8; border-color: #77B2E8; padding: 0.5%">정보
 								수정</button>
 							<br>
-							<br> <a href="secessionMember"><button
+							<br> <!-- <a href="index.jsp"><button
 									class="btn btn-primary btn-lg btn-block modal-btn"
-									style="background-color: #77B2E8; border-color: #77B2E8; padding: 0.5%; font-size: 18px; width: 123%;">회원탈퇴</button></a>
+									style="background-color: #77B2E8; border-color: #77B2E8; padding: 0.5%; font-size: 18px; width: 123%;">회원탈퇴</button></a> -->
 						</form>
 
 					</div>
